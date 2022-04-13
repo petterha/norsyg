@@ -1,0 +1,194 @@
+arg1-unexpr := arg1-unexpr.
+1np-extr := 1np-extr-phrase.
+1cp-extr := 1cp-extr-phrase.
+arg1-emb-nom := arg1-emb-nom-phrase.
+arg1-emb-adj := arg1-emb-adj-phrase.
+arg2-unexpr := arg2-unexpr.
+arg2-extr-su := arg2-extr-su-phrase.
+arg2-emb-nom-su := arg2-emb-nom-su-phrase.
+;arg2-emb-adj-su := arg2-emb-adj-su-phrase.
+arg2-emb-adj-non-su := arg2-emb-adj-non-su-phrase.
+;arg2-emb-no-nom-su := arg2-emb-non-nom-su-phrase.
+arg2-extr-nom-non-su := arg2-extr-nom-non-su-phrase.
+arg2-extr-compl-non-su := arg2-extr-compl-non-su-phrase.
+arg2-emb-nom-non-su := arg2-emb-nom-non-su-phrase.
+;arg2-emb-no-nom-non-su := arg2-emb-no-nom-non-su-phrase.
+;wh2 := wh2-struc.
+arg2-wh := arg2-wh-phrase.
+; PH 2016-09-21: Denne regelen lekker litt
+;arg2-wh-mod := arg2-wh-mod-struc.
+arg4-wh := arg4-wh-phrase.
+arg4-wh-mod := arg4-wh-mod-struc.
+arg3-unexpr := arg3-unexpr.
+arg3-extr-su := arg3-extr-su-phrase.
+arg3-emb-su := arg3-emb-su-phrase.
+arg3-emb-non-su := arg3-emb-non-su-phrase.
+;arg3-emb-adj-su := arg3-emb-adj-su-phrase.
+;arg3-emb-adj-non-su := arg3-emb-adj-non-su-phrase.
+arg3-extr-non-su := arg3-extr-non-su-phrase.
+;arg4-extr := arg4-extr-phrase.
+arg4-extr-cp := arg4-extr-cp-struc.
+arg4-extr-np := arg4-extr-np-struc.
+arg4-extr-ap := arg4-extr-ap-struc.
+;arg4-embedded := arg4-embedded-phrase.
+;arg4-emb := arg4-emb-phrase.
+part := part-binary.
+; PH 2017-07-04: Problems with "Jon kan ha smilt".
+;arg3-ellipsis := arg3-ellipsis-phrase.
+ground-obj := ground-obj-struc.
+expl-subj := expl-subj-struc.
+cleft-subj := cleft-subj-struc.
+expl-obj := expl-obj-struc.
+extr-pres := extr-pres-phrase.
+extr-cleft := extr-cleft-phrase.
+pres-unexpr := pres-unexpr-phrase.
+pop-nominal := pop-nominal-phrase.
+pop-no-nominal := pop-no-nominal-phrase.
+pop-no-nominal-comma := pop-no-nominal-comma-phrase.
+pop-s-par := pop-s-par-phrase.
+pop-xp-par := pop-xp-par-phrase.
+emb-par := emb-par-phrase.
+par-embedded := par-embedded-phrase.
+inquit-s := inquit-s-phrase.
+inquit-xp := inquit-xp-phrase.
+arg2-extr-inq-non-su := arg2-extr-inq-non-su-phrase.
+nominal := nominal-phrase.
+det := det-phrase.
+; PH 2019-06-06: Fix this rule
+;measure := measure-phrase.
+nominal-adj := nominal-adj-phrase.
+;scope := scope-phrase.
+;gen-ent-scope-phrase := gen-ent-scope-phrase.
+;gen-ent-nom := gen-ent-nom-phrase.
+;gen-ent-adj := gen-ent-adj-phrase.
+garpe := garpe-phrase.
+; PH 2019-03-20: This rule currently overgenerates
+;multiple-pn := multiple-pn-phrase.
+; PH 2019-06-06: This rule needs to be fixed
+;pn-noun := pn-noun-phrase.
+category-pn := category-pn-phrase.
+;multiple-card := multiple-card-phrase.
+
+verbal := verbal-phrase.
+aux := aux-phrase.
+part-ellipsis := part-ellipsis-phrase.
+ellipsis-s := ellipsis-s-phrase.
+ellipsis-vp := ellipsis-vp-phrase.
+verbal-c := verbal-c-phrase.
+; PH 2019-03-20; overgenerates
+aux-c := aux-c-phrase.
+verbal-c-pass := verbal-c-pass-phrase.
+verbal-c-pass-aux := verbal-c-pass-aux-phrase.
+verbal-pass-aux := verbal-pass-aux-phrase.
+verbal-pass := verbal-pass-phrase.
+verbal-imp-main := verbal-imp-main-phrase.
+verbal-imp-aux := verbal-imp-aux-phrase.
+;conj-verbal := conj-verbal-phrase.
+;emb-fill-nom := emb-fill-nom-phrase.
+;emb-fill-no-nom := emb-fill-no-nom-phrase.
+main := main-phrase.
+yes-no := yes-no-phrase.
+imperative := imperative-phrase.
+interj := interj-phrase.
+nom-filler := nom-filler-phrase.
+comp-filler := comp-filler-phrase.
+expl-filler := expl-filler-phrase.
+adj-filler := adj-filler-phrase.
+adj-mod-filler := adj-mod-filler-phrase.
+adv-filler := adv-filler-phrase.
+cadv-filler := cadv-filler-phrase.
+; PH 2020-04-15: Has problem with relations
+; PH 2019-03-20: overgenerates
+; unary-cond-filler := unary-cond-filler-phrase.
+; temporary commented out (vpidiom)
+mod-emb-vbl := mod-emb-vbl-phrase.
+mod-emb-vbl-np := mod-emb-vbl-np-phrase.
+mod-emb-nom := mod-emb-nom-phrase.
+mod-emb-enn := mod-emb-enn-phrase.
+; PH 2016-12-06: This rule is made to account for postpositions.
+;post-prep := post-prep-phrase.
+; This rule gives extra analysis of "Jeg gjør klart isen"
+;mod-embedded-part := mod-embedded-part-phrase.
+; modnom-embedded := modnom-embedded-phrase.
+cadv-embedded := cadv-embedded-phrase.
+extr-mod := extr-mod-phrase.
+deg-pos := deg-pos-phrase.
+deg-cmp := deg-cmp-phrase.
+deg-sup := deg-sup-phrase.
+deg-adv := deg-adv-phrase.
+deg-sadv := deg-sadv-phrase.
+deg-nom := deg-nom-phrase.
+deg-qnt := deg-qnt-phrase.
+deg-num := deg-num-phrase.
+deg-verb := deg-verb-phrase.
+deg-imp := deg-imp-phrase.
+init-struc := init-struc-phrase.
+init-struc-comma := init-struc-comma-phrase.
+vocative := vocative-phrase.
+
+;det-mod := det-mod-phrase.
+sadv := sadv-phrase.
+extr-sadv := extr-sadv-phrase.
+post-poss := post-poss-phrase.
+conj-comma-sat := conj-comma-sat-phrase.
+conj-end-sat := conj-end-sat-phrase.
+conj-comma-unsat := conj-comma-unsat-phrase.
+conj-end-unsat := conj-end-unsat-phrase.
+conj-emb := conj-emb-phrase.
+conj-adj-end := conj-adj-end-phrase.
+conj-adj := conj-adj-phrase.
+conj-s := conj-s-phrase.
+
+coord-vp := coord-vp-phrase.
+coord-filler := coord-filler-phrase.
+;conj-mod := conj-mod-phrase.
+bicl-subcoord := bicl-subcoord-phrase.
+monocl-subcoord := monocl-subcoord.
+eoc-coord := eoc-coord.
+
+; This rule is not semantically wellformed: 
+; "Jeg brauter med Jon på at jeg brauter"
+; mod-compl := mod-compl-phrase.
+binary-compl2 := binary-compl2-phrase.
+binary-compl2-noun := binary-compl2-noun-phrase.
+binary-compl4 := binary-compl4-phrase.
+unary-compl := unary-compl-phrase.
+binary-1ip := binary-1ip-phrase.
+binary-2ip := binary-2ip-phrase.
+binary-2ip1 := binary-2ip1-phrase.
+binary-2ip3 := binary-2ip3-phrase.
+binary-2ip4 := binary-2ip4-phrase.
+binary-4ip1 := binary-4ip1-phrase.
+binary-4ip2 := binary-4ip2-phrase.
+extr-1ip := extr-1ip-phrase.
+extr-2ip1 := extr-2ip1-phrase.
+extr-2ip3 := extr-2ip3-phrase.
+extr-2ip4 := extr-2ip4-phrase.
+extr-4ip1 := extr-4ip1-phrase.
+extr-4ip2 := extr-4ip2-phrase.
+unary-inf := unary-inf-phrase.
+binary-rel := binary-rel-phrase.
+unary-rel := unary-rel-phrase.
+wh-rel := wh-rel-phrase.
+;complex-pass := complex-pass-phrase.
+; FIXME
+continuative := continuative-phrase.
+
+;pre-punct := pre-punct-phrase.
+;close-bracket := close-bracket-phrase.
+
+;start := start-phrase.
+
+;;; Rules added for the vpidiom paper (2014-04-15; ph)
+prepsel := prepsel-binary.
+;prepsel-ellipsis := prepsel-ellipsis-phrase.
+arg2-idiom := arg2-idiom-struc.
+arg3-idiom := arg3-idiom-struc.
+arg4-idiom := arg4-idiom-struc.
+arg4-emb-sel-np := arg4-emb-sel-np-phrase.
+arg4-emb-sel-adj := arg4-emb-sel-adj-phrase.
+;arg4-emb-sel-cp := arg4-emb-sel-cp-phrase.
+;arg4-emb-np := arg4-emb-np-phrase.
+arg4-ap1 := arg4-ap1-phrase.
+arg4-ap2 := arg4-ap2-phrase.
+mwe-conj := mwe-conj-phrase.

@@ -1,0 +1,161 @@
+;;; Hey, emacs(1), this is -*- Mode: TDL; Coding: utf-8; -*- got it?
+;;;;;
+;;;;;   UNKNOWN WORDS
+;;;;;
+
+
+; PH 03-aug-2006: This file contains types that match tags in Ola Huseth's
+; tagger. The tag types have the suffix _tag. The following tags from the
+; tag set are not assigned a type:
+; EOS, QUEST, KOL, verb_aux_inf, verb_aux_pret, SEMI-COLON, interj, 
+; verb_aux_ppart, COMMA, EXCL, verb_aux_pres, HYPHEN, PAR, inf-merke,
+; None and verb_prpart.
+
+unknown_basic := norm-lex-item & phrase-or-lexrule & non-gen-word & generic-lex-item &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD adj-noun-verb,
+                           VAL.CMP4.LOCAL.CAT.HEAD adj-adv-nominal-prep,
+                           VBL anti-synsem &
+                                [ NON-LOCAL.SLASH <> ] ],
+                     CONT [ HOOK.INDEX event-or-ref-index ]],
+	     NON-LOCAL.SLASH <> ],
+    LINK-INPUT - ].
+
+
+unknown-word := unknown_basic &
+  [ SYNSEM.LOCAL.CONT.RELS <! arg0-relation !> ].
+
+det_pl_indef_tag := pl-indef-art-det-word.
+det_pl_def_tag := pl-def-art-det-word.
+det_sg_indef_tag := indef-art-det-word & sg-item.
+det_sg_def_tag := def-art-det-word & sg-item.
+
+tall_tag := pl-card-word.
+
+pron_tag := pron.
+
+;noun_prop_tag := gen-proper-noun-phrase.
+
+noun_basic := unknown_basic &
+  [ SYNSEM.LOCAL.CAT [ HEAD noun & [ MESS prop_m_rel ],
+                       VAL.SISTER anti-synsem ] ].
+
+noun_sg_indef_tag := noun_basic & unknown-word & sg-item &
+  [ SYNSEM.SAT - ].
+
+noun_sg_def_tag := def-lex-item & noun_basic & sg-item &
+  [ SYNSEM [ LOCAL [ CAT.QUANT +,
+		     CONT [ HOOK.INDEX.COGN-ST uniq-or-more,
+			    RELS <! [ LBL #ltop,
+				      ARG0 #ind ], 
+				  arg0-relation &
+				  [ PRED "def_rel",
+				    ARG0 #ind,
+				    RSTR #harg ] !>,
+			    HCONS <! qeq & [ HARG #harg, LARG #ltop ] !> ] ] ] ].
+
+noun_pl_def_tag := noun_basic & pl-item &
+  [ SYNSEM.LOCAL.CONT.RELS <! [ LBL #lbl,
+                                ARG0 #ind ], 
+                               arg0-relation &
+                               [ PRED "def_rel",
+                                 LBL #lbl,
+                                 ARG0 #ind ] !> ].
+
+noun_pl_indef_tag := noun_basic & pl-item &
+  [ SYNSEM.LOCAL.CONT.RELS <! [ LBL #lbl,
+                                ARG0 #ind ], 
+                               arg0-relation &
+                               [ PRED "indef_rel",
+                                 LBL #lbl,
+                                 ARG0 #ind ] !> ].
+
+noun_gen_basic := non-gen-word &
+  [ INFLECTED +,
+    SYNSEM [ LOCAL [ CAT [ HEAD noun & [ MESS prop_m_rel ],
+                         VAL.SISTER [ SAT -,
+                                      LOCAL.CAT.HEAD card-noun &
+                                          [ AGREE.DEFINITENESS indef ] ] ],
+                   CONT [ HOOK [ LTOP #lbl,
+                                 INDEX #2 & ref-ind ],
+                          RELS <! #rel & noun-relation &
+                                  [ ARG0 #1,
+                                    LBL #ltop ],
+                   arg0-relation & [ LBL #ltop,
+                                     ARG0 #1 ],
+                   arg1-relation & [ LBL #lbl,
+                                     ARG0 #1 ],
+                   arg2-relation & [ LBL #lbl,
+                                     ARG0 #2 ],
+                   arg0-relation & [ LBL #lbl,
+                                     PRED "poss_rel" ] !> ] ],
+              LKEYS.KEYREL #rel ] ].
+
+noun_sg_def_gen_tag := def-word & sg-item & noun_gen_basic &
+  [ SYNSEM.LOCAL.CONT.RELS <! [ ], [ PRED "def_rel" ], [],[],[] !> ].
+
+noun_pl_def_gen_tag := def-word & pl-item & noun_gen_basic &
+  [ SYNSEM.LOCAL.CONT.RELS <! [ ], [ PRED "def_rel" ], [],[],[] !> ].
+
+noun_pl_indef_gen_tag := indef-word & pl-item & noun_gen_basic &
+  [ SYNSEM.LOCAL.CONT.RELS <! [ ], [ PRED "indef_rel" ], [],[],[] !> ].
+
+noun_sg_indef_gen_tag := indef-word & sg-item & noun_gen_basic &
+  [ SYNSEM.LOCAL.CONT.RELS <! [ ], [ PRED "indef_rel" ],[],[],[] !> ].
+
+noun_prop_gen_tag := non-gen-word &
+  [ INFLECTED +,
+    SYNSEM [ LOCAL [ CAT [ HEAD noun & [ MESS prop_m_rel ],
+                         VAL.SISTER [ SAT -,
+                                      LOCAL.CAT.HEAD card-noun &
+                                          [ AGREE.DEFINITENESS indef ] ] ],
+                   CONT [ HOOK [ LTOP #lbl,
+                                 INDEX #2 & ref-ind ],
+                          RELS <! #rel & noun-relation &
+                                  [ ARG0 #1 ],
+                   arg1-relation & [ LBL #lbl,
+                                     ARG0 #1 ],
+                   arg2-relation & [ LBL #lbl,
+                                     ARG0 #2 ],
+                   arg0-relation & [ LBL #lbl,
+                                     PRED "poss_rel" ] !> ] ],
+              LKEYS.KEYREL #rel ] ].
+
+adj_komp_tag := adj_komp_word.
+
+adj_pos_tag := adj_basic & pos-adj-word.
+
+adj_sup_tag := adj_sup_word.
+
+verb_inf_tag := unknown-word & verb_basic &
+  [ SYNSEM.LOCAL [ CAT [ HEAD verb,
+                         VAL.CMP4.SAT +,
+                         ARGUMENT.LOCAL.CAT.CASE non-subj-case ],
+                   CONT.HOOK.INDEX event & [ E.TENSE infin ] ] ].
+
+verb_pres_tag := unknown-word & verb_basic &
+  [ SYNSEM.LOCAL [ CAT [ HEAD verb,
+                         VAL.CMP4.SAT + ],
+                   CONT [ HOOK.INDEX event & [ E.TENSE present,
+					     SF prop-yn-wh_m_rel ],
+			  MSG yes-no-ques_m_rel ] ] ].
+
+verb_pret_tag := unknown-word & verb_basic &
+  [ SYNSEM.LOCAL [ CAT [ HEAD verb,
+                         VAL.CMP4.SAT + ],
+                   CONT.HOOK.INDEX event & [ E.TENSE pret ] ] ].
+
+verb_perf_tag := unknown-word & verb_basic &
+  [ SYNSEM.LOCAL [ CAT [ HEAD verb,
+                         VAL.CMP4.SAT + ],
+                   CONT.HOOK.INDEX event & [ E.TENSE perf ] ] ].
+
+ 
+verb_imp_tag := verb_imp_word.
+
+prep_tag := prep-word.
+
+adv_tag := adv-nocomp-word.
+
+subj_tag := complementizer-word.
+
+konj_tag := conj-word.

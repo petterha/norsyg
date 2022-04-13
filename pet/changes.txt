@@ -1,0 +1,67 @@
+todo:
+Add trait feature to all known lexical entries
+
+
+pet/common.set
+changed:
+token-postags-path  := "+TNT.+TAGS".  ; [optional] list of POS tags
+token-posprobs-path := "+TNT.+PRBS".  ; [optional] list of POS probabilities
+-->
+token-postags-path  := "+POS.+TAGS".  ; [optional] list of POS tags
+token-posprobs-path := "+POS.+PRBS".  ; [optional] list of POS probabilities
+
+norwegian.tdl
+added:
+;; lexical filtering: reduce the chart after lexical instantiation and the
+;; application of lexical rules, right before we turn loose syntactic rules.
+:begin :instance :status lexical-filtering-rule.
+:include "lfr.tdl".
+:end :instance.
+
+lkb/globals.lsp
+added:
+
+;;;
+;;; as we move into the chart mapping universe, lexical entries behave similar
+;;; to rules: the list of input tokens that license a lexical entry are unified
+;;; into *lexicon-tokens-path* (when set).  furthermore, to give the grammarian
+;;; easier access to the token in the right periphery, the last element of the 
+;;; tokens list is made re-entrant with *lexicon-last-token-path*.
+;;;
+(setf *lexicon-tokens-path* '(TOKENS +LIST))
+(setf *lexicon-last-token-path* '(TOKENS +LAST))
+(setf *token-id-path* '(+ID))
+
+pet/norwegian.set
+added:
+
+posmapping := 
+  verb_pret                                  $generic_verb_pret
+.
+
+matrix.tdl
+added:
+
+cont-1 := lex-item &
+ [ STEM [ FROM #from,
+	  TO #to ],
+   SYNSEM.LOCAL.CONT.RELS <! [ CFROM #from, 
+			       CTO #to ] !> ].
+
+cont-2 := lex-item &
+ [ STEM [ FROM #from,
+	  TO #to ],
+   SYNSEM.LOCAL.CONT.RELS <! [ CFROM #from, 
+			       CTO #to ],
+			   [ CFROM #from, 
+			     CTO #to ] !> ].
+
+gle.tdl
+added:
+; +CLASS proper_ne does not work
+generic_noun_prop := noun_prop_tag &
+  [ SYNSEM.LKEYS.KEYREL.CARG #carg,
+    STEM < "_generic_n_" >,
+    TOKENS.+LIST generic_token_list &
+	   < [+POS.+TAGS < "noun_prop" >,
+	      +CLASS token_class, +CARG #carg ] > ].

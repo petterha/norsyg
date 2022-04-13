@@ -1,0 +1,20 @@
+;;; Hey, emacs(1), this is -*- Mode: TDL; Coding: utf-8; -*- got it?
+;;;
+
+root := phrase &
+  [ BOUNDARY +,
+    SYNSEM [ LOCAL.CAT [ HEAD aux-verb,
+                         VAL [ CMP1.LINK arg1-,
+                               CMP2.LINK arg2-,
+                               CMP4.LINK arg4- ] ],
+             NON-LOCAL.SLASH <> ] ].
+
+; root_const := pop-phrase &
+;   [ CONJ no-conj,
+;     SYNSEM [ LOCAL.CAT [ HEAD aux-verb,
+;                          STACK < >,
+;                          VBL synsem,
+; 			 C + ],
+; 	     MODIFIED notmod,
+;              NON-LOCAL.SLASH < [] > ] ].
+

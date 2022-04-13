@@ -1,0 +1,62 @@
+;; Hey, emacs(1), this is -*- Mode: TDL; Coding: utf-8; -*- got it?
+;;;;;
+;;;;;   INFLECTONAL TYPES
+;;;;;
+
+inflection := sort.
+no-infl := inflection.
+
+;;;;;;;;;;;;;;;;;;;; NOUN INFLECTION CODES ;;;;;;;;;;;;;;;;;;;;;
+
+noun-infl := inflection.
+m1-m2-n1-n2 := noun-infl.
+m1-m2 := m1-m2-n1-n2.
+n1-n2 := m1-m2-n1-n2. 
+
+m1 := m1-m2.
+m2 := m1-m2.
+m3 := noun-infl.
+n1 := n1-n2.
+n2 := n1-n2.
+
+;;;;;;;;;;;;; ADJECTIVE INFLECTION CODES ;;;;;;;;;;;;;;;;;;;;;;
+
+
+adj-infl := inflection.
+
+a1-a2 := adj-infl.
+a1-a5 := adj-infl.
+a2-a3-a4 := adj-infl.
+
+only-pos := adj-infl.
+comp-sup := adj-infl.
+
+a1 := a1-a5 & a1-a2.
+a1a := a1 & only-pos.
+a1b := a1 & comp-sup.
+a2 := a2-a3-a4 & a1-a2.
+a2a := a2 & only-pos.
+a2b := a2 & comp-sup.
+a3 := a2-a3-a4.
+a3a := a3 & only-pos.
+a3b := a3 & comp-sup.
+a4 := a2-a3-a4.
+a4a := a4 & only-pos.
+a4b := a4 & comp-sup.
+a5 := a1-a5.
+a5a := a5 & only-pos.
+a5b := a5 & comp-sup.
+
+;;;;;;;;; VERB INFLECTION CODES ;;;;;;;;;;;;;;;;;;;
+
+v-infl := inflection.
+
+v1-v2-v3 := v-infl.
+v1-v2 := v1-v2-v3.
+v1-v3 := v1-v2-v3.
+v2-v3 := v1-v2-v3.
+v1 := v1-v2 & v1-v3.
+v2 := v1-v2 & v2-v3.
+v3 := v1-v3 & v2-v3.
+v4 := v-infl.
+

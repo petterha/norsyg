@@ -1,0 +1,172 @@
+;;; -*- Mode: tdl; Coding: utf-8; indent-tabs-mode: nil; -*-
+
+;;;
+;;; this file is part of the ERG.  it should be kept in the same directory as 
+;;; the accompanying files `english.set', `global.set', etc.
+;;;
+
+encoding := utf-8.
+
+include "global".
+
+;;
+;; suppress results of regular morphology rules if irregular form exists
+;;
+irregular-forms-only.
+
+lex-entries-can-fail.
+
+;;
+;; names of attributes not to pass from daughter to mother in parsing
+;;
+deleted-daughters := 
+  ARGS HD-DTR NH-DTR DTR.
+;;
+;; names of attributes to filter for packing parser
+;;
+packing-restrictor := RELS HCONS.
+
+;;
+;; name of type containing quick check structure
+;;
+qc-structure := $qc_paths_set.
+
+;;
+;; based on selectional dependencies between lexical entries, reduce the chart
+;; right after lexical look-up: `chart-dependencies' is a list of pairs of
+;; paths into lexical entries.  the type of the node at the end of the first
+;; path in one lexical entry makes that entry depend on the existence of some
+;; other lexical entry that has that same type as the value of the node at the
+;; end of the second path.
+;;
+;; _fix_me_
+;; not entirely sure, but it must (in principle) be possible to saturate a
+;; dependency from lexical and grammar rules.  say, a lexical entry selected
+;; for something nominalized, and that relation was introduced by a lexical
+;; rule, in turn.  unless this is the case already, compute static list of all
+;; relations introduced by rules (which, presumably, requires another setting
+;; to declare how to find constructional semantic contributions; C-CONT) and
+;; consider all such dependencies on lexical entries always saturated.
+;;                                                          (11-oct-02; oe)
+unidirectional-chart-dependencies.
+
+chart-dependencies := 
+  "SYNSEM.LKEYS.--+COMPKEY" "SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN"
+  "SYNSEM.LKEYS.--+OCOMPKEY" "SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN"
+  "SYNSEM.LKEYS.--COMPHD" "SYNSEM.LOCAL.CAT.HEAD"
+  "SYNSEM.LOCAL.--+ARGIND" "SYNSEM.--SIND"
+.
+
+;;
+;; as of august 2003, PET includes ECL and the generic (R)MRS code; hence, we
+;; need to include the MRS settings from the grammar.
+;;
+postload-lisp-files := "lkb/mrsglobals.lsp".
+
+;;
+;; and as of august 2006, the MRS variable property mapping (VPM) can now be
+;; activated as a configuration parameter.                    (26-aug-06; oe)
+;;
+vpm := "semi".
+
+
+;;;
+;;; following are a number of settings for the new (as of late 2008) token
+;;; mapping and lexical filtering support in PET.
+;;;
+
+;;
+;; first, the general format of chart mapping rules, much like MRS transfer.
+;;
+chart-mapping-context-path  := "+CONTEXT".
+chart-mapping-input-path    := "+INPUT".
+chart-mapping-output-path   := "+OUTPUT".
+chart-mapping-position-path := "+POSITION".
+;;
+;; in lexical instatiation, the list of tokens activating a lexical entry (be
+;; it native or generic) are unified into the lexical entry under this path.
+;; furthermore, the parser will also give us a `pointer' to the last token.
+;;
+lexicon-tokens-path := "TOKENS.+LIST".
+lexicon-last-token-path := "TOKENS.+LAST".
+;;
+;; furthermore, for the various input formats, we need to declare how parts of
+;; input descriptions correspond to the grammar-internal feature geometry; in
+;; the YY input format, for example, token feature structures (aka input items
+;; PET-internally) are created from various parts of the token description.
+;; 
+token-form-path     := "+FORM".       ; [required] string for lexical lookup
+token-id-path       := "+ID".         ; [optional] list of external ids
+token-from-path     := "+FROM".       ; [optional] surface start position
+token-to-path       := "+TO".         ; [optional] surface end position
+token-postags-path  := "+POS.+TAGS".  ; [optional] list of POS tags
+token-posprobs-path := "+POS.+PRBS".  ; [optional] list of POS probabilities
+;;
+;; finally, declare TDL status values for the various new entity types
+;;
+generic-lexentry-status-values := generic-lex-entry.
+token-mapping-rule-status-values := token-mapping-rule.
+lexical-filtering-rule-status-values := lexical-filtering-rule.
+
+;;
+;; as of mid-2011, PET now includes native support for the Regular Expression
+;; Pre-Processor (REPP); these settings have been back-ported to 1010 from the
+;; ERG trunk in August 2011.
+;; 
+include "repp".
+
+;;
+;; optionally (as of mid-2011), PET can call out to a PoS tagger to augment
+;; the token sequence that will be input to parsing.  the following are the
+;; default settings for use of TnT.  note that the external command will be
+;; invoked through a shell, hence environment variables will be expanded.
+;;
+;; the specifics of interfacing to external PoS tagger(s) (and supertaggers,
+;; NE recognizers, et al.) are still work in progress.  it seems desirable to
+;; support pipelining multiple such preprocessors, but then it still needs to
+;; be determined how to integrate information coming from multiple sources.
+;; one approach would be to just associate multiple lists of <tag, probability>
+;; pairs with each input item PET-internally, and then define one path per
+;; preprocessor to project these lists into token feature structures; on this
+;; view, integration of information would be left to token mapping.  there is
+;; a certain attraction, on the other hand, in assuming there is one single
+;; (unified) opinion on PoS tags, supertags, and NE labels.  on this alternate
+;; view, 'stacking' of taggers (as we found useful with GENIA+TnT) would need
+;; to be accomplished PET-internally, i.e. the rules of how to integrate the
+;; opinions of multiple taggers would need to go into the configuration.
+;; 
+;; probably be invoked using popen(3), such that shell variables (from the
+;; calling environment) will be expanded.
+;;
+; taggers := tnt.
+; tnt-command := "${LOGONROOT}/bin/tnt".
+; tnt-arguments := "-v0 -z100 ${LOGONROOT}/coli/tnt/models/wsj -".
+;;
+;; it appears that TnT (somewhat to our surprise) takes into account context
+;; from preceding sentences, when applied to a sequence of inputs.  this might
+;; well be a good idea, in principle, but in DELPH-IN there is a very strong
+;; assumption of processing being sentence-centered.  when running under
+;; [incr tsdb()] control, for example, with multiple processing clients each
+;; instance will see non-consecutive sequences of sentences.  hence, provide
+;; a means of injecting unambiguous sentence break tokens (e.g. <s> and </s),
+;; if one were to retrain our TnT models; or just periods, for simplicity).
+;; bec has done some testing of the 'period hack' below (using the standard TnT
+;; WSJ model), and it appears to give us results near-identical to what we saw
+;; earlier, when re-starting TnT for every single sentence.     (9-aug-11; oe)
+;;
+; tnt-utterance-start := ".".
+; tnt-utterance-end := ".".
+; tnt-mapping := 
+;   "“" "``" 
+;   "”" "''" 
+;   "‘" "`" 
+;   "’" "'"
+;   "…" "..."
+;   "—" "---"
+;   "–" "--".
+;;
+;; _fix_me_
+;; in a similar spirit, it would be tempting to provide another setting (say
+;; 'tnt-filter := /¦.+/.'), to suppress (pseudo-)tokens inserted by REPP, e.g.
+;; GML italics markup, in communication with the tagger.        (9-aug-11; oe)
+;;

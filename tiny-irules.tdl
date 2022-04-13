@@ -1,0 +1,39 @@
+;; Hey, emacs(1), this is -*- Mode: TDL; Coding: utf-8; -*- got it?
+
+%(letter-set (!e abcdfghijklnmopqrstuvwxyzæøå)) ;; No e
+%(letter-set (!h abcdfghijklnopqrstuvwxyzæøå)) ;; No em
+%(letter-set (!j aeiouyæøå))
+%(letter-set (!l abcdefhijklnopqrstuvwxyzæøå)) ;; No gm
+%(letter-set (!m abcdfghijklnopqrsuvwxyzæøå)) ;; No emt
+%(letter-set (!n gfklnpr))
+%(letter-set (!o aiouyæøå)) ;; No e
+%(letter-set (!p dev)) 
+%(letter-set (!q nl)) 
+%(letter-set (!r dfkmpst)) 
+%(letter-set (!s lr)) 
+
+
+
+;;;;;;;;;;;;;;;;;;;;; VERBS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;     Infinitive  Present     Preterite   Perfect participle
+;;
+;; v1  buldre      buldrer     buldret     buldret
+;;                             buldra      buldra
+;;
+;; v2  smile       smiler      smilte      smilt
+;;
+;; v3  prøve       prøver      prøvde      prøvd
+;;
+;; v4  bo          bor         bodde       bodd
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+verb-infin_infl_rule := inf-verb-word &
+  [ STEM #1,
+    ARGS < [ STEM #1 ] > ].
+
+pres_infl_rule :=
+%suffix (* r)
+infl-pres-verb-word.
+

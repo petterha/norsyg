@@ -1,0 +1,17 @@
+;;
+;; Preserve the current (non-punctuated) form in +CARG, for later
+;; reference, e.g. in constructing +PRED values for generics.  NE rules have
+;; done this already, hence make sure to not overwrite existing +CARGSs.
+;;
+default_carg_tmr := one_one_tmt &
+[ +INPUT < [ +FORM #form, +TRAIT #trait, +CLASS #class,
+             +PRED #pred, +CARG anti_string, +POS #pos ] >,
+  +OUTPUT < [ +FORM #form, +TRAIT #trait, +CLASS #class,
+              +PRED #pred, +CARG #form, +POS #pos ] > ].
+
+start_token_fromto := token_mapping_rule &
+[ +INPUT < [ +FORM "^", +ID #id, +TRAIT #trait, +CLASS #class, +TO "0" ] >,
+  +OUTPUT < [ +FORM "^", +ID #id, +TRAIT #trait, +CLASS #class, +FROM "0", +TO "0" ] >,
+  +POSITION "O1@I1",
+  +CONTEXT <> ].
+  

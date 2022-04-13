@@ -1,0 +1,179 @@
+;;;
+;;; INTRO
+;;;
+;;;
+;;; FRAMEWORKS
+;;;
+Studiet lar seg lett kombinere med en jobb. 
+Jon overrekker Kari to bananer. 
+Kari blir overrakt to bananer. 
+To bananer blir overrakt Kari. 
+Det blir overrakt Kari to bananer. 
+Det forsvant en mynt i gresset.  
+Det lekte noen barn i gresset.  
+;;;
+;;; ARGSTR
+;;;
+Det kommer en mann. 
+Det blir sendt en pakke. 
+En mann arbeider på åkeren. 
+Det blir arbeidet på åkeren. 
+Det arbeider en mann på åkeren. 
+Den broen ble det funnet et lik under. 
+Marit snakker Jon med. 
+* Mandag kommer Jon på. 
+* Det utstråler en sol varme. 
+Det utstråler varme fra sola. 
+En spiller smashet. 
+* Det smashet en spiller. 
+En spiller smashet en ball. 
+En ball ble smashet. 
+Det ble smashet en ball. 
+En avis brenner. 
+Det brenner en avis. 
+Læreren forberedte seg godt. 
+* Læreren forberedte godt. 
+Det fins ikke matbiten i huset. 
+Det står navnet ditt på døra. 
+Jon gir Kari en bok. 
+Kari blir gitt en bok. 
+Det blir gitt Kari en bok. 
+* Det blir gitt Kari boka. 
+En bok blir gitt Kari. 
+Bilen kjører inn i garasjen. 
+Marit kjører bilen inn i garasjen. 
+Det kjører en bil inn i garasjen. 
+Det kjøres inn i garasjen. 
+Vann drypper fra taket. 
+Taket drypper vann. 
+Det drypper vann fra taket. 
+* Det drypper et tak vann. 
+Jon spiser. 
+Jon spiser en kake. 
+Det spises. 
+Kaker spises. 
+* Det spiser en mann. 
+En bil skramlet. 
+* Det skramlet en bil. 
+En bil skramlet inn oppkjørselen. 
+Det skramlet en bil inn oppkjørselen. 
+Vi ventet en overraskelse. 
+Det ble ventet en overraskelse. 
+En overraskelse ventet oss. 
+Det ventet oss en overraskelse. 
+;;;
+;;; VALENCE
+;;;
+Jon ombestemmer seg. 
+;;;
+;;; PRELIM
+;;;
+Jon ser ikke Kari. 
+Jon har ikke sett Kari. 
+at Jon ikke har kommet 
+I går leste Kari en bok. 
+Leste Kari en bok? 
+;;;
+;;; SYNTAX
+;;;
+at han beundrer Marit 
+Jon spaserer i skogen. 
+Mannen i skogen hogger ved. 
+Om ettermiddagen spaserer Jon 5 kilometer. 
+Hvor spaserer Jon om ettermiddagen? 
+Mannen hogger ikke ved i skogen. 
+Jon hevder at mannen ikke hogger ved i skogen. 
+Jon hevder at ikke Marit vil vinne.  
+Jon prøver ikke å le.  
+Ikke le! 
+Jon hevder at ikke Marit ikke vil vinne. 
+;;;
+;;; PASSIVE/PRESENTATION
+;;;
+En spiller smasher ballen. 
+Ballen blir smashet. 
+Ballen smashes. 
+Marit blir gitt en is. 
+En is blir gitt Marit. 
+Det blir gitt Marit en is. 
+Bleier ble byttet på barna. 
+Det ble byttet bleier på barna. 
+Barna ble byttet bleier på. 
+Bleiene ble byttet på barna. 
+* Det ble byttet bleiene på barna. 
+* Barna ble byttet bleiene på. 
+Mannen kommer. 
+Det kommer en mann. 
+* Det kommer mannen. 
+Mannen blir beundret. 
+Det blir beundret en mann. 
+* Det blir beundret mannen. 
+;;;
+;;; COORD
+;;;
+Marit spiser en is og drikker kaffe. 
+Marit spiser ikke is og drikker kaffe. 
+Marit spiser is og drikker ikke kaffe. 
+Marit spiser ikke is og drikker ikke kaffe. 
+Marit spiser is og blir servert kaffe. 
+Marit fanger, steker og spiser fisken. 
+Marit fanger, steker og spiser ikke noenting. 
+* Marit fanger, steker ikke og spiser noenting. 
+* Marit fanger ikke, steker og spiser noenting. 
+? Marit fanger, steker og spiser ikke fisken. 
+* Marit fanger, steker ikke og spiser fisken. 
+* Marit fanger ikke, steker og spiser fisken. 
+at Marit ikke fanger, steker og spiser fisken. 
+? En overraskelse venter og beundrer ham. 
+Marit gir Jon en is og Ola en sjokolade. 
+Marit gir Jon en is og Kari Ola en sjokolade. 
+Han sitter og skriver dikt. 
+Han driver og skriver dikt. 
+Han tok og skrev et dikt. 
+Han satt i stuen og skrev et brev. 
+Det var et brev han satt i stuen og skrev . 
+Det var stuen han satt i  og skrev et brev. 
+Han skrev et brev og sendte til England. 
+Han skrev et brev og sendte det til England. 
+;;;
+;;; GB
+;;;
+Har Jon spist is? 
+Spiser Jon is? 
+at Jon ofte spiser epler 
+at Jon ofte har spist epler 
+Jon spiser ofte epler. 
+I skogen spaserer Jon. 
+I skogen har Jon spasert. 
+På fredager kommer Jon ofte for sent. 
+På fredager kommer ofte Jon for sent. 
+;;;
+;;; SADV
+;;;
+Kari sover aldri. 
+* Kari aldri sover. 
+Kari har aldri sovet. 
+* Kari har sovet aldri. 
+at Kari aldri sover. 
+* at Kari sover aldri. 
+at Kari aldri har sovet. 
+* at Kari har aldri sovet. 
+Sover aldri Kari? 
+Marit ser den aldri. 
+* Marit ser aldri den. 
+Marit ser aldri DEN. 
+Marit så Jon aldri igjen. 
+Marit ser aldri dyreprogram. 
+* Marit ser dyreprogram aldri. 
+Marit så aldri Jon. 
+Marit så Jon aldri. 
+Sover aldri Kari? 
+Sover Kari aldri? 
+at dyreprogram aldri blir sett av Marit 
+Gir aldri Jon Marit isen? 
+Gir han aldri Marit isen? 
+Gir han henne aldri isen? 
+Gir han henne den aldri? 
+;;;
+;;; CONCLUSION
+;;;

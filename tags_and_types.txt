@@ -1,0 +1,40 @@
+PH 04-aug-2006: This file contains correspondences between types in Phdgram 
+(unknown.tdl) and tags in Ola Huseth's tagger. 28 out of 44 tags are assigned 
+a type. The following 16 tags are not assigned a type:
+
+EOS, QUEST, KOL, SEMI-COLON, COMMA, EXCL, HYPHEN, PAR, verb_aux_inf, 
+verb_aux_pres, verb_aux_pret, verb_aux_ppart, verb_prpart, interj, inf-merke, 
+None
+
+The following tags are assigned a type:
+
+TAG			TYPE
+
+det_sg_indef		det_sg_indef_tag
+det_sg_def		det_sg_def_tag
+det_pl_indef		det_pl_indef_tag
+det_pl_def		det_pl_def_tag
+tall			tall_tag
+pron			pron_tag
+noun_prop		noun_prop_tag
+noun_sg_indef		noun_sg_indef_tag
+noun_sg_def		noun_sg_def_tag
+noun_pl_indef		noun_pl_indef_tag
+noun_pl_def		noun_pl_def_tag
+noun_prop_gen		noun_prop_gen_tag
+noun_sg_indef_gen	noun_sg_indef_gen_tag
+noun_sg_def_gen		noun_sg_def_gen_tag
+noun_pl_indef_gen	noun_pl_indef_gen_tag
+noun_pl_def_gen		noun_pl_def_gen_tag
+adj_pos			adj_pos_tag
+adj_komp		adj_komp_tag
+adj_sup			adj_sup_tag
+verb_inf		verb_inf_tag
+verb_pres		verb_pres_tag
+verb_pret		verb_pret_tag
+verb_perf		verb_perf_tag
+verb_imp		verb_imp_tag
+prep			prep_tag
+adv			adv_tag
+subj			subj_tag
+konj			konj_tag

@@ -1,0 +1,101 @@
+;;; -*- Mode: LISP; Syntax: Common-Lisp -*-
+;;;
+;;; This file loads Norsyg with a lexicon derived from Norsk
+;;; Komputasjonelt Leksikon.
+;;;
+
+(set-coding-system utf-8)
+
+;;;
+;;; First, load a number of LKB-specific settings; typically no need to look
+;;; too closely here
+;;;
+(lkb-load-lisp (parent-directory) "Version.lsp" t)
+(setf *grammar-directory* (parent-directory))
+(lkb-load-lisp (this-directory) "globals.lsp")
+(lkb-load-lisp (this-directory) "user-fns.lsp")
+(lkb-load-lisp (this-directory) "checkpaths.lsp" t)
+ (load-lkb-preferences (this-directory) "user-prefs.lsp")
+
+;;;
+;;; Optionally, load a set of irregular morphological patterns
+;;;
+(load-irregular-spellings 
+ (list
+  (lkb-pathname (parent-directory) "lkb-irregs-nkl.tab")
+  ;(lkb-pathname (parent-directory) "lkb-irregs-nkl.tab")
+  ;(lkb-pathname (parent-directory) "nkl/irregs_nkl.tab")
+  ))
+
+;;;
+;;; Now the core grammar: to preserve the fiction of separating the matrix 
+;;; from language-specific parts, we recommend at least one additional file;
+;;; larger grammars have ended up organizing files roughly by content, e.g.
+;;; fundamental types (similar to what comes with the matrix already), types
+;;; for constructions, lexical types, semantic types, etc.  If you have 
+;;; multiple such files, there should be a line for each in the following.
+;;; Here we have just included matrix.tdl and one other grammar file
+;;; `my_language.tdl', which you might want to rename.
+;;;
+(read-tdl-type-files-aux
+  (list 
+   (lkb-pathname (parent-directory) "matrix.tdl")
+   (lkb-pathname (parent-directory) "nor.tdl")
+   (lkb-pathname (parent-directory) "preds.tdl")
+   (lkb-pathname (parent-directory) "infl-codes.tdl")
+   (lkb-pathname (parent-directory) "tmt.tdl")
+   (lkb-pathname (parent-directory) "unknown.tdl")
+   ))
+
+;;;
+;;; Next, the lexicon itself, instantiating (lexical) types of the grammar
+;;; (some grammars with larger lexica organize them into multiple files).
+;;;
+
+(read-cached-lex-if-available (list (lkb-pathname (parent-directory) "dummy-lex.tdl")))
+(read-cached-sublex-if-available "nkl.tdl" (list (lkb-pathname (parent-directory) "nkl.tdl")))
+(read-tdl-lex-file-aux (list (lkb-pathname (parent-directory) "lexicon.tdl")))
+(read-cached-sublex-if-available "funclex.tdl" (list (lkb-pathname (parent-directory) "funclex.tdl")))
+;;;
+;;; Finally, the grammar rules, lexical rules (given special treatment in the
+;;; parser in that they can apply _prior_ to `inflectional' rules), and the
+;;; `inflectional' rules themselves (rules with an associated orthographemic
+;;; alternation of the surface string).
+;;;
+(read-tdl-grammar-file-aux (lkb-pathname (parent-directory) "rules.tdl"))
+;(read-tdl-lex-rule-file-aux (lkb-pathname (parent-directory) "lrules.tdl"))
+(read-morph-file-aux (lkb-pathname (parent-directory) "irules.tdl"))
+
+;;;
+;;; The `start symbol(s)' of the grammar.
+;;;
+(read-tdl-psort-file-aux (lkb-pathname (parent-directory) "roots.tdl"))
+
+;;;
+
+;;; Optionally, a set of types providing labels for nodes in parse trees
+;;;
+(read-tdl-parse-node-file-aux (lkb-pathname (parent-directory) "labels.tdl"))
+
+;;;
+;;; A few more LKB-specific settings, this time for MRS post-processing and
+;;; generation; also, we always compute the generation index (while we have
+;;; small lexica) in the hope that the generator will be used frequently.
+;;;
+(lkb-load-lisp (this-directory) "mrsglobals.lisp" t)
+;(read-mrs-rule-file-aux (lkb-pathname (parent-directory) "transfer.mrs"))
+;(index-for-generator)
+
+;#+unknown-words
+;(lkb-load-lisp (this-directory) "grammar-saargram.lisp")
+
+;;;
+;;; the Regular Expression Pre-Processor (REPP) is now broken up into quite a
+;;; number of files.  to ease re-use across the LKB and PET, keep the REPP 
+;;; configuration in a separate file.
+;;;
+(lkb-load-lisp (parent-directory "rpp") "setup.lsp" t nil)
+
+;;; preprocessor
+;(read-preprocessor (lkb-pathname (parent-directory) "preprocessor.fsr"))
+

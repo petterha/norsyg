@@ -1,0 +1,1250 @@
+
+;;; -*- Mode: TDL; Coding: utf-8; Package: LKB -*-
+;;;
+;;;  HPSG Grammar Matrix Version 0.6
+;;;
+;;;  Copyright Emily M. Bender 2002
+;;;  All Rights Reserved.
+;;;  No use or redistribution without permission.
+;;;  
+;;;  Based on:
+;;;
+;;;  LinGO Grammar: fundamentals.tdl 
+;;;  Copyright Daniel Flickinger 1994-2001
+;;;  Initial development Rob Malouf, 3-Nov-1994
+;;;
+;;;  JACY Grammar: fundamentals.tdl, mrsbasic.tdl
+;;;  Developed by Melanie Siegel, Emily M. Bender
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
+;;
+;;  Top-level feature geometry
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Types for Sign, Word, Phrase, and Lex-Entry
+
+; sign-min := avm &
+;   [ STEM list ].
+
+;;; make STEM of type orthog(raphy) to pass up from/to/form
+sign-min := avm &
+  [ STEM orthog ].
+
+orthog := cons &
+[ FORM string,
+  FROM string,
+  TO string ].
+
+orthography := orthog &
+[ CLASS token_class ].
+
+basic-sign := sign-min &
+  [ KEY-ARG bool ].
+
+sign := basic-sign &
+  [ SYNSEM synsem,
+    ARGS list,
+    INFLECTED bool,
+    ROOT bool,
+    BOUNDARY bool,
+    PUNCT punct-min,
+    BRACKET sort,
+    COLON bool,
+    LINK-INPUT bool,
+    CONJ conj-value,
+    NEXTWORD synsem-mini,
+    START bool ].
+
+punct-min := sort.
+punct := punct-min.
+no-punct-or-period := punct-min.
+no-punct-or-quest-mark := punct-min.
+no-punct-or-exclam-mark := punct-min.
+no-punct := no-punct-or-period & no-punct-or-quest-mark & 
+	    no-punct-or-exclam-mark.
+period := no-punct-or-period & punct.
+quest-mark := no-punct-or-quest-mark & punct.
+colon := period.
+exclam-mark := no-punct-or-exclam-mark & punct.
+
+brack := sort.
+no-brack := sort.
+comma := sort.
+no-comma := sort.
+
+co-br := comma & brack.
+noco-br := no-comma & brack.
+co-nobr := comma & no-brack.
+noco-nobr := no-comma & no-brack.
+
+; C-CONT encodes the semantic contribution of the rule (phrasal
+; or lexical).
+
+; PH 11-feb-2003: Took out the HOOK link between the mother and C-CONT in order
+; to allow for introduced relations that don't share index with the verb. (See
+; verb-spr-phrase).
+
+; PH 31-mat-2005: BOUNDARY is marking whether a sign is a sentence or not.
+
+phrase-or-lexrule := sign &
+  [ SYNSEM canonical-synsem,
+    C-CONT mrs-min ].
+
+c-cont-1 := phrase-or-lexrule &
+ [ STEM [FROM #from,
+         TO #to ],
+   C-CONT.RELS <! [ CFROM #from, 
+                    CTO #to ] !>].
+
+c-cont-2 := phrase-or-lexrule &
+ [ STEM [FROM #from,
+         TO #to ],
+   C-CONT.RELS <! [ CFROM #from, 
+                    CTO #to ],
+                [ CFROM #from, 
+                  CTO #to ] !>].
+
+word-or-lexrule-min := sign-min.
+
+; ALTS allow lexical entries to block lexical rule application
+; PH 16-dec-03: NKL-ID keeps track of ID in the NKL lexicon.
+
+word-or-lexrule := word-or-lexrule-min & sign &
+  [ ALTS alts-min,
+    NKL-ID string,
+    LEXREL diff-list ].
+
+alts-min := avm.
+alts := alts-min &
+  [ PASSIVE bool ].
+no-alts := alts-min.
+
+; Not all words have lex-synsem - e.g. lexical PPs like "tomorrow" are
+; phr-synsem since they can be post-nominal modifiers.
+
+word := word-or-lexrule &
+  [ PUNCT no-punct,
+    ROOT -,
+    SYNSEM [ LOCAL.CAT.STACK <>,
+	     FIRST-WORD bool ],
+    BRACKET sort ].
+
+lex-item := word-or-lexrule.
+
+cont-1 := lex-item &
+ [ STEM [ FROM #from,
+	  TO #to ],
+   SYNSEM.LOCAL.CONT.RELS <! [ CFROM #from, 
+			       CTO #to ] !> ].
+
+cont-2 := lex-item &
+ [ STEM [ FROM #from,
+	  TO #to ],
+   SYNSEM.LOCAL.CONT.RELS <! [ CFROM #from, 
+			       CTO #to ],
+			   [ CFROM #from, 
+			     CTO #to ] !> ].
+
+
+norm-lex-item := lex-item &
+  [ SYNSEM [ FIRST-WORD -,
+	     LOCAL.CONT [ HOOK [ LTOP #ltop,
+                                 INDEX #index ] ],
+	     LKEYS [ KEYREL [ LBL #ltop,
+			      ARG0 #index ] ] ] ].
+
+
+native-lex-item := lex-item &
+  [ TRAITS native_token_list,
+    SYNSEM.FIRST-WORD - ].
+
+keyrel-lex-item := native-lex-item & 
+  [ SYNSEM.LKEYS.KEYREL #relation,
+    LEXREL <! #relation !> ].
+
+qrel-lex-item := native-lex-item & 
+  [ SYNSEM.LKEYS.Q.QREL #relation,
+    LEXREL <! #relation !> ].
+
+generic-lex-item := lex-item &
+  [ TRAITS generic_token_list ].
+
+; PH 15-dec-03: I add the feature INFLECTION to deal with inflectional
+; patterns.
+lexeme := keyrel-lex-item &
+  [ INFLECTED -,
+    INFLECTION inflection ].
+
+;; Not all phrases have SYNSEM phr-synsem, since we need to allow the
+;; head-comp rules to build signs which are still [ SYNSEM lex-synsem
+;; ], for constructions like "twenty-two" and "five fifteen p.m.".  So
+;; most phrases will assign the type phr-synsem to the value of
+;; SYNSEM, but not all.
+
+; Phrases don't have argument structure, but ARG-S is a feature
+; of local, not sign.  So rather than have subtypes of local for
+; phrases and lexical items, constrain phrases to have empty ARG-S.
+
+phrase := phrase-or-lexrule &
+  [ ROOT bool ].
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Affixation
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+non-affix-bearing := word-or-lexrule &
+  [ INFLECTED + ].
+
+; Rule
+
+rule := sign &
+  [ RULE-NAME string ].
+
+; LABEL-NAME and META used for labeling nodes in parse trees
+
+tree-node-label := *top* &
+  [ NODE sign ].
+
+label := sign &
+  [ LABEL-NAME string ].
+
+;; see lkbpatches
+meta := sign &
+  [ META-PREFIX string,
+    META-SUFFIX string ]. 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; SYNSEM values
+
+synsem-mini := avm.
+
+synsem-link := synsem-mini &
+  [ LINK predsort ].
+
+
+synsem-min := synsem-mini &
+  [ OPT bool,
+    LOCAL mod-local,
+    NON-LOCAL non-local-min,
+    SAT bool,
+    EXTR bool,
+    LTYPE link,
+    PHR bool,
+    CLITIC bool,
+    FIRST-WORD bool,
+    LKEYS lexkeys,
+    MARKED bool,
+    COMP-IND individual ].
+
+lex-or-phrase-synsem := synsem-min &
+  [ LEX bool,
+    --PHR-KEY relation ].
+
+synsem := synsem-min & synsem-link &
+  [ OPT +,
+    MODIFIED xmod,
+    LKEYS lexkeys ].
+
+expressed-synsem := synsem.
+
+canonical-synsem := expressed-synsem &
+  [ MODIFIED xmod ].
+
+lex-synsem := canonical-synsem & lex-or-phrase-synsem &
+  [ LOCAL local-min,
+    LEX + ].
+
+phr-synsem := canonical-synsem & lex-or-phrase-synsem &
+  [ LOCAL local-min,
+    LEX -,
+    --PHR-KEY relation ].
+
+non-canonical := synsem &
+  [ LOCAL.CONT.HOOK.INDEX individual ].
+
+expressed-non-canonical := non-canonical & expressed-synsem.
+
+gap := expressed-non-canonical &
+  [ LOCAL #local,
+    NON-LOCAL.SLASH < #local > ].
+
+unexpressed := synsem-min &
+  [ NON-LOCAL.SLASH null ].
+
+unexpressed-reg := unexpressed & non-canonical.
+
+anti-synsem := unexpressed.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; LOCAL & NON-LOCAL values
+
+; The feature AGR is introduced on LOCAL rather than on CAT (or on HEAD) since
+; coordination schema unify the CAT value of the daughters with that of then
+; mother, but need to be able to change AGR on the mother (to get plural 
+; agreement on verb when subject is a coordinated NP with "and" vs. "or").  
+
+mod-local := avm.
+
+; Type for saying that there is no topic
+no-topic := local-min.
+
+local-min := mod-local &
+  [ CAT cat-min,
+    CONT mrs-min,
+    AGR individual,
+    NEG-IN message_m_rel,
+    NEG-OUT message_m_rel ].
+
+local := local-min &
+  [ TOPIC local-min,
+    MODAL modal-min ].
+
+local-gap := local &
+  [ EXTR-REL relation,
+    EXTR-LINK link ].
+
+; Types for distinguishing scopal v. intersective modifiers.
+; (These types are used in the MOD value of modifiers, and 
+; references by the scopal/intersective head-adjunct rules.)
+
+scopal-mod := local.
+intersective-mod := local.
+
+non-local-min := avm.
+
+non-local := non-local-min &
+  [ SLASH list ].
+
+;non-local-none := non-local &
+;  [ SLASH < >,
+;    QUE 0-dlist,
+;    REL 0-dlist ].
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  CAT values
+
+cat-min := avm.
+
+;; PH 06-mar-2006: Introduced C-COGN-ST. Its function is to show the cognitive 
+;; status of the last argument that combined with the projection.
+
+cat := cat-min &
+  [ HEAD head-min,
+    VAL valence-min,
+    CASE case-min,
+    MC luk,
+    ARGUMENT synsem-mini,
+    VBL synsem-mini,
+    C-COGN-ST cogn-st,
+    STACK list,
+    COMPARATIVE bool,
+    QUANT bool,
+    AAIF bool,
+    C bool,
+    INTRANS bool ].
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  HEAD & VAL 
+
+head-min := avm.
+
+; It is expected that head will have many more features, but it
+; is not yet clear which are relevant crosslinguistically.  In
+; the English grammar, HEAD features include CASE, PRD, AUX, INV,
+; TAM, and VFORM.  (Re: TAM --- it is sometimes useful to have the
+; semantic information encoded in EVENT.E accessible via the head
+; path.)
+
+; Which subtypes of head are necessary and which head features are
+; declared for which subtypes is also a language-specific question.
+
+head := head-min &
+  [ MOD list,
+    KEYS keys_min,
+    MESS basic-message_m_rel,
+    AGREE agree,
+    CATEGORY category,
+    PREDICATIVE bool,
+    NOM bool,
+    SU-IND individual,
+    ELLIPSIS bool,
+    PERFPART bool ].
+
+modal-min := avm.
+
+
+valence-min := avm.
+
+
+; PH 04-feb-04: Removed the SUBJ, COMPS and SPEC features and inserted the 
+; DOBJ, IOBJ and POBJ features.
+; PH 05-sep-05: Removed the SPR, DOBJ, IOBJ and POBJ features and inserted
+; the ARG1, ARG2, ARG3 and ARG4 features.
+; Replaced ARG1, ARG2, ARG3, ARG4 with CMP1, CMP2, CMP3, CMP4 in order
+; not to conflict with the MRS features                   (2011-12-01; ph)
+
+valence := valence-min &
+  [ ARGFRAME link,
+    CMP1 synsem-mini,
+    CMP2 synsem-mini,
+    CMP3 synsem-mini,
+    CMP4 synsem-mini,
+    PART link,
+    SISTER synsem-mini ].
+
+keys_min := avm.
+keys := keys_min &
+  [ KEY predsort,
+    ALTKEY predsort ].
+
+; One of a grammatically salient inventory of semantic sorts, such as
+; 'animate' or 'time'
+
+semsort := sort.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; CONT values
+;
+;   HOOK                   : Externally visible attributes of a sign
+;   RELS diff-list         ; List of semantic relations
+;   HCONS diff-list        ; Scope constraints: list of qeq's
+
+mrs-min := avm.
+
+mrs := mrs-min &
+  [ HOOK hook,
+    RELS diff-list,
+    HCONS diff-list,
+    MSG basic-message_m_rel ].
+
+; HOOK values include
+;    LTOP                  ; Local top handle
+;    INDEX                 ; The salient nominal instance or event
+;    XARG                  ; The external (controlled) argument of a phrase
+
+hook := avm &
+  [ LTOP handle,
+    INDEX individual,
+    XARG individual,
+    PARG individual ].
+
+; MRSs are divided into psoas (with a distinguished event) and
+; nom-objs (with a distinguished index).  We use a polymorphic
+; attribute name INDEX for both of these, to simplify manipulation of
+; these objects; for example, modifying PPs assign as their ARG's
+; value the INDEX of the phrase they modify, whether it's an N-bar
+; (with a ref-ind value) or a VP (with an event value).  Similarly
+; useful for coordination.
+
+psoa := mrs &
+  [ HOOK.INDEX event ].
+
+nom-obj := mrs &
+  [ HOOK.INDEX index ].
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; LKEYS attributes, providing pointers to semantic relations and complement
+; predsorts in lexical types:
+;  KEYREL relation         ; Pointer to main relation in RELS
+;  ALTKEYREL relation      ; Pointer to an alternate relation in RELS
+;  --COMPKEY predsort      ; Pointer to the first complement's KEY predsort
+;  --OCOMPKEY predsort     ; Pointer to the oblique complement's KEY predsort
+
+qitems := avm &
+  [ QREL relation,
+    QEQ qeq ].
+
+lexkeys := avm &
+  [ KEYREL relation,
+    ALTKEYREL relation,
+    --COMPKEY predsort,
+    --OCOMPKEY predsort,
+    CNSTR relation,
+    Q qitems,
+    ELLREL relation ].
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  CTXT values 
+
+;ctxt-min := avm.
+
+;ctxt := ctxt-min &
+;  [ ACTIVATED bool,
+;    PRESUP diff-list ].
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Basic semantic types
+
+; The message represents the semantic type of a clause (cf. Ginzburg &
+; Sag 2000).  All clauses have messages.  Elements that take clauses
+; as semantic arguments should end up with the LBL of the clause as
+; the value of ARGn, L/R-HNDL, etc.  The MARG (message argument) of a 
+; message is a handle that qeqs the LBL of the main verb in the clause.
+; This leaves room for quantifiers to scope at each clause without
+; allowing scope ambiguity between quanitifers and messages, as it is
+; not clear what that would mean.
+
+basic_message := relation.
+message := basic_message &
+  [ PRED message_m_rel ].
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Message preds
+
+basic-message_m_rel := predsort.
+message_m_rel := basic-message_m_rel.
+;comm-or-ques_m_rel := message_m_rel.
+;command_m_rel := comm-or-ques_m_rel.
+;prop-or-ques_m_rel := message_m_rel.          ;for COMPS of e.g. 'know'
+;prop-or-wh_m_rel := message_m_rel.
+;proposition_m_rel := prop-or-ques_m_rel & prop-or-wh_m_rel.
+;wh-question_m_rel := prop-or-wh_m_rel & question_m_rel.
+;yes-no-ques_m_rel := question_m_rel & comm-or-ques_m_rel.
+;abstr-ques_m_rel := message_m_rel.       
+;question_m_rel := abstr-ques_m_rel.
+no-msg_m_rel := basic-message_m_rel.
+
+command_m_rel := message_m_rel.
+prop-cmpl-yn-wh_m_rel := message_m_rel.
+neg-or-yn_m_rel := prop-cmpl-yn-wh_m_rel.
+pos_m_rel := message_m_rel.
+neg_m_rel := neg-or-yn_m_rel.
+prop-yn-wh_m_rel := prop-cmpl-yn-wh_m_rel.
+prop-yn_m_rel := prop-yn-wh_m_rel.
+yes-no-ques_m_rel := prop-yn_m_rel & neg-or-yn_m_rel.
+yes-no-pos_m_rel := yes-no-ques_m_rel & pos_m_rel.
+yes-no-neg_m_rel := yes-no-ques_m_rel & neg_m_rel.
+prop-wh_m_rel := prop-yn-wh_m_rel.
+wh-question_m_rel := prop-wh_m_rel.
+prop_m_rel := prop-wh_m_rel & prop-yn_m_rel.
+;prop_pos_m_rel := prop_m_rel & pos_m_rel.
+;prop_neg_m_rel := prop_m_rel & neg_m_rel.
+no-msg := basic_message.
+
+prontype := sort.
+real_pron := prontype.
+std_pron := real_pron.
+recip := real_pron.
+refl_pron := real_pron.
+impers := real_pron.
+demon := real_pron.
+zero_pron := real_pron.
+not_pron := prontype.
+
+; Subtype of int_rel for tag questions and structures in other languages
+; with equivalent pragmatics.
+;ne_m_rel := abstr-ques_m_rel.                 
+
+; Constrains handle of scopable argument HARG relative to one 
+; outscoped LARG handle (the "H" is mnemonic for either "higher" or
+; "hole" argument, while the "L" is mnemonic for either "lower" or 
+; "label" argument.
+
+qeq := avm &
+  [ HARG handle,
+    LARG handle ].        
+
+;semarg := avm &
+;  [ INSTLOC instloc ].
+;instloc := *top.
+
+semarg := avm &
+  [ INSTLOC string ].
+
+handle := semarg.
+
+individual := semarg &
+  [ COGN-ST cogn-st,
+    E tam,
+    GRADE grade,
+    PNG png ].
+
+; The INDEX value of a nom-obj is an index (expletive or
+; referential).
+
+index := individual &
+  [ PNG png ].
+
+; This is the type of the index of the phrase modified by predicative
+; PPs, which can either modify a ref-ind nominal or an event VP.
+
+; PH 2004-feb-27: Added the COGN-ST feature.
+
+event-or-ref-index := individual.
+
+; Expletives get distinguished index type so they can be
+; selected semantically.  In English, this type has subtypes
+; for it and there.  Most languages have at most one expletive,
+; so those aren't included here.
+
+; PH 2013-01-31: Changed supertype from index to individual in order
+; to make event-or-ref-index distinct from expl-ind.
+expl-ind := individual.
+ref-ind := index & event-or-ref-index &
+  [ PNG png,
+    E.TENSE no_tense ].
+
+full_ref-ind := ref-ind &
+  [ PRONTYPE prontype ].
+
+grade := sort.
+positive := grade.
+comparative := grade.
+superlative := grade.
+
+;grade-ind := ref-ind &
+;  [ GRADE grade ].
+
+; Types encoding agreement information, analyzed as a part of the
+; index, following Pollard & Sag 1994.  Which subtypes and features
+; are appropriate seems highly language dependent.  The agreement
+; system of English doesn't justify a full cross-classification of
+; number and gender, so the features of png are PN and GENDER in the
+; English grammar.  (See Flickinger 2000.) Sag & Wasow 1999 declare
+; GENDER as a feature of the png type 3sg.
+
+png := avm.
+
+; Create subtypes of tense, aspect and mood as appropriate.
+
+tense := sort.
+aspect := sort.
+mood := sort.
+
+tam := avm &
+  [ TENSE tense ].
+;    ASPECT aspect,
+;    MOOD mood ]. 
+
+event := event-or-ref-index &
+  [ E tam,
+    SF basic-message_m_rel,
+    COGN-ST activ-or-less,
+    PERF bool ].
+
+rel-event := event &
+  [ RESTR bool ].
+
+; Coordinated phrases have conjoined indices as their INDEX
+; values.  These are meant to be interpreted as pointers to 
+; the set of indices the conjunction conjoins.
+
+conj-index := event-or-ref-index.
+conj-event := conj-index & event.
+conj-ref-ind := conj-index & ref-ind.
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Basic relation types
+
+; Relations are classified according to the types of arguments they take.  All
+; relations have a handle.  In addition, quantifier relations have a bound
+; variable and a restriction, nominal relations have an instance, and event
+; relations have an event.  Furthermore, nominal relations and event relations
+; can have additional roles, depending on their meaning.
+
+; WLINK links semantic relation to input string elements, more or less.
+; This becomes useful whenever a grammar is used in some application.
+
+relation := avm &
+  [ LBL handle,
+    PRED predsort,
+    CFROM *top*,
+    CTO *top*  ].
+
+; Abstract relation subtypes.  We recommend not positing a type
+; for each lexical relation, but rather using the feature PRED
+; to distinguish different lexical relations of the same type.
+; Relation types are modified in one of two circumstances:
+;
+; (i) A feature needs to be introduced that is relevant for some
+; relations and not others, or
+;
+; (ii) Something in the grammar needs to make reference to a family
+; of relations that are not otherwise distinguished by a type.
+
+
+; PH 04-feb-2004: I do some changes on the arg-relations, making the
+; hieararchy flat, and adding PRED values.
+
+arg0-relation := relation &
+  [ ARG0 semarg ].
+
+ref-relation := arg0-relation &
+  [ ARG0 ref-ind ].
+
+; arg1-or-2_rel := predsort.
+; arg2-or-3_rel := predsort.
+; arg1_rel := arg1-or-2_rel.
+; arg2_rel := arg1-or-2_rel & arg2-or-3_rel.
+; arg3_rel := arg2-or-3_rel.
+; arg4_rel := predsort.
+
+arg1-rel-min := arg0-relation &
+  [ ARG1 semarg ].
+
+arg2-rel-min := arg0-relation &
+  [ ARG2 semarg ].
+
+arg3-rel-min := arg0-relation &
+  [ ARG3 semarg ].
+
+arg4-rel-min := arg0-relation &
+  [ ARG4 semarg ].
+
+arg1-relation := arg1-rel-min.
+arg12-relation := arg1-rel-min & arg2-rel-min.
+arg123-relation := arg1-rel-min & arg2-rel-min & arg3-rel-min.
+arg1234-relation := arg1-rel-min & arg2-rel-min & arg3-rel-min & arg4-rel-min.
+arg124-relation := arg1-rel-min & arg2-rel-min & arg4-rel-min.
+arg13-relation := arg1-rel-min & arg3-rel-min.
+arg134-relation := arg1-rel-min & arg3-rel-min & arg4-rel-min.
+arg14-relation := arg1-rel-min & arg4-rel-min.
+arg2-relation := arg2-rel-min.
+arg23-relation := arg2-rel-min & arg3-rel-min.
+arg234-relation := arg2-rel-min & arg3-rel-min & arg4-rel-min.
+arg24-relation := arg2-rel-min & arg4-rel-min.
+arg3-relation := arg3-rel-min.
+arg34-relation := arg3-rel-min & arg4-rel-min.
+arg4-relation := arg4-rel-min.
+
+event-relation := arg0-relation &
+  [ ARG0 event ].
+
+verb-ellipsis-relation := arg1-relation.
+
+; Noun relations
+
+noun-relation := arg0-relation &
+  [ ARG0 ref-ind ].
+
+pronoun-relation := arg0-relation &
+  [ PRED pron_rel,
+    ARG0 ref-ind ].
+
+poss-relation := arg12-relation &
+  [ PRED poss_rel,
+    ARG0 event,
+    ARG1 ref-ind,
+    ARG2 ref-ind ].
+
+; Relational nouns like 'picture' or 'claim' take an additional semantic 
+; argument
+noun-arg1-relation := noun-relation & arg1-relation.
+
+carg-relation := arg0-relation &
+  [ CARG string ].
+
+number-relation := carg-relation & quant-relation.
+
+named-relation := noun-relation & carg-relation &
+  [ PRED named_rel ].
+
+const_relation := arg1-relation & carg-relation &
+  [ ARG0 event ].
+
+; Preposition relations
+
+; PH 04-feb-2003: Commented out the prep-mod-relation
+;prep-mod-relation := arg12-ev-relation.
+
+; adverb relations
+; NB: Negation is represented not as a subtype of adv-relation, but as an 
+; adv-relation with the PRED value neg_rel.
+
+adv-relation := arg0-relation.
+
+; coordinating and subordinating conjunctions
+
+subord-or-conj-relation-min := relation &
+  [ C-ARG individual ].
+
+subord-or-conj-relation := subord-or-conj-relation-min &
+  [ L-HNDL handle,
+    R-HNDL handle ].
+
+conjunction-relation := subord-or-conj-relation-min &
+  [ L-INDEX individual,
+    R-INDEX individual ].
+
+; NB: "if_then_rel" is now a PRED value of subord-relation.
+subord-relation := subord-or-conj-relation.
+
+; noun noun compounds
+
+; PH 04-feb-2003: Commented out the unspec-compound-relation
+;unspec-compound-relation := arg12-relation &
+;  [ ARG0 event,
+;    ARG1 ref-ind,
+;    ARG2 ref-ind ].
+
+; quantifier relation
+
+quant-relation := arg0-relation &
+  [ ARG0 ref-ind,
+    RSTR handle,
+    BODY handle ].
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; predsorts
+
+norm_rel := atom.
+; PH 2017-11-09: Added type for vocatives and continuatives.
+init_rel := norm_rel.
+named_rel := init_rel.
+sg_digit := named_rel.
+pl_digit := named_rel.
+card_rel := named_rel.
+def_digit := named_rel.
+pron_rel := norm_rel.
+;poss_rel := norm_rel.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Head types
+
+; Values for head features such as CASE, VFORM, ...
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  Sorts for atomic values
+
+; person, number and gender
+
+; clause mode
+
+; voice
+
+; mood
+
+; pronoun type
+
+; Three-valued sort evoking Polish logician Jan Lukasiewicz
+
+luk := sort.
+
+; These types allow the statement of constraints (e.g., in 
+; subcategorization) of the form:  If you care, you must have
+; the value + (-), but you don't have to care.  Useful for keeping
+; down the number of constructions and subcategorization types.
+
+na-or-+ := luk.
+na-or-- := luk.
++-or-- := luk.
+
+na := na-or-+ & na-or--.
+bool := luk.
++ := bool & na-or-+ & +-or--.
+- := bool & na-or-- & +-or--.
+
+; Three-valued sort for distinguishing unmodified signs from both
+; left-modified and right-modified signs PERIPH indicates whether this
+; modifier is left- or right-peripheral in its phrase - e.g., "the IBM
+; temporary employees" but "*the IBM five employees"
+
+xmod := sort &
+  [ PERIPH luk ].
+notmod-or-rmod := xmod.
+notmod-or-lmod := xmod.
+notmod := notmod-or-rmod & notmod-or-lmod.
+
+hasmod := xmod.
+lmod := hasmod & notmod-or-lmod.
+rmod := hasmod & notmod-or-rmod.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  Basic types
+
+sort := *top*.
+predsort := sort.
+atom := predsort.
+avm := *top*.
+list := avm.
+
+cons := list &
+  [ FIRST *top*,
+    REST *top* ].
+
+0-1-list := list.
+1-list := 0-1-list & cons &
+  [ REST null ].
+null := 0-1-list.
+1-plus-list := cons &
+  [ REST cons ].
+
+diff-list := avm &
+  [ LIST list,
+    LAST list ].
+
+0-1-dlist := diff-list &
+  [ LIST 0-1-list ].
+0-dlist := 0-1-dlist &
+  [ LIST #list,
+    LAST #list ].
+1-dlist := 0-1-dlist &
+  [ LIST 1-list &
+	 [ REST #rest & null ],
+    LAST #rest ].
+
+
+; This type shows the basic form for diff-list appends.
+; It is not meant to be used as a supertype.  Actual instances
+; of diff-list append will involve different features in different
+; relationships to each other & the feature geometry.
+
+dl-append := avm & [APPARG1 [LIST #first,       
+                             LAST #between],
+                    APPARG2 [LIST #between,
+                             LAST #last],
+                    RESULT  [LIST #first,
+                             LAST #last]].
+
+integer := atom.
+
+; NB: strings should be enclosed in double quotes, e.g., [PRED "named_rel"].
+initial-cfrom-val := atom.
+initial-cto-val := atom.
+
+; string := initial-cfrom-val & initial-cto-val.
+
+string := atom.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Some useful kinds of lists
+
+; A list of optional arguments.
+
+olist := list.
+
+ocons := olist & cons &
+  [ FIRST unexpressed & [ OPT + ],
+    REST  olist ].
+
+onull := olist & null.
+
+; The LinGO grammar also makes use of a prolist -- or list
+; of synsems of type pro-ss. 
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Lexical rules
+; PH 2016-08-09: Took out the ALTS DTR.ALTS reentrancy in order to allow
+; for passive inflection of main verbs: beundres
+lex-rule := phrase-or-lexrule & word-or-lexrule &
+  [ NEEDS-AFFIX bool,
+    SYNSEM [ LOCAL.CONT [ RELS [ LIST #first,
+				 LAST #last ],
+			  HCONS [ LIST #hfirst,
+				  LAST #hlast ] ],
+	     LKEYS.CNSTR #rel ],
+    DTR #dtr & word-or-lexrule &
+	[ SYNSEM [ LOCAL.CONT [ RELS [ LIST #first,
+				       LAST #middle ],
+				HCONS [ LIST #hfirst,
+					LAST #hmiddle ] ],
+		   LKEYS.CNSTR #rel ] ],
+    C-CONT [ RELS [ LIST #middle,
+		    LAST #last ],
+	     HCONS [ LIST #hmiddle,
+		    LAST #hlast ] ],
+    ARGS < #dtr > ].
+
+; Lexical rules vary on two dimensions: whether they are lexeme-to-lexeme
+; or lexeme-to-word and whether or not they involve spelling changes.
+; Accordingly, we define four subtypes of lex-rule, which have
+; four cross-classified glb subtypes:
+
+; Note that the lexeme/word distinction is represented via a feature
+; [INFLECTED bool] rather than as a type.  We find this more convenient,
+; as it allows certain words to be [INFLECTED +] from the start without
+; having to twist the hierarchy too much (especially if one makes use
+; of defaults).
+
+; Lexeme-to-word rules are hypothesized to monotonically add synsem
+; information.
+
+lexeme-to-word-rule := lex-rule &
+  [ INFLECTED +,
+    KEY-ARG #keyarg,   
+    SYNSEM #synsem,
+    ROOT #root,
+    DTR [ INFLECTED -,
+          KEY-ARG #keyarg,   
+          SYNSEM #synsem,
+          ROOT #root ],
+    C-CONT.RELS <! !> ].
+
+; Lexeme-to-lexeme rules can make more radical changes to the SYNSEM value.
+
+lexeme-to-lexeme-rule := lex-rule & lexeme &
+  [ INFLECTED #infl,
+    SYNSEM.LOCAL.CAT.MC #mc,
+    DTR [ INFLECTED #infl,
+          SYNSEM.LOCAL.CAT.MC #mc ] ].
+
+; Spelling changing rules.  The LKB identifies these rules based
+; on the NEEDS-AFFIX value. 
+
+inflecting-lex-rule := lex-rule &
+  [ NEEDS-AFFIX + ].
+
+; Spelling-preserving rules copy up the STEM (orthography) of
+; the daughter.
+
+constant-lex-rule := lex-rule &
+  [ STEM #stem,
+    DTR [ STEM #stem ]].
+
+; Cross-classified glb types
+
+const-ltol-rule := lexeme-to-lexeme-rule & constant-lex-rule.
+infl-ltol-rule := lexeme-to-lexeme-rule & inflecting-lex-rule.
+const-ltow-rule := lexeme-to-word-rule & constant-lex-rule.
+infl-ltow-rule := lexeme-to-word-rule & inflecting-lex-rule.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Phrase structure rules
+
+; Headed phrases must obey the Head Feature Principle and the Revised
+; Marking Principle.  They do not all obey the NLFP with respect to
+; QUE, but it appears that all CLAUSE phrases account for QUE on
+; mother and non-head-dtr.  Hence moved the QUE coreference to
+; NON-CLAUSE.  Headed phrases also identify the value of AGR on mother
+; and head daughter, unlike e.g. the coordination schemata which
+; identify HEAD but not AGR.
+
+; PH 11-feb-2004: Added a HOOK link between head daughter and mother.
+; PH 16-sep-2005: Moved information from headed-phrase into a new type
+; headed-phrase-or-lexrule.
+
+headed-phrase-or-lexrule := phrase-or-lexrule & 
+  [ ROOT -,
+    SYNSEM [ LOCAL [ CAT.HEAD head & #head,
+		     CONT.HOOK #hook,
+		     AGR #agr ] ],
+    HD-DTR.SYNSEM [ LOCAL local &
+			  [ CAT.HEAD #head,
+			    CONT.HOOK #hook,
+			    AGR #agr ] ] ].
+
+headed-phrase := headed-phrase-or-lexrule & phrase.
+
+non-headed-phrase := phrase &
+  [ ROOT - ].
+
+; Most but not all phrases have SYNSEM phr-synsem; head-complement
+; constructions have their SYNSEM type determined by the head-dtr.
+
+phrasal := phrase &
+  [ SYNSEM phr-synsem ].
+
+; Head/nexus phrases pass up the REL and QUE values of the head daughter
+; (which has amalgamated the REL and QUE values of its arguments as in
+; Sag 1997) to the mother.  
+
+head-nexus-rel-phrase := headed-phrase.
+
+head-nexus-que-phrase := headed-phrase.
+
+head-nexus-phrase := head-nexus-rel-phrase & head-nexus-que-phrase.
+
+; In a head/local dependent phrase, the SLASH feature of the mother is
+; token-identical to that of the head daughter, which has already amalgamated
+; the SLASH values of its arguments.  See discussion of head-nexus-phrase for
+; treatment of REL and QUE.
+
+head-valence-phrase := head-nexus-phrase &
+  [ SYNSEM.NON-LOCAL.SLASH #slash,
+    HD-DTR.SYNSEM.NON-LOCAL.SLASH #slash ].
+
+; All phrases are either unary or binary.
+
+basic-unary-phrase := phrase &
+  [ START -,
+    STEM #stem,
+    SYNSEM.LOCAL.CONT [ RELS [ LIST #first,
+			       LAST #last ],
+			HCONS [ LIST #scfirst,
+				LAST #sclast ] ],
+    C-CONT [ RELS [ LIST #middle,
+		    LAST #last ],
+	     HCONS [ LIST #scmiddle,
+		     LAST #sclast ] ],
+    ARGS < sign & [ NEXTWORD anti-synsem,
+		    STEM #stem,
+                    SYNSEM.LOCAL local &
+				 [ CONT [ RELS [ LIST #first,
+						 LAST #middle ],
+					  HCONS [ LIST #scfirst,
+						  LAST #scmiddle ] ] ],
+                    ROOT - ] > ].
+
+comp-copy-phrase := phrase &
+  [ SYNSEM.COMP-IND #comp,
+    ARGS.FIRST.SYNSEM.COMP-IND #comp ].
+
+unary-phrase := basic-unary-phrase & first-word-phrase & comp-copy-phrase &
+  [ PUNCT #punct,
+    BRACKET #br,
+    INFLECTED +,
+    ARGS < [ PUNCT #punct,
+             BRACKET #br,
+	     INFLECTED + ] > ].
+
+first-word-phrase := phrase &
+  [ SYNSEM.FIRST-WORD #fw & +,
+    ARGS.FIRST.SYNSEM.FIRST-WORD #fw ].
+
+basic-binary-phrase := first-word-phrase & binary-rule-right-to-left &
+  [ SYNSEM.LOCAL.CONT [ RELS [ LIST #first,
+			       LAST #last ],
+			HCONS [ LIST #scfirst,
+				LAST #sclast ] ],
+    C-CONT [ RELS [ LIST #middle2,
+		    LAST #last ],
+	     HCONS [ LIST #scmiddle2,
+		     LAST #sclast ] ],
+    ARGS < sign & [ SYNSEM.LOCAL local &
+				 [ CONT [ RELS [ LIST #first,
+						 LAST #middle1 ],
+					  HCONS [ LIST #scfirst,
+						  LAST #scmiddle1 ] ] ],
+		    ROOT - ],
+	   sign & [ SYNSEM.LOCAL local &
+				 [ CONT [ RELS [ LIST #middle1,
+						 LAST #middle2 ],
+					  HCONS [ LIST #scmiddle1,
+						  LAST #scmiddle2 ] ] ],
+                    ROOT -,
+		    SYNSEM.FIRST-WORD - ] > ].
+
+; PH 2013-03-11: Type added to let a modifier modify the following word
+nextword-phrase := basic-binary-phrase &
+  [ ARGS < [ NEXTWORD #sis ], [ SYNSEM #sis ] > ].
+
+binary-phrase := nextword-phrase &
+  [ PUNCT #punct,
+    BRACKET #br,
+    COLON #col,
+    INFLECTED +,
+    SYNSEM.FIRST-WORD bool,
+    ARGS < [ INFLECTED +,
+	     PUNCT no-punct,
+             BRACKET #br,
+             COLON #col & -,
+	     SYNSEM.FIRST-WORD bool ],
+           [ INFLECTED +,
+	     PUNCT #punct,
+             BRACKET sort ] > ].
+
+basic-binary-headed-phrase := headed-phrase & basic-binary-phrase &
+  [ NH-DTR sign ].
+
+binary-headed-phrase := basic-binary-headed-phrase & binary-phrase.
+
+; For more effecient parsing, designate one argument or the other
+; as the KEY-ARG: that which should be unified with first.
+
+binary-rule-left-to-right := rule &
+  [ ARGS < [ KEY-ARG + ] , [ KEY-ARG bool ] > ].
+
+binary-rule-right-to-left := rule &
+  [ ARGS < [ KEY-ARG bool ], [ KEY-ARG + ] > ].
+
+head-only := basic-unary-phrase & headed-phrase &
+  [ HD-DTR #head,
+    ARGS < #head > ].
+
+head-initial := binary-headed-phrase &
+  [ HD-DTR #head,
+    NH-DTR #non-head,
+    ARGS < #head, #non-head > ].
+
+basic-head-final := basic-binary-headed-phrase &
+  [ HD-DTR #head,
+    NH-DTR #non-head,
+    ARGS < #non-head, #head > ].
+
+head-final := basic-head-final & binary-headed-phrase.
+
+; C-CONT is the semantic contribution of the phrase itself.  The hook 
+; of the phrase is identified with the hook of C-CONT (which is possibly
+; but not necessarily identified with the hook of one of the daughters.
+; The rels of the phrase result from appending the rels of C-CONT and the
+; rels of the daughters.
+
+; Head-compositional phrases identify the syntactic head daughter as the
+; semantic head.
+
+head-compositional := headed-phrase &
+  [ C-CONT.HOOK #hook,
+    HD-DTR.SYNSEM.LOCAL.CONT.HOOK #hook ].
+
+clause := phrasal.
+
+; The following subtypes of clause will need more constraints,
+; as appropriate:
+
+; Relative clauses are propositions, but depending on the analysis
+; of the construction, the message may actually come from the daughter.
+
+relative-clause := clause.
+
+non-rel-clause := headed-phrase & clause.
+
+
+interrogative-clause := clause &
+  [ SYNSEM.LOCAL.CONT.MSG message_m_rel ].
+
+declarative-clause := clause &
+  [ SYNSEM.LOCAL.CONT.MSG prop_m_rel ].
+
+imperative-clause := clause &
+  [ SYNSEM.LOCAL.CONT.MSG command_m_rel ].
+
+;;;;;
+;;;;; Types added for the left-branching grammar design
+;;;;;
+
+;;;
+;;; Basic phrase types
+;;;
+gap-unary := sign &
+  [ SYNSEM.NON-LOCAL.SLASH #1,
+    ARGS < [ SYNSEM.NON-LOCAL.SLASH #1 ] > ].
+
+gap-binary := basic-binary-phrase &
+  [ SYNSEM.NON-LOCAL.SLASH #slash,
+    ARGS < [ SYNSEM.NON-LOCAL.SLASH #slash ],
+           [ SYNSEM.NON-LOCAL.SLASH <> ] > ].
+
+no-slash := sign &
+  [ SYNSEM.NON-LOCAL.SLASH <> ].
+
+binary-headed-gap-phrase := binary-headed-phrase & gap-binary.
+binary-nexus-phrase := head-nexus-phrase & basic-binary-headed-phrase.
+
+;;;;;
+;;;;;   COGN-ST
+;;;;;
+
+cogn-st := sort.
+
+no-cogn-st := cogn-st.
+activ-or-less := cogn-st.
+uniq-or-more := cogn-st.
+uniq-or-fam-or-activ := uniq-or-more & activ-or-less.
+fam-or-less := activ-or-less.
+fam-or-more := uniq-or-more.
+uniq-or-fam := fam-or-less & uniq-or-fam-or-activ.
+fam-or-activ := uniq-or-fam-or-activ & fam-or-more.
+uniq-or-less := fam-or-less.
+activ-or-more := fam-or-more.
+type-id := uniq-or-less.
+uniq-id := uniq-or-less & uniq-or-fam.
+fam := uniq-or-fam & fam-or-activ.
+activ := fam-or-activ & activ-or-more.
+in-foc := activ-or-more.
+

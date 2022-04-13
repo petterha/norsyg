@@ -1,0 +1,450 @@
+;; Hey, emacs(1), this is -*-  Coding: utf-8; -*- got it?
+
+Jon smiler
+Jon beundrer Kari
+*Jon Kari beundrer
+Jon gir Kari en is
+Jon har smilt
+*Jon har smile
+*Jon har smiler
+Jon kan ha smilt
+Jon beundres
+*Jon beundres Kari
+Jon blir beundret
+Jon har blitt beundret
+Jon kan ha blitt beundret
+Jon hevder at Kari sover
+Jon hevder at Kari har sovet
+Jon hevder Kari at Marit hevder at sover
+Smiler Jon
+Beundrer Jon Kari
+
+;;; Sentence adverbials
+Jon smiler ikke
+Jon beundrer ikke Kari
+Jon har ikke beundret Kari
+Kari har ikke Jon beundret
+Jon kan ikke ha blitt beundret
+*Jon kan ha ikke blitt beundret
+*Jon kan ha blitt ikke beundret
+Jon hevder at Kari ikke sover
+*Jon hevder at Kari sover ikke
+Jon beundrer henne ikke
+Jon beundrer ikke henne
+Gir ikke Jon Kari isen
+Gir han ikke Kari isen
+Gir han henne ikke isen
+Gir han henne den ikke
+
+
+;;; Relative clauses
+En mann som sover smiler
+En mann som Jon hevder at sover smiler
+En mann som Jon hevder at kan ha blitt beundret smiler
+
+;;; Presentation
+Det regner
+Det kommer en mann
+*Det kommer Jon
+Kommer det en mann
+Det irriterer Jon at Kari smiler
+Kari hevder at det kommer en mann
+Det har kommet en mann
+Det smiles
+Det beundres en mann
+Det gis Jon en is
+Det ble gitt Jon en is
+Jon blir det gitt en is
+En is blir det gitt Jon
+En mann som blir beundret blir det hevdet at har sovet
+Er det det det er
+
+;;; Adjuncts
+En snill mann smiler
+*En snille mann smiler
+Den snille mannen smiler
+*Den snill mannen smiler
+En mann i skogen smiler
+En mann smiler i skogen
+I skogen smiler en mann
+Smiler mannen i skogen
+Mannen smiler ved vannet i skogen
+
+;;; Coordination
+Jon og Marit smiler
+Jon beundrer skogen og smiler
+Jon smiler og Marit sover
+Et gult og rødt eple smiler
+
+;;; Wh-clauses
+Hvem smiler
+Jon beundrer hvem
+Hvem hevder Jon at smiler
+Hvor sover Jon
+Hvor hevder Jon at Kari sover
+Hvilken mann sover
+
+;;; Infinitival clauses
+Jon prøver å smile
+Jon prøver å beundre Kari
+*Jon prøver å smiler
+*Jon prøver å beundre
+Jon prøver å ikke smile
+*Jon prøver å smile ikke
+Kari prøver Jon å beundre
+Kari prøver Jon å hevde at Marit beundrer
+
+;;; Lack of complementizer
+Jon hevder han smiler
+Jon hevder ikke han smiler
+Jon hevder han ikke smiler
+Jon hevder is ikke kommer
+Jon hevder det kommer is
+Is hevder Jon kommer
+Mannen Jon beundrer smiler
+*Mannen smiler smiler
+Mannen beundrer Jon smiler
+
+;;; Valence frames of "dryppe" 0-2-24-1-12-123-14-124-1234 (drip)
+Det drypper
+Drypper det vann?
+Drypper det vann i skålen?
+Taket drypper
+Du drypper dråper
+Du drypper meg dråper
+Du drypper i såret
+Du drypper vann i såret
+Du drypper meg vann i såret
+
+
+;;; Kaja's test items
+en hund smiler
+hunden smiler
+den hunden smiler
+hunder smiler
+noen hunder smiler
+ei ku smiler
+et hus smiler
+en ku smiler
+en pen hund smiler
+den pene hunden smiler
+noen pene hunder smiler
+min hund smiler
+pene hunder smiler
+pen hund smiler
+en hund til hunden smiler
+en hund til hunden ved hunden smiler
+en pen hund til hunden smiler
+en pen hund til hunden ved hunden smiler
+min hund smiler
+min ku smiler
+mitt hus smiler
+mine hunder smiler
+din hund smiler
+deres hus smiler
+hans ku smiler
+hennes hunder smiler
+all melk smiler
+all melken smiler
+alle hunder smiler
+alle hundene smiler
+min melk smiler
+den melken smiler
+alle mine to pene hunder smiler
+
+
+*en hunder smiler
+*den hund smiler
+*ei hund smiler
+*et ku smiler
+*en hunden smiler
+;*hund smiler
+*noen hund smiler
+*en en hund smiler
+*den hunden den smiler
+*hunden hunden smiler
+*den pen hund smiler
+*en pene hund smiler
+*noen pen hund smiler
+*en pent hund smiler
+*en hund pen smiler
+*pen en hund smiler
+;*pene hunden smiler
+*min hunden smiler
+*min en hund smiler
+*en til hunden hund smiler
+*en hund til til hunden smiler
+*en hund til hunden smiler til
+*mine hund smiler
+*din hunder smiler
+*all hus smiler
+*all hunder smiler
+*alt melk smiler
+*all hunder smiler
+
+;;; Possessives
+Min hund smiler
+*Min hunden smiler
+Hunden min smiler
+*Hund min smiler
+Jon beundrer sin hund
+Jon beundrer hunden sin
+Jon beundrer sin
+Sin beundrer Jon
+*Sin hund smiler
+*Sin hund kommer
+*Sin hund beundres
+
+;;; Cardinals
+Tre hunder smiler
+*Tre hunden smiler
+Den tredje hunden smiler
+De første tre hundene smiler
+De tre første hundene smiler
+*De tre tredje hundene smiler
+Tredje smiler
+
+;;; Comparatives
+Mer is kommer
+Mer is enn det kommer
+Mindre is enn det kommer
+Mer kommer
+*Isen enn det kommer
+Mer gul is enn det kommer
+*Mer isen kommer
+En bedre is enn dette finnes ikke
+Isen er bedre enn sjokoladen
+Jon er flinkere enn kari
+*Jon er flink enn kari
+Jon mer enn sover
+Jon har mer enn sovet
+*Jon mer enn har sovet
+
+;;; Superlatives
+Den peneste mannen smiler
+Den mest private skogen smiler
+*Den privateste skogen smiler
+Mest is kommer dit
+*Mest is enn det kommer dit
+Minst is kommer dit
+Den minst pene mannen smiler
+Jon er penest
+Husene er penest
+*Jon er peneste
+Jon er den peneste
+
+;;; Modification of coordination
+Både Jon og Kari smiler
+*Både Jon men Kari smiler
+Verken Jon, Kari eller Marit smiler
+*Verken Jon og Kari smiler
+Jon verken smiler eller sover
+
+;;; Adjective predicatives/particles
+Jon har gjort ferdig huset
+Jon har gjort huset ferdig
+*Jon har gjort ferdige huset
+*Jon har gjort huset ferdige
+Jon har gjort ferdig husene
+Jon har gjort husene ferdig
+Jon har gjort husene ferdige
+*Jon har gjort ferdige husene
+
+;;; Verb/adjective alternation
+En beundret mann smiler
+*En sovet mann smiler
+*En beundrede mann sover
+To beundrede menn smiler
+De beundrede smiler
+*Beundrede smiler
+Mannen er beundret
+Er mennene beundret
+*Er mennene beundrede
+
+;;; adjectives as adverbs
+Jon sover godt
+*Jon sover god
+Jon smiler merkelig
+Jon er godt likt
+*Jon er god likt
+Jon er likt godt
+*Jon har godt sovet
+
+;;; Modification of modifiers
+En svært flink mann smiler
+En svært godt likt mann smiler
+Svært godt likte menn smiler
+Mannen var svært godt likt
+Mannen var likt svært godt
+*Svært smiler
+*Svært beundrede smiler
+
+;;; Predicatives
+Isen er god
+*Isen er godt
+Is er godt
+Jon gjør klar bilen
+*Jon gjør klart bilen
+Jon gjør klart huset
+Jon gjør klar huset
+Jon gjør huset klart
+*Gjør Jon huset klar
+Jon gjør klar bilene
+Jon gjør klar husene
+*Jon gjør klare bilene
+*Jon gjør klart husene
+Jon gjør bilene klare
+*Gjør Jon bilene klar
+
+;;; Genitive
+Jons bil smiler
+*Jon bils smiler
+Noens bil smiler
+*Mins bil smiler
+Alle ens biler smiler
+Jons to biler smiler
+*Jons bilen smiler
+Jons smiler
+
+;;; Selv
+Jon ga selv Kari isen
+Jon ga Kari selv isen
+Jon ga Kari isen selv
+
+;;; Sentence adverbials
+Jon har derfor sovet
+Derfor har jon sovet
+Derfor har jon ikke sovet
+Jon har derfor ikke sovet
+Jon sover derfor i skogen
+*Jon sover i skogen derfor
+
+;;; Andre
+Andre smiler
+En annen mann smiler
+Noen andre smiler
+Alle andre smiler
+Andre menn smiler
+Alle de tre andre snille mennene smiler
+Et annet smiler
+
+;;; Imperative
+Smil!
+Kom!
+Beundre skogen!
+Bli beundret!
+Vær snill!
+Ikke smil!
+Bare kom inn!
+*Senere smil!
+Ikke smil senere!
+Gi ikke Jon isen!
+Ikke gi Jon isen!
+
+;;; Modifiers of adjectives (and modifiers)
+Jon har langt penere bil
+*Jon har langt pen bil
+Jon har svært pen bil
+*Jon har svært penere bil
+Jon har svært mye penere bil
+Jon er langt mer storslått
+En svært mye mer storslått bil kommer
+
+;;; Kanskje
+Jon sover kanskje
+Kanskje Jon sover
+Jon sover kanskje ikke
+Den kanskje peneste mannen sover
+Den kanskje peneste sover
+*Den kanskje mannen sover
+;Den kanskje ikke helt peneste mannen smiler
+
+;;; Small clauses
+Jeg lar Kari sove
+*Jeg lar Kari sover
+*Jeg lar du sove
+*Jeg lar Kari sove skogen
+Kari blir latt sove
+*Kari blir latt sove skogen
+Jeg lar Kari hente Jon
+Henne lar jeg deg hente
+Jeg lar sjokoladen forsvinne
+Jeg lar deg bli gitt sjokoladen
+Henne lar du Jon hevde at Kari beundrer
+Jeg lar deg la Jon sove
+*Jeg lar deg la Jon sove Kari
+Henne lar jeg deg la jon beundre
+Jeg lar deg ikke beundre Kari
+Jeg lar deg sove på taket
+
+;;; Negative polarity items (not ready)
+Jon gjorde ikke noe som helst
+Ingen gjorde noe som helst
+*Jon gjorde noe som helst
+Jon hevder at Kari ikke gjør noe som helst
+Jon hevder ikke at Kari gjør noe som helst
+*Jon hevder at Kari gjør noe som helst
+Ingen hevder at Kari sier at Marit sover noensteds
+*Jon hevder at Kari sier at Marit sover noensteds
+
+;;; nr. /number
+Nr. 2 smiler
+Nummer 2 smiler
+Nr. 2 fra venstre smiler
+Bil nr. 2 kommer
+
+;;; pr /per
+En pr mann kommer
+En is pr mann kommer
+*En pr mannen kommer
+En is pr tredje kommer
+En is pr tredje mann kommer
+Det kommer en pr tredje mann
+*Det kommer en pr tredje mannen
+
+;;; Present participle
+En mann kom gående
+En løpende mann kommer
+En gående kommer
+
+;;; Misc.
+Mannen som fredag sov, sover.
+
+;;; Conditional clauses
+Kari smiler hvis Jon sover.
+Sover Jon, smiler Kari.
+Hvis Jon sover, smiler Kari.
+
+;;; Infinitival clauses
+Å sove prøver Jon.
+Å sove sier Jon at han prøver.
+Å sove nekter Jon Kari.
+Å sove sier Jon at Kari nekter ham.
+
+;;; Subordinate clauses
+At Jon smiler, sier Kari.
+At Jon smiler, prøver Kari å si.
+
+;;; VP idioms
+Jeg bringer avisen.
+Jeg bringer henne avisen.
+Jeg bringer avisen til henne.
+Jeg bringer inn avisen.
+Jeg bringer temaet på bane.
+Jeg løfter.
+Jeg løfter avisen.
+Vi løfter i flokk.
+Jeg går konkurs.
+Jeg legger ikke skjul på valget.
+Jeg legger ikke skjul på at jeg sover.
+
+;;; Gapping
+Jeg henter en is og du en sjokolade.
+*Jeg henter en is og du.
+En is blir hentet av meg og en sjokolade av deg.
+Jeg har hentet en is og du en sjokolade.
+Jeg skal ha hentet isen og du sjokoladen.
+Jeg ga Per isen og Marit sjokoladen.
+Jeg henter isen, du sjokoladen og hun avisen.
+Jeg gjorde ferdig isen og du sjokoladen.
+Jeg tviler på isen og du sjokoladen.

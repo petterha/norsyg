@@ -1,0 +1,93 @@
+;;; Hey, emacs(1), this is -*- Mode: TDL; Package: LKB; -*- got it?
+;;;
+;;; Copyright (c) 2005 -- 2010 Dan Flickinger (danf@stanford.edu);
+;;; copyright (c) 2005 -- 2010 Stephan Oepen (oe@ifi.uio.no);
+;;; see `LICENSE' for conditions.
+;;;
+
+;;;
+;;; first shot of minimal type hierarchy for paraphrasing transfer rules.
+;;;
+
+;;;
+;;; minimal hierarchy of variable types, using the new (R)MRS naming scheme.
+;;;
+
+u := *top* & [ SCRATCH scratch ].
+i := u.
+p := u.
+h := p.
+e := i.
+x := i & p.
+
+;;;
+;;; to check for `arity' in MTRs, maybe we need an `anti-'variable type
+;;;
+a := u.
+
+;;;
+;;; the scratch slot in variables: used during transfer to control application
+;;; of rules, e.g. the rules that introduce selected preposition EPs in the ERG
+;;; accomodation phase which would otherwise be cyclic, i.e. the rule would
+;;; fire on its own output (since it does not consume anything).
+;;;
+scratch := *top*.
+test := scratch.
+complete := scratch.
+
+flags := *top* &
+[ OPTIONAL luk,
+  EQUAL list,
+  SUBSUME list,
+  TRIGGER string ].
+
+mrs_transfer_rule := *top* &
+[ FILTER mrs,
+  CONTEXT mrs,
+  INPUT mrs,
+  OUTPUT mrs,
+  FLAGS flags ].
+
+generator_rule := mrs_transfer_rule &
+[ INPUT.RELS <! !> ].
+
+card_rule := generator_rule &
+[ CONTEXT.RELS <! [ PRED card_rel ] !> ].
+
+poss_rule := generator_rule &
+[ CONTEXT.RELS <! pronoun-relation,
+		  pronoun-q-relation,
+		  poss-relation !> ].
+
+monotonic_mtr := mrs_transfer_rule &
+[ CONTEXT.HOOK.LTOP #h,
+  INPUT.HOOK.LTOP #h,
+  OUTPUT.HOOK.LTOP #h ].
+  
+monotonic_omtr := monotonic_mtr & optional_mtr.
+
+optional_mtr := mrs_transfer_rule &
+[ FLAGS.OPTIONAL + ].
+
+
+basic_verb_mtr := monotonic_mtr &
+[ INPUT.RELS.LIST < [ LBL #h1, 
+                      ARG0 #e2, ARG1 #x3, ARG2 #x4, ARG3 #x5, ARG4 #x6 ], ...>,
+  OUTPUT.RELS.LIST 
+               < [ LBL #h1, 
+                   ARG0 #e2, ARG1 #x3, ARG2 #x4, ARG3 #x5, ARG4 #x6 ], ... > ].
+
+verb_mtr := basic_verb_mtr &
+[ INPUT.RELS <! relation !> ].
+
+;;;
+;;; common types for generator trigger rules
+;;;
+
+arg0e_gtr := generator_rule & monotonic_mtr &
+[ CONTEXT [ RELS.LIST < [ ARG0 #e & event ], ... > ],
+  FLAGS.EQUAL < #e, ... > ].
+
+arg0i_gtr := generator_rule & monotonic_mtr &
+[ CONTEXT [ RELS.LIST < [ ARG0 #i ], ... > ],
+  FLAGS.EQUAL < #i, ... > ].

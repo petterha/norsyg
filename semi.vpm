@@ -1,0 +1,155 @@
+;;;
+;;; a first attempt at mapping (systematically) between the grammar-internal
+;;; name space (where, for example, there may be reasons to group sets of index
+;;; properties in nested feature structures) and the external, SEM-I compliant
+;;; interface.
+;;;
+
+;;;
+;;; the correspondence between grammar-internal types and the one-letter codes
+;;; encoding value types on MRS variables: the type mapping, conceptually, is
+;;; applied parallel to the property mapping, i.e. context conditions in rules
+;;; below should be cast in the appropriate name space.
+;;;
+event              <> e
+ref-ind            <> x
+; do-index           <> x
+; overt_non_expl-ind <> x
+; conj_non_expl-ind  <> x
+; full_non_expl      <> x
+individual     	   <> i
+handle         	   <> h
+
+
+;;;
+;;; from here on, sets of rules that map one or more properties into one or
+;;; more properties: for each correspondence, values are compared to sub-rules
+;;; in order, until the first match: at that point, output values are inserted
+;;; into the result set of properties.  processing of rules continues against
+;;; the original properties, so that there could be multiple matches: the `PN'
+;;; to `PERS' and `NUM' decomposition, thus, could also be done in two separate
+;;; rule sets.  at the end of the day, however, only properties resulting from
+;;; successful matches will be in the output, i.e. everything not explicitly
+;;; carried over will be deleted.
+;;;
+
+PNG.PN : PERS NUM
+  1sg <> 1 sg
+  1pl <> 1 pl
+;  1  <> 1 !
+;  1  << 1 *
+  2sg <> 2 sg
+  2pl <> 2 pl
+;  2  <> 2 !
+;  2  << 2 *
+  3sg <> 3 sg
+  3pl <> 3 pl
+  2pl-or-3pl <> 2-or-3 pl
+  mass <> 3 mass
+;  3  <> 3 !
+;  3  << 3 *
+;  *    >> ! !
+;  !    << * *
+
+PNG.GEN : GEND
+  masc <> masc
+  fem <> fem
+  comm <> comm
+  neut <> neut
+  masc-or-neut <> masc-or-neut
+
+PNG.ANIM : ANIM
+  non-animate <> non-animate
+  animal <> animal
+  human <> human
+  animate <> animate
+  non-human <> non-human
+  animacy <> animacy
+
+PRONTYPE : PT
+  refl_pron <> refl
+  std_pron <> std_pron
+
+E.TENSE : TENSE
+  present <> pres
+;  tense <> tense
+  pret     <> past
+  untensed <> untensed
+  prespart <> prespart
+;  present  <> pres
+;  future   <> fut
+;  *        <> !
+
+E.ASPECT : ASPECT
+  aspect <> aspect
+
+SF : SF
+  prop_m_rel <> prop
+  command_m_rel <> comm
+  yes-no-ques_m_rel <> yes-no-ques
+  wh-question_m_rel <> wh-ques
+  prop-wh_m_rel <> prop-wh
+  prop << prop-or-ques
+
+GRADE : GRADE
+  positive <> pos
+  comparative <> comp
+  superlative <> sup
+
+PERF : PERF
+  * <> *
+
+RESTR : RESTR
+  * <> *
+
+FRAME : FRAME
+  * <> *
+
+;;; ERB 2007-05-19 I think we have to put the most specific
+;;; ones first here, or they will get clobbered by the more
+;;; general ones.
+
+COGN-ST : COG-ST
+; Avoid displaying COGN-ST on the event index
+[e] >> !
+; Non-disunctive types
+type-id <> type-id 
+uniq-id <> uniq-id 
+familiar <> familiar 
+activated <> activated 
+in-foc <> in-foc 
+
+; Disjunctions of two
+activ+fam <> activ+fam 
+uniq+fam <> uniq+fam 
+activ-or-more <> activ-or-more 
+uniq-or-less <> uniq-or-less 
+
+; Disjunctions of three
+uniq+fam+act <> uniq+fam+act 
+fam-or-more <> fam-or-more 
+fam-or-less <> fam-or-less 
+
+; Disjunctions of four
+uniq-or-more <> uniq-or-more 
+activ-or-less <> activ-or-less 
+
+* <> *
+
+PSVTYPE : PSVTYPE
+! << *
+
+MOOD : MOOD
+! << *
+
+PERF : PERF
+! <> *
+
+PROG : PROG
+! <> *
+
+GRIND : GRIND
+! <> *
+
+PNG.GEND : GEN
+* <> *

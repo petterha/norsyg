@@ -1,0 +1,380 @@
+;; Hey, emacs(1), this is -*- Mode: TDL; Coding: utf-8; -*- got it?
+
+%(letter-set (!e abcdfghijklnmopqrstuvwxyzæøå)) ;; No e
+%(letter-set (!h abcdfghijklnopqrstuvwxyzæøå)) ;; No em
+%(letter-set (!j aeiouyæøå))
+%(letter-set (!l abcdefhijklnopqrstuvwxyzæøå)) ;; No gm
+%(letter-set (!m abcdfghijklnopqrsuvwxyzæøå)) ;; No emt
+%(letter-set (!n gfklnpr))
+%(letter-set (!o aiouyæøå)) ;; No e
+%(letter-set (!p dev)) 
+%(letter-set (!q nl)) 
+%(letter-set (!r dfkmpst)) 
+%(letter-set (!s lr)) 
+
+
+
+;;;;;;;;;;;;;;;;;;;;; VERBS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;     Infinitive  Present     Preterite   Perfect participle
+;;
+;; v1  buldre      buldrer     buldret     buldret
+;;                             buldra      buldra
+;;
+;; v2  smile       smiler      smilte      smilt
+;;
+;; v3  prøve       prøver      prøvde      prøvd
+;;
+;; v4  bo          bor         bodde       bodd
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+verb-infin_infl_rule := inf-verb-word &
+  [ STEM #1,
+    ARGS < [ STEM #1 ] > ].
+
+pres_infl_rule :=
+%suffix (* r)
+infl-pres-verb-word.
+
+pret-v1_infl_rule :=
+%suffix (e a)(* t)
+infl-pret-verb-word &
+  [ ARGS < [ INFLECTION v1 ] > ].
+
+pret-v2_infl_rule :=
+%suffix (e te)
+infl-pret-verb-word &
+  [ ARGS < [ INFLECTION v2 ] > ].
+
+pret-v3_infl_rule :=
+%suffix (e de)
+infl-pret-verb-word &
+  [ ARGS < [ INFLECTION v3 ] > ].
+
+pret-v4_infl_rule :=
+%suffix (* dde)
+infl-pret-verb-word &
+  [ ARGS < [ INFLECTION v4 ] > ].
+
+ppart-v1_infl_rule :=
+%suffix (e a)(* t)
+infl-perf-part-verb-word &
+  [ ARGS < [ INFLECTION v1 ] > ].
+
+ppart-v2_infl_rule :=
+%suffix (e t)
+infl-perf-part-verb-word &
+  [ ARGS < [ INFLECTION v2 ] > ].
+
+ppart-v3_infl_rule :=
+%suffix (e d)
+infl-perf-part-verb-word &
+  [ ARGS < [ INFLECTION v3 ] > ].
+
+ppart-v4_infl_rule :=
+%suffix (* dd)
+infl-perf-part-verb-word &
+  [ ARGS < [ INFLECTION v4 ] > ].
+
+verb-imp_infl_rule :=
+%suffix (!o !o)(!he !h) (re re) (!jme !jm) (mme m)
+infl-imp-verb.
+
+;;; out below 2
+s-passive-inf-pres_infl_rule := 
+%suffix (* s)
+s-pass-inf-pres.
+
+s-passive-pret-irule := 
+%suffix (e tes)
+s-pass-pret &
+  [ ARGS < [ INFLECTION v2 ] > ].
+
+;;; Adjectival participles (commented out to restrict generator)
+
+part-indef-sg-adj_infl_rule :=
+part-indef-sg-adj-word &
+  [ STEM #stem,
+    ARGS < [ STEM #stem ] > ]. 
+
+part-indef-pl-adj_infl_rule :=
+%suffix (!pt !pde) (!et !ete)
+part-indef-pl-adj-word. 
+
+part-def-adj_infl_rule :=
+%suffix (et ede) (!et !ete)
+part-pos-def-adj-word. 
+
+;;; Present participle
+pres-part_infl_rule :=
+%suffix (e ende)(!e !eende)(m mmende)
+pres-part-word. 
+
+
+;;;;;;;;;;;;;;;;;;;;; NOUNS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;     Indef Sg    Def Sg      Indef Pl    Def Pl
+;;
+;; m1  kopp        koppen      kopper      koppene
+;;     muskel      muskelen    muskler     musklene
+;;     pakke       pakken      pakker      pakkene
+;;                 pakka
+;;
+;; m2  spiller     spilleren   spillere    spillerne
+;;
+;; m3  sum         summen      summer      summene
+;;
+;; n1  navn        navnet      navn        navnene
+;;                                         navna
+;;
+;; n2  eple        eplet       epler       eplene
+;;                                         epla
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+indef-sg-noun-irule :=
+indef-sg-noun-word & 
+  [ STEM #1,
+    ARGS < [ STEM #1 ] > ].
+
+; mass-noun-irule :=
+; mass-noun-word & 
+;   [ STEM #1,
+;     ARGS < [ STEM #1 ] > ].
+
+; Took out (e er)
+indef-pl-m1-noun_infl_rule :=
+%suffix (* er)(el ler)(e er)(!r!re!s !r!ser)
+infl-indef-pl-comm-noun-word &
+  [ ARGS < [ INFLECTION m1 ] > ].
+
+indef-pl-m2-noun_infl_rule :=
+%suffix (* e)
+infl-indef-pl-comm-noun-word &
+  [ ARGS < [ INFLECTION m2 ] > ].
+
+indef-pl-m3-noun_infl_rule :=
+%suffix (m mmer)
+infl-indef-pl-comm-noun-word &
+  [ ARGS < [ INFLECTION m3 ] > ].
+
+indef-pl-n1_infl_rule :=
+const-indef-pl-neut-noun-word &
+  [ STEM #stem,
+    ARGS < [ STEM #stem,
+	     INFLECTION n1 ] > ].
+;;; Below out 1
+indef-pl-n2-noun_infl_rule :=
+%suffix (!e !eer) (e er)
+infl-indef-pl-neut-noun-word &
+  [ ARGS < [ INFLECTION n2 ] > ].
+
+def-comm-noun-m1-m2_infl_rule := 
+%suffix (* en) (e en)
+def-sg-masc-noun-word &
+  [ ARGS < [ INFLECTION m1-m2 ] > ].
+
+def-sg-fem-noun_infl_rule := 
+%suffix (!e !ea) (e a)
+def-sg-fem-noun-word.
+
+def-comm-noun-m3_infl_rule := 
+%suffix (m mmen)
+def-sg-comm-noun-word &
+  [ ARGS < [ INFLECTION m3 ] > ].
+
+def-sg-noun-neut_infl_rule := 
+%suffix (!e !eet)(e et)
+def-sg-neut-noun-word.
+
+def-pl-noun_infl_rule :=
+%suffix (* ene)(er erne)(el lene)(e ene)
+pl-def-noun-word &
+  [ ARGS < [ INFLECTION m1-m2-n1-n2 ] > ].
+
+def-pl-noun-m3_infl_rule :=
+%suffix (m mmene)
+pl-def-noun-word &
+  [ ARGS < [ INFLECTION m3 ] > ].
+
+def-pl-neut-noun_infl_rule :=
+%suffix (!h !ha) (e a)
+pl-def-noun-word &
+  [ ARGS < neut-noun-lxm > ].
+
+;;;;;;;;;;;;;;;;;;;;; ADJECTIVES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;     Fem/Masc    Neut        Plur/Def    Comparative Superlative
+;;
+;; a1  flink       flinkt      flinke      flinkere    flinkest
+;; a1a hørbar      hørbart     hørbare     -           -
+;; 
+;; a2  glad        glad        glade       gladere     gladest
+;; a2a privat      privat      private     -           -
+;;
+;; a3a flokete     flokete     flokete     -           -
+;;
+;; a4a ømhjertet   ømhjertet   ømhjertede  -           -
+;;
+;; a5  moden       modent      modne       modnere     modnest (in irregs)
+;; a5a umoden      umodent     umodne      -           -
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+sg-comm-adj-irule := 
+const-sg-comm-adj-word &
+  [ STEM #stem,
+    ARGS < [ STEM #stem ] > ].
+
+sg-neut-adj_infl_rule :=
+%suffix (* t)(!n!n !nt)
+infl-sg-neut-adj-word & 
+  [ ARGS.FIRST.INFLECTION a1-a5 ]. 
+
+const-sg-neut-adj-irule := 
+const-sg-neut-adj-word &
+  [ STEM #stem,
+    ARGS < [ STEM #stem,
+	     INFLECTION a2-a3-a4 ] > ].
+
+indef-pl-adj_infl_rule :=
+%suffix (* e)(!jm !jmme)(et ede)(e e)
+infl-pl-indef-adj-word & 
+  [ ARGS.FIRST.INFLECTION a1-a2 ]. 
+
+indef-pl-adj-a3_infl_rule :=
+const-pl-indef-adj-word & 
+  [ STEM #stem,
+    ARGS < [ STEM #stem,
+	     INFLECTION a3 ] > ]. 
+
+indef-pl-adj-a4_infl_rule :=
+%suffix (et ede)
+infl-pl-indef-adj-word & 
+  [ ARGS.FIRST.INFLECTION a4 ]. 
+
+indef-pl-adj-a5_infl_rule :=
+%suffix (e!q !qe)
+infl-pl-indef-adj-word & 
+  [ ARGS.FIRST.INFLECTION a5 ]. 
+
+def-adj_infl_rule :=
+%suffix (* e)(!jm !jmme)(et ede)
+infl-norm-pos-def-adj-word & 
+  [ ARGS.FIRST.INFLECTION a1-a2 ]. 
+
+def-adj-a3_infl_rule :=
+const-norm-pos-def-adj-word & 
+  [ STEM #stem,
+    ARGS < [ STEM #stem,
+	     INFLECTION a3 ] > ]. 
+
+def-adj-a4_infl_rule :=
+%suffix (et ede)
+norm-pos-def-adj-word & 
+  [ ARGS.FIRST.INFLECTION a4 ]. 
+
+def-adj-a5_infl_rule :=
+%suffix (e!q !qe)
+norm-pos-def-adj-word & 
+  [ ARGS.FIRST.INFLECTION a5 ]. 
+
+sup-unsat-adj_infl_rule :=
+%suffix (* este)(g gste)(!jm !jmmeste)
+sup-unsat-adj-word & 
+  [ ARGS.FIRST.INFLECTION comp-sup ]. 
+
+; sup-adj-nude_infl_rule :=
+; %suffix (* este)(g gste)(!jm !jmmeste)
+; sup-adj-word-2 & 
+;   [ ARGS.FIRST.INFLECTION comp-sup ]. 
+
+sup-sat-adj_infl_rule :=
+%suffix (* est)(g gst)(!jm !jmmest)
+sup-sat-adj-word & 
+  [ ARGS.FIRST.INFLECTION comp-sup ]. 
+
+comp-adj_infl_rule :=
+%suffix (* ere)(!jm !jmmere)(kel klere)
+comp-adj-word & 
+  [ ARGS.FIRST.INFLECTION comp-sup ]. 
+
+;;; Adjectives that turn into adverbs
+
+; infl-adj-adv_infl_rule :=
+; %suffix (* t)(!n!n !nt)
+; infl-adv-word & 
+;   [ ARGS.FIRST.INFLECTION a1-a5 ]. 
+
+const-adj-adv_infl_rule := 
+const-adv-word &
+ [ STEM #stem,
+   ARGS < [ STEM #stem,
+	    INFLECTION a2-a3-a4 ] > ].
+
+;;; Genitive
+
+genitive_infl_rule := 
+%suffix (* s)(s s')
+genitive-word.
+
+;;; Punctuation
+
+; period-punct := 
+; %suffix (* .)
+; period-word &
+;   [ PUNCT period ].
+
+; quest-mark-punct := 
+; %suffix (* \?)
+; period-word &
+;   [ PUNCT quest-mark ].
+
+; exclam-mark-punct := 
+; %suffix (* \!)
+; period-word &
+;   [ PUNCT exclam-mark ].
+
+#|
+first-word-prefix := 
+const-first-prefix &
+  [ STEM #stem,
+    ARGS < [ STEM #stem ] > ].
+|#
+; first-word-prefix := 
+; %prefix(* ^)
+; infl-first-prefix.
+#|
+arg1-3m_infl_rule :=
+%suffix (* n)
+arg1-3m-word.
+
+arg1-3f_infl_rule :=
+%suffix (* a)
+arg1-3f-word.
+
+arg2-3m_infl_rule :=
+%suffix (* n)
+arg2-3m-word.
+
+arg2-3f_infl_rule :=
+%suffix (* a)
+arg2-3f-word.
+
+arg3-3m_infl_rule :=
+%suffix (* n)
+arg3-3m-word.
+
+arg3-3f_infl_rule :=
+%suffix (* a)
+arg3-3f-word.
+
+arg3-3n_infl_rule :=
+%suffix (* n)
+arg3-3n-word.
+
+neg-suff_infl_rule :=
+%suffix (* itj)
+sadv-infl.
+|#

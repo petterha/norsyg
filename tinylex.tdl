@@ -1,0 +1,637 @@
+;; Hey, emacs(1), this is -*- Mode: TDL; Coding: utf-8; -*- got it?
+
+; chartmappet := verb_pret_tag &
+;   [ STEM < "chartmappet" >,
+;     SYNSEM [ LOCAL.CONT.RELS <! #rel !>,
+; 	     LKEYS.KEYREL #rel & [ PRED "_chartmappet_v_rel" ] ],
+;     TOKENS.+LIST native_token_list &
+; 	   < [+POS.+TAGS < "verb_pret" > ] > ].
+
+comma := comma-word &
+  [ STEM < "," >,
+    SYNSEM.LKEYS.KEYREL.PRED super_conj ].
+
+start-punct := start-word &
+  [ STEM < "^" > ].
+
+0-card := pl-card-word &
+  [ STEM < "0" >,
+    SYNSEM.LKEYS.KEYREL.CARG "0" ].
+
+1-card := sg-card-word &
+  [ STEM < "1" >,
+    SYNSEM.LKEYS.KEYREL.CARG "1" ].
+
+én-card := masc-sg-card-word &
+  [ STEM < "én" >,
+    SYNSEM.LOCAL.CONT.RELS <! [ CARG "1" ] !> ].
+
+en-card := masc-sg-card-word &
+  [ STEM < "en" >,
+    SYNSEM.LOCAL.CONT.RELS <! [ CARG "1" ] !> ].
+
+ei-card := fem-sg-card-word &
+  [ STEM < "ei" >,
+    SYNSEM.LKEYS.KEYREL.CARG "1" ].
+
+et-card := neut-sg-card-word &
+  [ STEM < "et" >,
+    SYNSEM.LKEYS.KEYREL.CARG "1" ].
+    
+den-d1 := comm-def-art-det-word &
+  [ STEM < "den" >].
+
+det_q := neut-def-art-det-word &
+  [ STEM < "det"> ].
+
+det-expl := expletive-noun-phrase &
+  [ STEM < "det" > ].
+
+
+at-comp := at-complementizer-word &
+  [ STEM < "at" >,
+    SYNSEM [ LOCAL.CAT.HEAD subcompl ] ].
+
+ikke_func := func-word &
+  [ STEM < "ikke" >,
+    SYNSEM.LKEYS.KEYREL.PRED ikke_prd ].
+
+herr_ttl := title-word &
+  [ STEM < "herr" >,
+    SYNSEM.LKEYS.KEYREL.PRED _herr_ttl_rel ].
+
+veldig_deg := mod-adj-adv-prep-word &
+  [ STEM < "veldig" >,
+    SYNSEM.LKEYS.KEYREL.PRED veldig_prd ].
+
+comma-og-conj := conj-word &
+  [ STEM < ",", "og" >,
+    SYNSEM.LKEYS.KEYREL [ PRED "_og_c_rel",
+			  L-INDEX event,
+			  R-INDEX event ] ].
+
+og-cont := continuative-word &
+  [ STEM < "og" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_og-rel" ].
+
+inf-comp := inf-word &
+  [ STEM < "å" > ].
+
+indef-pl-annen := indef-pl-da-word &
+  [ STEM < "andre" >,
+    SYNSEM.LKEYS.Q.QREL.PRED "_annen_da_rel" ].
+
+indef-sg-fem-annen := indef-sg-fem-da-word &
+  [ STEM < "anna" >,
+    SYNSEM.LKEYS.Q.QREL.PRED "_annen_da_rel" ].
+
+indef-sg-masc-annen := indef-sg-masc-da-word &
+  [ STEM < "annen" >,
+    SYNSEM.LKEYS.Q.QREL.PRED "_annen_da_rel" ].
+
+indef-sg-neut-annen := indef-sg-neut-da-word &
+  [ STEM < "annet" >,
+    SYNSEM.LKEYS.Q.QREL.PRED "_annen_da_rel" ].
+
+
+mann-n-masc := masc-cmp-noun-lxm &
+  [ STEM < "mann" >,
+    INFLECTION m1,
+    SYNSEM.LKEYS.KEYREL.PRED "_mann_n_rel" ].
+
+den-d1 := comm-def-art-det-word &
+  [ STEM < "den" >].
+
+stor-a := adj-lxm &
+  [ STEM < "stor" >,
+    INFLECTION a1,
+    SYNSEM.LKEYS.KEYREL.PRED "_stor_a_rel" ].
+
+da_func := func-word &
+  [ STEM < "da" >,
+    SYNSEM.LKEYS.KEYREL.PRED da_prd ].
+
+gid_interj := interj-word &
+  [ STEM < "gid" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_gid_ij_rel" ].
+
+ja*period*ja_ij := interj-word &
+  [ STEM < "ja", ",", "ja" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_ja*period*ja_ij_rel" ].
+
+;;; lexical entries for the vpidiom paper (2014-04-15; ph)
+
+hvordan_func := func-word &
+  [ STEM < "hvordan" >,
+    SYNSEM.LKEYS.KEYREL.PRED hvordan_prd ].
+
+
+
+
+; på_func := func-word &
+;   [ STEM < "på" >,
+;     SYNSEM.LKEYS.KEYREL.PRED på_prd ].
+
+etter_func := func-word &
+  [ STEM < "etter" >,
+    SYNSEM.LKEYS.KEYREL.PRED etter_prd ].
+
+for_func := func-word &
+  [ STEM < "for" >,
+    SYNSEM.LKEYS.KEYREL.PRED for_prd ].
+
+på_func := func-word &
+  [ STEM < "på" >,
+    SYNSEM.LKEYS.KEYREL.PRED på_prd ].
+
+på*lenge_func := adv-word &
+  [ STEM < "på", "lenge" >,
+    SYNSEM.LKEYS.KEYREL.PRED _på*lenge_adv_rel ].
+
+alene_func := adv-word &
+  [ STEM < "alene" >,
+    SYNSEM.LKEYS.KEYREL.PRED _alene_adv_rel ].
+
+til_func := func-word &
+  [ STEM < "til" >,
+    SYNSEM.LKEYS.KEYREL.PRED til_prd ].
+
+i_func := func-word &
+  [ STEM < "i" >,
+    SYNSEM.LKEYS.KEYREL.PRED i_prd ].
+
+av_func := func-word &
+  [ STEM < "av" >,
+    SYNSEM.LKEYS.KEYREL.PRED av_prd ].
+
+i*egenskap*av_func := func-word &
+  [ STEM < "i", "egenskap", "av" >,
+    SYNSEM.LKEYS.KEYREL.PRED i*egenskap*av_prd ].
+
+ved_func := func-word &
+  [ STEM < "ved" >,
+    SYNSEM.LKEYS.KEYREL.PRED ved_prd ].
+
+bane-n-masc := masc-cmp-noun-lxm &
+  [ STEM < "bane" >,
+    SYNSEM.LKEYS.KEYREL.PRED bane_prd ].
+
+flokk-n-masc := masc-cmp-noun-lxm &
+  [ STEM < "flokk" >,
+    INFLECTION m1,
+    SYNSEM.LKEYS.KEYREL.PRED flokk_prd ].
+
+konkurs-n-masc := masc-cmp-noun-lxm &
+  [ STEM <"konkurs">,
+    INFLECTION m1,
+    SYNSEM.LKEYS.KEYREL.PRED konkurs_prd ].
+
+; konkurs-idiom := empty-noun-word &
+;   [ STEM < "konkurs" >,
+;     SYNSEM.LKEYS.KEYREL.PRED konkurs_prd ].
+
+meg-refl := empty-refl-word &
+  [ STEM < "meg" >,
+    SYNSEM [ LOCAL.CONT.HOOK.INDEX.PNG.PN 1sg,
+	     LINK refl ] ].
+
+deg-refl := empty-refl-word &
+  [ STEM < "deg" >,
+    SYNSEM [ LOCAL.CONT.HOOK.INDEX.PNG.PN 2sg,
+	     LINK refl ] ].
+
+oss-refl := empty-refl-word &
+  [ STEM < "oss" >,
+    SYNSEM [ LOCAL.CONT.HOOK.INDEX.PNG.PN 1pl,
+	     LINK refl ] ].
+
+dere-refl := empty-refl-word &
+  [ STEM < "dere" >,
+    SYNSEM [ LOCAL.CONT.HOOK.INDEX.PNG.PN 2pl,
+	     LINK refl ] ].
+
+seg-refl := empty-refl-word &
+  [ STEM < "seg" >,
+    SYNSEM [ LOCAL.CONT.HOOK.INDEX.PNG.PN 3p,
+	     LINK refl ] ].
+
+skjul-n-neut := neut-cmp-noun-lxm &
+  [ STEM < "skjul" >,
+    INFLECTION n1,
+    SYNSEM.LKEYS.KEYREL.PRED "_skjul_n_rel" ].
+
+tema-n-neut := neut-cmp-noun-lxm &
+  [ STEM <"tema">,
+    INFLECTION n2,
+    SYNSEM.LKEYS.KEYREL.PRED "_tema_n_rel" ].
+
+braute_v := intrans-verb-lxm &
+  [ STEM <"braute">,
+    INFLECTION v1,
+    SYNSEM.LKEYS.KEYREL.PRED "_braute_1_rel" ].
+
+jeg-np := 1sg-pron &
+  [ STEM < "jeg" >,
+    SYNSEM.LOCAL.CAT.CASE subj-case ].
+
+opp_func := func-word &
+  [ STEM < "opp" >,
+    SYNSEM.LKEYS.KEYREL.PRED opp_prd ].
+
+tak-n-neut := neut-noun-lxm &
+  [ INFLECTION n1,
+    STEM < "tak" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_tak_n_rel" ].
+
+;;; Verb
+
+
+
+sove_v := main-verb-lxm &
+  [ INFLECTION v1,
+    STEM < "sove" >,
+    SYNSEM.LKEYS.KEYREL.PRED sove_v ].
+
+hyle_v := intrans-verb-lxm &
+  [ STEM <"hyle">,
+    INFLECTION v2,
+    SYNSEM.LKEYS.KEYREL.PRED "_hyle_1_rel" ].
+
+smile_v := main-verb-lxm &
+  [ INFLECTION v2,
+    STEM < "smile" >,
+    SYNSEM.LKEYS.KEYREL.PRED _smile_1_rel ].
+
+hevde_v := main-verb-lxm &
+  [ INFLECTION v1,
+    STEM < "hevde" >,
+    SYNSEM.LKEYS.KEYREL.PRED hevde_v ].
+
+legge_v := main-verb-lxm &
+  [ INFLECTION v1,
+    STEM < "legge" >,
+    SYNSEM.LKEYS.KEYREL.PRED legge_v ].
+
+bringe_v := main-verb-lxm &
+  [ STEM <"bringe">,
+    INFLECTION v1,
+    SYNSEM.LKEYS.KEYREL.PRED bringe_v ].
+
+vise_v := main-verb-lxm &
+  [ STEM < "vise" >,
+    INFLECTION v2, 
+    SYNSEM.LKEYS.KEYREL.PRED vise_v ].
+
+gå_v := main-verb-lxm &
+  [ INFLECTION v2,
+    STEM < "gå" >,
+    SYNSEM.LKEYS.KEYREL.PRED gå_v ].
+
+være-aux := pass-aux-lxm &
+  [ STEM < "være" >,
+    INFLECTION v2,
+    SYNSEM.LKEYS.KEYREL.PRED "parg_d_være_rel" ].
+
+være-non-modal-aux := non-modal-aux-lxm &
+  [ STEM < "være" >,
+    INFLECTION v2,
+    SYNSEM.LKEYS.KEYREL.PRED "_være_aux_rel" ].
+
+være_v := main-verb-lxm &
+  [ STEM < "være" >,
+    INFLECTION v2,
+    SYNSEM.LKEYS.KEYREL.PRED være_v ].
+
+skulle-aux1 := inf-pres-modal-aux-lxm &
+  [ STEM < "skulle" >,
+    INFLECTION v1,
+    SYNSEM [ LOCAL [ MODAL [ BURDE #bool,
+			     KUNNE #bool,
+			     MATTE #bool,
+			     SKULLE -,
+			     VILLE #boolCAT ],
+		     CAT.VBL.LOCAL.MODAL [ BURDE #bool,
+				       KUNNE #bool,
+				       MATTE #bool,
+				       SKULLE +,
+				       VILLE #bool ] ],
+	     LKEYS.KEYREL.PRED "_skal_aux_rel" ] ].
+
+skulle-aux2 := pret-perf-modal-aux-lxm &
+  [ STEM < "skulle" >,
+    INFLECTION v1,
+    SYNSEM [ LOCAL [ MODAL [ BURDE #bool,
+			     KUNNE #bool,
+			     MATTE #bool,
+			     SKULLE -,
+			     VILLE #boolCAT ],
+		     CAT.VBL.LOCAL.MODAL [ BURDE #bool,
+					   KUNNE #bool,
+					   MATTE #bool,
+					   SKULLE +,
+					   VILLE #bool ] ],
+	     LKEYS.KEYREL.PRED "_skal_aux_rel" ] ].
+
+; skulle-aux1 := inf-pres-modal-aux-lxm &
+;   [ STEM < "skulle" >,
+;     INFLECTION v1,
+;     SYNSEM.LKEYS.KEYREL.PRED "_skal_aux_rel" ].
+
+; skulle-aux2 := pret-perf-modal-aux-lxm &
+;   [ STEM < "skulle" >,
+;     INFLECTION v1,
+;     SYNSEM.LKEYS.KEYREL.PRED "_skal_aux_rel" ].
+
+ha-aux := non-modal-aux-lxm &
+  [ STEM < "ha" >,
+    INFLECTION v1,
+    SYNSEM.LKEYS.KEYREL.PRED "_ha_aux_rel" ].
+
+ha_v := main-verb-lxm &
+  [ STEM < "ha" >,
+    INFLECTION v1,
+    SYNSEM.LKEYS.KEYREL.PRED ha_v ].
+
+
+arbeid-n-neut := neut-mwe-noun-lxm &
+  [ INFLECTION n1-n2,
+    STEM < "arbeid" >,
+    SYNSEM.LKEYS.KEYREL.PRED arbeid_prd ].
+
+
+dyr-a := adj-lxm &
+  [ INFLECTION a1,
+    STEM < "dyr" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_dyr_a_rel" ].
+
+liter-n-masc := masc-noun-lxm &
+  [ STEM < "liter" >,
+    SYNSEM.LKEYS.KEYREL.PRED liter_prd,
+    INFLECTION m1 ].
+
+pr-p := per-word &
+  [ STEM < "pr." >,
+    SYNSEM.LKEYS.KEYREL.PRED "_per_prd" ].
+
+
+langt-func := func-word &
+  [ STEM < "langt" >,
+    SYNSEM.LKEYS.KEYREL.PRED langt_prd ].
+
+omtrent-func := func-word &
+  [ STEM < "omtrent" >,
+    SYNSEM.LKEYS.KEYREL.PRED omtrent_prd ].
+
+bl-a-func := func-word &
+  [ STEM < "bl.a." >,
+    SYNSEM.LKEYS.KEYREL.PRED bl-a_prd ].
+
+bare-func := func-word &
+  [ STEM < "bare" >,
+    SYNSEM.LKEYS.KEYREL.PRED bare_prd ].
+
+alle_q := pl-all-quant-word &
+  [ STEM < "alle" > ].
+
+både := func-word &
+  [ STEM < "både" >,
+    SYNSEM.LKEYS.KEYREL.PRED både_prd ].
+
+enten := func-word &
+  [ STEM < "enten" >,
+    SYNSEM.LKEYS.KEYREL.PRED enten_prd ].
+
+verken := func-word &
+  [ STEM < "verken" >,
+    SYNSEM.LKEYS.KEYREL.PRED verken_prd ].
+
+hverken := func-word &
+  [ STEM < "hverken" >,
+    SYNSEM.LKEYS.KEYREL.PRED verken_prd ].
+
+og-conj := conj-word &
+  [ STEM < "og" >,
+    SYNSEM.LKEYS.KEYREL.PRED og_prd ].
+
+eller-conj := conj-word &
+  [ STEM < "eller" >,
+    SYNSEM.LKEYS.KEYREL.PRED eller_prd ].
+
+
+gul-a := adj-lxm &
+  [ STEM < "gul" >,
+    INFLECTION a1,
+    SYNSEM.LKEYS.KEYREL.PRED "_gul_a_rel" ].
+
+grønn-a := adj-lxm &
+  [ STEM < "grønn" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_grønn_a_rel", 
+    INFLECTION a1 ].
+
+rød-a := adj-lxm &
+  [ INFLECTION a1,
+    STEM < "rød" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_rød_a_rel" ].
+
+blå_a := adj-lxm &
+  [ STEM <"blå">,
+    INFLECTION a2,
+    SYNSEM.LKEYS.KEYREL.PRED "_blå_a_rel" ].
+
+hvit_a := adj-lxm &
+  [ STEM <"hvit">,
+    INFLECTION a1,
+    SYNSEM.LKEYS.KEYREL.PRED "_hvit_a_rel" ].
+
+cyan_a := adj-lxm &
+  [ STEM <"cyan">,
+    INFLECTION a1,
+    SYNSEM.LKEYS.KEYREL.PRED "_cyan_a_rel" ].
+
+magenta_a := adj-lxm &
+  [ STEM <"magenta">,
+    INFLECTION a1,
+    SYNSEM.LKEYS.KEYREL.PRED "_magenta_a_rel" ].
+
+kvadrat-n-neut := neut-cmp-noun-lxm &
+  [ STEM <"kvadrat">,
+    INFLECTION n1,
+    SYNSEM.LKEYS.KEYREL.PRED "_kvadrat_n_rel" ].
+
+rektangel-n-neut := neut-cmp-noun-lxm &
+  [ STEM <"rektangel">,
+    INFLECTION n2,
+    SYNSEM.LKEYS.KEYREL.PRED "_rektangel_n_rel" ].
+
+
+triangel-n-neut := neut-cmp-noun-lxm &
+  [ STEM <"triangel">,
+    INFLECTION n2,
+    SYNSEM.LKEYS.KEYREL.PRED "_triangel_n_rel" ].
+
+pentagon-n-masc := masc-cmp-noun-lxm &
+  [ STEM <"pentagon">,
+    INFLECTION m1,
+    SYNSEM.LKEYS.KEYREL.PRED "_pentagon_n_rel" ].
+
+kryss-n-neut := neut-cmp-noun-lxm &
+  [ STEM <"kryss">,
+    INFLECTION n1,
+    SYNSEM.LKEYS.KEYREL.PRED "_kryss_n_rel" ].
+
+sirkel-n-masc := masc-cmp-noun-lxm &
+  [ STEM <"sirkel">,
+    INFLECTION m1,
+    SYNSEM.LKEYS.KEYREL.PRED "_sirkel_n_rel" ].
+
+halvsirkel-n-masc := masc-cmp-noun-lxm &
+  [ STEM <"halvsirkel">,
+    INFLECTION m1,
+    SYNSEM.LKEYS.KEYREL.PRED "_halvsirkel_n_rel" ].
+
+ellipse-n-masc := masc-cmp-noun-lxm &
+  [ STEM <"ellipse">,
+    INFLECTION m1,
+    SYNSEM.LKEYS.KEYREL.PRED "_ellipse_n_rel" ].
+
+mest_q := mest-det-word &
+  [ STEM < "mest" >,
+    SYNSEM.LKEYS.Q.QREL.PRED _mest_q_rel ].
+
+
+
+is-n-masc := masc-cmp-noun-lxm &
+  [ STEM < "is" >,
+    INFLECTION m1,
+    SYNSEM.LKEYS.KEYREL.PRED "_is_n_rel" ].
+
+dit_func := func-word &
+  [ STEM <"dit">,
+    SYNSEM.LKEYS.KEYREL.PRED dit_prd ].
+
+mer_func := func-word &
+  [ STEM < "mer" >,
+    SYNSEM.LKEYS.KEYREL.PRED mer_prd ].
+
+mer_q := mer-det-word &
+  [ STEM < "mer" >,
+    SYNSEM.LKEYS.Q.QREL.PRED _mer_q_rel ].
+
+god-a := mwe-adj-lxm &
+  [ INFLECTION a1,
+    STEM < "god" >,
+    SYNSEM.LKEYS.KEYREL.PRED god_prd ].
+
+dryppe_v := main-verb-lxm &
+  [ STEM <"dryppe">,
+    INFLECTION v1,
+    SYNSEM.LKEYS.KEYREL.PRED dryppe_v ].
+
+
+første-def-card := def-card-word &
+  [ STEM < "første" >,
+    SYNSEM.LKEYS.KEYREL.CARG "første_rel" ].
+
+tre-card := pl-card-word &
+  [ STEM < "tre" >,
+    SYNSEM.LKEYS.KEYREL.CARG "3_card_rel" ].
+
+de-d1 := pl-def-art-det-word &
+  [ STEM < "de" >].
+
+nr_func := number-mod-word &
+  [ STEM < "nr." >,
+    SYNSEM.LKEYS.KEYREL.PRED nummer_prd ].
+
+godt_deg := func-word &
+  [ STEM < "godt" >,
+    SYNSEM.LKEYS.KEYREL.PRED godt_prd ].
+
+svært_func := func-word &
+  [ STEM < "svært" >,
+    SYNSEM.LKEYS.KEYREL.PRED svært_prd ].
+
+pr_period-p := per-word &
+  [ STEM < "pr." >,
+    SYNSEM.LKEYS.KEYREL.PRED "_per_prd" ].
+
+mye_func := func-word &
+  [ STEM < "mye" >,
+    SYNSEM.LKEYS.KEYREL.PRED mye_prd ].
+
+ikke_func := down-func-word &
+  [ STEM < "ikke" >,
+    SYNSEM.LKEYS.KEYREL.PRED ikke_prd ].
+
+noensteds_adv := neg-pol-item-adv-word &
+  [ STEM < "noensteds" >,
+    SYNSEM [ LOCAL.NEG-OUT neg-or-yn_m_rel,
+	     LKEYS.KEYREL.PRED _noensteds_adv_rel ] ].
+
+overhodet_adv := func-word &
+  [ STEM < "overhodet" >,
+    SYNSEM [ LOCAL [ CAT.HEAD.MOD < [ LOCAL.CAT.HEAD adv-compl-prep-sadv-verb ] >,
+		     NEG-OUT neg-or-yn_m_rel ],
+	     LKEYS.KEYREL.PRED overhodet_prd ] ].
+
+noenting-np := general-pron &
+  [ STEM < "noenting" >,
+    SYNSEM [ LOCAL.CAT.CASE non-subj-case,
+	     LOCAL.NEG-IN neg-or-yn_m_rel ] ].
+
+enn_func := enn-word &
+  [ STEM < "enn" >,
+    SYNSEM.LKEYS.KEYREL.PRED enn_prd ].
+
+ingen := down-entailing-quant &
+  [ STEM < "ingen" >,
+    SYNSEM.LKEYS.Q.QREL.PRED _ingen_q_rel ].
+
+gjøre_v := main-verb-lxm &
+  [ STEM <"gjøre">,
+    INFLECTION v1,
+    SYNSEM.LKEYS.KEYREL.PRED gjøre_v ].
+
+hvilken_q := comm-wh-det-word &
+  [ STEM < "hvilken" >,
+    SYNSEM.LOCAL.CAT.HEAD.MESS wh-question_m_rel ].
+
+sin-garpe := garpe-word &
+  [ SYNSEM.LOCAL.CONT.RELS <! [ ARG1.PNG [ PN 3sg,
+					   GEN masc ] ] !>,
+    STEM < "sin"> ].
+
+sin := refl-3sg-masc-poss &
+  [ STEM < "sin"> ].
+
+overlate_v := main-verb-lxm &
+  [ INFLECTION v1,
+    STEM < "overlate" >,
+    SYNSEM.LKEYS.KEYREL.PRED overlate_v ].
+
+som_restr_relpron := rel-compl-word &
+  [ STEM < "som"> ].
+
+ide-n-masc := masc-mwe-count-noun-lxm &
+  [ STEM <"ide">,
+    INFLECTION m1,
+    SYNSEM.LKEYS.KEYREL.PRED ide_prd ].
+
+bli-aux := pass-aux-lxm &
+  [ STEM < "bli" >,
+    INFLECTION v1,
+    SYNSEM.LKEYS.KEYREL.PRED "parg_d_rel" ].
+
+skog-n-masc := masc-cmp-count-noun-lxm &
+  [ STEM < "skog" >,
+    INFLECTION m1,
+    SYNSEM.LKEYS.KEYREL.PRED "_skog_n_rel" ].
+
+Jon-pn := pn-word &
+  [ STEM < "Jon" >,
+    SYNSEM.LKEYS.KEYREL.CARG "Jon" ].
+
+Marit-pn := pn-word &
+  [ STEM < "Marit" >,
+    SYNSEM.LKEYS.KEYREL.CARG "Marit" ].
+
