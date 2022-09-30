@@ -1,0 +1,37 @@
+_ta-av*av_14_rel := ta_v & 1np & arg2- & arg3- & 4np & av_prp & av_prt.
+_tørke-av*av_14_rel := tørke_v & 1np & arg2- & arg3- & 4np & av_prp & av_prt.
+_lesse-av*av_14_rel := lesse_v & 1np & arg2- & arg3- & 4np & av_prp & av_prt.
+_laste-av*av_14_rel := laste_v & 1np & arg2- & arg3- & 4np & av_prp & av_prt.
+_få-av*av_14_rel := få_v & 1np & arg2- & arg3- & 4np & av_prp & av_prt.
+_trekke-av*av_14_rel := trekke_v & 1np & arg2- & arg3- & 4np & av_prp & av_prt.
+_gnage-av*av_14_rel := gnage_v & 1np & arg2- & arg3- & 4np & av_prp & av_prt.
+_krysse-av*av_14_rel := krysse_v & 1np & arg2- & arg3- & 4np & av_prp & av_prt.
+_rive-av*av_14_rel := rive_v & 1np & arg2- & arg3- & 4np & av_prp & av_prt.
+_kle-av*av_14_rel := kle_v & 1np & arg2- & arg3- & 4np & av_prp & av_prt.
+_sleike-av*av_14_rel := sleike_v & 1np & arg2- & arg3- & 4np & av_prp & av_prt.
+_vinke-av*av_14_rel := vinke_v & 1np & arg2- & arg3- & 4np & av_prp & av_prt.
+_trekke-for*for_14_rel := trekke_v & 1np & arg2- & arg3- & 4np & for_prp & for_prt.
+_trekke-fra*fra_14_rel := trekke_v & 1np & arg2- & arg3- & 4np & fra_prp & fra_prt.
+_sette-i*i_14_rel := sette_v & 1np & arg2- & arg3- & 4np & i_prp & i_prt.
+_lesse-i*i_14_rel := lesse_v & 1np & arg2- & arg3- & 4np & i_prp & i_prt.
+_laste-i*i_14_rel := laste_v & 1np & arg2- & arg3- & 4np & i_prp & i_prt.
+_legge-i*i_14_rel := legge_v & 1np & arg2- & arg3- & 4np & i_prp & i_prt.
+_tre-i*i_14_rel := tre_v & 1np & arg2- & arg3- & 4np & i_prp & i_prt.
+_skjenke-i*i_14_rel := skjenke_v & 1np & arg2- & arg3- & 4np & i_prp & i_prt.
+_helle-i*i_14_rel := helle_v & 1np & arg2- & arg3- & 4np & i_prp & i_prt.
+_breie-over*over_14_rel := breie_v & 1np & arg2- & arg3- & 4np & over_prp & over_prt.
+_strø-over*over_14_rel := strø_v & 1np & arg2- & arg3- & 4np & over_prp & over_prt.
+_dekke-på*på_14_rel := dekke_v & 1np & arg2- & arg3- & 4np & på_prp & på_prt.
+_legge-på*på_14_rel := legge_v & 1np & arg2- & arg3- & 4np & på_prp & på_prt.
+_lesse-på*på_14_rel := lesse_v & 1np & arg2- & arg3- & 4np & på_prp & på_prt.
+_laste-på*på_14_rel := laste_v & 1np & arg2- & arg3- & 4np & på_prp & på_prt.
+_smøre-på*på_14_rel := smøre_v & 1np & arg2- & arg3- & 4np & på_prp & på_prt.
+_ha-på*på_14_rel := ha_v & 1np & arg2- & arg3- & 4np & på_prp & på_prt.
+_ta-på*på_14_rel := ta_v & 1np & arg2- & arg3- & 4np & på_prp & på_prt.
+_hive-på*på_14_rel := hive_v & 1np & arg2- & arg3- & 4np & på_prp & på_prt.
+_prakke-på*på_14_rel := prakke_v & 1np & arg2- & arg3- & 4np & på_prp & på_prt.
+_legge-til*til_14_rel := legge_v & 1np & arg2- & arg3- & 4np & til_prp & til_prt.
+_venne-til*til_14_rel := venne_v & 1np & arg2- & arg3- & 4np & til_prp & til_prt.
+_koble-til*til_14_rel := koble_v & 1np & arg2- & arg3- & 4np & til_prp & til_prt.
+
+
