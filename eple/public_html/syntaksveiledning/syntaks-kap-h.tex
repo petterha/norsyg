@@ -1,0 +1,1278 @@
+\documentclass{article}
+
+\usepackage{lsalike}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{avm}
+\usepackage{enum}
+\usepackage{ling_gloss}
+\usepackage{color}
+%\usepackage{qtree,parsetree}
+\usepackage{graphicx}
+\usepackage{gb4e}
+\usepackage{endnotes}
+\let\footnote=\endnote
+
+\newcommand{\into}{\ensuremath{\rightarrow}\xspace}
+%\definecolor{darkgreen}{rgb}{0,0.35,0}
+
+\def\tablename{Tabell}
+%%%%% TITLE DEFINITIONS
+\title{Syntaksveiledning\\GLU 1-7}
+\author{Petter Haugereid}
+\date{}
+
+\graphicspath{{figures/}}
+
+
+\begin{document}
+\maketitle
+
+
+\section{Introduksjon}
+
+Dette er en veiledning i hvordan en kan gj{\o}re syntaktiske analyser. Tanken bak er {\aa} gi en del tips som dere kan bruke n{\aa}r dere skal analysere for eksempel elevtekster. Det er ikke ment som en utt{\o}mmende introduksjon til syntaks, og den skal bare leses som et supplement til syntakskappittelet i boka.
+
+Syntaks er ikke enkelt n{\aa}r en pr{\o}ver seg p{\aa} det f{\o}rste gang, men jo mer en {\o}ver seg p{\aa} syntaktiske analyser, jo lettere blir det. Derfor har jeg avsluttet de fleste delene med noen oppgaver slik at dere kan sjekke om dere har forst{\aa}tt det dere har lest, samtidig som dere f{\aa}r {\o}ve dere p{\aa} {\aa} analysere. N{\aa}r dere har kommet dere igjennom hele teksten og alle oppgavene, er jeg ganske sikker p{\aa} at dere tar det meste p{\aa} strak arm.
+
+Vi starter med {\aa} se p{\aa} hva setningsledd er. Deretter ser vi p{\aa} hvilke funksjoner setningsleddene kan ha. Etter det skal dere l{\ae}re om funksjonsanalyse og til slutt feltanalyse.
+
+\section{Setningsledd}
+
+Det f{\o}rste vi gj{\o}r n{\aa}r vi skal gj{\o}re syntaktiske analyser av en elevtekst er {\aa} avgrense setningene: Hvor begynner de og hvor slutter de. En kan ikke alltid forvente at setningsgrensene er markert med punktum og stor forbokstav. N{\aa}r en setning er identifisert, er neste steg {\aa} identifisere setningsleddene i setningen. Et setningsledd er et ord eller en gruppe ord som opptrer som en enhet i setningen, og som vi gir en egen funksjon. Vi har to forskjellige metoder vi kan bruke for {\aa} bestemme hva et setningsledd er: flyttetesten og substitusjonstesten.
+
+\subsection{Flyttetesten}\label{sec:permutasjon}
+
+Flyttetesten g{\aa}r ut p{\aa} {\aa} se hva som kan flyttes til feltet f{\o}r det finitte verbet i en helsetning, {\it forfeltet}. Her kan vi dra nytte av to fenomener som karakteriserer norsk. Det f{\o}rste fenomenet er at det finitte verbet kommer f{\o}rst i et ja/nei-sp{\o}rsm{\aa}l. Det andre fenomenet er det faktum at norsk er et s{\aa}kalt V2-spr{\aa}k, noe som vil si at det finitte verbet i en helsetning kommer p{\aa} andreplass.
+
+Hvis vi ser p{\aa} setningen {\it Studenten s{\aa} en god film etter den inspirerende forelesningen}, s{\aa} lager vi et ja/nei-sp{\o}rsm{\aa}l av den ved {\aa} sette det finitte verbet f{\o}rst: {\it S{\aa} studenten en god film etter den inspirerende forelesningen?} {\it S{\aa}} er alts{\aa} det finitte verbet.
+
+\begin{exe}
+  \ex\label{se1} (\ref{se1})
+  \begin{xlist}
+    \ex\label{se1:a} (\ref{se1:a}) 
+    Studenten s{\aa} en god film etter den inspirerende forelesningen.
+
+    \ex\label{se1:b} (\ref{se1:b}) 
+    \textcolor{magenta}{\bf S{\aa}} studenten en god film etter den inspirerende forelesningen?  \end{xlist}
+\end{exe}
+
+N{\aa}r vi har identifisert det finitte verbet, kan vi begynne {\aa} identifisere de andre setningsleddene. Da kan vi, med utgangspunkt i ja/nei-sp{\o}rsm{\aa}let, pr{\o}ve {\aa} flytte ord eller grupper av ord til posisjonen f{\o}r det finitte verbet:
+
+\begin{exe}
+\ex\label{se} (\ref{se})
+\begin{xlist}
+\ex\label{se:a} (\ref{se:a}) \textcolor{blue}{\bf Studenten} \textcolor{magenta}{\bf s{\aa}} en god film etter den inspirerende forelesningen.
+
+\ex\label{se:b} (\ref{se:b}) \textcolor{red}{\bf En} \textcolor{magenta}{\bf s{\aa}} studenten god film etter den inspirerende forelesningen.
+
+\ex\label{se:c} (\ref{se:c}) \textcolor{red}{\bf En god} \textcolor{magenta}{\bf s{\aa}} studenten film etter den inspirerende forelesningen.
+
+\ex\label{se:d} (\ref{se:d}) \textcolor{blue}{\bf En god film} \textcolor{magenta}{\bf s{\aa}} studenten etter den inspirerende forelesningen.
+
+\ex\label{se:e} (\ref{se:e}) \textcolor{red}{\bf Etter} \textcolor{magenta}{\bf s{\aa}} studenten en god film den inspirerende forelesningen.
+
+\ex\label{se:f} (\ref{se:f}) \textcolor{blue}{\bf Etter den inspirerende forelesningen} \textcolor{magenta}{\bf s{\aa}} studenten en god film.
+\end{xlist}
+\end{exe}
+
+I setningene over ser vi at noen er grammatiske (markert med bl{\aa}tt) og andre er ugrammatiske (markert med r{\o}dt). Vi vet allerede at {\it studenten} kan flyttes til posisjonen f{\o}r det finitte verbet, som vist i ((\ref{se:a})). Men det er ogs{\aa} andre ordgrupper som kan flyttes. I alle de setningene i ((\ref{se})) som er grammatiske ((\ref{se:a}), (\ref{se:d}), og (\ref{se:f})), har vi en setningsledd i feltet f{\o}r det finitte verbet ({\it s{\aa}}). Som sagt kalles dette feltet forfeltet. I de setningene som ikke er grammatiske ((\ref{se:b}),(\ref{se:c}), og (\ref{se:e})) har vi pr{\o}vd {\aa} flytte noe som ikke er en setningsledd til posisjonen f{\o}r det finitte verbet.
+
+Denne m{\aa}ten {\aa} finne setningsledd p{\aa} heter alts{\aa} {\it flyttetesten} og g{\aa}r ut p{\aa} {\aa} finne ut hvilke ord eller ordgrupper som kan flyttes til forfeltet.
+
+\subsubsection{Oppgaver}
+
+Hva er det finitte verbet i disse setningene: 
+
+{\it Jeg liker is.}\footnote{{\it liker}}
+
+{\it En veldig gammen dame har akkurat kj{\o}pt en liter melk.}\footnote{\it har}
+
+{\it Hvis jeg sovner, m{\aa} du vekke meg.}\footnote{\it m{\aa}} (Vanskelig. Her er det b{\aa}de en leddsetning og en helsetning. Husk ja/nei-testen!) 
+
+\subsection{Substitusjonstesten}
+
+En annen m{\aa}te {\aa} identifisere setningsledd p{\aa} er {\aa} pr{\o}ve {\aa} erstatte dem med et pronomen eller et adverbial.
+Hvis vi tar for oss setningen i (\ref{se1:a}) igjen, s{\aa} ser vi at vi kan erstatte {\it studenten} med pronomenet {\it han} (se (\ref{se3:a})). Vi kan erstatte {\it en god film} med {\it den} (se (\ref{se3:b})), og vi kan erstatte {\it etter den inspirerende forelesningen} med adverbialet {\it da} (se (\ref{se3:c})).
+
+\begin{exe}
+\ex\label{se3} (\ref{se3})
+\begin{xlist}
+\ex\label{se3:a} (\ref{se3:a}) \textcolor{magenta}{\bf Han} s{\aa} en god film etter den inspirerende forelesningen.
+
+\ex\label{se3:b} (\ref{se3:b}) Han s{\aa} \textcolor{magenta}{\bf den} etter den inspirerende forelesningen.
+
+\ex\label{se3:c} (\ref{se3:c}) Han s{\aa} den \textcolor{magenta}{\bf da}.
+\end{xlist}
+\end{exe}
+
+N{\aa} har vi alts{\aa} to forskjellige metoder for {\aa} identifisere setningsledd. Av disse metodene vil jeg si at flyttetesten er den mest p{\aa}litelige. Grunnen til det er at ogs{\aa} deler av setningsledd kan erstattes med pronomener, som i (\ref{se4:a}). Her ser vi at vi kan erstatte {\it den inspirerende forelesningen} (som er en del av setningsleddet {\it etter den inspirerende forelesningen}) med pronomenet {\it den}. Men hvis vi pr{\o}ver {\aa} flytte {\it den inspirerende forelesningen} til forfeltet, f{\aa}r vi en ugrammatisk setning.
+
+
+\begin{exe}
+\ex\label{se4} (\ref{se4})
+\begin{xlist}
+\ex\label{se4:a} (\ref{se4:a}) Studenten s{\aa} en god film etter \textcolor{magenta}{\bf den}.
+
+\ex\label{se4:b} (\ref{se4:b}) \textcolor{red}{\bf Den inspirerende forelesningen} s{\aa} studenten en god film etter.
+\end{xlist}
+\end{exe}
+
+I tillegg til de setningsleddene vi har identifisert her, regner vi ogs{\aa} verbene som setningsledd. I setningen vi har sett p{\aa} s{\aa} langt (\ref{v:a}), har vi ett verb {\it s{\aa}}, men vi kan ogs{\aa} ha sammensatte verbformer som i (\ref{v:b}) {\it skal ha sett}. Verbet som st{\aa}r i presens eller preteritum er ett ledd (det finitte verbalet), og verbet/verbene som st{\aa}r i infinitiv/perfektum partisipp danner et annet ledd (det infinitte verbalet).
+
+\begin{exe}
+\ex\label{v} (\ref{v})
+\begin{xlist}
+\ex\label{v:a} (\ref{v:a}) Studenten \textcolor{magenta}{\bf s{\aa}} en god film etter den inspirerende forelesningen.
+
+\ex\label{v:b} (\ref{v:b}) Studenten \textcolor{magenta}{\bf skal} \textcolor{blue}{\bf ha sett} en god film etter den inspirerende forelesningen.
+\end{xlist}
+\end{exe}
+
+\subsubsection{Oppgaver}
+
+Finn setningsleddene i disse setningene: 
+
+{\it Noen personer lager middagen om kvelden.}\footnote{Noen personer | lager | middagen | om kvelden}
+
+{\it De ekstremt gr{\o}nne koppene vil jeg alltid huske i framtiden.}\footnote{De ekstremt gr{\o}nne koppene | vil | jeg | alltid | huske | i framtiden}
+
+\section{Funksjoner}
+
+Setningsleddene realiserer forskjellige funksjoner i en setning. I tabellen under er hovedfunksjonene {\it verbal}, {\it subjekt}, {\it objekt}, {\it predikativ} og {\it adverbial} listet opp i kolonnen til venstre. I den midterste kollonnen har vi en finere gradering av funksjonene, og i kolonnen til h{\o}yre st{\aa}r hva som vanligvis karakteriserer de forskjellige funksjonene.
+
+\begin{table}[!ht]
+\begin{tabular}{|l|l|l|}
+\hline
+Funksjon & Undertype & Beskrivelse\\\hline
+Verbal & Finitt verbal & verb i presens/preteritum\\
+& Infinitt verbal & verb i infinitiv/perfektum partisipp\\\hline
+Subjekt & Vanlig subjekt & den som gj{\o}r noe \\
+  & Formelt subjekt & et innholdstomt {\it det} \\\hline
+Objekt & Direkte objekt & den som er gjenstand for handlingen \\
+ & Indirekte objekt & den som noe gj{\o}res for\\\hline
+Predikativ & Subjektspredikativ & beskriver subjektet\\
+& Objektspredikativ & beskriver objektet\\\hline
+Adverbial & Omstendighetsadverbial & beskriver handlingen\\
+ &Setningsadvebial & beskriver talerens holdning til det som uttrykkes\\
+% & Gradsadverbial & knytter seg til adjektiv eller andre adverb\\
+\hline
+\end{tabular}\caption{Beskrivelser av funksjonene til setningsledd}
+\end{table}\label{tab:funksjoner}
+
+\subsection{Verbal}
+
+Som nevnt, s{\aa} skiller vi mellom finitte og infinitte verbaler. Det finitte verbalet er det verbet som st{\aa}r i presens eller preteritum. En helsetning vil alltid ha et finitt verbal. Det kan v{\ae}re et hovedverb, som {\it s{\aa}} i (\ref{v:a}), eller et hjelpeverb, som {\it skal} i (\ref{v:b}). Det infinitte verbalet best{\aa}r av verbet/verbene som ikke er finitte. I (\ref{v:b}) er det infinitte verbalet {\it ha sett}.
+
+Det er ikke alltid slik at det finitte verbalet og det infinitte verbalet st{\aa}r sammen. Hvis vi lager et ja/nei-sp{\o}rsm{\aa}l av en setning med et infinitt verbal, s{\aa} vil subjektet komme i posisjonen mellom de to verbalene. Dette er demonstrert i (\ref{yn:b}), hvor studenten, som er subjektet, st{\aa}r i posisjonen mellom de to verbalene {\it skal} og {\it ha sett}.
+
+\begin{exe}
+\ex\label{yn} (\ref{yn})
+\begin{xlist}
+\ex\label{yn:a} (\ref{yn:a}) Studenten \textcolor{blue}{\bf skal} \textcolor{magenta}{\bf ha sett} en god film etter den inspirerende forelesningen.
+
+\ex\label{yn:b} (\ref{yn:b}) \textcolor{blue}{\bf Skal} studenten \textcolor{magenta}{\bf ha sett} en god film etter den inspirerende forelesningen?
+\end{xlist}
+\end{exe}
+
+Dermed blir det {\aa} gj{\o}re om setningen til et ja/nei-sp{\o}rsm{\aa}l ikke bare en m{\aa}te {\aa} finne det finitte verbalet p{\aa}. Det kan ogs{\aa} hjelpe oss med {\aa} finne subjektet.
+
+\subsection{Subjekt}
+
+\subsubsection{Vanlig subjekt}
+
+Alle helsetninger har et subjekt, som vanligvis er det setningsleddet som gj{\o}r noe i en setning. Det er flere metoder vi kan benytte for {\aa} finne subjektet i en setning. Det enkleste er kanskje {\aa} stille et sp{\o}rsm{\aa}l: {\it hvem/hva} + verbalet. Hvis vi vil analysere setningen {\it Studenten s{\aa} en god film}, kan vi stille f{\o}lgende sp{\o}rsm{\aa}l: {\it Hvem s{\aa}?} Svaret her vil da bli {\it studenten}. En annen metode er {\aa} lage en leddsetning: {\it at studenten s{\aa} en god film}. I en leddsetning vil subjektet komme i posisjonen mellom subjunksjonen (her {\it at}) og det finitte verbet ({\it s{\aa}}). Denne metoden er sikrere enn {\aa} sp{\o}rre {\it Hvem s{\aa}} siden det ikke alltid er slik at den som gj{\o}r noe er subjektet i setningen. 
+
+\begin{exe}
+\ex
+\begin{xlist}
+\ex\label{ex:su} (\ref{ex:su}) {\it Hvem} s{\aa}?
+
+\ex\label{ex:su:b} (\ref{ex:su:b}) {\it Studenten} s{\aa}.
+\end{xlist}
+\end{exe}
+
+
+%Det er ikke alltid slik at den som gj{\o}r noe i en setning, er subjektet i setningen. Hvis setningen st{\aa}r i passiv, vil den som gjorde noe, ende opp som en del av en {\it agensfrase}: {\it En god film ble sett \underline{av studenten}}. Subjektet i denne setningen er ikke {\it studenten}, men {\it en god film}, noe vi kan teste ved {\aa} lage enten et ja/nei-sp{\o}rsm{\aa}l: {\it Ble \underline{en god film} sett av studenten etter den inspirerende forelesningen} (her kommer subjetet mellom det finitte verbalet og det infinitte verbalet), eller en leddsetning: {\it at \underline{en god film} ble sett av studenten} (her kommer subjektet i posisjonen mellom subjunksjonen {\it at} og det finitte verbet {\it ble}). Vi kan ogs{\aa} stille sp{\o}rsm{\aa}let {\it Hva ble sett?} Svaret her blir {\it en god film}.
+
+\subsubsection{Formelt subjekt - {\it det}}
+
+Noen ganger uttrykkes det ikke klart at det er noen som gj{\o}r noe i en setning. Da er det vanlig med et formelt subjekt {\it det}, som i (\ref{ex:su1}). For {\aa} finne subjektet i disse setningene, kan vi ikke sp{\o}rre {\it Hva sn{\o}r?} eller {\it Hvem kommer?} Vi m{\aa} i stedet basere oss p{\aa} ordstillingstester. Vi kan for eksempel se hvilket ord som kommer mellom subjunksjonen og det finitte verbalet i en leddsetning: {\it at \underline{det} sn{\o}r}, {\it at \underline{det} kommer noen inn d{\o}ra} og {\it at \underline{det} blir servert mat kl. 16.00}.
+
+\begin{exe}
+\ex\label{ex:su1} (\ref{ex:su1})
+\begin{xlist}
+\ex\label{ex:su1:a} (\ref{ex:su1:a}) Det sn{\o}r.
+
+\ex\label{ex:su1:b} (\ref{ex:su1:b}) Det kommer noen inn d{\o}ra.
+
+\ex\label{ex:su1:c} (\ref{ex:su1:c}) Det blir servert mat kl. 16.00.
+\end{xlist}
+\end{exe}
+
+% \begin{exe}
+% \ex\label{yn} (\ref{yn})
+% \begin{xlist}
+% \ex\label{yn:a} (\ref{yn:a}) Studenten s{\aa} en god film etter den inspirerende forelesningen.
+% \ex\label{yn:b} (\ref{yn:b}) {\it at} \textcolor{magenta}{\bf studenten} {\it s{\aa}} en god film etter den inspirerende forelesningen
+% \end{xlist}
+% \end{exe}
+
+\subsubsection{Oppgaver}
+
+Hva er subjektet i disse setningene:
+
+{\it De uoppmerksomme syklistene p{\aa} fortauet fortjener en smekk.}\footnote{De uoppmerksomme syklistene}
+
+{\it Etter den grufulle filmen snakket vi ikke sammen p{\aa} to uker.}\footnote{vi}
+
+{\it Det sover en liten jente i senga.}\footnote{Det}
+
+{\it P{\aa} julekvelden ble det spist mye pinnekj{\o}tt.}\footnote{det}
+
+\subsection{Objekt}
+
+Objekter er typisk setningsledd som er gjenstand for en handling. Vi skiller mellom direkte objekter og indirekte objekter.
+
+\subsubsection{Direkte objekt}
+
+Mange setninger, som {\it Studenten s{\aa} en god film.}, har et direkte objekt. Vanligvis kan vi finne det direkte objektet ved {\aa} lage et sp{\o}rm{\aa}l av verbalet og subjektet, som i (\ref{ex:do}) {\it Hva s{\aa} studenten?} Svaret bli da det direkte objektet i setningen {\it en god film}. 
+
+\begin{exe}
+\ex\label{ex:do} (\ref{ex:do})
+\begin{xlist}
+\ex {\it Hva} s{\aa} studenten?
+
+\ex Studenten s{\aa} {\it en god film}.
+\end{xlist}
+\end{exe}
+
+{\it En god film} er en substantivfrase, eller nominalfrase. Det vil si at den har en kjerne som er et substantiv ({\it film}). Enkelte verb vil ogs{\aa} kunne ta en leddsetning som direkte objekt, s{\aa}kalte nomiale leddsetninger. Et eksempel p{\aa} en setning med en nominal leddsetning som direkte objekt har vi i {\it Studenten sa at han s{\aa} en film.} Her er leddsetningen {\it at han s{\aa} en film} det direkte objektet til verbet {\it si}. Vi kan sjekke at det er en konstituent med flyttetesten ({\it At han s{\aa} en film, sa studenten}) og med substitusjonstesten ({\it Studenten sa det}). Og vi kan se at det er et direkte objekt ved {\aa} danne et sp{\o}rsm{\aa}l av verbalet og subjektet: {\it Hva sa studenten?} Svaret, {\it at han s{\aa} en film}, er det direkte objektet.
+
+
+\subsubsection{Indirekte objekt}
+
+Noen ganger kan en setning ha to objekter, som i {\it Vi ga henne en fin pakke}. Her er de to objektene {\it henne} og {\it en fin pakke}. N{\aa}r objektene kommer etter verbalet, som i denne setningen, st{\aa}r det indirekte objektet ({\it henne}) p{\aa} plassen f{\o}r det direkte objektet ({\it en fin pakke}). Det indirekte objektet er den som noe gj{\o}res for, eller som mottar noe fra noen. Vi kan identifisere det indirekte objektet ved {\aa} danne et sp{\o}rsm{\aa}l av verbalet, subjektet og det direkte objektet, som i (\ref{ex:io}).
+
+\begin{exe}
+\ex
+\begin{xlist}
+\ex\label{ex:io} (\ref{ex:io})
+{\it Hvem} ga vi en fin pakke?
+
+\ex
+Vi ga {\it henne} en fin pakke.
+\end{xlist}
+\end{exe}
+
+Svaret her, {\it henne}, er det indirekte objektet.
+
+\subsubsection{Oppgaver}
+
+Hvilken funksjon har {\it henne} i disse setningene?
+
+{\it Vi s{\aa} henne ikke i g{\aa}r.}\footnote{Direkte objekt}
+
+{\it Siden forlovelsen hadde ingen sendt henne blomsterbuketter.}\footnote{Indirekte objekt}
+
+{\it Henne hadde ingen lurt f{\o}r.}\footnote{Direkte objekt}
+
+
+\subsection{Predikativ}
+
+Predikativer er setningsledd som sier noe om subjektet eller objektet i setningen. De samsvarsb{\o}yes med setningsleddet som de sier noe om. Vi skiller mellom subjektspredikativer og objektspredikativer.
+
+\subsubsection{Subjektspredikativ}
+
+Subjektspredikativer er alts{\aa} predikativer som sier noe om subjektet i setningen. De er typisk utfyllingen til verbene {\it v{\ae}re}, {\it bli}, {\it hete}, {\it synes} og {\it kalles}:
+
+\begin{exe}
+\ex
+\begin{xlist}
+\ex {\it Han \textcolor{magenta}{er} \textcolor{blue}{flink}}
+
+\ex {\it Han \textcolor{magenta}{blir} \textcolor{blue}{glad}}
+
+\ex {\it Han \textcolor{magenta}{heter} \textcolor{blue}{Jon}}
+
+\ex {\it Han \textcolor{magenta}{synes} \textcolor{blue}{merkelig}}
+
+\ex {\it Han \textcolor{magenta}{kalles} \textcolor{blue}{fisken}}
+\end{xlist}
+\end{exe}
+
+
+Her ser vi at predikativene samsvarsb{\o}yes med subjektet:
+\begin{exe}
+\ex
+\begin{xlist}
+\ex {\it De \textcolor{magenta}{er} \textcolor{blue}{flinke}}
+
+\ex {\it De \textcolor{magenta}{blir} \textcolor{blue}{glade}}
+
+\ex {\it De \textcolor{magenta}{heter} \textcolor{blue}{Jon og Marit}}
+
+\ex {\it De \textcolor{magenta}{synes} \textcolor{blue}{merkelige}}
+
+\ex {\it De \textcolor{magenta}{kalles} \textcolor{blue}{fiskene}}
+\end{xlist}
+\end{exe}
+
+
+Predikativer forekommer ogs{\aa} med andre verb:
+\begin{itemize}
+\item {\it De badet \textcolor{blue}{nakne}}
+\end{itemize}
+
+
+\subsubsection{Objektspredikativ}
+
+Som sagt, s{\aa} kan predikativer ogs{\aa} knytte seg til objektet. I eksempelet under ser vi at {\it nakne} er et objektspredikativ siden det samsvarsb{\o}yes  med objektet ({\it dem}).
+
+\begin{itemize}
+\item {\it Hun s{\aa} dem \textcolor{blue}{nakne}}
+\end{itemize}
+
+
+
+
+
+\subsection{Adverbial}
+
+Som antydet i tabell \ref{tab:funksjoner}, s{\aa} har vi forskjellige typer adverbialer; {\it omstendighetsadverbialer}, som sier noe om hvordan handlingen skjedde og {\it setningsadverbialer}, som sier noe om talerens holdning til handlingen.%, og {\it gradsadverbialer}, som modifierer adjektiver og adverb.
+
+Det som skiller adverbialer fra funksjonene vi har diskutert s{\aa} langt, er at de kan fjernes uten at setningen blir ugrammatisk eller at relasjonene som uttrykkes endres. Dette ser vi for eksempel i setningen {\it Studenten s{\aa} en god film etter den inspirerende forelesningen}, hvor {\it etter den inspirerende forelesningen} kan fjernes uten {\aa} gj{\o}re setningen ugrammatisk og uten {\aa} endre relasjonene: {\it  Studenten s{\aa} en god film}.
+
+\subsubsection{Omstendighetsadverbial}
+
+Setningsleddet {\it etter den inspirerende forelesningen} er et omstendighetsadverbial. Som vi s{\aa} i eksempel (\ref{se:f}), har vi allerede identifisert {\it etter den inspirerende forelesningen} som et setningsledd ved {\aa} flytte det til posisjonen f{\o}r det finitte verbet. N{\aa}r vi n{\aa} sier at det er et omstendighetsadverbial, s{\aa} er det p{\aa} grunnlag av to forskjellige tester. For det f{\o}rste, s{\aa} er det svar p{\aa} sp{\o}rsm{\aa}let {\it N{\aa}r s{\aa} studenten en god film?}, og for det andre, s{\aa} st{\aa}r det i posisjonen etter objektet. 
+
+Vi skiller mellom forskjellige typer omstendighetsadverbialer, basert p{\aa} hvilken type innhold de bidrar med:
+
+{\it Tidsadverbialer - svar p{\aa} sp{\o}rsm{\aa}l med \underline{n{\aa}r}}
+
+\begin{exe}
+\ex
+\begin{xlist}
+\ex {\it N{\aa}r} s{\aa} studenten en god film?
+
+\ex Studenten s{\aa} en god film {\it etter den inspirerende forelesningen.}
+\end{xlist}
+\end{exe}
+
+{\it Stedsadverbialer - svar p{\aa} sp{\o}rsm{\aa}l med \underline{hvor}}
+
+\begin{exe}
+\ex
+\begin{xlist}
+\ex {\it Hvor} s{\aa} studenten en god film?
+
+\ex Studenten s{\aa} en god film {\it p{\aa} den nye kinoen.}
+\end{xlist}
+\end{exe}
+
+{\it {\AA}rsaksadverbialer - svar p{\aa} sp{\o}rsm{\aa}l med \underline{hvorfor}}
+
+\begin{exe}
+\ex
+\begin{xlist}
+\ex {\it Hvorfor} s{\aa} studenten en god film?
+
+\ex Studenten s{\aa} en god film {\it fordi han ville more seg.}
+\end{xlist}
+\end{exe}
+
+{\it M{\aa}tesadverbialer - svar p{\aa} sp{\o}rsm{\aa}l med \underline{hvordan}}
+
+\begin{exe}
+\ex
+\begin{xlist}
+\ex {\it Hvordan} s{\aa} studenten en god film?
+
+\ex Studenten s{\aa} en god film {\it med f{\o}ttene p{\aa} bordet.}
+\end{xlist}
+\end{exe}
+
+Det finnes ogs{\aa} andre typer adverbialer som vi ikke kommer inn p{\aa} her.
+
+\subsubsection{Setningsadverbial}
+
+Setningsadverbialer skiller seg fra m{\aa}tesadverbialer ved at de sier noe om talerens holdning til innholdet i setningen i stedet for {\aa} si noe om omstendighetene rundt handlingen. Noen av de mest typiske setningsadverbene er {\it ikke}, {\it allid}, {\it kanskje} og {\it muligens}. I en helsetning vil setningsadverbialene vanligvis opptre i posisjonen etter det finitte verbalet.
+
+\begin{exe}
+\ex
+\begin{xlist}
+\ex Jeg s{\aa} \textcolor{red}{ikke} bilen
+
+\ex De sender \textcolor{red}{kanskje} en pakke i posten
+\end{xlist}
+\end{exe}
+
+Den beste m{\aa}ten {\aa} identifisere et setningsadverbial p{\aa} er {\aa} se hvilken posisjon det vil ha i en leddsetning. Det vil her opptre i posisjonen mellom subjektet og det finitte verbalet. Et omstendighetsadverb vil ikke kunne opptre i denne posisjonen.
+
+\begin{exe}
+\ex
+\begin{xlist}
+\ex {\it at jeg \textcolor{red}{ikke} s{\aa} bilen}
+
+\ex {\it at de \textcolor{red}{kanskje} sender en pakke i posten}
+\end{xlist}
+\end{exe}
+
+% \subsection{Gradsadverbial}
+
+% Gradsadverbialer er som regel ord som {\it veldig}, {\it noks{\aa}}, {\it forferdelig} og {\it helt} som knytter seg til adjektiver eller andre adverbialer.
+
+% \begin{exe}
+% \ex
+% \begin{xlist}
+% \ex {\it veldig} pen
+% \ex {\it noks{\aa}} stor
+% \ex forferdelig langt
+% \ex helt i m{\aa}l
+% \end{xlist} 
+% \end{exe}
+
+\subsection{Oppgaver}
+
+Hvilken funksjon har de uthevede leddene i de f{\o}lgende setningene:
+
+{\it Jeg har \underline{muligens} spist litt for mye.}\footnote{Setningsadverbial}
+
+{\it \underline{I dag} skal jeg legge meg tidlig.}\footnote{Omstendighetsadverbial (tid)}
+
+{\it De ellers s{\aa} p{\aa}g{\aa}ende endene ble \underline{litt usikre}.}\footnote{Subjektspredikativ (Samsvarsb{\o}yes med subjektet)}
+
+{\it \underline{Fordi jeg sover lett}, vil jeg ha et stille rom.}\footnote{Omstendighetsadverbial ({\aa}rsak)}
+
+{\it Mannen kokte egget \underline{hardt}.}\footnote{Objektspredikativ (Samsvarsb{\o}yes med objektet: Mannen kokte eggene {\it harde}.)}
+
+\section{Funksjonsanalyse}
+
+I denne delen skal vi se p{\aa} hvordan vi kan bruke det vi har l{\ae}rt s{\aa} langt for {\aa} analysere setninger.
+
+\subsection{Analyse av en transitiv helsetning}
+
+Vi starter med {\aa} analysere en enkel transitiv helsetning ((\ref{ex:spise})). At en setning er transitiv vil si at den har et subjekt og et direkte objekt.
+
+\begin{exe} 
+\ex\label{ex:spise} (\ref{ex:spise}) De sultne ungdommene spiste pizza i timen.
+\end{exe}
+
+\subsubsection{Setningsledd}
+
+Det f{\o}rste vi gj{\o}r, er {\aa} finne det finitte verbet ved {\aa} lage et ja/nei-sp{\o}rsm{\aa}l:
+
+\begin{exe} 
+\ex \textcolor{blue}{Spiste} de sultne ungdommene pizza i timen?
+\end{exe}
+
+Vi vet n{\aa} at det finitte verbalet er {\it spiste}, siden det st{\aa}r f{\o}rst i sp{\o}rsm{\aa}let. Vi kan n{\aa} bruke dette til {\aa} finne ut hvilke setningsledd vi har i setningen. Hvis vi ser p{\aa} eksemplel (\ref{ex:spise}), s{\aa} ser vi at {\it de sultne ungdommene} er et setningsledd, siden det st{\aa}r foran {\it spiste}. De andre setningsleddene finner vi ved hjelp av flyttetesten, som vist i (\ref{ex:spise1}).
+
+\begin{exe} 
+\ex\label{ex:spise1} (\ref{ex:spise1})
+\begin{xlist} 
+\ex \textcolor{blue}{\it Pizza} spiste de sultne ungdommene i timen.
+
+\ex \textcolor{blue}{\it I timen} spiste de sultne ungdommene pizza.
+\end{xlist}
+\end{exe}
+
+Vi kan alts{\aa} konkludere med at vi har tre setningsledd i tillegg til verbalet: {\it de sultne ungdommene}, {\it pizza} og {\it i timen}.
+
+\subsubsection{Funksjoner}
+
+Vi kan n{\aa} g{\aa} til neste skritt, nemlig {\aa} finne ut hvilken funksjon de forskjellige setningsleddene har. For {\aa} finne subjektet sp{\o}r vi: {\it Hvem spiser?} Svaret her er {\it studentene}. Vi kan sjekke dette ved {\aa} gj{\o}re om setningen til en leddsetning: {\it at de sultne studentene spiste pizza i timen}. Her ser vi at {\it de sultne studentene} kommer mellom subjunksjonen {\it at} og det finitte verbalet {\it spiste}. Dette bekrefter at {\it de sultne studentene} er det subjektet.
+
+
+
+For {\aa} finne ut om vi har et direkte objekt, bruker vi verbalet og subjektet til {\aa} lage et nytt sp{\o}rsm{\aa}l: {\it Hva spiste de sultne studentene?} Svaret her er {\it pizza}.
+
+Videre kan vi sjekke om vi har et omstendighetsadverbial ved {\aa} sp{\o}rre {\it N{\aa}r spiste de sultne studentene pizza?} Svaret her er {\it i timen}. Alts{\aa} er det et omstendighetsadverbial. Vi kan sjekke at det ikke er et setningsadverbial ved {\aa} se p{\aa} leddsetningsstrukturen igjen: {\it at de sultne studentene spiste pizza i timen}. Hvis det hadde v{\ae}rt et setningsadverbial, s{\aa} m{\aa}tte det st{\aa}tt f{\o}r {\it spiste}, det finitte verbalet, men det er utelukket: {\it *at de sultne studentene i timen spiste pizza}.
+
+Vi kan da sette opp f{\o}lgende funksjonsanalyse:
+\begin{table}[!ht]
+\begin{tabular}{|c|c|c|c|}
+\hline
+Subj&Verbal&DO & Adv\\\hline
+De sultne ungdommene & spiste & pizza & i timen.\\\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Oppgaver}
+
+Gi en funksjonsanalyse av disse setningene: 
+
+{\it Jeg sover.}\footnote{
+\begin{tabular}{|c|c|}
+\hline
+Subj & FinV\\\hline
+jeg & sover\\\hline
+\end{tabular}} 
+
+{\it Noen vekker meg.}\footnote{
+\begin{tabular}{|c|c|c|}
+\hline
+Subj & FinV & DO\\\hline
+noen & vekker & meg\\\hline
+\end{tabular}} 
+
+{\it En forutsigbar bok er kjedelig.}\footnote{
+\begin{tabular}{|c|c|c|}
+\hline
+Subj & FinV & Pred\\\hline
+En forutsigbar bok & er & kjedelig \\\hline
+\end{tabular}}
+
+{\it Denne filmen har jeg ikke sett.}\footnote{
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+DO & FinV & Subj & SAdv & InfinV\\\hline
+denne filmen & har & jeg & ikke & sett \\\hline
+\end{tabular}}
+
+\subsection{Analyse av en ditransitiv setning med setningsadverbial}
+
+I (\ref{ex:ditrans}) har vi en ditransitiv setning. Ditransitiv vil si at den har tre setningsledd knyttet til seg: et subjekt, et direkte objekt og et indirekte objekt.
+
+\begin{exe} 
+\ex\label{ex:ditrans} (\ref{ex:ditrans}) Tante Anna har vi alltid sendt julekort.
+\end{exe}
+
+\subsubsection{Setningsledd}
+
+F{\o}rst finner vi det finitte verbalet ved {\aa} lage et ja/nei-sp{\o}rsm{\aa}l:
+
+\begin{exe} 
+\ex\label{ex:ditrans1} (\ref{ex:ditrans1}) Har vi alltid sendt tante Anna julekort?
+\end{exe}
+
+Her ser vi at det finitte verbalet er hjelpeverbet {\it har}. Hovedverbet {\it sendt} st{\aa}r i perfektum partisipp og utgj{\o}r det infinitte verbalet.
+N{\aa}r vi n{\aa} har funnet det finitte verbalet {\it har}, kan vi bruke flyttetesten for {\aa} se hvilke setningsledd vi har i setningen:
+
+\begin{exe}
+\ex\label{ex:ditrans2} (\ref{ex:ditrans2})
+\begin{xlist}
+\ex \textcolor{blue}{\it Tante Anna} har vi alltid sendt julekort.
+
+\ex \textcolor{blue}{\it Vi} har alltid sendt tante Anna julekort.
+
+\ex \textcolor{blue}{\it alltid} har vi sendt tante Anna julekort.
+
+\ex \textcolor{blue}{\it Julekort} har vi alltid sendt tante Anna.
+\end{xlist}
+\end{exe}
+
+Vi har alts{\aa} fire setningsledd i tillegg til verbalene: {\it tante Anna}, {\it vi}, {\it alltid} og {\it julekort}.
+
+\subsubsection{Funksjoner}
+
+Det neste vi gj{\o}r er {\aa} bestemme funksjonene til de forskjellige setningsleddene. For {\aa} finne subjektet sp{\o}r vi: {\it Hvem har sendt?} Svaret her er {\it vi}. Merk at {\it vi} i den opprinnelige setningen ((\ref{ex:ditrans})) ikke st{\aa}r f{\o}rst. Det er alts{\aa} ikke slik at det f{\o}rste setningsleddet i en setning er subjektet.
+
+Deretter lager vi et sp{\o}rsm{\aa}l av verbalet og subjektet for {\aa} finne det direkte objektet: {\it Hva har vi sendt?} Svaret her er {\it julekort}, og vi bruker det direkte objektet for {\aa} lage et nytt sp{\o}rsm{\aa}l: {\it Hvem har vi sendt julekort?} Svaret her, {\it tante Anna}, er det indirekte objektet.
+
+Til slutt st{\aa}r vi igjen med ett setningsledd {\it alltid}. Det er et setningsadverbial, og vi kan sjekke det ved {\aa} lage en leddsetning: {\it at vi alltid har sendt tante Anna julekort}. Her ser vi at {\it alltid} opptrer i posisjonen mellom subjektet {\it vi} og det finitte verbalet {\it har}. Og dette er som vi vet, posisjonen til setningsadverbialene i leddsetninger.
+
+Vi kan n{\aa} gi f{\o}lgende funksjonsanalyse til setningen i (\ref{ex:ditrans}):
+
+\begin{table}[!ht]
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+IO&FinV &Subj & SAdv & InfinV& DO\\\hline
+Tante Anna & har & vi & alltid & sendt & julekort\\\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Oppgaver}
+
+Gi en funksjonsanalyse av disse setningene: 
+
+{\it Jeg gir deg en vanskelig oppgave.}\footnote{
+\begin{tabular}{|c|c|c|c|}
+\hline
+Subj & FinV & IO & DO\\\hline
+jeg & gir & deg & en vanskelig oppgave\\\hline
+\end{tabular}}
+
+{\it I morgen skal jeg fortelle den nye naboen en morsom historie.}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Adv & FinV & Subj & InfinV & IO & DO\\\hline
+i morgen & skal & jeg & fortelle & den nye naboen & en morsom historie\\\hline
+\end{tabular}}
+
+\subsection{Analyse av leddsetninger}\label{sec:ledd}
+
+Til n{\aa} har vi fokusert p{\aa} helsetninger med setningsledd som er substantivfraser (eller nomenfraser) ({\it de sultne ungdommene}, {\it pizza} og {\it julekort}) og preposisjonsfraser og adverb ({\it i timen} og {\it alltid}). Det er ogs{\aa} mulig {\aa} ha setningsledd som er setninger. Disse kalles leddsetninger. 
+
+Vi skiller mellom nominale og adverbiale leddsetninger.
+Nominale leddsetninger kan fungere som \textcolor{blue}{direkte objekt}, som i (\ref{ex:ledd:a}) og som \textcolor{magenta}{subjekt}, som i (\ref{ex:ledd:b}):
+
+\begin{exe}
+\ex\label{ex:ledd} (\ref{ex:ledd})
+\begin{xlist}
+\ex\label{ex:ledd:a} (\ref{ex:ledd:a}) Han sa \textcolor{blue}{at han var morsom}.
+
+\ex\label{ex:ledd:b} (\ref{ex:ledd:b})\textcolor{magenta}{At han var morsom} var bra.
+\end{xlist}
+\end{exe}
+
+Adverbiale leddsetninger fungerer som \textcolor{red}{adverbial}:
+
+\begin{exe}
+\ex Hun gikk \textcolor{red}{fordi han ikke var morsom}.
+\end{exe}
+
+Analysen av en leddsetning er vanligvis enklere enn analysen av en helsetning siden stillingen p{\aa} setningsleddene er fastere i leddsetningen. (Det er derfor leddsetningen egner seg s{\aa} godt for {\aa} finne fram til subjektet i setningen.)
+
+Hvis vi vil analysere setningen {\it at han var morsom}, s{\aa} vet vi at subjektet st{\aa}r mellom subjunksjonen {\it at} og det finitte verbalet {\it var}. Subjektet er alts{\aa} {\it han}. 
+
+Vi kan s{\aa} danne et sp{\o}rsm{\aa}l av verbalet og subjektet: {\it Hva var han?} Her m{\aa} vi derimot v{\ae}re oppmerksomme. Svaret p{\aa} sp{\o}rsm{\aa}let {\it morsom} er ikke et direkte objekt, men et predikativ. Det er fordi vi har verbet {\it v{\ae}re}. Vi kan sjekke at det er et predikativ ved {\aa} bruke en flertallsform av subjektet: {\it at de var morsomme}. Vi ser har at {\it morsomme} samsvarsb{\o}yes med subjektet {\it de}, alts{\aa} er det et predikativ. N{\aa} en skal analysere setninger med s{\ae}rlig {\it v{\ae}re} og {\it bli}, b{\o}r en v{\ae}re oppmerksom p{\aa} at det kan v{\ae}re et predikativ involvert.
+
+Vi kan n{\aa} gi f{\o}lgende funksjonsanalyse av leddsetningen:
+
+\begin{table}[!ht]
+\begin{tabular}{|c|c|c|c|}
+\hline
+Sbu &Subj & FinV& Pred\\\hline
+at & han & er & morsom\\\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Oppgaver}
+
+Analyser disse leddsetningene: 
+
+{\it at han sover}\footnote{
+\begin{tabular}{|c|c|c|}
+\hline
+Sbu &Subj & FinV\\\hline
+at & han & sover\\\hline
+\end{tabular}}
+
+{\it fordi den gamle mannen ikke ville pr{\o}ve buksene}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Sbu &Subj & SAdv & FinV & InfinV & DO\\\hline
+fordi & den gamle mannen & ikke & ville & pr{\o}ve & buksene\\\hline
+\end{tabular}}
+
+\subsection{Analyse av setninger med leddsetninger}
+
+N{\aa}r en skal analysere leddsetninger som en del av en helsetning, begynner det {\aa} bli litt komplisert. Vi f{\aa}r da to niv{\aa}er {\aa} forholde oss til, og det viktig {\aa} holde tunga rett i munnen.
+
+Hvis vi ser {\aa} setningen i (\ref{ex:ledd2}), s{\aa} ser vi at den har en lang rekke ledd, gitt alle ordgruppene som kan opptre f{\o}r det finitte verbalet {\it har} (se eksemplene i (\ref{ex:ledd1})).
+
+\begin{exe}
+\ex\label{ex:ledd2} (\ref{ex:ledd2}) Hun hadde alltid fortalt ham at tr{\o}ndere var treige.
+\end{exe}
+
+\begin{exe}
+\ex\label{ex:ledd1} (\ref{ex:ledd1})
+\begin{xlist}
+\ex \textcolor{blue}{\it Hun} hadde alltid fortalt ham at tr{\o}ndere var treige.
+
+\ex \textcolor{blue}{\it Alltid} hadde hun fortalt ham at tr{\o}ndere var treige.
+
+\ex \textcolor{blue}{\it Ham} hadde hun alltid fortalt at tr{\o}ndere var treige.
+
+\ex \textcolor{blue}{\it At tr{\o}ndere var treige} hadde hun alltid fortalt ham.
+
+\ex \textcolor{blue}{\it Tr{\o}ndere} hadde hun alltid fortalt ham at var treige.
+
+\ex \textcolor{blue}{\it Treige} hadde hun alltid fortalt ham at tr{\o}ndere var.
+\end{xlist}
+\end{exe}
+
+En av ordgruppene som kan opptre f{\o}r {\it har}, er leddsetningen {\it at tr{\o}ndere var treige}. Denne er alts{\aa} et setningsledd, og ved {\aa} stille sp{\o}rsm{\aa}let {\it Hva hadde hun fortalt?} ser vi at leddsetningen er direkte objekt til {\it fortelle}. Analysen av helsetningen (\ref{ex:ledd2}) ser slik ut:
+
+\begin{table}[!ht]
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Subj & FinV & S-Adv & InfinV & IO & DO\\\hline
+Hun & hadde & alltid & fortalt & ham & at tr{\o}ndere var treige\\\hline
+\end{tabular}
+\end{table}
+
+Men vi ser at vi enda ikke har f{\aa}tt med at det er setningsledd inni leddsetningen {\it at tr{\o}ndere var treige}. Vi legger da til et niv{\aa} under funksjonen DO:
+
+\begin{table}[!ht]
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+Subj & FinV & SAdv & InfinV & IO & \multicolumn{4}{|c|}{DO}\\
+&&&&& Sbu &Subj&FinV&Pred\\\hline
+Hun & hadde & alltid & fortalt & ham & \textcolor{blue}{at} & \textcolor{blue}{tr{\o}ndere} & \textcolor{blue}{var} & \textcolor{blue}{treige}\\\hline
+\end{tabular}
+\end{table}
+
+N{\aa}r leddetninger kommer f{\o}rst i en setning, er det lett {\aa} gj{\o}re feil n{\aa}r en analyserer. Hvis vi ser p{\aa} setningen under ((\ref{ex:ledd3})), s{\aa} er det fristende {\aa} anta at det finitte verbet i helsetningen er {\it kommer}, siden det er det f{\o}rste verbet og st{\aa}r i presens.
+
+\begin{exe}
+\ex\label{ex:ledd3} (\ref{ex:ledd3}) N{\aa}r jeg kommer hjem, skal jeg lage middag.
+\end{exe}
+
+Men hvis vi lager et ja/nei-sp{\o}rsm{\aa}l av setningen (se (\ref{ex:ledd5})), s{\aa} ser vi at det ikke er {\it kommer} som er det finitte verbet i helsetningen, men {\it skal}. {\it Kommer} er derimot det finitte verbet i leddsetningen.
+
+\begin{exe}
+\ex\label{ex:ledd5} (\ref{ex:ledd5}) \textcolor{blue}{\it Skal} jeg lage middag n{\aa}r jeg kommer hjem?
+\end{exe}
+
+\subsubsection{Oppgaver}
+
+Analyser f{\o}lgende setninger:
+
+{\it Han sier at han kommer snart.}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+Subj & FinV & \multicolumn{4}{|c|}{DO}\\
+&& Sbu &Subj&FinV&Adv\\\hline
+Han & sier & at & han & kommer & snart \\\hline
+\end{tabular}
+}
+
+{\it Hvis alle i rommet er helt stille, kan vi h{\o}re radioen tydelig.}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+ \multicolumn{4}{|c|}{Adv} & FinV & Subj & InfinV & DO & Adv\\
+Sbu &Subj&FinV&Pred &&&&&\\\hline
+Hvis & alle i rommet & er & helt stille & kan & vi & h{\o}re & radioen & tydelig \\\hline
+\end{tabular}
+}
+
+\subsection{Andre typer leddsetninger}
+
+I tillegg til de nominale og adverbiale leddsetningene som {\it at mannen sover} og {\it n{\aa}r jeg kommer hjem}, s{\aa} har vi infinitivssetninger som {\it {\aa} sparke ballen} og relativsetninger {\it som sparker ballen}. Disse setningene skiller seg fra de andre leddsetningene ved at det er et setningsledd som ikke er uttrykt i selve leddsetningen.
+
+\subsubsection{Infinitivssetninger}
+
+Infinitivssetninger er setninger av typen {\it {\aa} sparke ballen i m{\aa}l} i (\ref{ex:inf}). Merk at infinitivssetningen ikke har noe subjekt, men gjerne ``l{\aa}ner'' et fra helsetningen ({\it jeg}).
+
+\begin{exe} 
+\ex\label{ex:inf} (\ref{ex:inf}) Jeg pr{\o}ver {\aa} sparke ballen i m{\aa}l.
+\end{exe}
+
+Akkurat som de nominale leddsetningene, s{\aa} er infinitivssetningene setningsledd knyttet til verbet. I (\ref{ex:inf}) fungerer infinitivssetningen som direkte objekt. Analysen av setningen ser slik ut:
+
+\begin{table}[!ht]
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Subj & FinV & \multicolumn{4}{|c|}{DO}\\
+&& Inf &InfinV&DO&Adv\\\hline
+Jeg & pr{\o}ver & \textcolor{blue}{{\aa}} & \textcolor{blue}{sparke} & \textcolor{blue}{ballen} & \textcolor{blue}{i m{\aa}l}\\\hline
+\end{tabular}
+\end{table}
+
+En infinitivssetning kan ogs{\aa} fungere som subjekt, som i 
+
+
+\begin{exe} 
+\ex\label{ex:inf1} (\ref{ex:inf1}) {\AA} sparke ballen i m{\aa}l er vanskelig.
+\end{exe}
+
+
+
+\subsubsection{Oppgaver}
+
+Gi funksjonsanalyse av f{\o}lgende setninger:
+
+{\it Alle elsker {\aa} se en god film.}\footnote{
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Subj & FinV & \multicolumn{3}{|c|}{DO}\\
+&& Inf &InfinV&DO\\\hline
+Alle & elsker & {{\aa}} & {se} & {en god film}\\\hline
+\end{tabular}
+}
+
+{\it Damen i butikken har lovet sjefen {\aa} alltid l{\aa}se d{\o}ra etter jobb.}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+Subj & FinV & InfinV & IO & \multicolumn{5}{|c|}{DO}\\
+&&&& Inf &S-Adv&InfinV&DO&Adv\\\hline
+Damen i butikken &har& lovet & sjefen & {{\aa}} & alltid & l{\aa}se & d{\o}ra & etter jobb\\\hline
+\end{tabular}
+}
+
+
+\subsubsection{Relativsetninger/adjektiviske leddsetninger}
+
+Relativsetninger eller adjektiviske leddsetninger er leddsetninger som som regel knytter seg til et substantiv. Disse er alts{\aa} ikke egne setningsledd, men analyseres som en del av et st{\o}rre setninglsedd. I setningen (\ref{ex:rel}) er {\it som sparket ballen} en relativsetning. Som i infinitivssetningene, s{\aa} er det et ledd i relativsetningen som ikke er uttrykt, men mens det i infinitivssetningen alltid er subjektet som ikke er uttrykt, s{\aa} kan det v{\ae}re forskjellige ledd som ikke er uttrykt. I {\it som sparket ballen}, er det subjektet som ikke er uttrykt.
+
+
+\begin{exe} 
+\ex\label{ex:rel} (\ref{ex:rel}) Den gutten {\it som sparket ballen gjennom ruten}, st{\aa}r utenfor huset.
+\end{exe}
+
+Denne setningen analyseres slik:
+
+\begin{table}[!ht]
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{5}{|c|}{Subj} & FinV & ADV\\
+&Rel & FinV & DO & Adv &&\\\hline
+Den gutten & \textcolor{blue}{som} & \textcolor{blue}{sparket}& \textcolor{blue}{ballen} &\textcolor{blue}{gjennom ruten} &  {st{\aa}r} & {utenfor huset}\\\hline
+\end{tabular}
+\end{table}
+
+Det kan ogs{\aa} v{\ae}re et annet setningsledd enn subjektet som ikke er uttrykt i relativsetningen, for eksempel et objekt, som i (\ref{ex:rel2}). Her ser vi at relativsetningen {\it som vi s{\aa} i g{\aa}r} har et subjekt {\it vi}, mens objektet ({\it gutten}) mangler.
+
+\begin{exe} 
+\ex\label{ex:rel2} (\ref{ex:rel2}) Den gutten {\it som vi s{\aa} i g{\aa}r}, st{\aa}r utenfor huset.
+\end{exe}
+
+\subsubsection{Oppgaver}
+
+Gi funksjonsanalyser av f{\o}lgende setninger:
+
+{\it Jeg vil ha isen som er r{\o}d.}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Subj & FinV & InfinV & \multicolumn{4}{|c|}{DO}\\
+&&&& Rel &FinV&Pred\\\hline
+Jeg & vil & ha & isen & som & er & r{\o}d \\\hline
+\end{tabular}
+}
+
+{\it Jeg mener at isen som jeg fikk, er best.}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+Subj & FinV & \multicolumn{7}{|c|}{DO}\\
+&& Sbu & \multicolumn{4}{|c|}{Subj} &FinV & Pred\\
+&& & & Rel & Subj & FinV & & \\\hline
+Jeg & mener & at & isen & som & jeg & fikk & er & best \\\hline
+\end{tabular}
+} (Vanskelig!)
+
+\subsection{Selekterte partikler og preposisjoner}
+
+S{\aa} langt har hovedverbene vi har tatt for oss, som {\it se}, {\it spise}, {\it gi}, {\it v{\ae}re} osv. uttrykt innholdet ved hjelp av ett ord. (Riktignok har vi brukt hjelpeverb for {\aa} uttrykke tid eller modalitet, men det er en annen sak.) I denne delen skal vi se litt p{\aa} verb som krever en partikkel eller en preposisjon. Disse er det faktisk ganske mange av i vanlig spr{\aa}kbruk, og en kommer ofte borti dem i for eksempel en elevtekstanalyse. 
+
+\subsubsection{Verbalpartikler}
+
+Et eksempel p{\aa} en setning med en verbalpartikkel har vi i (\ref{ex:part}). Her har vi et s{\aa}kalt partikkelverb i {\it gulpe opp}. Slike partikkelverb har typisk et innhold som er litt distinkt fra betydningen til verbet brukt for seg selv.
+
+\begin{exe} 
+\ex\label{ex:part} (\ref{ex:part}) Babyen gulpet opp litt av melken.
+\end{exe}
+
+Setningen i (\ref{ex:part}) kan analyseres slik:
+
+\begin{table}[!ht]
+\begin{tabular}{|c|c|c|c|}
+\hline
+Subj & FinV & V-Part & DO\\\hline
+babyen & gulpet & opp & melken\\\hline
+\end{tabular}
+\end{table}
+
+Vi kan sjekke at {\it opp} ikke er en preposisjon i en preposisjonsfrase ved {\aa} erstatte {\it melken} med et trykklett pronomen ({\it den}), som i (\ref{ex:part1}). Vi ser da at partikkelen kommer etter objektet. Vi kan ogs{\aa} sjekket at {\it opp} ikke er et adverb ved {\aa} pr{\o}ve {\aa} flytte det til posisjonen f{\o}r det finitte verbet, som i (\ref{ex:part2}).
+
+\begin{exe} 
+\ex
+\begin{xlist}
+\ex\label{ex:part1} (\ref{ex:part1}) Babyen gulpet den opp.
+
+\ex\label{ex:part2} (\ref{ex:part2}) *Opp gulpet babyen den.
+\end{xlist}
+\end{exe}
+
+Siden partikkel-ordene ogs{\aa} ofte kan brukes som preposisjoner, f{\aa}r vi ofte flertydigheter. De som snakker {\o}stlandsk eller tr{\o}ndersk har to m{\aa}ter {\aa} uttale setningen i (\ref{ex:part3}). Enten knyttes {\it opp} til verbet {\it gikk-opp}, eller s{\aa} kan {\it opp} uttales med eget trykk {\it gikk opp skil{\o}ypa}.
+
+\begin{exe} 
+\ex\label{ex:part3} (\ref{ex:part3}) Han gikk opp skil{\o}ypa.
+\end{exe}
+
+Hvis {\it opp} knyttes til verbet, har vi partikkelverbet {\it g{\aa} opp} som betyr {\aa} lage sporene, og hvis {\it opp} kan ha eget trykk har vi preposisjonsfrasen {\it opp skil{\o}ypa}, noe som gir betydningen at noen har g{\aa}tt (gjerne til fots) oppover en skil{\o}ype.
+
+\subsubsection{Oppgaver}
+
+Gi funksjonsanalyser av disse setningene:
+
+{\it Han kjevlet ut deigen.}\footnote{
+\begin{tabular}{|c|c|c|c|}
+\hline
+Subj & FinV & V-Part & DO\\\hline
+Han & kjevlet & ut & deigen\\\hline
+\end{tabular}
+}
+
+{\it Han kj{\o}rte inn de nye dekkene.}\footnote{
+\begin{tabular}{|c|c|c|c|}
+\hline
+Subj & FinV & V-Part & DO\\\hline
+Han & kj{\o}rte & inn & de nye dekkene\\\hline
+\end{tabular}
+eller
+\begin{tabular}{|c|c|c|c|}
+\hline
+Subj & FinV & Adv & DO\\\hline
+Han & kj{\o}rte & inn & de nye dekkene\\\hline
+\end{tabular}
+}
+ (To analyser)
+
+\subsubsection{Preposisjonsobjekter}
+
+Enkelte verb tar obligatoriske preposisjonsfraser, hvor objektet til preposisjonen analyseres som et eget setningsledd i setningen, og har funksjonen preposisjonsobjekt. Disse preposisjonsfrasene behandles forskjellig fra de adverbiale preposisjonsfrasene vi har sett p{\aa} til n{\aa}. Et eksempel p{\aa} en setning med et preposisjonsobjekt har vi i (\ref{ex:pobj}).
+
+\begin{exe} 
+\ex\label{ex:pobj} (\ref{ex:pobj}) Han h{\o}rer p{\aa} deg.
+\end{exe}
+
+Setningen i (\ref{ex:pobj}) kan analyseres slik:
+
+\begin{table}[!ht]
+\begin{tabular}{|c|c|c|}
+\hline
+Subj & FinV & PPObj\\\hline
+han & h{\o}rer & p{\aa} deg\\\hline
+\end{tabular}
+\end{table}
+
+
+Noe som karakteriserer preposisjonsobjekter er at de gjerne kan flyttes til posisjonen f{\o}r det finitte verbet samtidig som preposisjonen blir igjen, som vist i (\ref{ex:pobj1}). Her har preposisjonsobjektet {\it deg} blitt flyttet til posisjonen f{\o}r det finitte verbet. Dette mye vanskeligere {\aa} f{\aa} til med preposisjonsfraser som fungerer som adjunkter (se (\ref{ex:pobj2})).
+
+\begin{exe} 
+\ex\label{ex:pobj1} (\ref{ex:pobj1}) Deg h{\o}rer han p{\aa}.
+\end{exe}
+
+\begin{exe} 
+\ex\label{ex:pobj2} (\ref{ex:pobj2}) *Torsdag arbeider han p{\aa}.
+\end{exe}
+
+Det som skiller selekterte preposisjoner fra partikler, er at de ikke kan st{\aa} i posisjonen bak objektet, som vist i (\ref{ex:pobj5}). Det kan partikler, som vi s{\aa} i (\ref{ex:part1}).
+
+\begin{exe} 
+\ex\label{ex:pobj5} (\ref{ex:pobj5}) *Han h{\o}rer deg p{\aa}.
+\end{exe}
+
+Det er ikke bare substantivfraser som kan fungere som preposisjonsobjekt. Det kan ogs{\aa} infinitivssetninger og nominale leddsetninger, som vist i (\ref{ex:pobj3}) og (\ref{ex:pobj4})
+
+\begin{exe} 
+\ex
+\begin{xlist}
+\ex\label{ex:pobj3} (\ref{ex:pobj3}) Han {\o}ver p{\aa} \textcolor{blue}{{\aa} bli en god sj{\aa}f{\o}r}.
+
+\ex\label{ex:pobj4} (\ref{ex:pobj4}) Han stoler p{\aa} \textcolor{blue}{at hun kommer}.
+\end{xlist}
+\end{exe}
+
+En setning med en infinitivssetning som preposisjonsobjekt, som (\ref{ex:pobj3}), kan analyseres slik:
+
+
+\begin{table}[!ht]
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Subj & FinV &  \multicolumn{4}{|c|}{PPObj}\\
+ &  & & Inf & FinV & Pred\\\hline
+han & {\o}ver & p{\aa} & {\aa} & bli & en god sj{\o}f{\o}r \\\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Oppgaver}
+
+
+Gi funksjonsanalyser av disse setningene:
+
+{\it Han slutrer unna oppvasken.}\footnote{
+\begin{tabular}{|c|c|c|}
+\hline
+Subj & FinV & PPObj\\\hline
+Han & sluntrer & unna oppvasken\\\hline
+\end{tabular}
+}
+
+{\it Alle jublet over at det ble ny regnrekord i Bergen.}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+Subj & FinV & \multicolumn{7}{|c|}{PPObj}\\\hline
+&&& Sbu & Subj & FinV & InfinV & DO & Adv\\
+Alle & jublet & over & at & det & ble & satt & ny regnrekord & i Bergen\\\hline
+\end{tabular}
+}
+
+
+\section{Feltanalyse}
+
+Feltanalyse er en alternativ m{\aa}te {\aa} analysere setninger p{\aa}. I feltanalysen gj{\o}r vi f{\o}rst en grovinndeling i {\it forfelt}, {\it midtfelt} og {\it sluttfelt}. 
+
+I forfeltet har vi det setningsleddet som i en helsetning kommer f{\o}r det finitte verbet. Det vil si den posisjonen vi bruker for {\aa} sjekke om noe er et setningsledd med, ved hjelp av flyttetesten (se del \ref{sec:permutasjon}).
+I midtfeltet kommer det finitte verbet (v), subjektet (hvis det ikke st{\aa}r i forfeltet) (n) og eventuelle setningsadverbialer (a). Disse plassene skrives med sm{\aa} bokstaver ({\it v}, {\it n}, og {\it a})
+I sluttfeltet kommer det infinitte verbalet (V), objekter og predikativer (N) og adverbialer (A). Disse plassene skrives med store bokstaver ({\it V}, {\it N}, og {\it A}).
+
+\subsection{Helsetninger}
+\subsubsection{Analyse}
+De forskjellige leddene i en helsetning innordnes i det dette setningsskjemaet:
+
+\begin{table}[!ht]
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+Forfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+& v&n&a&V&N&A\\\hline
+
+\end{tabular}
+\end{table}
+
+
+N{\aa}r en har foretatt en funksjonsanalyse av en setning, er det faktisk ganske lett {\aa} gj{\o}re den om til en feltanalyse. I tabellen under st{\aa}r det hvor de ulike setningsleddene fra en funksjonsanalyse h{\o}rer hjemme: %Subjektet (hvis det ikke st{\aa}r f{\o}rst: n, 
+
+\begin{table}[!ht]
+\begin{tabular}{|l|l|l|}
+\hline
+{\bf Felt} & & {\bf Funksjoner}\\\hline
+Forfelt & & Det setningsleddet som st{\aa}r f{\o}r det finitte verbalet\\\hline
+&v & finitt verbal\\
+Midtfelt &n & subjekt\\
+&a & setningsadverbial\\\hline
+&V & infinitt verbal, verbalpartikkel\\
+Sluttfelt &N & direkte objekt, indirekte objekt, predikativ\\
+&A & adverbial, preposisjonsobjekt\\\hline
+\end{tabular}
+\end{table}
+
+
+Hvis vi kun fyller posisjonene i midtfeltet og sluttfeltet og lar forfeltet st{\aa} tomt, f{\aa}r vi et ja/nei-sp{\o}rsm{\aa}l. 
+
+\begin{table}[!ht]
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+Forfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+& v&n&a&V&N&A\\\hline
+& Har &jeg& ikke & spist & p{\o}lser & i dag\\\hline
+\end{tabular}
+\end{table}
+
+Det er mulig {\aa} flytte de forskjellige setningsleddene inn i forfeltet. I tabellen under har vi flyttet subjektet ({\it jeg}), omstendighetsadverbialet ({\it i dag}), det direkte objektet ({\it p{\o}lser}) og setningsadverbialet ({\it ikke}):
+
+\begin{table}[!ht]
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+Forfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+& v&n&a&V&N&A\\\hline
+& Har &jeg& ikke & spist & p{\o}lser & i dag\\
+Jeg & har && ikke & spist & p{\o}lser & i dag\\
+I dag & har& jeg&ikke&spist&p{\o}lser&\\
+P{\o}lser & har &jeg& ikke & spist &  & i dag\\
+Ikke & har &jeg& & spist & p{\o}lser & i dag\\\hline
+\end{tabular}
+\end{table}
+
+I tilleg til de feltene vi har sett {\aa} til n{\aa}, har vi et ekstra felt, {\it forbinderfeltet}, som inneholder forbinderord som {\it og} og {\it men}. Dette feltet kan f{\o}yes til i begynnelsen av setningsskjemaet hvis det er behov for det:
+
+\begin{table}[!ht]
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+Forbinderfelt & Forfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+&& v&n&a&V&N&A\\\hline
+Men & han & v{\aa}knet & &ikke & & & av den sterke vinden\\
+Og & s{\aa} & sov & han && && hele natten \\\hline
+\end{tabular}
+\end{table}
+
+
+\subsubsection{Oppgaver}
+
+Gi feltanalyser av f{\o}lgende setninger:
+
+{\it Jeg spiser et eple.}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Forfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+& v&n&a&V&N&A\\\hline
+Jeg & spiser & & & & et eple & \\\hline
+\end{tabular}
+}
+
+{\it Etter den inspirerende forelesninen s{\aa} studenten en god film.}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Forfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+& v&n&a&V&N&A\\\hline
+Etter den inspirerende forelesninen & s{\aa} & studenten & & & en god film & \\\hline
+\end{tabular}
+}
+
+
+{\it Rundkj{\o}ringsreglene har jeg ikke forst{\aa}tt f{\o}r n{\aa}.}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Forfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+& v&n&a&V&N&A\\\hline
+Rundkj{\o}ringsreglene & har & jeg &ikke & forst{\aa}tt & & f{\o}r n{\aa}\\\hline
+\end{tabular}
+}
+
+{\it Men jeg kunne kanskje vinne premien likevel.}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+Forbinderfelt & Forfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+&& v&n&a&V&N&A\\\hline
+Men & jeg & kunne & &kanskje & vinne & premien & likevel\\\hline
+\end{tabular}
+}
+
+{\it Babyen har gulpet opp gr{\o}ten.}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Forfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+& v&n&a&V&N&A\\\hline
+Babyen & har & & & gulpet, opp & gr{\o}ten & \\\hline
+\end{tabular}
+}
+
+{\it Babyen gulper opp gr{\o}ten hver gang.}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Forfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+& v&n&a&V&N&A\\\hline
+Babyen & gulper & & & opp & gr{\o}ten & hver gang \\\hline
+\end{tabular}
+}
+
+
+{\it I g{\aa}r ga jeg den nyankomne gjesten en varm mottakselse.}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Forfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+& v&n&a&V&N&A\\\hline
+I g{\aa}r & ga & jeg & &  & den nyankomne gjesten, en varm mottakselse & \\\hline
+\end{tabular}
+}
+
+\subsection{Leddsetninger i helsetninger}
+\subsubsection{Analyse}
+Som vi husker fra funksjonsanalysen, s{\aa} kan leddsetninger v{\ae}re setningsledd i en setning (se del \ref{sec:ledd}). Dette gjelder nominale leddsetninger ((\ref{ex:ledd4:a})), adverbiale leddsetninger ((\ref{ex:ledd4:b})) og infinitivssetninger ((\ref{ex:ledd4:c})).
+
+\begin{exe}
+\ex\label{ex:ledd4} (\ref{ex:ledd4})
+\begin{xlist}
+\ex\label{ex:ledd4:a} (\ref{ex:ledd4:a}) Han sa \textcolor{blue}{at han var morsom}.
+
+\ex\label{ex:ledd4:b} (\ref{ex:ledd4:b}) Hun gikk \textcolor{red}{fordi han ikke var morsom}.
+
+\ex\label{ex:ledd4:c} (\ref{ex:ledd4:c}) Jeg pr{\o}ver \textcolor{blue}{{\aa} sparke ballen i m{\aa}l.}
+\end{xlist}
+\end{exe}
+
+N{\aa}r vi analyserer setningen som en leddsetning er en del av, analyserer vi i f{\o}rste omgang leddsetningen ikke videre. Hele leddsetningen settes inn p{\aa} en plass, som vist i analysen under:
+
+\begin{table}[!ht]
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+Forfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+& v&n&a&V&N&A\\\hline
+Han & sa & &  &  & at han var morsom & \\\hline
+\end{tabular}
+\end{table}
+
+Relativsetninger som er en del av en substantivfrase (se (\ref{ex:rel3})), analyserers heller ikke videre (i f{\o}rste omgang):
+
+\begin{exe} 
+\ex\label{ex:rel3} (\ref{ex:rel3}) Den gutten \textcolor{red}{som sparket ballen gjennom ruten}, st{\aa}r utenfor huset.
+\end{exe}
+
+\begin{table}[!ht]
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+Forfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+& v&n&a&V&N&A\\\hline
+Den gutten som sparket ballen gjennom ruten & st{\aa}r &  &  &  & & utenfor huset \\\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Oppgaver}
+
+Gi feltanalyser f{\o}lgende helsetninger:
+
+{\it Han hevder at han ikke har sovet.}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Forfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+& v&n&a&V&N&A\\\hline
+Han & hevder & & & & at han ikke har sovet &  \\\hline
+\end{tabular}
+}
+
+{\it N{\aa}r vi kommer hjem, kan vi kanskje spise en god middag foran TV-en.}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Forfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+& v&n&a&V&N&A\\\hline
+N{\aa}r vi kommer hjem & kan & vi & kanskje & spise & en god middag & foran TV-en \\\hline
+\end{tabular}
+}
+
+{\it Mener du at du ikke har h{\o}rt dette f{\o}r?}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Forfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+& v&n&a&V&N&A\\\hline
+ & Mener & du & & & at du ikke har h{\o}rt dette f{\o}r &  \\\hline
+\end{tabular}
+}
+
+{\it {\it {\AA}} sove er viktig f{\o}r en skal kj{\o}re bil.}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Forfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+& v&n&a&V&N&A\\\hline
+{\AA} sove & er &  & & & viktig & f{\o}r en skal kj{\o}re bil  \\\hline
+\end{tabular}
+}
+
+\subsection{Leddsetninger}
+\subsubsection{Analyse av leddsetninger}
+Setningsskjemaet for leddsetninger er litt forskjellig fra setningsskjemaet for helsetninger. Her har vi ikke noe forfelt, og rekkef{\o}lgen i midtfeltet er forskjellig, {\it n a v} i stedet for {\it v n a}:
+
+
+\begin{table}[!ht]
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+Forbinderfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+&n&a&v&V&N&A\\\hline
+\end{tabular}
+\end{table}
+
+En analyse av leddsetningen {\it at han ikke har sett bilen siden vi kom hjem} ser slik ut (merk at subjunksjonen st{\aa}r i forbinderfeltet):
+
+
+\begin{table}[!ht]
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+Forbinderfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+&n&a&v&V&N&A\\\hline
+at & han & ikke & har & sett & bilen & siden vi kom hjem\\\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Oppgaver}
+
+Gi feltanalyser av f{\o}lgende leddsetninger:
+
+{\it at vi kanskje ikke sover ute}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+Forbinderfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+&n&a&v&V&N&A\\\hline
+at & vi & kanskje, ikke & sover &  &  & ute\\\hline
+\end{tabular}
+}
+
+{\it fordi ingen av oss ville bli v{\aa}te i natt}\footnote{
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+Forbinderfelt & \multicolumn{3}{|c|}{Midtfelt} & \multicolumn{3}{|c|}{Sluttfelt}\\\hline
+&n&a&v&V&N&A\\\hline
+fordi & ingen av oss & & ville & bli & v{\aa}te & i natt\\\hline
+\end{tabular}
+}
+
+
+\newpage
+\def\notesname{Svar p{\aa} oppgaver}
+\theendnotes
+
+\end{document}
+
+
+

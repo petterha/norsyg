@@ -1,0 +1,121 @@
+\@@addtocsec{htoc}{sec1}{0}{\@print{1}\quad{}Introduksjon{}}
+\@@addtocsec{htoc}{sec2}{0}{\@print{2}\quad{}Setningsledd{}}
+\@@addtocsec{htoc}{sec3}{1}{\@print{2.1}\quad{}Flyttetesten{}}
+\newlabel{sec:permutasjon}{{2.1}{X}}
+\newlabel{se1}{{2.1}{X}}
+\newlabel{se1:a}{{2.1}{X}}
+\newlabel{se1:b}{{2.1}{X}}
+\newlabel{se}{{2.1}{X}}
+\newlabel{se:a}{{2.1}{X}}
+\newlabel{se:b}{{2.1}{X}}
+\newlabel{se:c}{{2.1}{X}}
+\newlabel{se:d}{{2.1}{X}}
+\newlabel{se:e}{{2.1}{X}}
+\newlabel{se:f}{{2.1}{X}}
+\@@addtocsec{htoc}{sec4}{2}{\@print{2.1.1}\quad{}Oppgaver{}}
+\@@addtocsec{htoc}{sec5}{1}{\@print{2.2}\quad{}Substitusjonstesten{}}
+\newlabel{se3}{{2.2}{X}}
+\newlabel{se3:a}{{2.2}{X}}
+\newlabel{se3:b}{{2.2}{X}}
+\newlabel{se3:c}{{2.2}{X}}
+\newlabel{se4}{{2.2}{X}}
+\newlabel{se4:a}{{2.2}{X}}
+\newlabel{se4:b}{{2.2}{X}}
+\newlabel{v}{{2.2}{X}}
+\newlabel{v:a}{{2.2}{X}}
+\newlabel{v:b}{{2.2}{X}}
+\@@addtocsec{htoc}{sec6}{2}{\@print{2.2.1}\quad{}Oppgaver{}}
+\@@addtocsec{htoc}{sec7}{0}{\@print{3}\quad{}Funksjoner{}}
+\newlabel{tab:funksjoner}{{3}{X}}
+\@@addtocsec{htoc}{sec8}{1}{\@print{3.1}\quad{}Verbal{}}
+\newlabel{yn}{{3.1}{X}}
+\newlabel{yn:a}{{3.1}{X}}
+\newlabel{yn:b}{{3.1}{X}}
+\@@addtocsec{htoc}{sec9}{1}{\@print{3.2}\quad{}Subjekt{}}
+\@@addtocsec{htoc}{sec10}{2}{\@print{3.2.1}\quad{}Vanlig subjekt{}}
+\newlabel{ex:su}{{3.2.1}{X}}
+\newlabel{ex:su:b}{{3.2.1}{X}}
+\@@addtocsec{htoc}{sec11}{2}{\@print{3.2.2}\quad{}Formelt subjekt - {\it det}{}}
+\newlabel{ex:su1}{{3.2.2}{X}}
+\newlabel{ex:su1:a}{{3.2.2}{X}}
+\newlabel{ex:su1:b}{{3.2.2}{X}}
+\newlabel{ex:su1:c}{{3.2.2}{X}}
+\@@addtocsec{htoc}{sec12}{2}{\@print{3.2.3}\quad{}Oppgaver{}}
+\@@addtocsec{htoc}{sec13}{1}{\@print{3.3}\quad{}Objekt{}}
+\@@addtocsec{htoc}{sec14}{2}{\@print{3.3.1}\quad{}Direkte objekt{}}
+\newlabel{ex:do}{{3.3.1}{X}}
+\@@addtocsec{htoc}{sec15}{2}{\@print{3.3.2}\quad{}Indirekte objekt{}}
+\newlabel{ex:io}{{3.3.2}{X}}
+\@@addtocsec{htoc}{sec16}{2}{\@print{3.3.3}\quad{}Oppgaver{}}
+\@@addtocsec{htoc}{sec17}{1}{\@print{3.4}\quad{}Predikativ{}}
+\@@addtocsec{htoc}{sec18}{2}{\@print{3.4.1}\quad{}Subjektspredikativ{}}
+\@@addtocsec{htoc}{sec19}{2}{\@print{3.4.2}\quad{}Objektspredikativ{}}
+\@@addtocsec{htoc}{sec20}{1}{\@print{3.5}\quad{}Adverbial{}}
+\@@addtocsec{htoc}{sec21}{2}{\@print{3.5.1}\quad{}Omstendighetsadverbial{}}
+\@@addtocsec{htoc}{sec22}{2}{\@print{3.5.2}\quad{}Setningsadverbial{}}
+\@@addtocsec{htoc}{sec23}{1}{\@print{3.6}\quad{}Oppgaver{}}
+\@@addtocsec{htoc}{sec24}{0}{\@print{4}\quad{}Funksjonsanalyse{}}
+\@@addtocsec{htoc}{sec25}{1}{\@print{4.1}\quad{}Analyse av en transitiv helsetning{}}
+\newlabel{ex:spise}{{4.1}{X}}
+\@@addtocsec{htoc}{sec26}{2}{\@print{4.1.1}\quad{}Setningsledd{}}
+\newlabel{ex:spise1}{{4.1.1}{X}}
+\@@addtocsec{htoc}{sec27}{2}{\@print{4.1.2}\quad{}Funksjoner{}}
+\@@addtocsec{htoc}{sec28}{2}{\@print{4.1.3}\quad{}Oppgaver{}}
+\@@addtocsec{htoc}{sec29}{1}{\@print{4.2}\quad{}Analyse av en ditransitiv setning med setningsadverbial{}}
+\newlabel{ex:ditrans}{{4.2}{X}}
+\@@addtocsec{htoc}{sec30}{2}{\@print{4.2.1}\quad{}Setningsledd{}}
+\newlabel{ex:ditrans1}{{4.2.1}{X}}
+\newlabel{ex:ditrans2}{{4.2.1}{X}}
+\@@addtocsec{htoc}{sec31}{2}{\@print{4.2.2}\quad{}Funksjoner{}}
+\@@addtocsec{htoc}{sec32}{2}{\@print{4.2.3}\quad{}Oppgaver{}}
+\@@addtocsec{htoc}{sec33}{1}{\@print{4.3}\quad{}Analyse av leddsetninger{}}
+\newlabel{sec:ledd}{{4.3}{X}}
+\newlabel{ex:ledd}{{4.3}{X}}
+\newlabel{ex:ledd:a}{{4.3}{X}}
+\newlabel{ex:ledd:b}{{4.3}{X}}
+\@@addtocsec{htoc}{sec34}{2}{\@print{4.3.1}\quad{}Oppgaver{}}
+\@@addtocsec{htoc}{sec35}{1}{\@print{4.4}\quad{}Analyse av setninger med leddsetninger{}}
+\newlabel{ex:ledd2}{{4.4}{X}}
+\newlabel{ex:ledd1}{{4.4}{X}}
+\newlabel{ex:ledd3}{{4.4}{X}}
+\newlabel{ex:ledd5}{{4.4}{X}}
+\@@addtocsec{htoc}{sec36}{2}{\@print{4.4.1}\quad{}Oppgaver{}}
+\@@addtocsec{htoc}{sec37}{1}{\@print{4.5}\quad{}Andre typer leddsetninger{}}
+\@@addtocsec{htoc}{sec38}{2}{\@print{4.5.1}\quad{}Infinitivssetninger{}}
+\newlabel{ex:inf}{{4.5.1}{X}}
+\newlabel{ex:inf1}{{4.5.1}{X}}
+\@@addtocsec{htoc}{sec39}{2}{\@print{4.5.2}\quad{}Oppgaver{}}
+\@@addtocsec{htoc}{sec40}{2}{\@print{4.5.3}\quad{}Relativsetninger/adjektiviske leddsetninger{}}
+\newlabel{ex:rel}{{4.5.3}{X}}
+\newlabel{ex:rel2}{{4.5.3}{X}}
+\@@addtocsec{htoc}{sec41}{2}{\@print{4.5.4}\quad{}Oppgaver{}}
+\@@addtocsec{htoc}{sec42}{1}{\@print{4.6}\quad{}Selekterte partikler og preposisjoner{}}
+\@@addtocsec{htoc}{sec43}{2}{\@print{4.6.1}\quad{}Verbalpartikler{}}
+\newlabel{ex:part}{{4.6.1}{X}}
+\newlabel{ex:part1}{{4.6.1}{X}}
+\newlabel{ex:part2}{{4.6.1}{X}}
+\newlabel{ex:part3}{{4.6.1}{X}}
+\@@addtocsec{htoc}{sec44}{2}{\@print{4.6.2}\quad{}Oppgaver{}}
+\@@addtocsec{htoc}{sec45}{2}{\@print{4.6.3}\quad{}Preposisjonsobjekter{}}
+\newlabel{ex:pobj}{{4.6.3}{X}}
+\newlabel{ex:pobj1}{{4.6.3}{X}}
+\newlabel{ex:pobj2}{{4.6.3}{X}}
+\newlabel{ex:pobj5}{{4.6.3}{X}}
+\newlabel{ex:pobj3}{{4.6.3}{X}}
+\newlabel{ex:pobj4}{{4.6.3}{X}}
+\@@addtocsec{htoc}{sec46}{2}{\@print{4.6.4}\quad{}Oppgaver{}}
+\@@addtocsec{htoc}{sec47}{0}{\@print{5}\quad{}Feltanalyse{}}
+\@@addtocsec{htoc}{sec48}{1}{\@print{5.1}\quad{}Helsetninger{}}
+\@@addtocsec{htoc}{sec49}{2}{\@print{5.1.1}\quad{}Analyse{}}
+\@@addtocsec{htoc}{sec50}{2}{\@print{5.1.2}\quad{}Oppgaver{}}
+\@@addtocsec{htoc}{sec51}{1}{\@print{5.2}\quad{}Leddsetninger i helsetninger{}}
+\@@addtocsec{htoc}{sec52}{2}{\@print{5.2.1}\quad{}Analyse{}}
+\newlabel{ex:ledd4}{{5.2.1}{X}}
+\newlabel{ex:ledd4:a}{{5.2.1}{X}}
+\newlabel{ex:ledd4:b}{{5.2.1}{X}}
+\newlabel{ex:ledd4:c}{{5.2.1}{X}}
+\newlabel{ex:rel3}{{5.2.1}{X}}
+\@@addtocsec{htoc}{sec53}{2}{\@print{5.2.2}\quad{}Oppgaver{}}
+\@@addtocsec{htoc}{sec54}{1}{\@print{5.3}\quad{}Leddsetninger{}}
+\@@addtocsec{htoc}{sec55}{2}{\@print{5.3.1}\quad{}Analyse av leddsetninger{}}
+\@@addtocsec{htoc}{sec56}{2}{\@print{5.3.2}\quad{}Oppgaver{}}
