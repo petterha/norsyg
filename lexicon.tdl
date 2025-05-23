@@ -4253,7 +4253,7 @@ noe_q := indef-mass-det &
 ;   [ STEM < "noe" >,
 ;     SYNSEM.LKEYS.KEYREL.PRED "NOE_pron_rel" ].
 
-noe-som-helst := general-pron & keyrel-lex-item &
+noe-som-helst := general-pron &
   [ STEM < "noe", "som", "helst" >,
     SYNSEM [ LOCAL [ CAT.CASE non-subj-case ],
 	     LOCAL.NEG-OUT neg-or-yn_m_rel,
