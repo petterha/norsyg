@@ -35,8 +35,11 @@
   `(,(vsym "SYNSEM") ,(vsym "LOCAL") ,(vsym "CONT") ))
 
 (setf *main-semantics-path* 
-  `(,(vsym "SYNSEM") ,(vsym "LOCAL") ,(vsym "CONT") 
-    ,(vsym "RELS") ,(vsym "LIST")))
+  `(,(vsym "LEXREL") ,(vsym "LIST")))
+
+;; (setf *main-semantics-path* 
+;;   `(,(vsym "SYNSEM") ,(vsym "LOCAL") ,(vsym "CONT") 
+;;     ,(vsym "RELS") ,(vsym "LIST")))
 
 (setf *construction-semantics-path*
   `(,(vsym "C-CONT") ,(vsym "RELS") ,(vsym "LIST")))

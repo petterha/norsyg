@@ -42,7 +42,7 @@ ett-card := neut-sg-card-word &
   [ STEM < "ett" >,
     LEXREL.LIST.FIRST.CARG "1" ].
 
-3b-pn := sg-comm-pn &
+3b_pn := sg-comm-pn &
   [ STEM < "3b" >,
     SYNSEM.LKEYS.KEYREL.CARG "3B" ].
 
@@ -50,19 +50,19 @@ ett-card := neut-sg-card-word &
 ;   [ STEM < "hygge" >,
 ;     SYNSEM.LKEYS.KEYREL.PRED "hygg-rel" ].
 
-Agder-pn := pn-word &
+Agder_pn := pn-word &
   [ STEM < "Agder" >,
     SYNSEM.LKEYS.KEYREL.CARG "Agder" ].
 
-Alfhild-pn := pn-word &
+Alfhild_pn := pn-word &
   [ STEM < "Alfhild" >,
     SYNSEM.LKEYS.KEYREL.CARG "Alfhild" ].
 
-Anne-Lene-pn := pn-word &
+Anne-Lene_pn := pn-word &
   [ STEM < "Anne-Lene" >,
     SYNSEM.LKEYS.KEYREL.CARG "Anne-Lene" ].
 
-Asia-pn := pn-word &
+Asia_pn := pn-word &
   [ STEM < "Asia" >,
     SYNSEM.LKEYS.KEYREL.CARG "Asia" ].
 
@@ -70,7 +70,7 @@ Arna_pn := pn-word &
   [ STEM < "Arna" >,
     SYNSEM.LKEYS.KEYREL.CARG "Arna" ].
 
-Blåryggen-pn := pn-word &
+Blåryggen_pn := pn-word &
   [ STEM < "Blåryggen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Blåryggen" ].
 
@@ -78,55 +78,55 @@ EM-noun-word := mod-noun-word &
   [ STEM < "EM" >,
     SYNSEM.LKEYS.KEYREL.PRED "_europamesterskap-abbriv_rel" ].
 
-England-pn := pn-word &
+England_pn := pn-word &
   [ STEM < "England" >,
     SYNSEM.LKEYS.KEYREL.CARG "England" ].
 
-Hans-pn := pn-word &
+Hans_pn := pn-word &
   [ STEM < "Hans" >,
     SYNSEM.LKEYS.KEYREL.CARG "Hans" ].
 
-Harald-pn := pn-word &
+Harald_pn := pn-word &
   [ STEM < "Harald" >,
     SYNSEM.LKEYS.KEYREL.CARG "Harald" ].
 
-Henrik-pn := pn-word &
+Henrik_pn := pn-word &
   [ STEM < "Henrik" >,
     SYNSEM.LKEYS.KEYREL.CARG "Henrik" ].
 
-Ibsen-pn := pn-word &
+Ibsen_pn := pn-word &
   [ STEM < "Ibsen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Ibsen" ].
 
-Inge-pn := pn-word &
+Inge_pn := pn-word &
   [ STEM < "Inge" >,
     SYNSEM.LKEYS.KEYREL.CARG "Inge" ].
 
-Irmelin-pn := pn-word &
+Irmelin_pn := pn-word &
   [ STEM < "Irmelin" >,
     SYNSEM.LKEYS.KEYREL.CARG "Irmelin" ].
 
-Jesus-pn := pn-word &
+Jesus_pn := pn-word &
   [ STEM < "Jesus" >,
     SYNSEM.LKEYS.KEYREL.CARG "Jesus" ].
 
-Jon-pn := pn-word &
+Jon_pn := pn-word &
   [ STEM < "Jon" >,
     SYNSEM.LKEYS.KEYREL.CARG "Jon" ].
 
-Kari-pn := pn-word &
+Kari_pn := pn-word &
   [ STEM < "Kari" >,
     SYNSEM.LKEYS.KEYREL.CARG "Kari" ].
 
-Marit-pn := pn-word &
+Marit_pn := pn-word &
   [ STEM < "Marit" >,
     SYNSEM.LKEYS.KEYREL.CARG "Marit" ].
 
-NRK-pn := pn-word &
+NRK_pn := pn-word &
   [ STEM < "NRK" >,
     SYNSEM.LKEYS.KEYREL.CARG "NRK" ].
 
-Norge-pn := pn-word &
+Norge_pn := pn-word &
   [ STEM < "Norge" >,
     SYNSEM.LKEYS.KEYREL.CARG "Norge" ].
 
@@ -134,27 +134,27 @@ OL-noun-word := mod-noun-word &
   [ STEM < "OL" >,
     SYNSEM.LKEYS.KEYREL.PRED "_olympiske-leker-abbriv_rel" ].
 
-Ola-pn := pn-word &
+Ola_pn := pn-word &
   [ STEM < "Ola" >,
     SYNSEM.LKEYS.KEYREL.CARG "Ola" ].
 
-Per-pn := pn-word &
+Per_pn := pn-word &
   [ STEM < "Per" >,
     SYNSEM.LKEYS.KEYREL.CARG "Per" ].
 
-Petter-pn := pn-word &
+Petter_pn := pn-word &
   [ STEM < "Petter" >,
     SYNSEM.LKEYS.KEYREL.CARG "Petter" ].
 
-Telemark-pn := pn-word &
+Telemark_pn := pn-word &
   [ STEM < "Telemark" >,
     SYNSEM.LKEYS.KEYREL.CARG "Telemark" ].
 
-Tromsø-pn := pn-word &
+Tromsø_pn := pn-word &
   [ STEM < "Tromsø" >,
     SYNSEM.LKEYS.KEYREL.CARG "Tromsø" ].
 
-Trøndelag-pn := pn-word &
+Trøndelag_pn := pn-word &
   [ STEM < "Trøndelag" >,
     SYNSEM.LKEYS.KEYREL.CARG "Trøndelag" ].
 
@@ -162,11 +162,11 @@ VM-noun-word := mod-noun-word &
   [ STEM < "VM" >,
     SYNSEM.LKEYS.KEYREL.PRED "_verdensmesterskap-abbriv_rel" ].
 
-Ålesund-pn := pn-word &
+Ålesund_pn := pn-word &
   [ STEM < "Ålesund" >,
     SYNSEM.LKEYS.KEYREL.CARG "Ålesund" ].
 
-abrams-pn := sg-comm-pn &
+abrams_pn := sg-comm-pn &
   [ STEM < "Abrams" >,
     SYNSEM.LKEYS.KEYREL.CARG "Abrams" ].
 
@@ -175,22 +175,34 @@ absorbere_v := trans-verb-lxm &
     INFLECTION v2,
     SYNSEM.LKEYS.KEYREL.PRED "_absorbere_12_rel" ].
 
-adskillig_func := func-word &
-  [ STEM < "adskillig" >,
-    SYNSEM.LKEYS.KEYREL.PRED adskillig_prd ].
 
-akkurat_func := func-word &
+
+akkurat_adv := adv-word &
+  [ STEM < "akkurat" >,
+    SYNSEM.LKEYS.KEYREL.PRED _akkurat_adv_rel ].
+
+akkurat_sadv := sadv-word &
+  [ STEM < "akkurat" >,
+    SYNSEM.LKEYS.KEYREL.PRED _akkurat_sadv_rel ].
+
+akkurat_degadv := degadv-word &
   [ STEM < "akkurat" >,
     SYNSEM.LKEYS.KEYREL.PRED akkurat_prd ].
+
 
 albue-n-masc := masc-cmp-count-noun-lxm &
   [ STEM < "albue" >,
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_albue_n_rel" ].
 
-aldri_func := func-word &
+aldri_sadv := sadv-word &
+  [ STEM < "aldri" >,
+    SYNSEM.LKEYS.KEYREL.PRED _aldri_sadv_rel ].
+
+aldri_degadv := degadv-word &
   [ STEM < "aldri" >,
     SYNSEM.LKEYS.KEYREL.PRED aldri_prd ].
+
 
 all_q := comm-all-quant-word &
   [ STEM < "all" > ]. 
@@ -198,20 +210,35 @@ all_q := comm-all-quant-word &
 alle_q := pl-all-quant-word &
   [ STEM < "alle" > ].
 
-allerede_func := func-word &
+allerede_adv := adv-word &
+  [ STEM < "allerede" >,
+    SYNSEM.LKEYS.KEYREL.PRED _allerede_adv_rel ].
+
+allerede_sadv := sadv-word &
+  [ STEM < "allerede" >,
+    SYNSEM.LKEYS.KEYREL.PRED _allerede_sadv_rel ].
+
+allerede_degadv := degadv-word &
   [ STEM < "allerede" >,
     SYNSEM.LKEYS.KEYREL.PRED allerede_prd ].
 
-alltid_func := func-word &
+
+alltid_adv := adv-word &
   [ STEM < "alltid" >,
-    SYNSEM.LKEYS.KEYREL.PRED alltid_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _alltid_adv_rel ].
+
+alltid_sadv := sadv-word &
+  [ STEM < "alltid" >,
+    SYNSEM.LKEYS.KEYREL.PRED _alltid_sadv_rel ].
+
 
 alt_q := neut-all-quant-word &
   [ STEM < "alt" > ].
 
-alt-i-alt_func := func-word &
+alt-i-alt_degadv := degadv-word &
   [ STEM < "alt","i","alt" >,
     SYNSEM.LKEYS.KEYREL.PRED alt*i*alt_prd ].
+
 
 alt-n-masc := masc-cmp-count-noun-lxm &
   [ STEM < "alt" >,
@@ -223,9 +250,14 @@ alt-n-neut := neut-cmp-count-noun-lxm &
     INFLECTION n1,
     SYNSEM.LKEYS.KEYREL.PRED "_alt_n_rel" ].
 
-alt_func := func-word &
+alt_adv := adv-word &
   [ STEM < "alt" >,
-    SYNSEM.LKEYS.KEYREL.PRED alt_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _alt_adv_rel ].
+
+alt_sadv := sadv-word &
+  [ STEM < "alt" >,
+    SYNSEM.LKEYS.KEYREL.PRED _alt_sadv_rel ].
+
 
 andre-card := sg-def-card-word &
   [ STEM < "andre" >,
@@ -260,7 +292,7 @@ anspore_v := main-verb-lxm &
     STEM < "anspore" >,
     SYNSEM.LKEYS.KEYREL.PRED anspore_v ].
 
-ansvarlig-a := mwe-adj-lxm &
+ansvarlig_a := mwe-adj-lxm &
   [ STEM < "ansvarlig" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED ansvarlig_prd ].
@@ -270,11 +302,16 @@ anta_v := main-verb-lxm &
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED anta_v ].
 
-antagelig_func := func-word &
+antagelig_sadv := sadv-word &
+  [ STEM < "antagelig" >,
+    SYNSEM.LKEYS.KEYREL.PRED _antagelig_sadv_rel ].
+
+antagelig_degadv := degadv-word &
   [ STEM < "antagelig" >,
     SYNSEM.LKEYS.KEYREL.PRED antagelig_prd ].
 
-antagelig-a := adj-lxm &
+
+antagelig_a := adj-lxm &
   [ STEM < "antagelig" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_antagelig_a_rel" ].
@@ -284,7 +321,7 @@ appelsinjuice-n-masc := masc-cmp-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_appelsinjuice_n_rel" ].
 
-apple-pn := sg-comm-pn &
+apple_pn := sg-comm-pn &
   [ STEM < "apple" >,
     SYNSEM.LKEYS.KEYREL.CARG "Apple" ].
 
@@ -319,13 +356,13 @@ aroma-n-masc := masc-cmp-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_aroma_n_rel" ].
 
-aroma-pn := sg-comm-pn &
+aroma_pn := sg-comm-pn &
   [ STEM < "aroma" >,
     SYNSEM.LKEYS.KEYREL.CARG "AROMA" ].
 
 at-comp := at-complementizer-word &
   [ STEM < "at" >,
-    SYNSEM [ LOCAL.CAT.HEAD subcompl ] ].
+    SYNSEM.LKEYS.KEYREL.PRED subord_rel ].
 
 atten-card := pl-card-word &
   [ STEM < "18" >,
@@ -341,9 +378,18 @@ august-n-masc := masc-mod-noun-lxm &
     SYNSEM.LKEYS.KEYREL.PRED _august_n_rel,
     INFLECTION m1 ].
 
-av_func := func-word &
+av_prp := prep-word &
   [ STEM < "av" >,
-    SYNSEM.LKEYS.KEYREL.PRED av_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED av_prp ].
+
+av_prt := part-word &
+  [ STEM < "av" >,
+    SYNSEM.LKEYS.KEYREL.PRED av_prt ].
+
+av_adv := adv-word &
+  [ STEM < "av" >,
+    SYNSEM.LKEYS.KEYREL.PRED _av_adv_rel ].
+
 
 avd-card-select-word := card-select-word &
   [ STEM < "avd" >,
@@ -374,7 +420,7 @@ avtegne_v := main-verb-lxm &
     STEM < "avtegne" >,
     SYNSEM.LKEYS.KEYREL.PRED avtegne_v ].
 
-babbage-pn := sg-comm-pn &
+babbage_pn := sg-comm-pn &
   [ STEM < "babbage" >,
     SYNSEM.LKEYS.KEYREL.CARG "Babbage" ].
 
@@ -383,9 +429,14 @@ bak-n-masc := masc-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_bak_n_rel" ].
 
-bak_func := func-word &
+bak_prp := prep-word &
   [ STEM < "bak" >,
-    SYNSEM.LKEYS.KEYREL.PRED bak_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED bak_prp ].
+
+bak_adv := adv-word &
+  [ STEM < "bak" >,
+    SYNSEM.LKEYS.KEYREL.PRED _bak_adv_rel ].
+
 
 bakke-n-masc := masc-cmp-count-noun-lxm &
   [ INFLECTION m1,
@@ -397,7 +448,7 @@ bakke_v := main-verb-lxm &
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED bakke_v ].
 
-bakklandet-pn := sg-neut-pn &
+bakklandet_pn := sg-neut-pn &
   [ STEM < "bakklandet" >,
     SYNSEM.LKEYS.KEYREL.CARG "BAKKLANDET" ].
 
@@ -421,7 +472,7 @@ banan-n-masc := masc-cmp-noun-lxm &
 ;     INFLECTION m1,
 ;     SYNSEM.LKEYS.KEYREL.PRED bane ].
 
-bar-a := adj-lxm &
+bar_a := adj-lxm &
   [ STEM < "bar" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_bar_a_rel" ].
@@ -436,12 +487,25 @@ bar-n-neut := neut-cmp-count-noun-lxm &
     INFLECTION n2,
     SYNSEM.LKEYS.KEYREL.PRED "_bar_n_rel" ].
 
-bare-func := func-word &
+bare_adv := adv-word &
+  [ STEM < "bare" >,
+    SYNSEM.LKEYS.KEYREL.PRED _bare_adv_rel ].
+
+bare_sadv := sadv-word &
+  [ STEM < "bare" >,
+    SYNSEM.LKEYS.KEYREL.PRED _bare_sadv_rel ].
+
+bare_cadv := cadv-word &
+  [ STEM < "bare" >,
+    SYNSEM.LKEYS.KEYREL.PRED _bare_x_rel ].
+
+bare_degadv := degadv-word &
   [ STEM < "bare" >,
     SYNSEM.LKEYS.KEYREL.PRED bare_prd ].
 
-bare-blåbær-pn := sg-comm-pn &
-  [ STEM < "bare", "blåbær" >,
+
+bare-blåbær_pn := sg-comm-pn &
+  [ STEM < "bare","blåbær" >,
     SYNSEM.LKEYS.KEYREL.CARG "Bare Blåbær" ].
 
 barn-n-neut := neut-cmp-count-noun-lxm &
@@ -472,7 +536,7 @@ begynne_v := main-verb-lxm &
     STEM < "begynne" >,
     SYNSEM.LKEYS.KEYREL.PRED begynne_v ].
 
-beitostølen-pn := sg-comm-pn &
+beitostølen_pn := sg-comm-pn &
   [ STEM < "beitostølen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Beitostølen" ].
 
@@ -496,7 +560,7 @@ bemøye_v := main-verb-lxm &
     STEM < "bemøye" >,
     SYNSEM.LKEYS.KEYREL.PRED bemøye_v ].
 
-ben-pn := sg-comm-pn &
+ben_pn := sg-comm-pn &
   [ STEM < "Ben" >,
     SYNSEM.LKEYS.KEYREL.CARG "Ben" ].
 
@@ -510,11 +574,11 @@ beregne_v := main-verb-lxm &
     STEM < "beregne" >,
     SYNSEM.LKEYS.KEYREL.PRED beregne_v ].
 
-besseggen-pn := sg-comm-pn &
+besseggen_pn := sg-comm-pn &
   [ STEM < "besseggen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Besseggen" ].
 
-bessheim-pn := sg-comm-pn &
+bessheim_pn := sg-comm-pn &
   [ STEM < "bessheim" >,
     SYNSEM.LKEYS.KEYREL.CARG "Bessheim" ].
 
@@ -546,7 +610,7 @@ bil-n-masc := masc-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_bil_n_rel" ].
 
-billig-a := adj-lxm &
+billig_a := adj-lxm &
   [ INFLECTION a2,
     STEM < "billig" >,
     SYNSEM.LKEYS.KEYREL.PRED "_billig_a_rel" ].
@@ -556,22 +620,23 @@ bilvei-n-masc := masc-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_bilvei_n_rel" ].
 
-bjarne-pn := sg-comm-pn &
+bjarne_pn := sg-comm-pn &
   [ STEM < "bjarne" >,
     SYNSEM.LKEYS.KEYREL.CARG "BJARNE" ].
 
-bl-a-func := func-word &
+bl-a_degadv := degadv-word &
   [ STEM < "bl.a." >,
     SYNSEM.LKEYS.KEYREL.PRED bl-a_prd ].
 
 
-blant-annet-mod-np := func-word &
+blant-annet_degadv := degadv-word &
   [ STEM < "blant","annet" >,
     SYNSEM.LKEYS.KEYREL.PRED bl-a_prd ].
 
-blant_func := func-word &
+blant_prp := prep-word &
   [ STEM < "blant" >,
-    SYNSEM.LKEYS.KEYREL.PRED blant_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED blant_prp ].
+
 
 blei-n-masc := masc-cmp-count-noun-lxm &
   [ INFLECTION m1,
@@ -613,7 +678,7 @@ blått-n-neut := neut-cmp-count-noun-lxm &
     INFLECTION no-infl,
     SYNSEM.LKEYS.KEYREL.PRED "_blått_n_rel" ].
 
-blæst-pn := sg-comm-pn &
+blæst_pn := sg-comm-pn &
   [ STEM < "blæst" >,
     SYNSEM.LKEYS.KEYREL.CARG "Blæst" ].
 
@@ -627,14 +692,19 @@ bok-n-comm := comm-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_bok_n_rel" ].
 
-bokstavelig-a := adj-lxm &
+bokstavelig_a := adj-lxm &
   [ STEM < "bokstavelig" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_bokstavelig_a_rel" ].
 
-bokstavelig-talt_func := func-word &
+bokstavelig-talt_sadv := sadv-word &
+  [ STEM < "bokstavelig","talt" >,
+    SYNSEM.LKEYS.KEYREL.PRED _bokstavelig*talt_sadv_rel ].
+
+bokstavelig-talt_degadv := degadv-word &
   [ STEM < "bokstavelig","talt" >,
     SYNSEM.LKEYS.KEYREL.PRED bokstavelig*talt_prd ].
+
 
 bord-n-masc := masc-cmp-count-noun-lxm &
   [ STEM < "bord" >,
@@ -646,11 +716,20 @@ bord-n-neut := neut-cmp-count-noun-lxm &
     STEM < "bord" >,
     SYNSEM.LKEYS.KEYREL.PRED "_bord_n_rel" ].
 
-bort_func := func-word &
+bort_prp := prep-word &
   [ STEM < "bort" >,
-    SYNSEM.LKEYS.KEYREL.PRED bort_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED bort_prp ].
 
-bra-a := adj-lxm &
+bort_prt := part-word &
+  [ STEM < "bort" >,
+    SYNSEM.LKEYS.KEYREL.PRED bort_prt ].
+
+bort_adv := adv-word &
+  [ STEM < "bort" >,
+    SYNSEM.LKEYS.KEYREL.PRED _bort_adv_rel ].
+
+
+bra_a := adj-lxm &
   [ INFLECTION a3a,
     STEM < "bra" >,
     SYNSEM.LKEYS.KEYREL.PRED "_bra_a_rel" ].
@@ -700,7 +779,7 @@ bro-n-fem := comm-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_bro_n_rel" ].
 
-browne-pn := sg-comm-pn &
+browne_pn := sg-comm-pn &
   [ STEM < "Browne" >,
     SYNSEM.LKEYS.KEYREL.CARG "Browne" ].
 
@@ -719,12 +798,12 @@ bruk-n-neut := neut-cmp-count-noun-lxm &
     INFLECTION n2,
     SYNSEM.LKEYS.KEYREL.PRED "_bruk_n_rel" ].
 
-brukbar-a := adj-lxm &
+brukbar_a := adj-lxm &
   [ STEM < "brukbar" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_brukbar_a_rel" ].
 
-brukbar-pn := sg-comm-pn &
+brukbar_pn := sg-comm-pn &
   [ STEM < "brukbar" >,
     SYNSEM.LKEYS.KEYREL.CARG "Brukbar" ].
 
@@ -808,7 +887,7 @@ bye-n-comm := comm-cmp-count-noun-lxm &
     SYNSEM.LKEYS.KEYREL.PRED "_bye_n_rel",
     INFLECTION m1 ].
 
-bygdin-pn := sg-comm-pn &
+bygdin_pn := sg-comm-pn &
   [ STEM < "bygdin" >,
     SYNSEM.LKEYS.KEYREL.CARG "Bygdin" ].
 
@@ -817,7 +896,7 @@ bygge_v := main-verb-lxm &
     STEM < "bygge" >,
     SYNSEM.LKEYS.KEYREL.PRED bygge_v ].
 
-byhaven-pn := sg-comm-pn &
+byhaven_pn := sg-comm-pn &
   [ STEM < "byhaven" >,
     SYNSEM.LKEYS.KEYREL.CARG "Byhaven" ].
 
@@ -832,7 +911,7 @@ bytte_v := main-verb-lxm &
     SYNSEM.LKEYS.KEYREL.PRED bytte_v ].
 
 ;; FIXME: både mot Galdhøpiggen og Rondane
-både := func-word &
+både_func := func-word &
   [ STEM < "både" >,
     SYNSEM.LKEYS.KEYREL.PRED _både*og_c_rel ].
 
@@ -841,20 +920,20 @@ bøtte-n-comm := comm-mwe-count-noun-lxm &
     STEM < "bøtte" >,
     SYNSEM.LKEYS.KEYREL.PRED bøtte_prd ].
 
-bøvertun-pn := sg-comm-pn &
+bøvertun_pn := sg-comm-pn &
   [ STEM < "bøvertun" >,
     SYNSEM.LKEYS.KEYREL.CARG "Bøvertun" ].
 
-ca_func := func-word &
+ca_degadv := degadv-word &
   [ STEM < "ca" >,
     SYNSEM.LKEYS.KEYREL.PRED ca_prd ].
 
-ca-mod-punct := func-word &
+ca-punct_degadv := degadv-word &
   [ STEM < "ca." >,
     SYNSEM.LKEYS.KEYREL.PRED ca_prd ].
 
-cafe-larsen-pn := sg-comm-pn &
-  [ STEM < "cafe", "larsen" >,
+cafe-larsen_pn := sg-comm-pn &
+  [ STEM < "cafe","larsen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Cafe Larsen" ].
 
 cappuccino-n-masc := masc-cmp-count-noun-lxm &
@@ -862,8 +941,8 @@ cappuccino-n-masc := masc-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_cappuccino_n_rel" ].
 
-carl-johans-gate-pn := sg-comm-pn &
-  [ STEM < "carl", "johans", "gate" >,
+carl-johans-gate_pn := sg-comm-pn &
+  [ STEM < "carl","johans","gate" >,
     SYNSEM.LKEYS.KEYREL.CARG "Carl Johanes Gate" ].
 
 cd-n-masc := masc-cmp-count-noun-lxm &
@@ -876,15 +955,15 @@ chips-n-masc := masc-cmp-count-noun-lxm &
     STEM < "chips" >,
     SYNSEM.LKEYS.KEYREL.PRED "_chips_n_rel" ].
 
-choco-boco-pn := sg-comm-pn &
-  [ STEM < "choco", "boco" >,
+choco-boco_pn := sg-comm-pn &
+  [ STEM < "choco","boco" >,
     SYNSEM.LKEYS.KEYREL.CARG "Choko Boko" ].
 
-cinemateket-pn := sg-comm-pn &
+cinemateket_pn := sg-comm-pn &
   [ STEM < "cinemateket" >,
     SYNSEM.LKEYS.KEYREL.CARG "Cinemateket" ].
 
-city-pn := sg-comm-pn &
+city_pn := sg-comm-pn &
   [ STEM < "city" >,
     SYNSEM.LKEYS.KEYREL.CARG "City" ].
 
@@ -912,7 +991,7 @@ comma := comma-word &
   [ STEM < "," >,
     SYNSEM.LKEYS.KEYREL.PRED norm_rel ].
 
-commodore-pn := sg-comm-pn &
+commodore_pn := sg-comm-pn &
   [ STEM < "commodore" >,
     SYNSEM.LKEYS.KEYREL.CARG "Commodore" ].
 
@@ -921,13 +1000,22 @@ cortado-n-masc := masc-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_cortado_n_rel" ].
 
-cp-pn := sg-comm-pn &
+cp_pn := sg-comm-pn &
   [ STEM < "cp" >,
     SYNSEM.LKEYS.KEYREL.CARG "CP" ].
 
-da_func := func-word &
+da_adv := adv-word &
   [ STEM < "da" >,
-    SYNSEM.LKEYS.KEYREL.PRED da_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _da_adv_rel ].
+
+da_sadv := sadv-word &
+  [ STEM < "da" >,
+    SYNSEM.LKEYS.KEYREL.PRED _da_sadv_rel ].
+
+da_cadv := cadv-word &
+  [ STEM < "da" >,
+    SYNSEM.LKEYS.KEYREL.PRED _da_x_rel ].
+
 
 dag-n-masc := masc-mwe-count-noun-lxm &
   [ STEM < "dag" >,
@@ -952,7 +1040,7 @@ datasystem-n-neut := neut-cmp-count-noun-lxm &
 de-d1 := pl-def-art-det-word &
   [ STEM < "de" >].
 
-dec-pn := sg-comm-pn &
+dec_pn := sg-comm-pn &
   [ STEM < "dec" >,
     SYNSEM.LKEYS.KEYREL.CARG "Dec" ].
 
@@ -972,7 +1060,7 @@ deg-np := 2sg-pron &
     SYNSEM.LOCAL [ CAT.CASE non-subj-case ] ].
 
 dekke_v := main-verb-lxm &
-  [ STEM <"dekke">,
+  [ STEM < "dekke" >,
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED dekke_v ].
 
@@ -986,9 +1074,18 @@ dele_v := main-verb-lxm &
     INFLECTION v2,
     SYNSEM.LKEYS.KEYREL.PRED dele_v ].
 
-dels_func := func-word &
+dels_adv := adv-word &
+  [ STEM < "dels" >,
+    SYNSEM.LKEYS.KEYREL.PRED _dels_adv_rel ].
+
+dels_sadv := sadv-word &
+  [ STEM < "dels" >,
+    SYNSEM.LKEYS.KEYREL.PRED _dels_sadv_rel ].
+
+dels_degadv := degadv-word &
   [ STEM < "dels" >,
     SYNSEM.LKEYS.KEYREL.PRED dels_prd ].
+
 
 dem-np := 1pl-pron &
   [ STEM < "dem" >,
@@ -997,12 +1094,12 @@ dem-np := 1pl-pron &
 den-d1 := comm-def-art-det-word &
   [ STEM < "den" >].
 
-den-gang_func := func-word &
+den-gang_adv := adv-word &
   [ STEM < "den","gangen" >,
     SYNSEM.LKEYS.KEYREL.PRED den*gang_prd ].
 
-den-gode-nabo-pn := sg-comm-pn &
-  [ STEM < "den", "gode", "nabo" >,
+den-gode-nabo_pn := sg-comm-pn &
+  [ STEM < "den","gode","nabo" >,
     SYNSEM.LKEYS.KEYREL.CARG "Den Gode Nabo" ].
 
 denne_q := comm-dem-det-word &
@@ -1012,31 +1109,47 @@ dens := 3masc-poss &
   [ STEM < "dens" > ].
 ;SYNSEM.LKEYS.KEYREL.ARG2.PNG.ANIM non-human ].
 
-der_func := func-word &
+der_adv := adv-word &
   [ STEM < "der" >,
-    SYNSEM.LKEYS.KEYREL.PRED der_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _der_adv_rel ].
+
+der_cadv := cadv-word &
+  [ STEM < "der" >,
+    SYNSEM.LKEYS.KEYREL.PRED _der_x_rel ].
+
 
 dere-np := 2pl-pron &
   [ STEM < "dere" > ].
 
-deretter_func := func-word &
+deretter_adv := adv-word &
   [ STEM < "deretter" >,
-    SYNSEM.LKEYS.KEYREL.PRED deretter_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _deretter_adv_rel ].
+
+deretter_sadv := sadv-word &
+  [ STEM < "deretter" >,
+    SYNSEM.LKEYS.KEYREL.PRED _deretter_sadv_rel ].
+
 
 deres := 2-3pl-poss &
   [ STEM < "deres" > ].
 
-derfor_func := func-word &
+derfor_adv := adv-word &
   [ STEM < "derfor" >,
-    SYNSEM.LKEYS.KEYREL.PRED derfor_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _derfor_adv_rel ].
+
+derfor_sadv := sadv-word &
+  [ STEM < "derfor" >,
+    SYNSEM.LKEYS.KEYREL.PRED _derfor_sadv_rel ].
+
 
 derfor-sadv-mod := mod-sadv-word &
   [ STEM < "derfor" >,
     SYNSEM.LKEYS.KEYREL.PRED "_derfor_mod_rel" ].
 
-dersom_func := func-word &
+dersom_cadv := cadv-word &
   [ STEM < "dersom" >,
-    SYNSEM.LKEYS.KEYREL.PRED dersom_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _dersom_x_rel ].
+
 
 desember-n-masc := masc-mod-cmp-noun-lxm &
   [ STEM < "desember" >,
@@ -1044,8 +1157,8 @@ desember-n-masc := masc-mod-cmp-noun-lxm &
     SYNSEM.LKEYS.KEYREL.PRED "_desember_n_rel",
     INFLECTION m1 ].
 
-det*at_func := func-word &
-  [ STEM < "det", "at" >,
+det*at_cadv := cadv-word &
+  [ STEM < "det","at" >,
     SYNSEM.LKEYS.KEYREL.PRED det*at_prd ].
 
 ; Took out the MOD <> constraint in order to allow for:
@@ -1092,7 +1205,7 @@ din := masc-2sg-poss &
 dine := pl-2sg-poss &
   [ STEM < "dine" > ].
 
-direkte-a := adj-lxm &
+direkte_a := adj-lxm &
   [ STEM < "direkte" >,
     INFLECTION a3,
     SYNSEM.LKEYS.KEYREL.PRED "_direkte_a_rel" ].
@@ -1125,9 +1238,10 @@ disse_v := main-verb-lxm &
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED disse_v ].
 
-dit_func := func-word &
+dit_adv := adv-word &
   [ STEM < "dit" >,
-    SYNSEM.LKEYS.KEYREL.PRED dit_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _dit_adv_rel ].
+
 
 ditt := neut-2sg-poss &
   [ STEM < "ditt" > ].
@@ -1136,16 +1250,16 @@ dm-noun-word := mod-noun-word &
   [ STEM < "dm" >,
     SYNSEM.LKEYS.KEYREL.PRED "_desiimeter-abbriv_rel" ].
 
-dnt-pn := sg-comm-pn &
+dnt_pn := sg-comm-pn &
   [ STEM < "dnt" >,
     SYNSEM.LKEYS.KEYREL.CARG "DNT" ].
 
-downtown-pn := sg-comm-pn &
+downtown_pn := sg-comm-pn &
   [ STEM < "downtown" >,
     SYNSEM.LKEYS.KEYREL.CARG "DOWNTOWN" ].
 
-dr-livingstone-pn := sg-comm-pn &
-  [ STEM < "dr", "livingstone" >,
+dr-livingstone_pn := sg-comm-pn &
+  [ STEM < "dr","livingstone" >,
     SYNSEM.LKEYS.KEYREL.CARG "DR LIVINGSTONE" ].
 
 drepe_v := main-verb-lxm &
@@ -1183,12 +1297,12 @@ dromedar-n-masc := masc-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_dromedar_n_rel" ].
 
-dromedar-pn := sg-comm-pn &
+dromedar_pn := sg-comm-pn &
   [ STEM < "dromedar" >,
     SYNSEM.LKEYS.KEYREL.CARG "DROMEDAR" ].
 
-dronningens-gate-pn := sg-comm-pn &
-  [ STEM < "dronningens", "gate" >,
+dronningens-gate_pn := sg-comm-pn &
+  [ STEM < "dronningens","gate" >,
     SYNSEM.LKEYS.KEYREL.CARG "Dronningens Gate" ].
 
 dryppe_v := main-verb-lxm &
@@ -1224,7 +1338,7 @@ dvs := conj-word &
   [ STEM < "dvs" >,
     SYNSEM.LKEYS.KEYREL.PRED "_dvs_c_rel" ].
 
-dyr-a := adj-lxm &
+dyr_a := adj-lxm &
   [ INFLECTION a1,
     STEM < "dyr" >,
     SYNSEM.LKEYS.KEYREL.PRED "_dyr_a_rel" ].
@@ -1244,7 +1358,7 @@ dyrke_v := main-verb-lxm &
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED dyrke_v ].
 
-dårlig-a := mwe-adj-lxm &
+dårlig_a := mwe-adj-lxm &
   [ INFLECTION a2,
     STEM < "dårlig" >,
     SYNSEM.LKEYS.KEYREL.PRED dårlig_prd ].
@@ -1254,21 +1368,26 @@ dør-n-comm := comm-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_dør_n_rel" ].
 
-egen-a := adj-lxm &
+egen_a := adj-lxm &
   [ STEM < "egen" >,
     SYNSEM.LKEYS.KEYREL.PRED "_egen_a_rel",
     INFLECTION a1 ].
 
-egentlig-a := adj-lxm &
+egentlig_a := adj-lxm &
   [ STEM < "egentlig" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_egentlig_a_rel" ].
 
-egentlig_func := func-word &
+egentlig_sadv := sadv-word &
+  [ STEM < "egentlig" >,
+    SYNSEM.LKEYS.KEYREL.PRED _egentlig_sadv_rel ].
+
+egentlig_degadv := degadv-word &
   [ STEM < "egentlig" >,
     SYNSEM.LKEYS.KEYREL.PRED egentlig_prd ].
 
-egnet-a := mwe-adj-lxm &
+
+egnet_a := mwe-adj-lxm &
   [ STEM < "egnet" >,
     SYNSEM.LKEYS.KEYREL.PRED egnet_prd, 
     INFLECTION a2 ].
@@ -1276,7 +1395,7 @@ egnet-a := mwe-adj-lxm &
 ; ei_q := fem-indef-art-det-word &
 ;   [ STEM < "ei" > ].
 
-eidsbugarden-pn := sg-comm-pn &
+eidsbugarden_pn := sg-comm-pn &
   [ STEM < "eidsbugarden" >,
     SYNSEM.LKEYS.KEYREL.CARG "Eidsbugarden" ].
 
@@ -1297,9 +1416,14 @@ eller-slash :=  conj-word &
   [ STEM < "/" >,
     SYNSEM.LKEYS.KEYREL.PRED eller_prd ].
 
-ellers_func := func-word &
+ellers_adv := adv-word &
   [ STEM < "ellers" >,
-    SYNSEM.LKEYS.KEYREL.PRED ellers_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _ellers_adv_rel ].
+
+ellers_sadv := sadv-word &
+  [ STEM < "ellers" >,
+    SYNSEM.LKEYS.KEYREL.PRED _ellers_sadv_rel ].
+
 
 elleve-card := pl-card-word &
   [ STEM < "elleve" >,
@@ -1346,7 +1470,7 @@ eple-n-neut := neut-cmp-count-noun-lxm &
     INFLECTION n2,
     SYNSEM.LKEYS.KEYREL.PRED "_eple_n_rel" ].
 
-erichsen-pn := sg-comm-pn &
+erichsen_pn := sg-comm-pn &
   [ STEM < "erichsen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Erichsen" ].
 
@@ -1358,36 +1482,62 @@ espresso-n-masc := masc-cmp-count-noun-lxm &
 ; et_q := neut-indef-art-det-word &
 ;   [ STEM < "et" > ].
 
-etc_func := func-word &
+etc_adv := adv-word &
   [ STEM < "etc" >,
-    SYNSEM.LKEYS.KEYREL.PRED etc_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _etc_adv_rel ].
+
 
 ethvert := neut-hver-quant-word &
   [ STEM < "ethvert" >,
     SYNSEM.LKEYS.Q.QREL.PRED _enhver_q_rel ].
 
-etter_func := func-word &
+etter_prp := prep-word &
   [ STEM < "etter" >,
-    SYNSEM.LKEYS.KEYREL.PRED etter_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED etter_prp ].
 
-etterhvert_func := func-word &
+etter_prt := part-word &
+  [ STEM < "etter" >,
+    SYNSEM.LKEYS.KEYREL.PRED etter_prt ].
+
+etter_adv := adv-word &
+  [ STEM < "etter" >,
+    SYNSEM.LKEYS.KEYREL.PRED _etter_adv_rel ].
+
+etter_cadv := cadv-word &
+  [ STEM < "etter" >,
+    SYNSEM.LKEYS.KEYREL.PRED _etter_x_rel ].
+
+
+etterhvert_sadv := sadv-word &
   [ STEM < "etterhvert" >,
-    SYNSEM.LKEYS.KEYREL.PRED etterhvert_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _etterhvert_sadv_rel ].
+
 
 ettermiddag-n-masc := masc-mod-cmp-noun-lxm &
   [ INFLECTION m1,
     STEM < "ettermiddag" >,
     SYNSEM.LKEYS.KEYREL.PRED "_ettermiddag_n_rel" ].
 
-etterpå-p := func-word &
+ettermiddag-n-mod-masc := mod-noun-noun-lxm &
+  [ STEM < "ettermiddag" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_ettermiddag_n_rel",
+    INFLECTION m1 ].
+
+etterpå_adv := adv-word &
   [ STEM < "etterpå" >,
-    SYNSEM.LKEYS.KEYREL.PRED etterpå_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _etterpå_adv_rel ].
 
-ettersom_func := func-word &
+etterpå_sadv := sadv-word &
+  [ STEM < "etterpå" >,
+    SYNSEM.LKEYS.KEYREL.PRED _etterpå_sadv_rel ].
+
+
+ettersom_cadv := cadv-word &
   [ STEM < "ettersom" >,
-    SYNSEM.LKEYS.KEYREL.PRED ettersom_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _ettersom_x_rel ].
 
-eu-pn := sg-comm-pn &
+
+eu_pn := sg-comm-pn &
   [ STEM < "EU" >,
     SYNSEM.LKEYS.KEYREL.CARG "EU" ].
 
@@ -1401,7 +1551,7 @@ evaluering-n-comm := comm-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_evaluering_n_rel" ].
 
-eventuell-a := adj-lxm &
+eventuell_a := adj-lxm &
   [ INFLECTION a1,
     STEM < "eventuell" >,
     SYNSEM.LKEYS.KEYREL.PRED "_eventuell_a_rel" ].
@@ -1416,9 +1566,10 @@ evne_v := main-verb-lxm &
     STEM < "evne" >,
     SYNSEM.LKEYS.KEYREL.PRED evne_v ].
 
-faktisk_func := func-word &
+faktisk_sadv := sadv-word &
   [ STEM < "faktisk" >,
-    SYNSEM.LKEYS.KEYREL.PRED faktisk_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _faktisk_sadv_rel ].
+
 
 fange-n-masc := masc-cmp-count-noun-lxm &
   [ STEM < "fange" >,
@@ -1430,11 +1581,11 @@ fange_v := main-verb-lxm &
     STEM < "fange" >,
     SYNSEM.LKEYS.KEYREL.PRED fange_v ].
 
-fannaråken-pn := sg-comm-pn &
+fannaråken_pn := sg-comm-pn &
   [ STEM < "fannaråken" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fannaråken" ].
 
-fannaråkhytta-pn := sg-comm-pn &
+fannaråkhytta_pn := sg-comm-pn &
   [ STEM < "fannaråkhytta" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fannaråkhytta" ].
 
@@ -1443,9 +1594,14 @@ fantasere_v := main-verb-lxm &
     INFLECTION v2,
     SYNSEM.LKEYS.KEYREL.PRED fantasere_v ].
 
-fast_func := func-word &
+fast_prt := part-word &
+  [ STEM < "fast" >,
+    SYNSEM.LKEYS.KEYREL.PRED fast_prt ].
+
+fast_degadv := degadv-word &
   [ STEM < "fast" >,
     SYNSEM.LKEYS.KEYREL.PRED fast_prd ].
+
 
 fat-n-neut := neut-mwe-count-noun-lxm &
   [ STEM < "fat" >,
@@ -1458,9 +1614,9 @@ februar-n-masc := masc-mod-cmp-noun-lxm &
     SYNSEM.LKEYS.KEYREL.PRED "_februar_n_rel",
     INFLECTION m1 ].
 
-feks_func := func-word &
+feks_sadv := sadv-word &
   [ STEM < "f.eks." >,
-    SYNSEM.LKEYS.KEYREL.PRED feks_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _feks_sadv_rel ].
 
 felles-adv := adv-comp-word &
   [ STEM < "felles" >,
@@ -1562,14 +1718,15 @@ femtiåttende-card := sg-def-card-word &
   [ STEM < "femtiåttende" >,
     LEXREL.LIST.FIRST.CARG "58-def_rel" ].
 
-ferdig-a := mwe-adj-lxm &
+ferdig_a := mwe-adj-lxm &
   [ STEM < "ferdig" >,
     SYNSEM.LKEYS.KEYREL.PRED ferdig_prd, 
     INFLECTION a2 ].
 
-ferdig_func := func-word &
+ferdig_prt := part-word &
   [ STEM < "ferdig" >,
     SYNSEM.LKEYS.KEYREL.PRED ferdig_prt ].
+
 
 film-n-masc := masc-cmp-count-noun-lxm &
   [ STEM < "film" >,
@@ -1581,7 +1738,7 @@ filmklubb-n-masc := masc-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_filmklubb_n_rel" ].
 
-fin-a := adj-lxm &
+fin_a := adj-lxm &
   [ INFLECTION a1,
     STEM < "fin" >,
     SYNSEM.LKEYS.KEYREL.PRED "_fin_a_rel" ].
@@ -1607,7 +1764,7 @@ finnes_v := intrans-verb-lxm &
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED "_finnes_1_rel" ].
 
-finnmark-pn := sg-comm-pn &
+finnmark_pn := sg-comm-pn &
   [ STEM < "finnmark" >,
     LEXREL.LIST.FIRST.CARG "Finnmark" ].
 
@@ -1619,6 +1776,11 @@ fisk-n-masc := masc-cmp-count-noun-lxm &
   [ INFLECTION m1,
     STEM < "fisk" >,
     SYNSEM.LKEYS.KEYREL.PRED "_fisk_n_rel" ].
+
+fisketur-n-masc := masc-cmp-count-noun-lxm &
+  [ INFLECTION m1,
+    STEM < "fisketur" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_fisketur_n_rel" ].
 
 fjerde-card := sg-def-card-word &
   [ STEM < "fjerde" >,
@@ -1634,11 +1796,11 @@ fjomp-n-masc := masc-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_fjomp_n_rel" ].
 
-fjordane-pn := sg-comm-pn &
+fjordane_pn := sg-comm-pn &
   [ STEM < "fjordane" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fjordane" ].
 
-fjordgaten-pn := sg-comm-pn &
+fjordgaten_pn := sg-comm-pn &
   [ STEM < "fjordgaten" >,
     SYNSEM.LKEYS.KEYREL.CARG "FJORDGATEN" ].
 
@@ -1650,7 +1812,7 @@ fjortende-card := sg-def-card-word &
   [ STEM < "fjortende" >,
     LEXREL.LIST.FIRST.CARG "fjortende_rel" ].
 
-flat-a := adj-lxm &
+flat_a := adj-lxm &
   [ INFLECTION a1,
     STEM < "flat" >,
     SYNSEM.LKEYS.KEYREL.PRED "_flat_a_rel" ].
@@ -1659,22 +1821,22 @@ flere_q := pl-indef-art-det-word &
   [ STEM < "flere" >,
     SYNSEM.LKEYS.Q.QREL.PRED _flere_q_rel ].
 
-flest-func := func-word &
+flest_func := func-word &
   [ STEM < "flest" >,
     SYNSEM [ LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT.HEAD nominal ] >,
 	     LKEYS.KEYREL.PRED flest_prd ] ].
 
-flink-a := mwe-adj-lxm &
+flink_a := mwe-adj-lxm &
   [ INFLECTION a1,
     STEM < "flink" >,
     SYNSEM.LKEYS.KEYREL.PRED flink_prd ].
 
-flokete-a := adj-lxm &
+flokete_a := adj-lxm &
   [ INFLECTION a3a,
     STEM < "flokete" >,
     SYNSEM.LKEYS.KEYREL.PRED "_flokete_a_rel" ].
 
-flott-a := adj-lxm &
+flott_a := adj-lxm &
   [ STEM < "flott" >,
     SYNSEM.LKEYS.KEYREL.PRED "_flott_a_rel",
     INFLECTION a2 ].
@@ -1684,7 +1846,7 @@ flytte_v := main-verb-lxm &
     STEM < "flytte" >,
     SYNSEM.LKEYS.KEYREL.PRED flytte_v ].
 
-fms-pn := sg-comm-pn &
+fms_pn := sg-comm-pn &
   [ STEM < "fms" >,
     SYNSEM.LKEYS.KEYREL.CARG "FMS" ].
 
@@ -1702,7 +1864,7 @@ folk-n-neut := neut-cmp-count-noun-lxm &
     STEM < "folk" >,
     SYNSEM.LKEYS.KEYREL.PRED "_folk_n_rel" ].
 
-fondsbu-pn := sg-comm-pn &
+fondsbu_pn := sg-comm-pn &
   [ STEM < "fondsbu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fondsbu" ].
 
@@ -1710,30 +1872,50 @@ for-cont := continuative-word &
   [ STEM < "for" >,
     SYNSEM.LKEYS.KEYREL.PRED "_for_disc_rel" ].
 
-for_func := func-word &
+for_prp := prep-word &
+  [ STEM < "for" >,
+    SYNSEM.LKEYS.KEYREL.PRED for_prp ].
+
+for_prt := part-word &
+  [ STEM < "for" >,
+    SYNSEM.LKEYS.KEYREL.PRED for_prt ].
+
+for_adv := adv-word &
+  [ STEM < "for" >,
+    SYNSEM.LKEYS.KEYREL.PRED _for_adv_rel ].
+
+for_degadv := degadv-word &
   [ STEM < "for" >,
     SYNSEM.LKEYS.KEYREL.PRED for_prd ].
+
 
 for_deg := mod-adj-adv-word &
   [ STEM < "for" >,
     SYNSEM.LKEYS.KEYREL.PRED for_prd ].
 
-for-øvrig_func := func-word &
+for-øvrig_adv := adv-word &
   [ STEM < "for","øvrig" >,
-    SYNSEM.LKEYS.KEYREL.PRED for*øvrig_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _for*øvrig_adv_rel ].
 
-foran_func := func-word &
+
+foran_prp := prep-word &
   [ STEM < "foran" >,
-    SYNSEM.LKEYS.KEYREL.PRED foran_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED foran_prp ].
+
+foran_adv := adv-word &
+  [ STEM < "foran" >,
+    SYNSEM.LKEYS.KEYREL.PRED _foran_adv_rel ].
+
 
 forberede_v := main-verb-lxm &
   [ INFLECTION v1,
     STEM < "forberede" >,
     SYNSEM.LKEYS.KEYREL.PRED forberede_v ].
 
-fordi_func := func-word &
+fordi_cadv := cadv-word &
   [ STEM < "fordi" >,
-    SYNSEM.LKEYS.KEYREL.PRED fordi_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _fordi_x_rel ].
+
 
 foreslå_v := main-verb-lxm &
   [ STEM < "foreslå" >,
@@ -1759,12 +1941,16 @@ forrige-card-adv := sg-def-card-word &
   [ STEM < "forrige" >,
     SYNSEM.LKEYS.KEYREL.CARG "forrige_a_rel" ].
 
+forrige-indef-sg := indef-sg-da-word &
+  [ STEM < "forrige" >,
+    LEXREL.LIST.FIRST.PRED "_forrige_da_rel" ].
+
 forsamling-n-comm := comm-cmp-count-noun-lxm &
   [ STEM < "forsamling" >,
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_forsamling_n_rel" ].
 
-forskjellig-a := mwe-adj-lxm &
+forskjellig_a := mwe-adj-lxm &
   [ STEM < "forskjellig" >,
     SYNSEM.LKEYS.KEYREL.PRED forskjellig_prd, 
     INFLECTION a2 ].
@@ -1784,36 +1970,46 @@ forsøke_v := main-verb-lxm &
     STEM < "forsøke" >,
     SYNSEM.LKEYS.KEYREL.PRED forsøke_v ].
 
+fort_adv := adv-word &
+  [ STEM < "fort" >,
+    SYNSEM.LKEYS.KEYREL.PRED _fort_adv_rel ].
+
 fortelle_v := main-verb-lxm &
   [ INFLECTION v2,
     STEM < "fortelle" >,
     SYNSEM.LKEYS.KEYREL.PRED fortelle_v ].
 
-fortran-pn := sg-comm-pn &
+fortran_pn := sg-comm-pn &
   [ STEM < "fortran" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fortran" ].
 
-fortreffelig-a := adj-lxm &
+fortreffelig_a := adj-lxm &
   [ INFLECTION a2,
     STEM < "fortreffelig" >,
     SYNSEM.LKEYS.KEYREL.PRED "_fortreffelig_a_rel" ].
 
-fortsatt_func := func-word &
+fortsatt_sadv := sadv-word &
+  [ STEM < "fortsatt" >,
+    SYNSEM.LKEYS.KEYREL.PRED _fortsatt_sadv_rel ].
+
+fortsatt_degadv := degadv-word &
   [ STEM < "fortsatt" >,
     SYNSEM.LKEYS.KEYREL.PRED fortsatt_prd ].
+
 
 fortsette_v := main-verb-lxm &
   [ INFLECTION v2,
     STEM < "fortsette" >,
     SYNSEM.LKEYS.KEYREL.PRED fortsette_v ].
 
-fortundalen-pn := sg-comm-pn &
+fortundalen_pn := sg-comm-pn &
   [ STEM < "fortundalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fortundalen" ].
 
-forøvrig_func := func-word &
+forøvrig_adv := adv-word &
   [ STEM < "forøvrig" >,
-    SYNSEM.LKEYS.KEYREL.PRED forøvrig_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _forøvrig_adv_rel ].
+
 
 fot-n-masc := masc-mwe-count-noun-lxm &
   [ STEM < "fot" >,
@@ -1825,22 +2021,36 @@ fotturrute-n-comm := comm-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_fotturrute_n_rel" ].
 
-fra_func := func-word &
+fra_prp := prep-word &
   [ STEM < "fra" >,
-    SYNSEM.LKEYS.KEYREL.PRED fra_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED fra_prp ].
+
+fra_prt := part-word &
+  [ STEM < "fra" >,
+    SYNSEM.LKEYS.KEYREL.PRED fra_prt ].
+
+fra_adv := adv-word &
+  [ STEM < "fra" >,
+    SYNSEM.LKEYS.KEYREL.PRED _fra_adv_rel ].
+
+fra_cadv := cadv-word &
+  [ STEM < "fra" >,
+    SYNSEM.LKEYS.KEYREL.PRED _fra_x_rel ].
+
 
 frakk-n-masc := masc-cmp-count-noun-lxm &
   [ STEM < "frakk" >,
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_frakk_n_rel" ].
 
-frakken-pn := sg-comm-pn &
+frakken_pn := sg-comm-pn &
   [ STEM < "frakken" >,
     SYNSEM.LKEYS.KEYREL.CARG "FRAKKEN" ].
 
-fram_func := func-word &
+fram_adv := adv-word &
   [ STEM < "fram" >,
-    SYNSEM.LKEYS.KEYREL.PRED fram_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _fram_adv_rel ].
+
 
 framheve_v := main-verb-lxm &
   [ INFLECTION v1,
@@ -1861,16 +2071,17 @@ frastå_v := main-verb-lxm &
     STEM < "frastå" >,
     SYNSEM.LKEYS.KEYREL.PRED frastå_v ].
 
-fredag_func := func-word &
+fredag_adv := adv-word &
   [ STEM < "fredag" >,
-    SYNSEM.LKEYS.KEYREL.PRED fredag_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _fredag_adv_rel ].
+
 
 fredag-n-masc := masc-mod-noun-lxm &
   [ STEM < "fredag" >,
     SYNSEM.LKEYS.KEYREL.PRED _fredag_n_rel,
     INFLECTION m1 ].
 
-freebsd-pn := sg-comm-pn &
+freebsd_pn := sg-comm-pn &
   [ STEM < "freebsd" >,
     SYNSEM.LKEYS.KEYREL.CARG "Freebsd" ].
 
@@ -1888,8 +2099,8 @@ fremste_adj_sup_word := adj_sup_word &
     SYNSEM [ LKEYS.KEYREL.PRED "_fremste_adj_rel",
 	     SAT - ] ].
 
-fru-lundgreen-pn := sg-comm-pn &
-  [ STEM < "fru", "lundgreen" >,
+fru-lundgreen_pn := sg-comm-pn &
+  [ STEM < "fru","lundgreen" >,
     SYNSEM.LKEYS.KEYREL.CARG "FRU LUNDGREN" ].
 
 frukt-n-comm := comm-cmp-count-noun-lxm &
@@ -1912,7 +2123,7 @@ fyre_v := main-verb-lxm &
     INFLECTION v2,
     SYNSEM.LKEYS.KEYREL.PRED fyre_v ].
 
-få-a := adj-lxm &
+få_a := adj-lxm &
   [ INFLECTION a3,
     STEM < "få" >,
     SYNSEM [ LOCAL.CONT.HOOK.INDEX.PNG.PN pl,
@@ -1954,21 +2165,41 @@ føle_v := main-verb-lxm &
     INFLECTION v2, 
     SYNSEM.LKEYS.KEYREL.PRED føle_v ].
 
-før_func := func-word &
+før_prp := prep-word &
   [ STEM < "før" >,
-    SYNSEM.LKEYS.KEYREL.PRED før_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED før_prp ].
 
-tidt-og-ofte_func := func-word &
+før_adv := adv-word &
+  [ STEM < "før" >,
+    SYNSEM.LKEYS.KEYREL.PRED _før_adv_rel ].
+
+før_cadv := cadv-word &
+  [ STEM < "før" >,
+    SYNSEM.LKEYS.KEYREL.PRED _før_x_rel ].
+
+
+tidt-og-ofte_adv := adv-word &
   [ STEM < "tidt","og","ofte" >,
-    SYNSEM.LKEYS.KEYREL.PRED tidt*og*ofte_prd ].
-    
-først-og-fremst_func := func-word &
-  [ STEM < "først","og","fremst" >,
-    SYNSEM.LKEYS.KEYREL.PRED først*og*fremst_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _tidt*og*ofte_adv_rel ].
 
-først_func := func-word &
+    
+først-og-fremst_sadv := sadv-word &
+  [ STEM < "først","og","fremst" >,
+    SYNSEM.LKEYS.KEYREL.PRED _først*og*fremst_sadv_rel ].
+
+
+først_adv := adv-word &
+  [ STEM < "først" >,
+    SYNSEM.LKEYS.KEYREL.PRED _først_adv_rel ].
+
+først_sadv := sadv-word &
+  [ STEM < "først" >,
+    SYNSEM.LKEYS.KEYREL.PRED _først_sadv_rel ].
+
+først_degadv := degadv-word &
   [ STEM < "først" >,
     SYNSEM.LKEYS.KEYREL.PRED først_prd ].
+
 
 først-p := mod-prep-word &
   [ STEM < "først" >,
@@ -2062,11 +2293,11 @@ g-noun-word := mod-noun-word &
   [ STEM < "g" >,
     SYNSEM.LKEYS.KEYREL.PRED "_gram-abbriv_rel" ].
 
-galdhøpiggen-pn := sg-comm-pn &
+galdhøpiggen_pn := sg-comm-pn &
   [ STEM < "galdhøpiggen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Galdhøpiggen" ].
 
-gammel-a := adj-lxm &
+gammel_a := adj-lxm &
   [ STEM < "gammel" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_gammel_a_rel" ].
@@ -2105,7 +2336,7 @@ gi_v := main-verb-lxm &
     STEM < "gi" >,
     SYNSEM.LKEYS.KEYREL.PRED gi_v ].
 
-gilroy-pn := sg-comm-pn &
+gilroy_pn := sg-comm-pn &
   [ STEM < "gilroy" >,
     SYNSEM.LKEYS.KEYREL.CARG "GILROY" ].
 
@@ -2114,21 +2345,26 @@ gjelde_v := trans-verb-lxm &
     STEM < "gjelde" >,
     SYNSEM.LKEYS.KEYREL.PRED "_gjelde_12_rel" ].
 
-gjende-pn := sg-comm-pn &
+gjende_pn := sg-comm-pn &
   [ STEM < "gjende" >,
     SYNSEM.LKEYS.KEYREL.CARG "Gjende" ].
 
-gjendebu-pn := sg-comm-pn &
+gjendebu_pn := sg-comm-pn &
   [ STEM < "gjendebu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Gjendebu" ].
 
-gjendesheim-pn := sg-comm-pn &
+gjendesheim_pn := sg-comm-pn &
   [ STEM < "gjendesheim" >,
     SYNSEM.LKEYS.KEYREL.CARG "Gjendesheim" ].
 
-gjennom_func := func-word &
+gjennom_prp := prep-word &
   [ STEM < "gjennom" >,
-    SYNSEM.LKEYS.KEYREL.PRED gjennom_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED gjennom_prp ].
+
+gjennom_prt := part-word &
+  [ STEM < "gjennom" >,
+    SYNSEM.LKEYS.KEYREL.PRED gjennom_prt ].
+
 
 gjennomføring-n-comm := comm-cmp-count-noun-lxm &
   [ STEM < "gjennomføring" >,
@@ -2150,7 +2386,7 @@ gjøre_v := main-verb-lxm &
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED gjøre_v ].
 
-glad-a := mwe-adj-lxm &
+glad_a := mwe-adj-lxm &
   [ STEM < "glad" >,
     SYNSEM.LKEYS.KEYREL.PRED glad_prd, 
     INFLECTION a2 ].
@@ -2170,7 +2406,7 @@ glemme_v := main-verb-lxm &
     STEM < "glemme" >,
     SYNSEM.LKEYS.KEYREL.PRED glemme_v ].
 
-glitterheim-pn := sg-comm-pn &
+glitterheim_pn := sg-comm-pn &
   [ STEM < "glitterheim" >,
     SYNSEM.LKEYS.KEYREL.CARG "Glitterheim" ].
 
@@ -2178,18 +2414,27 @@ gnr-card-select-word := card-select-word &
   [ STEM < "gnr" >,
     SYNSEM.LKEYS.KEYREL.PRED "_gårdsnummer-abbriv_rel" ].
 
-god-a := mwe-adj-lxm &
+god_a := mwe-adj-lxm &
   [ INFLECTION a1,
     STEM < "god" >,
     SYNSEM.LKEYS.KEYREL.PRED god_prd ].
 
-godt_deg := func-word &
+godt_prt := part-word &
+  [ STEM < "godt" >,
+    SYNSEM.LKEYS.KEYREL.PRED godt_prt ].
+
+godt_degadv := degadv-word &
   [ STEM < "godt" >,
     SYNSEM.LKEYS.KEYREL.PRED godt_prd ].
 
-godt-brød-pn := sg-neut-pn &
-  [ STEM < "godt", "brød" >,
+
+godt-brød_pn := sg-neut-pn &
+  [ STEM < "godt","brød" >,
     SYNSEM.LKEYS.KEYREL.CARG "Godt Brød" ].
+
+granada_pn := sg-comm-pn &
+  [ STEM < "granada" >,
+    LEXREL.LIST.FIRST.CARG "Granada" ].
 
 gress-n-neut := neut-cmp-count-noun-lxm &
   [ INFLECTION n1,
@@ -2201,7 +2446,7 @@ grått-n-neut := neut-cmp-count-noun-lxm &
     SYNSEM.LKEYS.KEYREL.PRED "_grått_n_rel",
     INFLECTION no-infl ].
 
-grønn-a := adj-lxm &
+grønn_a := adj-lxm &
   [ STEM < "grønn" >,
     SYNSEM.LKEYS.KEYREL.PRED "_grønn_a_rel", 
     INFLECTION a1 ].
@@ -2216,7 +2461,7 @@ gud-n-masc := masc-cmp-count-noun-lxm &
     STEM < "gud" >,
     SYNSEM.LKEYS.KEYREL.PRED "_gud_n_rel" ].
 
-gul-a := adj-lxm &
+gul_a := adj-lxm &
   [ STEM < "gul" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_gul_a_rel" ].
@@ -2231,7 +2476,7 @@ gutt-n-masc := masc-cmp-count-noun-lxm &
     STEM < "gutt" >,
     SYNSEM.LKEYS.KEYREL.PRED "_gutt_n_rel" ].
 
-gyrd-pn := sg-comm-pn &
+gyrd_pn := sg-comm-pn &
   [ STEM < "Gyrd" >,
     SYNSEM.LKEYS.KEYREL.CARG "Gyrd" ].
 
@@ -2248,12 +2493,12 @@ går-n-word := mod-noun-word &
   [ STEM < "går" >,
     SYNSEM.LKEYS.KEYREL.PRED "_går_n_rel" ].
 
-gøy-a := adj-lxm &
+gøy_a := adj-lxm &
   [ INFLECTION a2,
     STEM < "gøy" >,
     SYNSEM.LKEYS.KEYREL.PRED "_gøy_a_rel" ].
 
-gøyal-a := adj-lxm &
+gøyal_a := adj-lxm &
   [ INFLECTION a1,
     STEM < "gøyal" >,
     SYNSEM.LKEYS.KEYREL.PRED "_gøyal_a_rel" ].
@@ -2268,9 +2513,10 @@ ha_v := main-verb-lxm &
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED ha_v ].
 
-halv-mod := func-word &
+halv_degadv := degadv-word &
   [ STEM < "halv" >,
     SYNSEM.LKEYS.KEYREL.PRED halv_prd ].
+
 
 halvannen_q := indef-count-det &
   [ STEM < "halvannen" >,
@@ -2291,9 +2537,7 @@ halve_v := trans-verb-lxm &
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED "_halve_12_rel" ].
 
-halvt_func := func-word &
-  [ STEM < "halvt" >,
-    SYNSEM.LKEYS.KEYREL.PRED halvt_prd ].
+
 
 ham-n-masc := masc-cmp-count-noun-lxm &
   [ STEM < "ham" >,
@@ -2311,12 +2555,12 @@ hans := 3masc-poss &
   [ STEM < "hans" > ].
 ;    SYNSEM.LKEYS.KEYREL.ARG2.PNG.ANIM human ].
 
-harry-a := adj-lxm &
+harry_a := adj-lxm &
   [ INFLECTION a3a,
     STEM < "harry" >,
     SYNSEM.LKEYS.KEYREL.PRED "_harry_a_rel" ].
 
-harveys-pn := sg-comm-pn &
+harveys_pn := sg-comm-pn &
   [ STEM < "harveys" >,
     SYNSEM.LKEYS.KEYREL.CARG "HARVEYS" ].
 
@@ -2334,9 +2578,14 @@ hei-cont := continuative-word &
   [ STEM < "hei" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hei-rel" ].
 
-heldigvis_func := func-word &
+heldigvis_adv := adv-word &
   [ STEM < "heldigvis" >,
-    SYNSEM.LKEYS.KEYREL.PRED heldigvis_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _heldigvis_adv_rel ].
+
+heldigvis_sadv := sadv-word &
+  [ STEM < "heldigvis" >,
+    SYNSEM.LKEYS.KEYREL.PRED _heldigvis_sadv_rel ].
+
 
 hele := sg-quant-word &
   [ STEM < "hele" >,
@@ -2347,13 +2596,20 @@ hele_v := main-verb-lxm &
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED hele_v ].
 
-heller_func := func-word &
+heller_adv := adv-word &
+  [ STEM < "heller" >,
+    SYNSEM.LKEYS.KEYREL.PRED _heller_adv_rel ].
+
+heller_sadv := sadv-word &
+  [ STEM < "heller" >,
+    SYNSEM.LKEYS.KEYREL.PRED _heller_sadv_rel ].
+
+heller_degadv := degadv-word &
   [ STEM < "heller" >,
     SYNSEM.LKEYS.KEYREL.PRED heller_prd ].
 
-helt_func := func-word &
-  [ STEM < "helt" >,
-    SYNSEM.LKEYS.KEYREL.PRED helt_prd ].
+
+
 
 henge_v := main-verb-lxm &
   [ STEM < "henge" >,
@@ -2378,9 +2634,10 @@ henvendelse-n-masc := masc-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_henvendelse_n_rel" ].
 
-her_func := func-word &
+her_adv := adv-word &
   [ STEM < "her" >,
-    SYNSEM.LKEYS.KEYREL.PRED her_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _her_adv_rel ].
+
 
 hest-n-masc := masc-cmp-count-noun-lxm &
   [ INFLECTION m1,
@@ -2406,9 +2663,10 @@ hg-noun-word := mod-noun-word &
   [ STEM < "hg" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hekto-abbriv_rel" ].
 
-hit_func := func-word &
+hit_adv := adv-word &
   [ STEM < "hit" >,
-    SYNSEM.LKEYS.KEYREL.PRED hit_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _hit_adv_rel ].
+
 
 hit-n-masc := masc-cmp-count-noun-lxm &
   [ STEM < "hit" >,
@@ -2445,9 +2703,10 @@ hoppe_v := main-verb-lxm &
     STEM < "hoppe" >,
     SYNSEM.LKEYS.KEYREL.PRED hoppe_v ].
 
-hos_func := func-word &
+hos_prp := prep-word &
   [ STEM < "hos" >,
-    SYNSEM.LKEYS.KEYREL.PRED hos_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED hos_prp ].
+
 
 hun-np := fem-pron &
   [ STEM < "hun" >,
@@ -2520,23 +2779,28 @@ hvilket_q := neut-wh-det-word &
   [ STEM < "hvilket" >,
     SYNSEM.LOCAL.CAT.HEAD.MESS wh-question_m_rel ].
 
-hvis_func := func-word &
+hvilket_func := func-wh-word &
+  [ STEM < "hvilket" >,
+    SYNSEM.LKEYS.KEYREL.PRED hvilket_prd ].
+
+hvis_cadv := cadv-word &
   [ STEM < "hvis" >,
-    SYNSEM.LKEYS.KEYREL.PRED hvis_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _hvis_x_rel ].
+
 
 hvitt-n-neut := neut-cmp-count-noun-lxm &
   [ STEM < "hvitt" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hvitt_n_rel",
     INFLECTION no-infl ].
 
-hva_func := func-wh-word &
-  [ STEM < "hva" >,
-    SYNSEM.LOCAL.CAT.CASE non-subj-case,
-    SYNSEM.LKEYS.KEYREL.PRED hva_prd ].
+; hva_func := func-wh-word &
+;   [ STEM < "hva" >,
+;     SYNSEM.LOCAL.CAT.CASE non-subj-case,
+;     SYNSEM.LKEYS.KEYREL.PRED hva_prd ].
 
 hva*som_func := func-wh-word &
-  [ STEM < "hva", "som" >,
-    SYNSEM.LKEYS.KEYREL.PRED hva_prd ].
+  [ STEM < "hva","som" >,
+    SYNSEM.LKEYS.KEYREL.PRED _hva*som_rel ].
 
 hvem_func := func-wh-word &
   [ STEM < "hvem" >,
@@ -2544,16 +2808,24 @@ hvem_func := func-wh-word &
     SYNSEM.LKEYS.KEYREL.PRED hvem_prd ].
 
 hvem*som_func := func-wh-word &
-  [ STEM < "hvem", "som" >,
-    SYNSEM.LKEYS.KEYREL.PRED hvem_prd ].
+  [ STEM < "hvem","som" >,
+    SYNSEM.LKEYS.KEYREL.PRED _hvem*som_rel ].
 
 hvor_func := func-wh-word &
   [ STEM < "hvor" >,
     SYNSEM.LKEYS.KEYREL.PRED hvor_prd ].
 
+hvor_comp := wh-complementizer-word &
+  [ STEM < "hvor" >,
+    SYNSEM.LKEYS.KEYREL.PRED "hvor_rel" ].
+
 hvorfor_func := func-wh-word &
   [ STEM < "hvorfor" >,
     SYNSEM.LKEYS.KEYREL.PRED hvorfor_prd ].
+
+hvorfor_comp := wh-complementizer-word &
+  [ STEM < "hvorfor" >,
+    SYNSEM.LKEYS.KEYREL.PRED "hvorfor_rel" ].
 
 ; hvor-adv := where-word &
 ;   [ STEM < "hvor" >,
@@ -2571,7 +2843,7 @@ hvor-mange_q := pl-indef-art-det-word &
   [ STEM < "hvor","mange" >,
     SYNSEM.LKEYS.Q.QREL.PRED _hvor-mange_q_rel ].
 
-hvor-mye-a := mod-adj-adv-nominal-prep-word &
+hvor-mye_a := sg-indef-art-det-word &
   [ STEM < "hvor","mye" >,
     SYNSEM.LKEYS.Q.QREL.PRED _hvor-mye_q_rel ].
 
@@ -2579,17 +2851,23 @@ hvor-mye-a := mod-adj-adv-nominal-prep-word &
   [ STEM < "åssen" >,
     SYNSEM.LKEYS.KEYREL.PRED åssen_prd ].
 
-hvordan_func := func-word &
+hvordan_func := func-wh-word &
   [ STEM < "hvordan" >,
     SYNSEM.LKEYS.KEYREL.PRED hvordan_prd ].
 
-hvorledes_func := func-word &
-  [ STEM < "hvorledes" >,
-    SYNSEM.LKEYS.KEYREL.PRED hvorledes_prd ].
+hvordan_comp := wh-complementizer-word &
+  [ STEM < "hvordan" >,
+    SYNSEM.LKEYS.KEYREL.PRED "hvordan_rel" ].
 
-hvorvidt_func := func-word &
+hvorledes_adv := adv-word &
+  [ STEM < "hvorledes" >,
+    SYNSEM.LKEYS.KEYREL.PRED _hvorledes_adv_rel ].
+
+
+hvorvidt_cadv := cadv-word &
   [ STEM < "hvorvidt" >,
-    SYNSEM.LKEYS.KEYREL.PRED hvorvidt_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _hvorvidt_x_rel ].
+
 
 hygge-n-fem := comm-cmp-count-noun-lxm &
   [ STEM < "hygge" >,
@@ -2620,7 +2898,7 @@ høst-n-masc := masc-mod-noun-lxm &
     SYNSEM.LKEYS.KEYREL.PRED _høst_n_rel,
     INFLECTION m1 ].
 
-høy-a := adj-lxm &
+høy_a := adj-lxm &
   [ INFLECTION a1,
     STEM < "høy" >,
     SYNSEM.LKEYS.KEYREL.PRED "_høy_a_rel" ].
@@ -2630,70 +2908,98 @@ høy-n-neut := neut-cmp-count-noun-lxm &
     INFLECTION n1,
     SYNSEM.LKEYS.KEYREL.PRED "_høy_n_rel" ].
 
-i-alle-fall_func := func-word &
+i-alle-fall_sadv := sadv-word &
+  [ STEM < "i","alle","fall" >,
+    SYNSEM.LKEYS.KEYREL.PRED _i*alle*fall_sadv_rel ].
+
+i-alle-fall_degadv := degadv-word &
   [ STEM < "i","alle","fall" >,
     SYNSEM.LKEYS.KEYREL.PRED i*alle*fall_prd ].
 
-i-det-hele-tatt_func := func-word &
+
+i-det-hele-tatt_sadv := sadv-word &
   [ STEM < "i","det","hele","tatt" >,
-    SYNSEM.LKEYS.KEYREL.PRED i*det*hele*tatt_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _i*det*hele*tatt_sadv_rel ].
 
-i*egenskap*av_func := func-word &
-  [ STEM < "i", "egenskap", "av" >,
-    SYNSEM.LKEYS.KEYREL.PRED i*egenskap*av_prd ].
 
-i*ferd*med_func := func-word &
-  [ STEM < "i", "ferd", "med" >,
-    SYNSEM.LKEYS.KEYREL.PRED i*ferd*med_prd ].
+i*egenskap*av_prp := prp-word &
+  [ STEM < "i","egenskap","av" >,
+    SYNSEM.LKEYS.KEYREL.PRED i*egenskap*av_prp ].
 
-i-fjor_func := func-word &
+i*ferd*med_prp := prp-word &
+  [ STEM < "i","ferd","med" >,
+    SYNSEM.LKEYS.KEYREL.PRED i*ferd*med_prp ].
+
+i-fjor_adv := adv-word &
   [ STEM < "i","fjor" >,
-    SYNSEM.LKEYS.KEYREL.PRED i*fjor_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _i*fjor_adv_rel ].
 
-i-går_func := func-word &
+
+i-går_adv := adv-word &
   [ STEM < "i","går" >,
-    SYNSEM.LKEYS.KEYREL.PRED i*går_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _i*går_adv_rel ].
 
-i-hvert-fall_func := func-word &
+
+i-hvert-fall_adv := adv-word &
+  [ STEM < "i","hvert","fall" >,
+    SYNSEM.LKEYS.KEYREL.PRED _i*hvert*fall_adv_rel ].
+
+i-hvert-fall_degadv := degadv-word &
   [ STEM < "i","hvert","fall" >,
     SYNSEM.LKEYS.KEYREL.PRED i*hvert*fall_prd ].
 
-i-løpet-av_func := func-word &
+
+i-løpet-av_prp := prep-word &
   [ STEM < "i","løpet","av" >,
-    SYNSEM.LKEYS.KEYREL.PRED i*løpet*av_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED i*løpet*av_prp ].
+
 
 ; i_func := func-word &
 ;   [ STEM < "i" >,
 ;     SYNSEM.LKEYS.KEYREL.PRED i_prd ].
 
-i-så-måte_func := func-word &
+i-så-måte_adv := adv-word &
   [ STEM < "i","så","måte" >,
-    SYNSEM.LKEYS.KEYREL.PRED i*så*måte_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _i*så*måte_adv_rel ].
 
-i-tide_func := func-word &
+
+i-tide_adv := adv-word &
   [ STEM < "i","tide" >,
-    SYNSEM.LKEYS.KEYREL.PRED i*tide_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _i*tide_adv_rel ].
 
-i-tide-og-utide_func := func-word &
+
+i-tide-og-utide_sadv := sadv-word &
   [ STEM < "i","tide","og","utide" >,
-    SYNSEM.LKEYS.KEYREL.PRED i*tide*og*utide_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _i*tide*og*utide_sadv_rel ].
 
-iallfall_func := func-word &
+
+iallfall_adv := adv-word &
   [ STEM < "iallfall" >,
-    SYNSEM.LKEYS.KEYREL.PRED iallfall_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _iallfall_adv_rel ].
+
+iallfall_sadv := sadv-word &
+  [ STEM < "iallfall" >,
+    SYNSEM.LKEYS.KEYREL.PRED _iallfall_sadv_rel ].
+
 
 iberegne_v := main-verb-lxm &
   [ STEM < "iberegne" >,
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED iberegne_v ].
 
-ibm-pn := sg-comm-pn &
+ibm_pn := sg-comm-pn &
   [ STEM < "ibm" >,
     SYNSEM.LKEYS.KEYREL.CARG "IBM" ].
 
-idag_func := func-word &
+idag_adv := adv-word &
   [ STEM < "idag" >,
-    SYNSEM.LKEYS.KEYREL.PRED idag_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _idag_adv_rel ].
+
+
+idealtid-n-comm := comm-cmp-count-noun-lxm &
+  [ STEM < "idealtid" >,
+    INFLECTION m1,
+    SYNSEM.LKEYS.KEYREL.PRED "_idealtid_n_rel" ].
 
 idiot-n-masc := masc-cmp-count-noun-lxm &
   [ STEM < "idiot" >,
@@ -2704,25 +3010,55 @@ ifølge-adv := adv-comp-word &
   [ STEM < "ifølge" >,
     SYNSEM.LKEYS.KEYREL.PRED "_ifølge_a_rel" ].
 
-igjen_func := func-word &
+igjen_prp := prep-word &
   [ STEM < "igjen" >,
-    SYNSEM.LKEYS.KEYREL.PRED igjen_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED igjen_prp ].
 
-ikke_func := down-func-word &
+igjen_prt := part-word &
+  [ STEM < "igjen" >,
+    SYNSEM.LKEYS.KEYREL.PRED igjen_prt ].
+
+igjen_adv := adv-word &
+  [ STEM < "igjen" >,
+    SYNSEM.LKEYS.KEYREL.PRED _igjen_adv_rel ].
+
+igjen_sadv := sadv-word &
+  [ STEM < "igjen" >,
+    SYNSEM.LKEYS.KEYREL.PRED _igjen_sadv_rel ].
+
+ikke_sadv := down-func-word &
   [ STEM < "ikke" >,
-    SYNSEM.LKEYS.KEYREL.PRED ikke_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _ikke_sadv_rel ].
+
+ikke_degadv := degadv-word &
+  [ STEM < "ikke" >,
+    SYNSEM.LKEYS.KEYREL.PRED _ikke_deg-imp_rel ].
 
 ikt-noun-word := mod-noun-word &
   [ STEM < "ikt" >,
     SYNSEM.LKEYS.KEYREL.PRED "_ikt_rel" ].
 
-imidlertid_func := func-word &
+imidlertid_adv := adv-word &
   [ STEM < "imidlertid" >,
-    SYNSEM.LKEYS.KEYREL.PRED imidlertid_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _imidlertid_adv_rel ].
 
-imot_func := func-word &
+imidlertid_sadv := sadv-word &
+  [ STEM < "imidlertid" >,
+    SYNSEM.LKEYS.KEYREL.PRED _imidlertid_sadv_rel ].
+
+
+imot_prp := prep-word &
   [ STEM < "imot" >,
-    SYNSEM.LKEYS.KEYREL.PRED imot_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED imot_prp ].
+
+imot_prt := part-word &
+  [ STEM < "imot" >,
+    SYNSEM.LKEYS.KEYREL.PRED imot_prt ].
+
+imot_adv := adv-word &
+  [ STEM < "imot" >,
+    SYNSEM.LKEYS.KEYREL.PRED _imot_adv_rel ].
+
 
 indef-pl-annen := indef-pl-da-word &
   [ STEM < "andre" >,
@@ -2818,11 +3154,11 @@ individ-n-neut := neut-cmp-count-noun-lxm &
     STEM < "individ" >,
     SYNSEM.LKEYS.KEYREL.PRED "_individ_n_rel" ].
 
-individuell-a := adj-lxm &
+individuell_a := adj-lxm &
   [ STEM < "individuell" >,
     SYNSEM.LKEYS.KEYREL.PRED "_individuell_a_rel" ].
 
-indre-a := adj-lxm &
+indre_a := adj-lxm &
   [ INFLECTION a2,
     STEM < "indre" >,
     SYNSEM.LKEYS.KEYREL.PRED "_indre_a_rel" ].
@@ -2850,7 +3186,7 @@ ingen := down-entailing-quant &
   [ STEM < "ingen" >,
     SYNSEM.LKEYS.Q.QREL.PRED _ingen_q_rel ].
 
-ingjerdbu-pn := sg-comm-pn &
+ingjerdbu_pn := sg-comm-pn &
   [ STEM < "ingjerdbu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Ingjerdbu" ].
 
@@ -2862,33 +3198,72 @@ inkludert-p := prep-nounmod-word &
   [ STEM < "inkludert" >,
     SYNSEM.LKEYS.KEYREL.PRED inkludert_prd ].
 
-inn_func := func-word &
+inn_prp := prep-word &
   [ STEM < "inn" >,
-    SYNSEM.LKEYS.KEYREL.PRED inn_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED inn_prp ].
 
-inne_func := func-word &
+inn_prt := part-word &
+  [ STEM < "inn" >,
+    SYNSEM.LKEYS.KEYREL.PRED inn_prt ].
+
+inn_adv := adv-word &
+  [ STEM < "inn" >,
+    SYNSEM.LKEYS.KEYREL.PRED _inn_adv_rel ].
+
+
+inne_prt := part-word &
   [ STEM < "inne" >,
-    SYNSEM.LKEYS.KEYREL.PRED inne_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED inne_prt ].
 
-innenfor_func := func-word &
+inne_adv := adv-word &
+  [ STEM < "inne" >,
+    SYNSEM.LKEYS.KEYREL.PRED _inne_adv_rel ].
+
+
+innenfor_prp := prep-word &
   [ STEM < "innenfor" >,
-    SYNSEM.LKEYS.KEYREL.PRED innenfor_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED innenfor_prp ].
 
-innenlands_func := func-word &
+innenfor_adv := adv-word &
+  [ STEM < "innenfor" >,
+    SYNSEM.LKEYS.KEYREL.PRED _innenfor_adv_rel ].
+
+
+innenlands_adv := adv-word &
   [ STEM < "innenlands" >,
-    SYNSEM.LKEYS.KEYREL.PRED innenlands_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _innenlands_adv_rel ].
 
-innom_func := func-word &
+
+innom_prp := prep-word &
   [ STEM < "innom" >,
-    SYNSEM.LKEYS.KEYREL.PRED innom_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED innom_prp ].
 
-innover_func := func-word &
+innom_adv := adv-word &
+  [ STEM < "innom" >,
+    SYNSEM.LKEYS.KEYREL.PRED _innom_adv_rel ].
+
+
+innover_prp := prep-word &
   [ STEM < "innover" >,
-    SYNSEM.LKEYS.KEYREL.PRED innover_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED innover_prp ].
 
-inntil_func := func-word &
+innover_adv := adv-word &
+  [ STEM < "innover" >,
+    SYNSEM.LKEYS.KEYREL.PRED _innover_adv_rel ].
+
+
+inntil_prp := prep-word &
+  [ STEM < "inntil" >,
+    SYNSEM.LKEYS.KEYREL.PRED inntil_prp ].
+
+inntil_cadv := cadv-word &
+  [ STEM < "inntil" >,
+    SYNSEM.LKEYS.KEYREL.PRED _inntil_x_rel ].
+
+inntil_degadv := degadv-word &
   [ STEM < "inntil" >,
     SYNSEM.LKEYS.KEYREL.PRED inntil_prd ].
+
 
 internett-n-neut := neut-cmp-count-noun-lxm &
   [ INFLECTION n1,
@@ -2934,8 +3309,8 @@ jente-n-fem := comm-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_jente_n_rel" ].
 
-jesper-nattmann-pn := sg-comm-pn &
-  [ STEM < "jesper", "nattmann" >,
+jesper-nattmann_pn := sg-comm-pn &
+  [ STEM < "jesper","nattmann" >,
     SYNSEM.LKEYS.KEYREL.CARG "JESPER NATTMANN" ]. ;
 
 jf-word := verb_imp_word &
@@ -2943,9 +3318,10 @@ jf-word := verb_imp_word &
     CMP2.LOCAL [ CAT.HEAD subcompl-noun,
 		 CONT.RELS.LIST.FIRST.PRED "_jamfør-abbr_v_rel" ] ].
 
-jo_func := func-word &
+jo_sadv := sadv-word &
   [ STEM < "jo" >,
-    SYNSEM.LKEYS.KEYREL.PRED jo_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _jo_sadv_rel ].
+
 
 jo-cont := continuative-word &
   [ STEM < "jo" >,
@@ -2961,11 +3337,11 @@ jobbe_v := main-verb-lxm &
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED jobbe_v ].
 
-jordbærpikene-pn := sg-comm-pn &
+jordbærpikene_pn := sg-comm-pn &
   [ STEM < "jordbærpikene" >,
     SYNSEM.LKEYS.KEYREL.CARG "Jordbærpikene" ].
 
-jotunheimen-pn := sg-comm-pn &
+jotunheimen_pn := sg-comm-pn &
   [ STEM < "jotunheimen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Jotunheimen" ].
 
@@ -2981,12 +3357,12 @@ juni-n-masc := masc-mod-cmp-noun-lxm &
     SYNSEM.LKEYS.KEYREL.PRED "_juni_n_rel",
     INFLECTION m1 ].
 
-juvasshytta-pn := sg-comm-pn &
+juvasshytta_pn := sg-comm-pn &
   [ STEM < "juvasshytta" >,
     SYNSEM.LKEYS.KEYREL.CARG "Juvasshytta" ].
 
 kaffe-latte-n-masc := masc-cmp-count-noun-lxm &
-  [ STEM < "kaffe", "latte" >,
+  [ STEM < "kaffe","latte" >,
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_kaffe-latte_n_rel" ].
 
@@ -3025,9 +3401,18 @@ kanalisere_v := main-verb-lxm &
     STEM < "kanalisere" >,
     SYNSEM.LKEYS.KEYREL.PRED kanalisere_v ].
 
-kanskje_func := func-word &
+kanskje_adv := adv-word &
+  [ STEM < "kanskje" >,
+    SYNSEM.LKEYS.KEYREL.PRED _kanskje_adv_rel ].
+
+kanskje_sadv := sadv-word &
+  [ STEM < "kanskje" >,
+    SYNSEM.LKEYS.KEYREL.PRED _kanskje_sadv_rel ].
+
+kanskje_degadv := degadv-word &
   [ STEM < "kanskje" >,
     SYNSEM.LKEYS.KEYREL.PRED kanskje_prd ].
+
 
 kassere_v := main-verb-lxm &
   [ INFLECTION v2,
@@ -3053,12 +3438,12 @@ kilo-n-masc := mascorneut-mwe-noun-lxm &
     SYNSEM.LKEYS.KEYREL.PRED kilo_prd,
     INFLECTION n1-n2 ].
 
-kim-pn := sg-comm-pn &
+kim_pn := sg-comm-pn &
   [ STEM < "Kim" >,
     SYNSEM.LKEYS.KEYREL.CARG "Kim" ].
 
-kings-cross-pn := sg-comm-pn &
-  [ STEM < "kings", "cross" >,
+kings-cross_pn := sg-comm-pn &
+  [ STEM < "kings","cross" >,
     SYNSEM.LKEYS.KEYREL.CARG "KINGS CROSS" ].
 
 kino-n-masc := masc-cmp-count-noun-lxm &
@@ -3071,7 +3456,7 @@ kirke-n-comm := comm-cmp-count-noun-lxm &
     STEM < "kirke" >,
     SYNSEM.LKEYS.KEYREL.PRED "_kirke_n_rel" ].
 
-kjedelig-a := adj-lxm &
+kjedelig_a := adj-lxm &
   [ INFLECTION a2,
     STEM < "kjedelig" >,
     SYNSEM.LKEYS.KEYREL.PRED "_kjedelig_a_rel" ].
@@ -3081,12 +3466,12 @@ kjenne_v := main-verb-lxm &
     STEM < "kjenne" >,
     SYNSEM.LKEYS.KEYREL.PRED kjenne_v ].
 
-kjent-a := mwe-adj-lxm &
+kjent_a := mwe-adj-lxm &
   [ STEM < "kjent" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED kjent_prd ].
 
-kjip-a := adj-lxm &
+kjip_a := adj-lxm &
   [ INFLECTION a1,
     STEM < "kjip" >,
     SYNSEM.LKEYS.KEYREL.PRED "_kjip_a_rel" ].
@@ -3096,7 +3481,7 @@ kjøpe_v := main-verb-lxm &
     STEM < "kjøpe" >,
     SYNSEM.LKEYS.KEYREL.PRED kjøpe_v ].
 
-kjøpmannsgata-pn := sg-comm-pn &
+kjøpmannsgata_pn := sg-comm-pn &
   [ STEM < "kjøpmannsgata" >,
     SYNSEM.LKEYS.KEYREL.CARG "KJøPMANNSGATA" ].
 
@@ -3110,14 +3495,15 @@ klamre_v := main-verb-lxm &
     STEM < "klamre" >,
     SYNSEM.LKEYS.KEYREL.PRED klamre_v ].
 
-klar-a := mwe-adj-lxm &
+klar_a := mwe-adj-lxm &
   [  INFLECTION a1,
     STEM < "klar" >,
     SYNSEM.LKEYS.KEYREL.PRED klar_prd ].
 
-klar_func := func-word &
+klar_prt := part-word &
   [ STEM < "klar" >,
     SYNSEM.LKEYS.KEYREL.PRED klar_prt ].
+
 
 klare_v := main-verb-lxm &
   [ STEM < "klare" >,
@@ -3183,7 +3569,7 @@ komme_v := main-verb-lxm &
     STEM < "komme" >,
     SYNSEM.LKEYS.KEYREL.PRED komme_v ].
 
-komplisert-a := adj-lxm &
+komplisert_a := adj-lxm &
   [ STEM < "komplisert" >,
     SYNSEM.LKEYS.KEYREL.PRED "_komplisert_a_rel", 
     INFLECTION a2 ].
@@ -3193,8 +3579,8 @@ konge-n-masc := masc-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_konge_n_rel" ].
 
-kongens-gate-pn := sg-comm-pn &
-  [ STEM < "kongens", "gate" >,
+kongens-gate_pn := sg-comm-pn &
+  [ STEM < "kongens","gate" >,
     SYNSEM.LKEYS.KEYREL.CARG "KONGENS GATE" ].
 
 konsert-n-masc := masc-cmp-count-noun-lxm &
@@ -3207,7 +3593,7 @@ konstruere_v := trans-verb-lxm &
     STEM < "konstruere" >,
     SYNSEM.LKEYS.KEYREL.PRED "_konstruere_12_rel" ].
 
-kontoret-pn := sg-neut-pn &
+kontoret_pn := sg-neut-pn &
   [ STEM < "kontoret" >,
     SYNSEM.LKEYS.KEYREL.CARG "KONTORET" ].
 
@@ -3216,7 +3602,7 @@ kopp-n-masc := masc-mwe-count-noun-lxm &
     STEM < "kopp" >,
     SYNSEM.LKEYS.KEYREL.PRED kopp_prd ].
 
-koselig-a := adj-lxm &
+koselig_a := adj-lxm &
   [ INFLECTION a2,
     STEM < "koselig" >,
     SYNSEM.LKEYS.KEYREL.PRED "_koselig_a_rel" ].
@@ -3245,7 +3631,7 @@ krone_v := main-verb-lxm &
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED krone_v ].
 
-krossbu-pn := sg-comm-pn &
+krossbu_pn := sg-comm-pn &
   [ STEM < "krossbu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Krossbu" ].
 
@@ -3254,7 +3640,7 @@ ku-n-comm := comm-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_ku_n_rel" ].
 
-kul-a := adj-lxm &
+kul_a := adj-lxm &
   [ INFLECTION a1,
     STEM < "kul" >,
     SYNSEM.LKEYS.KEYREL.PRED "_kul_a_rel" ].
@@ -3313,6 +3699,11 @@ kveld-n-masc := masc-mod-noun-lxm &
     SYNSEM.LKEYS.KEYREL.PRED _kveld_n_rel,
     INFLECTION m1 ].
 
+kveld-n-mod-masc := mod-noun-noun-lxm &
+  [ STEM < "kveld" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_kveld_n_rel",
+    INFLECTION m1 ].
+
 kyle_v := trans-verb-lxm &
   [ INFLECTION v2,
     STEM < "kyle" >,
@@ -3343,13 +3734,18 @@ land-n-neut := neut-cmp-count-noun-lxm &
     STEM < "land" >,
     SYNSEM.LKEYS.KEYREL.PRED "_land_n_rel" ].
 
-landås-pn := sg-comm-pn &
+landås_pn := sg-comm-pn &
   [ STEM < "landås" >,
     SYNSEM.LKEYS.KEYREL.CARG "Landås" ].
 
-langt-func := func-word &
+langt_adv := adv-word &
+  [ STEM < "langt" >,
+    SYNSEM.LKEYS.KEYREL.PRED _langt_adv_rel ].
+
+langt_degadv := degadv-word &
   [ STEM < "langt" >,
     SYNSEM.LKEYS.KEYREL.PRED langt_prd ].
+
 
 ; langt-mellom_func := func-word &
 ;   [ STEM < "langt","mellom" >,
@@ -3360,7 +3756,7 @@ late_v := main-verb-lxm &
     STEM < "late" >,
     SYNSEM.LKEYS.KEYREL.PRED late_v ].
 
-lauritz-pn := sg-comm-pn &
+lauritz_pn := sg-comm-pn &
   [ STEM < "lauritz" >,
     SYNSEM.LKEYS.KEYREL.CARG "LAURITZ" ].
 
@@ -3375,25 +3771,26 @@ legge_v := main-verb-lxm &
     SYNSEM.LKEYS.KEYREL.PRED legge_v ].
 
 lei_a := adj-lxm &
-  [ STEM <"lei">,
+  [ STEM < "lei" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED lei_prd ].
 
 lei-n-masc := masc-cmp-count-noun-lxm &
-  [ STEM <"lei">,
+  [ STEM < "lei" >,
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_lei_n_rel" ].
 
 lei-n-fem := comm-cmp-count-noun-lxm &
-  [ STEM <"lei">,
+  [ STEM < "lei" >,
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_lei_n_rel" ].
 
-lei_func := func-word &
+lei_prt := part-word &
   [ STEM < "lei" >,
     SYNSEM.LKEYS.KEYREL.PRED lei_prt ].
 
-leirvassbu-pn := sg-comm-pn &
+
+leirvassbu_pn := sg-comm-pn &
   [ STEM < "leirvassbu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Leirvassbu" ].
 
@@ -3432,7 +3829,7 @@ lesehode-n-neut := neut-cmp-count-noun-lxm &
     SYNSEM.LKEYS.KEYREL.PRED "_lesehode_n_rel",
     INFLECTION n2 ].
 
-lett-a := adj-lxm &
+lett_a := adj-lxm &
   [ INFLECTION a2,
     STEM < "lett" >,
     SYNSEM.LKEYS.KEYREL.PRED "_lett_a_rel" ].
@@ -3442,16 +3839,21 @@ ligge_v := main-verb-lxm &
     STEM < "ligge" >,
     SYNSEM.LKEYS.KEYREL.PRED ligge_v ].
 
-like-func := func-word &
+like_adv := adv-word &
+  [ STEM < "like" >,
+    SYNSEM.LKEYS.KEYREL.PRED _like_adv_rel ].
+
+like_degadv := degadv-word &
   [ STEM < "like" >,
     SYNSEM.LKEYS.KEYREL.PRED like_prd ].
+
 
 like_v := main-verb-lxm &
   [ STEM < "like" >,
     INFLECTION v2,
     SYNSEM.LKEYS.KEYREL.PRED like_v ].
 
-lilla-a := adj-lxm &
+lilla_a := adj-lxm &
   [ STEM < "lilla" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_lilla_a_rel" ].
@@ -3461,7 +3863,7 @@ lilla-n-neut := neut-cmp-count-noun-lxm &
     SYNSEM.LKEYS.KEYREL.PRED "_lilla_n_rel",
     INFLECTION no-infl ].
 
-linux-pn := sg-comm-pn &
+linux_pn := sg-comm-pn &
   [ STEM < "linux" >,
     SYNSEM.LKEYS.KEYREL.CARG "LINUX" ].
 
@@ -3469,25 +3871,23 @@ lite_q := indef-mass-det &
   [ STEM < "lite" >,
     SYNSEM.LKEYS.Q.QREL.PRED _lite_q_rel ].
 
-liten-a := adj-lxm &
+liten_a := adj-lxm &
   [ STEM < "liten" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_liten_a_rel" ].
 
-litt_func := func-word &
-  [ STEM < "litt" >,
-    SYNSEM.LKEYS.KEYREL.PRED litt_prd ].
+
 
 liter-n-masc := masc-mwe-count-noun-lxm &
   [ STEM < "liter" >,
     SYNSEM.LKEYS.KEYREL.PRED liter_prd,
     INFLECTION m1 ].
 
-litt-a := mod-adj-adv-nominal-prep-word &
+litt_a := mod-adj-adv-nominal-prep-word &
   [ STEM < "litt" >,
     SYNSEM.LKEYS.KEYREL.PRED "_litt_a_rel" ].
 
-livingstone-pn := sg-comm-pn &
+livingstone_pn := sg-comm-pn &
   [ STEM < "livingstone" >,
     SYNSEM.LKEYS.KEYREL.CARG "LIVINGSTONE" ].
 
@@ -3501,7 +3901,7 @@ love_v := main-verb-lxm &
     STEM < "love" >,
     SYNSEM.LKEYS.KEYREL.PRED love_v ].
 
-lucas-pn := sg-comm-pn &
+lucas_pn := sg-comm-pn &
   [ STEM < "lucas" >,
     SYNSEM.LKEYS.KEYREL.CARG "LUCAS" ].
 
@@ -3510,13 +3910,13 @@ lukte_v := main-verb-lxm &
     STEM < "lukte" >,
     SYNSEM.LKEYS.KEYREL.PRED lukte_v ].
 
-lun-a := adj-lxm &
+lun_a := adj-lxm &
   [ INFLECTION a1,
     STEM < "lun" >,
     SYNSEM.LKEYS.KEYREL.PRED "_lun_a_rel" ].
 
-luna-lounge-pn := sg-comm-pn &
-  [ STEM < "luna", "lounge" >,
+luna-lounge_pn := sg-comm-pn &
+  [ STEM < "luna","lounge" >,
     SYNSEM.LKEYS.KEYREL.CARG "LUNA LOUNGE" ].
 
 lure_v := main-verb-lxm &
@@ -3533,6 +3933,11 @@ lykkes_v := main-verb-lxm &
   [ INFLECTION v2,
     STEM < "lykkes" >,
     SYNSEM.LKEYS.KEYREL.PRED lykkes_v ].
+
+lysark-n-neut := neut-cmp-count-noun-lxm &
+  [ INFLECTION n1,
+    STEM < "lysark" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_lysark_n_rel" ].
 
 låte_v := main-verb-lxm &
   [ STEM < "låte" >,
@@ -3554,9 +3959,10 @@ løpe_v := main-verb-lxm &
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED løpe_v ].
 
-lørdag_func := func-word &
+lørdag_adv := adv-word &
   [ STEM < "lørdag" >,
-    SYNSEM.LKEYS.KEYREL.PRED lørdag_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _lørdag_adv_rel ].
+
 
 lørdag-n-masc := masc-mod-noun-lxm &
   [ STEM < "lørdag" >,
@@ -3573,10 +3979,10 @@ m-noun-word := mod-noun-word &
     SYNSEM.LKEYS.KEYREL.PRED "_meter-abbriv_rel" ].
 
 m-over-havet-adv := mod-noun-word &
-  [ STEM < "m", "o.h." >,
+  [ STEM < "m","o.h." >,
     SYNSEM.LKEYS.KEYREL.PRED "_over-havet_pp_rel" ].
 
-mac-pn := sg-comm-pn &
+mac_pn := sg-comm-pn &
   [ STEM < "mac" >,
     SYNSEM.LKEYS.KEYREL.CARG "Mac" ].
 
@@ -3589,11 +3995,11 @@ mach-n-word := non-infl-noun-word &
   [ STEM < "mach" >,
     SYNSEM.LKEYS.KEYREL.PRED "_mach_n_rel" ].
 
-mach-pn := sg-comm-pn &
+mach_pn := sg-comm-pn &
   [ STEM < "mach" >,
     SYNSEM.LKEYS.KEYREL.CARG "Mach" ].
 
-macintosh-pn := sg-comm-pn &
+macintosh_pn := sg-comm-pn &
   [ STEM < "macintosh" >,
     SYNSEM.LKEYS.KEYREL.CARG "Macintosh" ].
 
@@ -3617,9 +4023,10 @@ maksimum-mod := mod-card-word &
   [ STEM < "maksimum" >,
     SYNSEM.LKEYS.KEYREL.PRED "_maksimum_mod_rel" ].
 
-maksimum-func := func-word &
+maksimum_degadv := degadv-word &
   [ STEM < "maksimum" >,
     SYNSEM.LKEYS.KEYREL.PRED maksimum_prd ].
+
 
 maksimum-n-neut := neut-cmp-count-noun-lxm &
   [ STEM < "maksimum" >,
@@ -3636,24 +4043,24 @@ man-n-fem := comm-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_man_n_rel" ].
 
-man-pn := general-pron &
+man_pn := general-pron &
   [ STEM < "man" >,
     SYNSEM.LKEYS.KEYREL.PRED  _man_pron_rel ].
 
-mandag_func := func-word &
+mandag_adv := adv-word &
   [ STEM < "mandag" >,
-    SYNSEM.LKEYS.KEYREL.PRED mandag_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _mandag_adv_rel ].
+
 
 mandag-n-masc := masc-mod-noun-lxm &
   [ STEM < "mandag" >,
     SYNSEM.LKEYS.KEYREL.PRED _mandag_n_rel,
     INFLECTION m1 ].
 
-mange-a := lex-adj-word &
-  [ INFLECTION a2,
-    STEM < "mange" >,
-    SYNSEM [ LOCAL.CONT.HOOK.INDEX.PNG.PN pl,
-	     LKEYS.KEYREL.PRED "_mange_a_rel" ] ].
+; mange_a := lex-adj-word &
+;   [ STEM < "mange" >,
+;     SYNSEM [ LOCAL.CONT.HOOK.INDEX.PNG.PN pl,
+; 	     LKEYS.KEYREL.PRED "_mange_a_rel" ] ].
 
 mange_q := pl-indef-art-det-word &
   [ STEM < "mange" >,
@@ -3685,13 +4092,21 @@ matbit-n-masc := masc-cmp-count-noun-lxm &
     STEM < "matbit" >,
     SYNSEM.LKEYS.KEYREL.PRED "_matbit_n_rel" ].
 
-maurvangen-pn := sg-comm-pn &
+maurvangen_pn := sg-comm-pn &
   [ STEM < "maurvangen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Maurvangen" ].
 
-med_func := func-word &
+; med_func := func-word &
+;   [ STEM < "med" >,
+;     SYNSEM.LKEYS.KEYREL.PRED med_prd ].
+
+med_prp := prep-word &
   [ STEM < "med" >,
-    SYNSEM.LKEYS.KEYREL.PRED med_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED med_prp ].
+
+med_prt := part-word &
+  [ STEM < "med" >,
+    SYNSEM.LKEYS.KEYREL.PRED med_prt ].
 
 medlem-n-neut := neut-mwe-count-noun-lxm &
   [ STEM < "medlem" >,
@@ -3702,9 +4117,14 @@ meg-np := 1sg-pron &
   [ STEM < "meg" >,
     SYNSEM.LOCAL [ CAT.CASE non-subj-case ] ].
 
-meget-func := func-word &
+meget_adv := adv-word &
+  [ STEM < "meget" >,
+    SYNSEM.LKEYS.KEYREL.PRED _meget_adv_rel ].
+
+meget_degadv := degadv-word &
   [ STEM < "meget" >,
     SYNSEM.LKEYS.KEYREL.PRED meget_prd ].
+
 
 meget-n-masc := masc-cmp-count-noun-lxm &
   [ STEM < "meget" >,
@@ -3716,16 +4136,17 @@ melk-n-fem := comm-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_melk_n_rel" ].
 
-mellom_func := func-word &
+mellom_prp := prep-word &
   [ STEM < "mellom" >,
-    SYNSEM.LKEYS.KEYREL.PRED mellom_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED mellom_prp ].
 
-memurubu-pn := sg-comm-pn &
+
+memurubu_pn := sg-comm-pn &
   [ STEM < "memurubu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Memurubu" ].
 
 men :=  conj-word &
-  [ STEM < ",", "men" >,
+  [ STEM < ",","men" >,
     SYNSEM.LKEYS.KEYREL.PRED men_prd ].
 
 men-cont := continuative-word &
@@ -3737,9 +4158,10 @@ mene_v := main-verb-lxm &
     INFLECTION v2,
     SYNSEM.LKEYS.KEYREL.PRED mene_v ].
 
-mens_func := func-word &
+mens_cadv := cadv-word &
   [ STEM < "mens" >,
-    SYNSEM.LKEYS.KEYREL.PRED mens_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _mens_x_rel ].
+
 
 mens-n-masc := masc-cmp-count-noun-lxm &
   [ STEM < "mens" >,
@@ -3756,15 +4178,21 @@ mer_q := mer-det-word &
   [ STEM < "mer" >,
     SYNSEM.LKEYS.Q.QREL.PRED _mer_q_rel ].
 
-mer-enn_func := func-word &
+mer-enn_degadv := degadv-word &
   [ STEM < "mer","enn" >,
     SYNSEM.LKEYS.KEYREL.PRED mer*enn_prd ].
 
-mer_func := func-word &
+
+mer_adv := adv-word &
+  [ STEM < "mer" >,
+    SYNSEM.LKEYS.KEYREL.PRED _mer_adv_rel ].
+
+mer_degadv := degadv-word &
   [ STEM < "mer" >,
     SYNSEM.LKEYS.KEYREL.PRED mer_prd ].
 
-mercursenteret-pn := sg-neut-pn &
+
+mercursenteret_pn := sg-neut-pn &
   [ STEM < "mercursenteret" >,
     SYNSEM.LKEYS.KEYREL.CARG "MERCURSENTERET" ].
 
@@ -3778,7 +4206,7 @@ merke_v := main-verb-lxm &
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED merke_v ].
 
-merkelig-a := adj-lxm &
+merkelig_a := adj-lxm &
   [ STEM < "merkelig" >,
     SYNSEM.LKEYS.KEYREL.PRED "_merkelig_a_rel", 
     INFLECTION a2 ].
@@ -3788,14 +4216,19 @@ mest_q := mest-det-word &
   [ STEM < "mest" >,
     SYNSEM.LKEYS.Q.QREL.PRED _mest_q_rel ].
 
-mest_func := func-word &
+mest_sadv := sadv-word &
+  [ STEM < "mest" >,
+    SYNSEM.LKEYS.KEYREL.PRED _mest_sadv_rel ].
+
+mest_degadv := degadv-word &
   [ STEM < "mest" >,
     SYNSEM.LKEYS.KEYREL.PRED mest_prd ].
+
 
 mi := fem-1sg-poss &
   [ STEM < "mi" > ].
 
-microsoft-pn := sg-comm-pn &
+microsoft_pn := sg-comm-pn &
   [ STEM < "microsoft" >,
     SYNSEM.LKEYS.KEYREL.CARG "Microsoft" ].
 
@@ -3849,7 +4282,7 @@ midt-n-masc := masc-cmp-count-noun-lxm &
 ;     SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT.HEAD verb ] >,
 ;     SYNSEM.LKEYS.KEYREL.PRED midt-under_prd ].
 
-midtbyen-pn := sg-comm-pn &
+midtbyen_pn := sg-comm-pn &
   [ STEM < "midtbyen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Midtbyen" ].
 
@@ -3871,9 +4304,10 @@ mindre_q := mer-det-word &
   [ STEM < "mindre" >,
     SYNSEM.LKEYS.Q.QREL.PRED _mindre_q_rel ].
 
-mindre_func := func-word &
+mindre_degadv := degadv-word &
   [ STEM < "mindre" >,
     SYNSEM.LKEYS.KEYREL.PRED mindre_prd ].
+
 
 mine := pl-1sg-poss &
   [ STEM < "mine" > ].
@@ -3888,9 +4322,10 @@ minimaskin-n-masc := masc-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_minimaskin_n_rel" ].
 
-minimum_func := func-word &
+minimum_degadv := degadv-word &
   [ STEM < "minimum" >,
     SYNSEM.LKEYS.KEYREL.PRED minimum_prd ].
+
 
 minimum-n-neut := neut-cmp-count-noun-lxm &
   [ STEM < "minimum" >,
@@ -3902,9 +4337,10 @@ minst_q := mest-det-word &
   [ STEM < "minst" >,
     SYNSEM.LKEYS.Q.QREL.PRED _minst_q_rel ].
 
-minst_func := func-word &
+minst_degadv := degadv-word &
   [ STEM < "minst" >,
     SYNSEM.LKEYS.KEYREL.PRED minst_prd ].
+
 
 minutt-n-neut := neut-mod-noun-lxm &
   [ STEM < "minutt" >,
@@ -3919,7 +4355,7 @@ mislike_v := main-verb-lxm &
 mitt := neut-1sg-poss &
   [ STEM < "mitt" > ].
 
-mjølkedalstind-pn := sg-comm-pn &
+mjølkedalstind_pn := sg-comm-pn &
   [ STEM < "mjølkedalstind" >,
     SYNSEM.LKEYS.KEYREL.CARG "Mjølkedalstind" ].
 
@@ -3931,7 +4367,7 @@ mod-verb-adv := mod-verb-word &
   [ STEM < "bare" >,
     SYNSEM.LKEYS.KEYREL.PRED bare_prd ].
 
-moden-a := adj-lxm &
+moden_a := adj-lxm &
   [ INFLECTION a5,
     STEM < "moden" >,
     SYNSEM.LKEYS.KEYREL.PRED "_moden_a_rel" ].
@@ -3956,6 +4392,11 @@ morgen-n-masc := masc-mod-cmp-noun-lxm &
     SYNSEM.LKEYS.KEYREL.PRED "_morgen_n_rel",
     INFLECTION m1 ].
 
+morgen-n-mod-masc := mod-noun-noun-lxm &
+  [ STEM < "morgen" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_morgen_n_rel",
+    INFLECTION m1 ].
+
 morgen-tidlig-n-masc := masc-mod-cmp-noun-lxm &
   [ STEM < "morgen","tidlig" >,
     SYNSEM.LKEYS.KEYREL.PRED "_morgen-tidlig_n_rel",
@@ -3966,15 +4407,15 @@ morgenbåt-n-masc := masc-cmp-count-noun-lxm &
     STEM < "morgenbåt" >,
     SYNSEM.LKEYS.KEYREL.PRED "_morgenbåt_n_rel" ].
 
-morkabu-pn := sg-comm-pn &
+morkabu_pn := sg-comm-pn &
   [ STEM < "morkabu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Morkabu" ].
 
-mormors-stue-pn := sg-comm-pn &
-  [ STEM < "mormors", "stue" >,
+mormors-stue_pn := sg-comm-pn &
+  [ STEM < "mormors","stue" >,
     SYNSEM.LKEYS.KEYREL.CARG "MORMORS STUE" ].
 
-morsom-a := adj-lxm &
+morsom_a := adj-lxm &
   [ INFLECTION a1,
     STEM < "morsom" >,
     SYNSEM.LKEYS.KEYREL.PRED "_morsom_a_rel" ].
@@ -3984,19 +4425,20 @@ mot-n-neut := neut-mwe-count-noun-lxm &
     INFLECTION n2,
     SYNSEM.LKEYS.KEYREL.PRED mot_prd ].
 
-mot_func := func-word &
+mot_prp := prep-word &
   [ STEM < "mot" >,
-    SYNSEM.LKEYS.KEYREL.PRED mot_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED mot_prp ].
 
-ms-dos-pn := sg-comm-pn &
+
+ms-dos_pn := sg-comm-pn &
   [ STEM < "ms-dos" >,
     SYNSEM.LKEYS.KEYREL.CARG "MS-dos" ].
 
-multics-pn := sg-comm-pn &
+multics_pn := sg-comm-pn &
   [ STEM < "multics" >,
     SYNSEM.LKEYS.KEYREL.CARG "Multics" ].
 
-munkegaten-pn := sg-comm-pn &
+munkegaten_pn := sg-comm-pn &
   [ STEM < "munkegaten" >,
     SYNSEM.LKEYS.KEYREL.CARG "MUNKEGATEN" ].
 
@@ -4004,7 +4446,7 @@ mva-noun-word := mod-noun-word &
   [ STEM < "mva" >,
     SYNSEM.LKEYS.KEYREL.PRED "_mva_rel" ].
 
-mvs-pn := sg-comm-pn &
+mvs_pn := sg-comm-pn &
   [ STEM < "mvs" >,
     SYNSEM.LKEYS.KEYREL.CARG "Mvs" ].
 
@@ -4013,16 +4455,17 @@ mye_q := sg-indef-art-det-word &
   [ STEM < "mye" >,
     SYNSEM.LKEYS.Q.QREL.PRED _mye_q_rel ].
 
-mye_func := func-word &
+mye_degadv := degadv-word &
   [ STEM < "mye" >,
     SYNSEM.LKEYS.KEYREL.PRED mye_prd ].
+
 
 mynt-n-masc := masc-cmp-count-noun-lxm &
   [ INFLECTION m1,
     STEM < "mynt" >,
     SYNSEM.LKEYS.KEYREL.PRED "_mynt_n_rel" ].
 
-Møre-og-Romsdal-pn := pn-word &
+Møre-og-Romsdal_pn := pn-word &
   [ STEM < "Møre","og","Romsdal" >,
     SYNSEM.LKEYS.KEYREL.CARG "Møre-og-Romsdal" ].
 
@@ -4081,24 +4524,43 @@ navn-n-neut := neut-cmp-count-noun-lxm &
     STEM < "navn" >,
     SYNSEM.LKEYS.KEYREL.PRED "_navn_n_rel" ].
 
-ned_func := func-word &
+ned_prp := prep-word &
   [ STEM < "ned" >,
-    SYNSEM.LKEYS.KEYREL.PRED ned_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED ned_prp ].
 
-nedenfor_func := func-word &
+ned_prt := part-word &
+  [ STEM < "ned" >,
+    SYNSEM.LKEYS.KEYREL.PRED ned_prt ].
+
+ned_adv := adv-word &
+  [ STEM < "ned" >,
+    SYNSEM.LKEYS.KEYREL.PRED _ned_adv_rel ].
+
+
+nedenfor_prp := prep-word &
   [ STEM < "nedenfor" >,
-    SYNSEM.LKEYS.KEYREL.PRED nedenfor_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED nedenfor_prp ].
+
+nedenfor_adv := adv-word &
+  [ STEM < "nedenfor" >,
+    SYNSEM.LKEYS.KEYREL.PRED _nedenfor_adv_rel ].
+
 
 nedlate_v := main-verb-lxm &
   [ INFLECTION v1,
     STEM < "nedlate" >,
     SYNSEM.LKEYS.KEYREL.PRED nedlate_v ].
 
-nedover_func := func-word &
+nedover_prp := prep-word &
   [ STEM < "nedover" >,
-    SYNSEM.LKEYS.KEYREL.PRED nedover_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED nedover_prp ].
 
-nedre-a := adj-lxm &
+nedover_adv := adv-word &
+  [ STEM < "nedover" >,
+    SYNSEM.LKEYS.KEYREL.PRED _nedover_adv_rel ].
+
+
+nedre_a := adj-lxm &
   [ INFLECTION a2,
     STEM < "nedre" >,
     SYNSEM.LKEYS.KEYREL.PRED "_nedre_a_rel" ].
@@ -4108,7 +4570,7 @@ nei-cont := continuative-word &
     SYNSEM.LKEYS.KEYREL.PRED "_nei-rel" ].
 
 nei-cont2 := continuative-word &
-  [ STEM < "nei", "," >,
+  [ STEM < "nei","," >,
     SYNSEM.LKEYS.KEYREL.PRED "_nei-rel" ].
 
 nei-n-neut := neut-cmp-count-noun-lxm &
@@ -4121,24 +4583,38 @@ nekte_v := main-verb-lxm &
     STEM < "nekte" >,
     SYNSEM.LKEYS.KEYREL.PRED nekte_v ].
 
-nemlig_func := func-word &
+nemlig_adv := adv-word &
   [ STEM < "nemlig" >,
-    SYNSEM.LKEYS.KEYREL.PRED nemlig_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _nemlig_adv_rel ].
 
-neste-card-a := sg-def-card-word &
+nemlig_sadv := sadv-word &
+  [ STEM < "nemlig" >,
+    SYNSEM.LKEYS.KEYREL.PRED _nemlig_sadv_rel ].
+
+
+neste-card_a := sg-def-card-word &
   [ STEM < "neste" >,
     SYNSEM.LKEYS.KEYREL.CARG "neste_rel" ].
 
-nesten_func := func-word &
+nesten_adv := adv-word &
+  [ STEM < "nesten" >,
+    SYNSEM.LKEYS.KEYREL.PRED _nesten_adv_rel ].
+
+nesten_sadv := sadv-word &
+  [ STEM < "nesten" >,
+    SYNSEM.LKEYS.KEYREL.PRED _nesten_sadv_rel ].
+
+nesten_degadv := degadv-word &
   [ STEM < "nesten" >,
     SYNSEM.LKEYS.KEYREL.PRED nesten_prd ].
+
 
 ni-card := pl-card-word &
   [ STEM < "ni" >,
     LEXREL.LIST.FIRST.CARG "9_card_rel" ].
 
-ni-muser-pn := sg-comm-pn &
-  [ STEM < "ni", "muser" >,
+ni-muser_pn := sg-comm-pn &
+  [ STEM < "ni","muser" >,
     SYNSEM.LKEYS.KEYREL.CARG "NI MUSER" ].
 
 niende-card := sg-def-card-word &
@@ -4237,11 +4713,11 @@ nm-noun-word := mod-noun-word &
   [ STEM < "NM" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Norgesmesterskap-abbriv_rel" ].
 
-; nnn-pn := unknown-word &
+; nnn_pn := unknown-word &
 ;   [ STEM < "nnn" >,
 ;     SYNSEM.LKEYS.KEYREL.CARG "nnn" ].
 
-noe-a := mod-adj-adv-nominal-prep-word &
+noe_a := mod-adj-adv-nominal-prep-word &
   [ STEM < "noe" >,
     SYNSEM.LKEYS.KEYREL.PRED "_noe_a_rel" ].
 
@@ -4254,15 +4730,20 @@ noe_q := indef-mass-det &
 ;     SYNSEM.LKEYS.KEYREL.PRED "NOE_pron_rel" ].
 
 noe-som-helst := general-pron &
-  [ STEM < "noe", "som", "helst" >,
+  [ STEM < "noe","som","helst" >,
     SYNSEM [ LOCAL [ CAT.CASE non-subj-case ],
 	     LOCAL.NEG-OUT neg-or-yn_m_rel,
 	     LKEYS.KEYREL.PRED _noe-som-helst_pron_rel ] ].
 
 
-helst_func := func-word &
-  [ STEM <"helst">,
-    SYNSEM.LKEYS.KEYREL.PRED helst_prd ].
+helst_adv := adv-word &
+  [ STEM < "helst" >,
+    SYNSEM.LKEYS.KEYREL.PRED _helst_adv_rel ].
+
+helst_sadv := sadv-word &
+  [ STEM < "helst" >,
+    SYNSEM.LKEYS.KEYREL.PRED _helst_sadv_rel ].
+
 
 noen_q := indef-art-det-word &
   [ STEM < "noen" >,
@@ -4277,7 +4758,8 @@ noensteds_adv := neg-pol-item-adv-word &
 noenting-np := general-pron &
   [ STEM < "noenting" >,
     SYNSEM [ LOCAL.CAT.CASE non-subj-case,
-	     LOCAL.NEG-IN neg-or-yn_m_rel ] ].
+	     LOCAL.NEG-IN neg-or-yn_m_rel,
+	     LKEYS.KEYREL.PRED _noenting_pron_rel ] ].
 
 nok-s-part := spart-word &
   [ STEM < "nok" >,
@@ -4290,20 +4772,27 @@ nok_q := quant-word &
 				       PN pn ],
 			    PRED _nok_q_rel ] ] ].
 
-nord-pn := sg-neut-pn &
+; god nok
+nok_func := func-word &
+  [ STEM < "nok" >,
+    SYNSEM [ LOCAL.CAT.HEAD.MOD < [ LOCAL [ CAT.HEAD adj,
+					    CONT.HOOK.INDEX.GRADE positive ] ] >,
+	     LKEYS.KEYREL.PRED nok_prd ] ].
+
+nord_pn := sg-neut-pn &
   [ STEM < "nord" >,
     SYNSEM.LKEYS.KEYREL.CARG "Nord" ].
 
-nordre-a := adj-lxm &
+nordre_a := adj-lxm &
   [ STEM < "nordre" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_nordre_a_rel" ].
 
-nordre-pn := sg-comm-pn &
+nordre_pn := sg-comm-pn &
   [ STEM < "nordre" >,
     SYNSEM.LKEYS.KEYREL.CARG "NORDRE" ].
 
-norsk-a := adj-lxm &
+norsk_a := adj-lxm &
   [ INFLECTION a2,
     STEM < "norsk" >,
     SYNSEM.LKEYS.KEYREL.PRED "_norsk_a_rel" ].
@@ -4318,7 +4807,7 @@ nova-n-masc := masc-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_nova_n_rel" ].
 
-nova-pn := sg-comm-pn &
+nova_pn := sg-comm-pn &
   [ STEM < "nova" >,
     SYNSEM.LKEYS.KEYREL.CARG "NOVA" ].
 
@@ -4328,45 +4817,55 @@ november-n-masc := masc-mod-cmp-noun-lxm &
     SYNSEM.LKEYS.KEYREL.PRED "_november_n_rel",
     INFLECTION m1 ].
 
-nr_func := number-mod-word &
+nr_degadv := degadv-word &
   [ STEM < "nr." >,
-    SYNSEM.LKEYS.KEYREL.PRED nummer_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _nummer_deg-num_rel ].
 
-hashtag_func := number-mod-word &
+hashtag_degadv := degadv-word &
   [ STEM < "#" >,
-    SYNSEM.LKEYS.KEYREL.PRED nummer_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _nummer_deg-num_rel ].
 
-nummer_func := number-mod-word &
+nummer_degadv := degadv-word &
   [ STEM < "nummer" >,
-    SYNSEM.LKEYS.KEYREL.PRED nummer_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _nummer_deg-num_rel ].
 
-ny-a := adj-lxm &
+ny_a := adj-lxm &
   [ STEM < "ny" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_ny_a_rel" ].
 
-nå_func := func-word &
+nå_adv := adv-word &
   [ STEM < "nå" >,
-    SYNSEM.LKEYS.KEYREL.PRED nå_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _nå_adv_rel ].
+
+nå_sadv := sadv-word &
+  [ STEM < "nå" >,
+    SYNSEM.LKEYS.KEYREL.PRED _nå_sadv_rel ].
+
 
 nå_v := main-verb-lxm &
   [ STEM < "nå" >,
     INFLECTION v4,
     SYNSEM.LKEYS.KEYREL.PRED nå_v ].
 
-når_func := func-word &
+når_adv := adv-word &
   [ STEM < "når" >,
-    SYNSEM.LKEYS.KEYREL.PRED når_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _når_adv_rel ].
+
+når_cadv := cadv-word &
+  [ STEM < "når" >,
+    SYNSEM.LKEYS.KEYREL.PRED _når_x_rel ].
+
 
 nødvendigvis-sadv := norm-sadv-word &
   [ STEM < "nødvendigvis" >,
     SYNSEM.LKEYS.KEYREL.PRED nødvendigvis_prd ].
 
-nørdstedalseter-pn := sg-comm-pn &
+nørdstedalseter_pn := sg-comm-pn &
   [ STEM < "nørdstedalseter" >,
     SYNSEM.LKEYS.KEYREL.CARG "Nørdstedalseter" ].
 
-nøytral-a := adj-lxm &
+nøytral_a := adj-lxm &
   [ INFLECTION a1,
     STEM < "nøytral" >,
     SYNSEM.LKEYS.KEYREL.PRED "_nøytral_a_rel" ].
@@ -4376,24 +4875,31 @@ observere_v := main-verb-lxm &
     STEM < "observere" >,
     SYNSEM.LKEYS.KEYREL.PRED observere_v ].
 
-ofte_func := func-word &
+ofte_adv := adv-word &
   [ STEM < "ofte" >,
-    SYNSEM.LKEYS.KEYREL.PRED ofte_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _ofte_adv_rel ].
 
-oftere_func := func-word &
+ofte_sadv := sadv-word &
+  [ STEM < "ofte" >,
+    SYNSEM.LKEYS.KEYREL.PRED _ofte_sadv_rel ].
+
+
+oftere_sadv := sadv-word &
   [ STEM < "oftere" >,
-    SYNSEM.LKEYS.KEYREL.PRED oftere_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _oftere_sadv_rel ].
 
-oftest_func := func-word &
+
+oftest_sadv := sadv-word &
   [ STEM < "oftest" >,
-    SYNSEM.LKEYS.KEYREL.PRED oftest_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _oftest_sadv_rel ].
+
 
 og-conj := conj-word &
   [ STEM < "og" >,
     SYNSEM.LKEYS.KEYREL.PRED og_prd ].
 
 comma-og-conj := conj-word &
-  [ STEM < ",", "og" >,
+  [ STEM < ",","og" >,
     SYNSEM.LKEYS.KEYREL [ PRED og_prd,
 			  L-INDEX event,
 			  R-INDEX event ] ].
@@ -4402,13 +4908,19 @@ og-cont := continuative-word &
   [ STEM < "og" >,
     SYNSEM.LKEYS.KEYREL.PRED "_og_disc_rel" ].
 
-og-så-videre_func := func-word &
+og-så-videre_sadv := sadv-word &
   [ STEM < "og","så","videre" >,
-    SYNSEM.LKEYS.KEYREL.PRED og*så*videre_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _og*så*videre_sadv_rel ].
 
-også_func := func-word &
+
+også_adv := adv-word &
   [ STEM < "også" >,
-    SYNSEM.LKEYS.KEYREL.PRED også_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _også_adv_rel ].
+
+også_sadv := sadv-word &
+  [ STEM < "også" >,
+    SYNSEM.LKEYS.KEYREL.PRED _også_sadv_rel ].
+
 
 oktober-n-masc := masc-mod-cmp-noun-lxm &
   [ STEM < "oktober" >,
@@ -4416,30 +4928,61 @@ oktober-n-masc := masc-mod-cmp-noun-lxm &
     SYNSEM.LKEYS.KEYREL.PRED "_oktober_n_rel",
     INFLECTION m1 ].
 
-olavsbu-pn := sg-comm-pn &
+olavsbu_pn := sg-comm-pn &
   [ STEM < "olavsbu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Olavsbu" ].
 
-olavskvartalet-pn := sg-neut-pn &
+olavskvartalet_pn := sg-neut-pn &
   [ STEM < "olavskvartalet" >,
     SYNSEM.LKEYS.KEYREL.CARG "OLAVSKVARTALET" ].
 
-om_func := func-word &
+om_prp := prep-word &
   [ STEM < "om" >,
-    SYNSEM.LKEYS.KEYREL.PRED om_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED om_prp ].
+
+om_prt := part-word &
+  [ STEM < "om" >,
+    SYNSEM.LKEYS.KEYREL.PRED om_prt ].
+
+om_cadv := cadv-word &
+  [ STEM < "om" >,
+    SYNSEM.LKEYS.KEYREL.PRED _om_x_rel ].
+
 
 ombestemme_v := main-verb-lxm &
   [ INFLECTION v2,
     STEM < "ombestemme" >,
     SYNSEM.LKEYS.KEYREL.PRED ombestemme_v ].
 
-omkring_func := func-word &
+omkring_prp := prep-word &
+  [ STEM < "omkring" >,
+    SYNSEM.LKEYS.KEYREL.PRED omkring_prp ].
+
+omkring_prt := part-word &
+  [ STEM < "omkring" >,
+    SYNSEM.LKEYS.KEYREL.PRED omkring_prt ].
+
+omkring_adv := adv-word &
+  [ STEM < "omkring" >,
+    SYNSEM.LKEYS.KEYREL.PRED _omkring_adv_rel ].
+
+omkring_degadv := degadv-word &
   [ STEM < "omkring" >,
     SYNSEM.LKEYS.KEYREL.PRED omkring_prd ].
 
-omtrent-func := func-word &
+
+omtrent_adv := adv-word &
+  [ STEM < "omtrent" >,
+    SYNSEM.LKEYS.KEYREL.PRED _omtrent_adv_rel ].
+
+omtrent_sadv := sadv-word &
+  [ STEM < "omtrent" >,
+    SYNSEM.LKEYS.KEYREL.PRED _omtrent_sadv_rel ].
+
+omtrent_degadv := degadv-word &
   [ STEM < "omtrent" >,
     SYNSEM.LKEYS.KEYREL.PRED omtrent_prd ].
+
 
 generic_card_ne := pl-card-word &
   [ STEM [ FIRST "_generic_card_ne_",
@@ -4451,9 +4994,10 @@ generic_ord_ne := sg-def-card-word &
 	   FORM #form ],
     LEXREL.LIST.FIRST.CARG #form ].
 
-onsdag_func := func-word &
+onsdag_adv := adv-word &
   [ STEM < "onsdag" >,
-    SYNSEM.LKEYS.KEYREL.PRED onsdag_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _onsdag_adv_rel ].
+
 
 onsdag-n-masc := masc-mod-noun-lxm &
   [ STEM < "onsdag" >,
@@ -4474,9 +5018,18 @@ operativsystem-n-neut := neut-cmp-count-noun-lxm &
     SYNSEM.LKEYS.KEYREL.PRED "_operativsystem_n_rel",
     INFLECTION n1-n2 ].
 
-opp_func := func-word &
+opp_prp := prep-word &
   [ STEM < "opp" >,
-    SYNSEM.LKEYS.KEYREL.PRED opp_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED opp_prp ].
+
+opp_prt := part-word &
+  [ STEM < "opp" >,
+    SYNSEM.LKEYS.KEYREL.PRED opp_prt ].
+
+opp_adv := adv-word &
+  [ STEM < "opp" >,
+    SYNSEM.LKEYS.KEYREL.PRED _opp_adv_rel ].
+
 
 oppgave-n-comm := comm-cmp-count-noun-lxm &
   [ STEM < "oppgave" >,
@@ -4498,9 +5051,14 @@ oppleve_v := main-verb-lxm &
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED oppleve_v ].
 
-oppover_func := func-word &
+oppover_prp := prep-word &
   [ STEM < "oppover" >,
-    SYNSEM.LKEYS.KEYREL.PRED oppover_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED oppover_prp ].
+
+oppover_adv := adv-word &
+  [ STEM < "oppover" >,
+    SYNSEM.LKEYS.KEYREL.PRED _oppover_adv_rel ].
+
 
 oppskrift-n-comm := comm-cmp-count-noun-lxm &
   [ STEM < "oppskrift" >,
@@ -4517,7 +5075,7 @@ organisering-n-comm := comm-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_organisering_n_rel" ].
 
-oslo-pn := sg-comm-pn &
+oslo_pn := sg-comm-pn &
   [ STEM < "oslo" >,
     SYNSEM.LKEYS.KEYREL.CARG "OSLO" ].
 
@@ -4525,21 +5083,41 @@ oss-np := 1pl-pron &
   [ STEM < "oss" >,
     SYNSEM.LOCAL [ CAT.CASE non-subj-case ] ].
 
-osv_func := func-word &
+osv_sadv := sadv-word &
   [ STEM < "osv" >,
-    SYNSEM.LKEYS.KEYREL.PRED osv_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _osv_sadv_rel ].
 
-ovenfor_func := func-word &
+
+ovenfor_prp := prep-word &
   [ STEM < "ovenfor" >,
-    SYNSEM.LKEYS.KEYREL.PRED ovenfor_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED ovenfor_prp ].
 
-over_func := func-word &
+ovenfor_adv := adv-word &
+  [ STEM < "ovenfor" >,
+    SYNSEM.LKEYS.KEYREL.PRED _ovenfor_adv_rel ].
+
+
+over_prp := prep-word &
+  [ STEM < "over" >,
+    SYNSEM.LKEYS.KEYREL.PRED over_prp ].
+
+over_prt := part-word &
+  [ STEM < "over" >,
+    SYNSEM.LKEYS.KEYREL.PRED over_prt ].
+
+over_adv := adv-word &
+  [ STEM < "over" >,
+    SYNSEM.LKEYS.KEYREL.PRED _over_adv_rel ].
+
+over_degadv := degadv-word &
   [ STEM < "over" >,
     SYNSEM.LKEYS.KEYREL.PRED over_prd ].
 
-overfor_func := func-word &
+
+overfor_prp := prep-word &
   [ STEM < "overfor" >,
-    SYNSEM.LKEYS.KEYREL.PRED overfor_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED overfor_prp ].
+
 
 overlate_v := main-verb-lxm &
   [ INFLECTION v1,
@@ -4566,7 +5144,7 @@ pakke_v := main-verb-lxm &
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED pakke_v ].
 
-par-a := adj-lxm &
+par_a := adj-lxm &
   [ STEM < "par" >,
     SYNSEM.LKEYS.KEYREL.PRED "_par_a_rel", 
     INFLECTION a3a ].
@@ -4590,7 +5168,7 @@ pdf-noun-word := mod-noun-word &
   [ STEM < "pdf" >,
     SYNSEM.LKEYS.KEYREL.PRED "_pdf_rel" ].
 
-pen-a := adj-lxm &
+pen_a := adj-lxm &
   [ STEM < "pen" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_pen_a_rel" ].
@@ -4599,6 +5177,11 @@ penge-n-masc := masc-cmp-count-noun-lxm &
   [ INFLECTION m1,
     STEM < "penge" >,
     SYNSEM.LKEYS.KEYREL.PRED "_penge_n_rel" ].
+
+pensumbok-n-comm := comm-cmp-count-noun-lxm &
+  [ STEM < "pensumbok" >,
+    INFLECTION m1,
+    SYNSEM.LKEYS.KEYREL.PRED "_pensumbok_n_rel" ].
 
 per-p := per-word &
   [ STEM < "per" >,
@@ -4636,7 +5219,7 @@ plage_v := main-verb-lxm &
     STEM < "plage" >,
     SYNSEM.LKEYS.KEYREL.PRED plage_v ].
 
-plan-a := adj-lxm &
+plan_a := adj-lxm &
   [ STEM < "plan" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_plan_a_rel" ].
@@ -4666,7 +5249,7 @@ plen-n-masc := masc-cmp-count-noun-lxm &
     STEM < "plen" >,
     SYNSEM.LKEYS.KEYREL.PRED "_plen_n_rel" ].
 
-posepilten-pn := sg-comm-pn &
+posepilten_pn := sg-comm-pn &
   [ STEM < "posepilten" >,
     SYNSEM.LKEYS.KEYREL.CARG "POSEPILTEN" ].
 
@@ -4684,15 +5267,15 @@ prat-n-mascorneut := mascorneut-mwe-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED prat_prd ].
 
-prinsen-pn := sg-comm-pn &
+prinsen_pn := sg-comm-pn &
   [ STEM < "prinsen" >,
     SYNSEM.LKEYS.KEYREL.CARG "PRINSEN" ].
 
-prinsens-gate-pn := sg-comm-pn &
-  [ STEM < "prinsens", "gate" >,
+prinsens-gate_pn := sg-comm-pn &
+  [ STEM < "prinsens","gate" >,
     SYNSEM.LKEYS.KEYREL.CARG "NORDRE" ].
 
-privat-a := adj-lxm &
+privat_a := adj-lxm &
   [ INFLECTION a2a,
     STEM < "privat" >,
     SYNSEM.LKEYS.KEYREL.PRED "_privat_a_rel" ].
@@ -4790,7 +5373,7 @@ rekruttere_v := main-verb-lxm &
     STEM < "rekruttere" >,
     SYNSEM.LKEYS.KEYREL.PRED rekruttere_v ].
 
-ren-a := adj-lxm &
+ren_a := adj-lxm &
   [ STEM < "ren" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_ren_a_rel" ].
@@ -4815,22 +5398,22 @@ rike-n-neut := neut-cmp-count-noun-lxm &
     STEM < "rike" >,
     SYNSEM.LKEYS.KEYREL.PRED "_rike_n_rel" ].
 
-rio-pn := sg-comm-pn &
+rio_pn := sg-comm-pn &
   [ STEM < "rio" >,
     SYNSEM.LKEYS.KEYREL.CARG "RIO" ].
 
-rolig-a := mwe-adj-lxm &
+rolig_a := mwe-adj-lxm &
   [ INFLECTION a2,
     STEM < "rolig" >,
     SYNSEM.LKEYS.KEYREL.PRED rolig_prd ].
 
-rosa-a := adj-lxm &
+rosa_a := adj-lxm &
   [ STEM < "rosa" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_rosa_a_rel" ].
 
-rosendal-pub-pn := sg-comm-pn &
-  [ STEM < "rosendal", "pub" >,
+rosendal-pub_pn := sg-comm-pn &
+  [ STEM < "rosendal","pub" >,
     SYNSEM.LKEYS.KEYREL.CARG "ROSENDAL PUB" ].
 
 rule_v := main-verb-lxm &
@@ -4848,9 +5431,22 @@ rulle_v := main-verb-lxm &
     STEM < "rulle" >,
     SYNSEM.LKEYS.KEYREL.PRED rulle_v ].
 
-rundt_func := func-word &
+rundt_prp := prep-word &
+  [ STEM < "rundt" >,
+    SYNSEM.LKEYS.KEYREL.PRED rundt_prp ].
+
+rundt_prt := part-word &
+  [ STEM < "rundt" >,
+    SYNSEM.LKEYS.KEYREL.PRED rundt_prt ].
+
+rundt_adv := adv-word &
+  [ STEM < "rundt" >,
+    SYNSEM.LKEYS.KEYREL.PRED _rundt_adv_rel ].
+
+rundt_degadv := degadv-word &
   [ STEM < "rundt" >,
     SYNSEM.LKEYS.KEYREL.PRED rundt_prd ].
+
 
 rute-n-comm := comm-cmp-count-noun-lxm &
   [ INFLECTION m1,
@@ -4863,7 +5459,7 @@ ry_v := main-verb-lxm &
     SYNSEM.LKEYS.KEYREL.PRED ry_v ].
 
 rydde_v := main-verb-lxm &
-  [ STEM <"rydde">,
+  [ STEM < "rydde" >,
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED rydde_v ].
 
@@ -4872,7 +5468,7 @@ rygg-n-masc := masc-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_rygg_n_rel" ].
 
-rød-a := adj-lxm &
+rød_a := adj-lxm &
   [ INFLECTION a1,
     STEM < "rød" >,
     SYNSEM.LKEYS.KEYREL.PRED "_rød_a_rel" ].
@@ -4882,7 +5478,7 @@ rødt-n-neut := neut-cmp-count-noun-lxm &
     SYNSEM.LKEYS.KEYREL.PRED "_rødt_n_rel",
     INFLECTION no-infl ].
 
-røisheim-pn := sg-comm-pn &
+røisheim_pn := sg-comm-pn &
   [ STEM < "røisheim" >,
     SYNSEM.LKEYS.KEYREL.CARG "Røisheim" ].
 
@@ -4894,7 +5490,7 @@ sak-n-comm := comm-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_sak_n_rel" ].
 
-samfundet-pn := sg-neut-pn &
+samfundet_pn := sg-neut-pn &
   [ STEM < "samfundet" >,
     SYNSEM.LKEYS.KEYREL.CARG "SAMFUNDET" ].
 
@@ -4903,13 +5499,26 @@ samle_v := main-verb-lxm &
     STEM < "samle" >,
     SYNSEM.LKEYS.KEYREL.PRED samle_v ].
 
-samme-a := lex-adj-word &
+samme_a := lex-adj-word &
   [ STEM < "samme" >,
     SYNSEM.LKEYS.KEYREL.PRED "_samme_a_rel" ].
 
-sammen_func := func-word &
+sammen_prp := prep-word &
   [ STEM < "sammen" >,
-    SYNSEM.LKEYS.KEYREL.PRED sammen_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED sammen_prp ].
+
+sammen_prt := part-word &
+  [ STEM < "sammen" >,
+    SYNSEM.LKEYS.KEYREL.PRED sammen_prt ].
+
+sammen_adv := adv-word &
+  [ STEM < "sammen" >,
+    SYNSEM.LKEYS.KEYREL.PRED _sammen_adv_rel ].
+
+sammen_sadv := sadv-word &
+  [ STEM < "sammen" >,
+    SYNSEM.LKEYS.KEYREL.PRED _sammen_sadv_rel ].
+
 
 sammenligne_v := main-verb-lxm &
   [ STEM < "sammenligne" >,
@@ -4929,7 +5538,7 @@ samtlige_q := pl-indef-art-det-word &
   [ STEM < "samtlige" >,
     SYNSEM.LKEYS.Q.QREL.PRED _samtlige_q_rel ].
 
-sandy-pn := sg-comm-pn &
+sandy_pn := sg-comm-pn &
   [ STEM < "Sandy" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sandy" ].
 
@@ -4939,7 +5548,7 @@ se_v := main-verb-lxm &
     SYNSEM.LKEYS.KEYREL.PRED se_v ].
 
 seg-refl-heavy := heavy-refl-phrase &
-  [ STEM < "seg", "selv" >,
+  [ STEM < "seg","selv" >,
     SYNSEM [ LOCAL.CONT.HOOK.INDEX.PNG.PN 3p,
              LKEYS.KEYREL [ PRED "refl-pron_rel",
 			    ARG0.PRONTYPE refl_pron ] ] ].
@@ -5046,13 +5655,19 @@ selge_v := main-verb-lxm &
     STEM < "selge" >,
     SYNSEM.LKEYS.KEYREL.PRED selge_v ].
 
-selv_func := func-word &
+selv_sadv := sadv-word &
+  [ STEM < "selv" >,
+    SYNSEM.LKEYS.KEYREL.PRED _selv_sadv_rel ].
+
+selv_degadv := degadv-word &
   [ STEM < "selv" >,
     SYNSEM.LKEYS.KEYREL.PRED selv_prd ].
 
-selv*om_func := func-word &
-  [ STEM < "selv", "om" >,
-    SYNSEM.LKEYS.KEYREL.PRED selv*om_prd ].
+
+selv-om_cadv := cadv-word &
+  [ STEM < "selv","om" >,
+    SYNSEM.LKEYS.KEYREL.PRED _selv*om_x_rel ].
+
 
 selvbetjeningslosji-n-neut := neut-cmp-count-noun-lxm &
   [ STEM < "selvbetjeningslosji" >,
@@ -5063,11 +5678,12 @@ selve_q := selve-det-word &
   [ STEM < "selve" >,
     SYNSEM.LKEYS.Q.QREL.PRED _selve_q_rel ].
 
-selvfølgelig_func := func-word &
+selvfølgelig_sadv := sadv-word &
   [ STEM < "selvfølgelig" >,
-    SYNSEM.LKEYS.KEYREL.PRED selvfølgelig_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _selvfølgelig_sadv_rel ].
 
-sen-a := adj-lxm &
+
+sen_a := adj-lxm &
   [  INFLECTION a1,
     STEM < "sen" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sen_a_rel" ].
@@ -5082,13 +5698,15 @@ sende_v := main-verb-lxm &
     STEM < "sende" >,
     SYNSEM.LKEYS.KEYREL.PRED sende_v ].
 
-senere_func := func-word &
+senere_adv := adv-word &
   [ STEM < "senere" >,
-    SYNSEM.LKEYS.KEYREL.PRED senere_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _senere_adv_rel ].
 
-senest-func := func-word &
+
+senest_degadv := degadv-word &
   [ STEM < "senest" >,
     SYNSEM.LKEYS.KEYREL.PRED senest_prd ].
+
 
 sentrum-n-neut := neut-mod-pn-cmp-noun-lxm &
   [ STEM < "sentrum" >,
@@ -5129,15 +5747,33 @@ si_v := main-verb-lxm &
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED si_v ].
 
-siden_func := func-word &
+siden_prp := prep-word &
   [ STEM < "siden" >,
-    SYNSEM.LKEYS.KEYREL.PRED siden_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED siden_prp ].
 
-sikkert_func := func-word &
+siden_adv := adv-word &
+  [ STEM < "siden" >,
+    SYNSEM.LKEYS.KEYREL.PRED _siden_adv_rel ].
+
+siden_sadv := sadv-word &
+  [ STEM < "siden" >,
+    SYNSEM.LKEYS.KEYREL.PRED _siden_sadv_rel ].
+
+siden_cadv := cadv-word &
+  [ STEM < "siden" >,
+    SYNSEM.LKEYS.KEYREL.PRED _siden_x_rel ].
+
+
+sikkert_sadv := sadv-word &
+  [ STEM < "sikkert" >,
+    SYNSEM.LKEYS.KEYREL.PRED _sikkert_sadv_rel ].
+
+sikkert_degadv := degadv-word &
   [ STEM < "sikkert" >,
     SYNSEM.LKEYS.KEYREL.PRED sikkert_prd ].
 
-sikkilsdalsseter-pn := sg-comm-pn &
+
+sikkilsdalsseter_pn := sg-comm-pn &
   [ STEM < "sikkilsdalsseter" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sikkilsdalsseter" ].
 
@@ -5161,12 +5797,13 @@ sine-garpe := garpe-word &
   [ LEXREL <! [ ARG1.PNG.PN 3pl ] !>,
     STEM < "sine" > ].
 
-sine_anno_func := func-word &
+sine-anno_sadv := sadv-word &
   [ STEM < "sine","anno" >,
-    SYNSEM.LKEYS.KEYREL.PRED sine*anno_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _sine*anno_sadv_rel ].
+
 
 sint_a := adj-lxm &
-  [ STEM <"sint">,
+  [ STEM < "sint" >,
     INFLECTION a2,
     SYNSEM.LKEYS.KEYREL.PRED sint_prd ].
 
@@ -5205,7 +5842,7 @@ sjuende-card := sg-def-card-word &
   [ STEM < "sjuende" >,
     LEXREL.LIST.FIRST.CARG "sjuende_rel" ].
 
-skagastølsbu-pn := sg-comm-pn &
+skagastølsbu_pn := sg-comm-pn &
   [ STEM < "skagastølsbu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skagastølsbu" ].
 
@@ -5214,16 +5851,16 @@ skamme_v := main-verb-lxm &
     STEM < "skamme" >,
     SYNSEM.LKEYS.KEYREL.PRED skamme_v ].
 
-skardalstind-pn := sg-comm-pn &
+skardalstind_pn := sg-comm-pn &
   [ STEM < "skardalstind" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skardalstind" ].
 
 skatt-n-masc := masc-cmp-noun-lxm &
-  [ STEM <"skatt">,
+  [ STEM < "skatt" >,
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_skatt_n_rel" ].
 
-skautflya-pn := sg-comm-pn &
+skautflya_pn := sg-comm-pn &
   [ STEM < "skautflya" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skautflya" ].
 
@@ -5252,7 +5889,7 @@ skjorte-n-fem := comm-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_skjorte_n_rel" ].
 
-skodadalsbøen-pn := sg-comm-pn &
+skodadalsbøen_pn := sg-comm-pn &
   [ STEM < "skodadalsbøen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skodadalsbøen" ].
 
@@ -5261,11 +5898,11 @@ skog-n-masc := masc-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_skog_n_rel" ].
 
-skogadalbøen-pn := sg-comm-pn &
+skogadalbøen_pn := sg-comm-pn &
   [ STEM < "skogadalbøen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skogadalbøen" ].
 
-skogadalsbøen-pn := sg-comm-pn &
+skogadalsbøen_pn := sg-comm-pn &
   [ STEM < "skogadalsbøen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skogadalsbøen" ].
 
@@ -5328,18 +5965,19 @@ slags-n-masc := noun-word &
   [ STEM < "slags" >,
     SYNSEM.LKEYS.KEYREL.PRED "_slags_n_rel" ].
 
-slettingsbu-pn := sg-comm-pn &
+slettingsbu_pn := sg-comm-pn &
   [ STEM < "slettingsbu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Slettingsbu" ].
 
-slik-a := adj-lxm &
+slik_a := adj-lxm &
   [ INFLECTION a1,
     STEM < "slik" >,
     SYNSEM.LKEYS.KEYREL.PRED "_slik_a_rel" ].
 
-slik_func := func-word &
+slik_cadv := cadv-word &
   [ STEM < "slik" >,
-    SYNSEM.LKEYS.KEYREL.PRED slik_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _slik_x_rel ].
+
 
 slingre_v := main-verb-lxm &
   [ STEM < "slingre" >,
@@ -5391,11 +6029,12 @@ snakke_v := main-verb-lxm &
     STEM < "snakke" >,
     SYNSEM.LKEYS.KEYREL.PRED snakke_v ].
 
-snart_func := func-word &
+snart_degadv := degadv-word &
   [ STEM < "snart" >,
     SYNSEM.LKEYS.KEYREL.PRED snart_prd ].
 
-snill-a := adj-lxm &
+
+snill_a := adj-lxm &
   [ STEM < "snill" >,
     SYNSEM.LKEYS.KEYREL.PRED "_snill_a_rel", 
     INFLECTION a1 ].
@@ -5415,19 +6054,19 @@ snøball-n-masc := masc-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_snøball_n_rel" ].
 
-Sogn-og-Fjordane-pn := pn-word &
+Sogn-og-Fjordane_pn := pn-word &
   [ STEM < "Sogn","og","Fjordane" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sogn-og-Fjordane" ].
 
-sognefjellet-pn := sg-comm-pn &
+sognefjellet_pn := sg-comm-pn &
   [ STEM < "sognefjellet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sognefjellet" ].
 
-sognefjellhytta-pn := sg-comm-pn &
+sognefjellhytta_pn := sg-comm-pn &
   [ STEM < "sognefjellhytta" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sognefjellhytta" ].
 
-sognefjellsveien-pn := sg-comm-pn &
+sognefjellsveien_pn := sg-comm-pn &
   [ STEM < "sognefjellsveien" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sognefjellsveien" ].
 
@@ -5436,35 +6075,52 @@ sol-n-comm := comm-cmp-count-noun-lxm &
     STEM < "sol" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sol_n_rel" ].
 
-solaris-pn := sg-comm-pn &
+solaris_pn := sg-comm-pn &
   [ STEM < "solaris" >,
     SYNSEM.LKEYS.KEYREL.CARG "Solaris" ].
 
-solsiden-pn := sg-comm-pn &
+solsiden_pn := sg-comm-pn &
   [ STEM < "solsiden" >,
     SYNSEM.LKEYS.KEYREL.CARG "SOLSIDEN" ].
 
-som_func := func-word &
+som_prp := prep-word &
   [ STEM < "som" >,
-    SYNSEM.LKEYS.KEYREL.PRED som_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED som_prp ].
 
-som-oftest_func := func-word &
+som_cadv := cadv-word &
+  [ STEM < "som" >,
+    SYNSEM.LKEYS.KEYREL.PRED _som_x_rel ].
+
+
+som-oftest_sadv := sadv-word &
   [ STEM < "som","oftest" >,
-    SYNSEM.LKEYS.KEYREL.PRED som*oftest_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _som*oftest_sadv_rel ].
 
-som*om_func := func-word &
-  [ STEM < "som", "om" >,
-    SYNSEM.LKEYS.KEYREL.PRED som*om_prd ].
 
-som-regel_func := func-word &
+som-om_cadv := cadv-word &
+  [ STEM < "som","om" >,
+    SYNSEM.LKEYS.KEYREL.PRED _som*om_x_rel ].
+
+
+som-regel_sadv := sadv-word &
   [ STEM < "som","regel" >,
-    SYNSEM.LKEYS.KEYREL.PRED som*regel_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _som*regel_sadv_rel ].
+
 
 som_restr_relpron := rel-compl-word &
   [ STEM < "som" > ].
 
 som_nonrestr_relpron := nonrestr-rel-compl-word &
-  [ STEM < ",", "som" > ].
+  [ STEM < ",","som" > ].
+
+noe_som_relpron := clause-rel-compl-word &
+  [ STEM < ",","noe","som" > ].
+
+hvilket_relpron := clause-rel-compl-word &
+  [ STEM < ",","hvilket" > ].
+
+enn_rel := enn-rel-compl-word &
+  [ STEM < "enn" > ].
 
 sommer-n-masc := masc-mod-noun-lxm &
   [ STEM < "sommer" >,
@@ -5506,7 +6162,7 @@ spise_v := main-verb-lxm &
     STEM < "spise" >,
     SYNSEM.LKEYS.KEYREL.PRED spise_v ].
 
-spiterstulen-pn := sg-comm-pn &
+spiterstulen_pn := sg-comm-pn &
   [ STEM < "spiterstulen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Spiterstulen" ].
 
@@ -5519,7 +6175,7 @@ start-punct := start-word &
   [ STEM < "^" > ].
 
 start+hyphen-punct := start-word &
-  [ STEM < "^", "–" > ].
+  [ STEM < "^","–" > ].
 
 stat-n-masc := masc-cmp-count-noun-lxm &
   [ STEM < "stat" >,
@@ -5541,7 +6197,7 @@ sted-n-neut := neut-cmp-count-noun-lxm &
     STEM < "sted" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sted_n_rel" ].
 
-steinbu-pn := sg-comm-pn &
+steinbu_pn := sg-comm-pn &
   [ STEM < "steinbu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Steinbu" ].
 
@@ -5570,7 +6226,7 @@ stole_v := main-verb-lxm &
     STEM < "stole" >,
     SYNSEM.LKEYS.KEYREL.PRED stole_v ].
 
-stor-a := adj-lxm &
+stor_a := adj-lxm &
   [ STEM < "stor" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_stor_a_rel" ].
@@ -5580,7 +6236,7 @@ stormaskin-n-masc := masc-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_stormaskin_n_rel" ].
 
-storslått-a := adj-lxm &
+storslått_a := adj-lxm &
   [ INFLECTION a2,
     STEM < "storslått" >,
     SYNSEM.LKEYS.KEYREL.PRED "_storslått_a_rel" ].
@@ -5619,7 +6275,7 @@ stå_v := main-verb-lxm &
     STEM < "stå" >,
     SYNSEM.LKEYS.KEYREL.PRED stå_v ].
 
-stølsdalen-pn := sg-comm-pn &
+stølsdalen_pn := sg-comm-pn &
   [ STEM < "stølsdalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Stølsdalen" ].
 
@@ -5628,7 +6284,7 @@ sum-n-masc := masc-cmp-count-noun-lxm &
     INFLECTION m3,
     SYNSEM.LKEYS.KEYREL.PRED "_sum_n_rel" ].
 
-sv-pn := sg-comm-pn &
+sv_pn := sg-comm-pn &
   [ STEM < "SV" >,
     SYNSEM.LKEYS.KEYREL.CARG "SV" ].
 
@@ -5637,7 +6293,7 @@ svamp-n-masc := masc-cmp-count-noun-lxm &
     STEM < "svamp" >,
     SYNSEM.LKEYS.KEYREL.PRED "_svamp_n_rel" ].
 
-svart-a := adj-lxm &
+svart_a := adj-lxm &
   [ STEM < "svart" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_svart_a_rel" ].
@@ -5647,11 +6303,12 @@ svart-n-neut := neut-cmp-count-noun-lxm &
     SYNSEM.LKEYS.KEYREL.PRED "_svart_n_rel",
     INFLECTION no-infl ].
 
-svært_func := func-word &
+svært_degadv := degadv-word &
   [ STEM < "svært" >,
     SYNSEM.LKEYS.KEYREL.PRED svært_prd ].
 
-syk-a := adj-lxm &
+
+syk_a := adj-lxm &
   [ INFLECTION a1,
     STEM < "syk" >,
     SYNSEM.LKEYS.KEYREL.PRED "_syk_a_rel" ].
@@ -5775,29 +6432,48 @@ så_deg := så-mod-adj-pos-word &
   [ STEM < "så" >,
     SYNSEM.LKEYS.KEYREL.PRED _så_deg_rel ].
 
-så-langt_func := func-word &
+så-langt_sadv := sadv-word &
   [ STEM < "så","langt" >,
-    SYNSEM.LKEYS.KEYREL.PRED så*langt_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _så*langt_sadv_rel ].
 
-så_func := func-word &
+
+så_adv := adv-word &
+  [ STEM < "så" >,
+    SYNSEM.LKEYS.KEYREL.PRED _så_adv_rel ].
+
+så_sadv := sadv-word &
+  [ STEM < "så" >,
+    SYNSEM.LKEYS.KEYREL.PRED _så_sadv_rel ].
+
+så_cadv := cadv-word &
+  [ STEM < "så" >,
+    SYNSEM.LKEYS.KEYREL.PRED _så_x_rel ].
+
+så_degadv := degadv-word &
   [ STEM < "så" >,
     SYNSEM.LKEYS.KEYREL.PRED så_prd ].
+
 
 så_v := main-verb-lxm &
   [ STEM < "så" >,
     INFLECTION v4,
     SYNSEM.LKEYS.KEYREL.PRED så_v ].
 
-sånn-a := adj-lxm &
+sånn_a := adj-lxm &
   [ INFLECTION a1,
     STEM < "sånn" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sånn_a_rel" ].
 
-sånn_func := func-word &
+sånn_cadv := cadv-word &
+  [ STEM < "sånn" >,
+    SYNSEM.LKEYS.KEYREL.PRED _sånn_x_rel ].
+
+sånn_degadv := degadv-word &
   [ STEM < "sånn" >,
     SYNSEM.LKEYS.KEYREL.PRED sånn_prd ].
 
-sår-a := adj-lxm &
+
+sår_a := adj-lxm &
   [ STEM < "sår" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_sår_a_rel" ].
@@ -5807,25 +6483,26 @@ sår-n-neut := neut-cmp-count-noun-lxm &
     STEM < "sår" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sår_n_rel" ].
 
-søndag_func := func-word &
+søndag_adv := adv-word &
   [ STEM < "søndag" >,
-    SYNSEM.LKEYS.KEYREL.PRED søndag_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _søndag_adv_rel ].
+
 
 søndag-n-masc := masc-mod-noun-lxm &
   [ STEM < "søndag" >,
     SYNSEM.LKEYS.KEYREL.PRED _søndag_n_rel,
     INFLECTION m1 ].
 
-søndre-a := adj-lxm &
+søndre_a := adj-lxm &
   [ STEM < "søndre" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_søndre_a_rel" ].
 
-søndre-pn := sg-comm-pn &
+søndre_pn := sg-comm-pn &
   [ STEM < "søndre" >,
     SYNSEM.LKEYS.KEYREL.CARG "SøNDRE" ].
 
-sør-pn := sg-neut-pn &
+sør_pn := sg-neut-pn &
   [ STEM < "sør" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sør" ].
 
@@ -5867,19 +6544,19 @@ tenke_v := main-verb-lxm &
     STEM < "tenke" >,
     SYNSEM.LKEYS.KEYREL.PRED tenke_v ].
 
-the-pn := sg-comm-pn &
+the_pn := sg-comm-pn &
   [ STEM < "the" >,
     SYNSEM.LKEYS.KEYREL.CARG "The" ].
 
-thomas-angells-gate-pn := sg-comm-pn &
-  [ STEM < "thomas", "angells", "gate" >,
+thomas-angells-gate_pn := sg-comm-pn &
+  [ STEM < "thomas","angells","gate" >,
     SYNSEM.LKEYS.KEYREL.CARG "THOMAS ANGELLS GATE" ].
 
 ti-card := pl-card-word &
   [ STEM < "ti" >,
     LEXREL.LIST.FIRST.CARG "10_card_rel" ].
 
-tidlig-a := adj-lxm &
+tidlig_a := adj-lxm &
   [ INFLECTION a2,
     STEM < "tidlig" >,
     SYNSEM.LKEYS.KEYREL.PRED "_tidlig_a_rel" ].
@@ -5898,8 +6575,8 @@ tiger-n-masc := masc-cmp-count-noun-lxm &
     INFLECTION m2,
     SYNSEM.LKEYS.KEYREL.PRED "_tiger_n_rel" ].
 
-tiger-tiger-pn := sg-comm-pn &
-  [ STEM < "tiger", "tiger" >,
+tiger-tiger_pn := sg-comm-pn &
+  [ STEM < "tiger","tiger" >,
     SYNSEM.LKEYS.KEYREL.CARG "TIGER TIGER" ].
 
 ; til-comp := cond-complementizer-word &
@@ -5908,9 +6585,18 @@ tiger-tiger-pn := sg-comm-pn &
 ;                    CONT.RELS <! [ PRED "til_rel" ] !> ] ].
 
 
-tilbake_func := func-word &
+tilbake_prp := prep-word &
   [ STEM < "tilbake" >,
-    SYNSEM.LKEYS.KEYREL.PRED tilbake_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED tilbake_prp ].
+
+tilbake_prt := part-word &
+  [ STEM < "tilbake" >,
+    SYNSEM.LKEYS.KEYREL.PRED tilbake_prt ].
+
+tilbake_adv := adv-word &
+  [ STEM < "tilbake" >,
+    SYNSEM.LKEYS.KEYREL.PRED _tilbake_adv_rel ].
+
 
 tilfelle-n-neut := neut-cmp-count-noun-lxm &
   [ STEM < "tilfelle" >,
@@ -5932,9 +6618,10 @@ tiltrenge_v := main-verb-lxm &
     STEM < "tiltrenge" >,
     SYNSEM.LKEYS.KEYREL.PRED tiltrenge_v ].
 
-tirsdag_func := func-word &
+tirsdag_adv := adv-word &
   [ STEM < "tirsdag" >,
-    SYNSEM.LKEYS.KEYREL.PRED tirsdag_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _tirsdag_adv_rel ].
+
 
 tirsdag-n-masc := masc-mod-noun-lxm &
   [ STEM < "tirsdag" >,
@@ -6021,7 +6708,7 @@ tjueåttende-card := sg-def-card-word &
   [ STEM < "tjueåttende" >,
     LEXREL.LIST.FIRST.CARG "28-def_rel" ].
 
-tjørnholåa-pn := sg-comm-pn &
+tjørnholåa_pn := sg-comm-pn &
   [ STEM < "tjørnholåa" >,
     SYNSEM.LKEYS.KEYREL.CARG "Tjørnholåa" ].
 
@@ -6054,12 +6741,12 @@ tolvte-card := sg-def-card-word &
   [ STEM < "tolvte" >,
     LEXREL.LIST.FIRST.CARG "tolvte_rel" ].
 
-tom-a := adj-lxm &
+tom_a := adj-lxm &
   [ STEM < "tom" >,
     SYNSEM.LKEYS.KEYREL.PRED "_tom_a_rel", 
     INFLECTION a1 ].
 
-torfinnsbu-pn := sg-comm-pn &
+torfinnsbu_pn := sg-comm-pn &
   [ STEM < "torfinnsbu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Torfinnsbu" ].
 
@@ -6068,9 +6755,10 @@ torg-n-neut := neut-cmp-count-noun-lxm &
     STEM < "torg" >,
     SYNSEM.LKEYS.KEYREL.PRED "_torg_n_rel" ].
 
-torsdag_func := func-word &
+torsdag_adv := adv-word &
   [ STEM < "torsdag" >,
-    SYNSEM.LKEYS.KEYREL.PRED torsdag_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _torsdag_adv_rel ].
+
 
 torsdag-n-masc := masc-mod-noun-lxm &
   [ STEM < "torsdag" >,
@@ -6114,7 +6802,7 @@ tredje-card := sg-def-card-word &
     LEXREL.LIST.FIRST.CARG "tredje_rel" ].
 
 trekke_v := main-verb-lxm &
-  [ STEM <"trekke">,
+  [ STEM < "trekke" >,
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED trekke_v ].
 
@@ -6216,7 +6904,7 @@ trille_v := main-verb-lxm &
     STEM < "trille" >,
     SYNSEM.LKEYS.KEYREL.PRED trille_v ].
 
-tro-a := adj-lxm &
+tro_a := adj-lxm &
   [ STEM < "tro" >,
     INFLECTION a1,
     SYNSEM.LKEYS.KEYREL.PRED "_tro_a_rel" ].
@@ -6231,20 +6919,20 @@ tro_v := main-verb-lxm &
     STEM < "tro" >,
     SYNSEM.LKEYS.KEYREL.PRED tro_v ].
 
-trollheimen-pn := sg-comm-pn &
+trollheimen_pn := sg-comm-pn &
   [ STEM < "trollheimen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Trollheimen" ].
 
-trondheim-filmklubb-pn := sg-comm-pn &
-  [ STEM < "trondheim", "filmklubb" >,
+trondheim-filmklubb_pn := sg-comm-pn &
+  [ STEM < "trondheim","filmklubb" >,
     SYNSEM.LKEYS.KEYREL.CARG "TRONDHEIM FILMKLUBB" ].
 
-trondheim-pn := sg-comm-pn &
+trondheim_pn := sg-comm-pn &
   [ STEM < "trondheim" >,
     SYNSEM.LKEYS.KEYREL.CARG "TRONDHEIM" ].
 
-trondheim-torg-pn := sg-neut-pn &
-  [ STEM < "trondheim", "torg" >,
+trondheim-torg_pn := sg-neut-pn &
+  [ STEM < "trondheim","torg" >,
     SYNSEM.LKEYS.KEYREL.CARG "TRONDHEIM TORG" ].
 
 true_v := main-verb-lxm &
@@ -6266,7 +6954,7 @@ turmål-n-neut := neut-cmp-count-noun-lxm &
     SYNSEM.LKEYS.KEYREL.PRED "_turmål_n_rel",
     INFLECTION n1 ].
 
-turtagrø-pn := sg-comm-pn &
+turtagrø_pn := sg-comm-pn &
   [ STEM < "turtagrø" >,
     SYNSEM.LKEYS.KEYREL.CARG "Turtagrø" ].
 
@@ -6305,15 +6993,20 @@ tørre_v := main-verb-lxm &
     INFLECTION v1, 
     SYNSEM.LKEYS.KEYREL.PRED tørre_v ].
 
-uansett_func := func-word &
+uansett_prp := prep-word &
   [ STEM < "uansett" >,
-    SYNSEM.LKEYS.KEYREL.PRED uansett_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED uansett_prp ].
 
-uffa-pn := sg-comm-pn &
+uansett_sadv := sadv-word &
+  [ STEM < "uansett" >,
+    SYNSEM.LKEYS.KEYREL.PRED _uansett_sadv_rel ].
+
+
+uffa_pn := sg-comm-pn &
   [ STEM < "uffa" >,
     SYNSEM.LKEYS.KEYREL.CARG "UFFA" ].
 
-umoden-a := adj-lxm &
+umoden_a := adj-lxm &
   [ INFLECTION a5a,
     STEM < "umoden" >,
     SYNSEM.LKEYS.KEYREL.PRED "_umoden_a_rel" ].
@@ -6323,20 +7016,38 @@ under-n-neut := neut-cmp-count-noun-lxm &
     INFLECTION n2,
     SYNSEM.LKEYS.KEYREL.PRED "_under_n_rel" ].
 
-under_func := func-word &
+under_prp := prep-word &
   [ STEM < "under" >,
-    SYNSEM.LKEYS.KEYREL.PRED under_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED under_prp ].
 
-unna_func := func-word &
+under_prt := part-word &
+  [ STEM < "under" >,
+    SYNSEM.LKEYS.KEYREL.PRED under_prt ].
+
+under_adv := adv-word &
+  [ STEM < "under" >,
+    SYNSEM.LKEYS.KEYREL.PRED _under_adv_rel ].
+
+
+unna_prp := prep-word &
   [ STEM < "unna" >,
-    SYNSEM.LKEYS.KEYREL.PRED unna_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED unna_prp ].
 
-ung-a := adj-lxm &
+unna_prt := part-word &
+  [ STEM < "unna" >,
+    SYNSEM.LKEYS.KEYREL.PRED unna_prt ].
+
+unna_adv := adv-word &
+  [ STEM < "unna" >,
+    SYNSEM.LKEYS.KEYREL.PRED _unna_adv_rel ].
+
+
+ung_a := adj-lxm &
   [ STEM < "ung" >,
     SYNSEM.LKEYS.KEYREL.PRED "_ung_a_rel", 
     INFLECTION a1 ].
 
-unix-pn := sg-comm-pn &
+unix_pn := sg-comm-pn &
   [ STEM < "unix" >,
     SYNSEM.LKEYS.KEYREL.CARG "Unix" ].
 
@@ -6350,43 +7061,71 @@ unnslippe_v := main-verb-lxm &
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED unnslippe_v ].
 
-usagt-a := adj-lxm &
+usagt_a := adj-lxm &
   [ INFLECTION a2,
     STEM < "usagt" >,
     SYNSEM.LKEYS.KEYREL.PRED "_usagt_a_rel" ].
 
-ut_func := func-word &
+ut_prp := prep-word &
   [ STEM < "ut" >,
-    SYNSEM.LKEYS.KEYREL.PRED ut_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED ut_prp ].
 
-uten_func := func-word &
+ut_prt := part-word &
+  [ STEM < "ut" >,
+    SYNSEM.LKEYS.KEYREL.PRED ut_prt ].
+
+ut_adv := adv-word &
+  [ STEM < "ut" >,
+    SYNSEM.LKEYS.KEYREL.PRED _ut_adv_rel ].
+
+uten_prp := prep-word &
   [ STEM < "uten" >,
-    SYNSEM.LKEYS.KEYREL.PRED uten_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED uten_prp ].
 
-utenfor_func := func-word &
+utenfor_prp := prep-word &
   [ STEM < "utenfor" >,
-    SYNSEM.LKEYS.KEYREL.PRED utenfor_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED utenfor_prp ].
 
-utenlands_func := func-word &
+utenfor_adv := adv-word &
+  [ STEM < "utenfor" >,
+    SYNSEM.LKEYS.KEYREL.PRED _utenfor_adv_rel ].
+
+
+utenlands_adv := adv-word &
   [ STEM < "utenlands" >,
-    SYNSEM.LKEYS.KEYREL.PRED utenlands_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED _utenlands_adv_rel ].
 
-utenom_func := func-word &
+
+utenom_prp := prep-word &
   [ STEM < "utenom" >,
-    SYNSEM.LKEYS.KEYREL.PRED utenom_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED utenom_prp ].
+
+utenom_adv := adv-word &
+  [ STEM < "utenom" >,
+    SYNSEM.LKEYS.KEYREL.PRED _utenom_adv_rel ].
+
 
 utested-n-neut := neut-cmp-count-noun-lxm &
   [ INFLECTION n2,
     STEM < "utested" >,
     SYNSEM.LKEYS.KEYREL.PRED "_utested_n_rel" ].
 
-utladalen-pn := sg-comm-pn &
+utladalen_pn := sg-comm-pn &
   [ STEM < "utladalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Utladalen" ].
 
-utover_func := func-word &
+utover_prp := prep-word &
   [ STEM < "utover" >,
-    SYNSEM.LKEYS.KEYREL.PRED utover_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED utover_prp ].
+
+utover_prt := part-word &
+  [ STEM < "utover" >,
+    SYNSEM.LKEYS.KEYREL.PRED utover_prt ].
+
+utover_adv := adv-word &
+  [ STEM < "utover" >,
+    SYNSEM.LKEYS.KEYREL.PRED _utover_adv_rel ].
+
 
 utstråle_v := trans-verb-lxm &
   [ INFLECTION v2,
@@ -6403,16 +7142,17 @@ uttale_v := main-verb-lxm &
     STEM < "uttale" >,
     SYNSEM.LKEYS.KEYREL.PRED uttale_v ].
 
-uvanlig-a := adj-lxm &
+uvanlig_a := adj-lxm &
   [ INFLECTION a2,
     STEM < "uvanlig" >,
     SYNSEM.LKEYS.KEYREL.PRED "_uvanlig_a_rel" ].
 
-uvanlig_func := func-word &
+uvanlig_degadv := degadv-word &
   [ STEM < "uvanlig" >,
     SYNSEM.LKEYS.KEYREL.PRED uvanlig_prd ].
 
-valdresflya-pn := sg-comm-pn &
+
+valdresflya_pn := sg-comm-pn &
   [ STEM < "valdresflya" >,
     SYNSEM.LKEYS.KEYREL.CARG "Valdresflya" ].
 
@@ -6421,14 +7161,23 @@ valg-n-neut := neut-mwe-count-noun-lxm &
     STEM < "valg" >,
     SYNSEM.LKEYS.KEYREL.PRED valg_prd ].
 
-vanlig-a := adj-lxm &
+vanlig_a := adj-lxm &
   [ INFLECTION a2,
     STEM < "vanlig" >,
     SYNSEM.LKEYS.KEYREL.PRED "_vanlig_a_rel" ].
 
-vanligvis_func := func-word &
+vanligvis_adv := adv-word &
+  [ STEM < "vanligvis" >,
+    SYNSEM.LKEYS.KEYREL.PRED _vanligvis_adv_rel ].
+
+vanligvis_sadv := sadv-word &
+  [ STEM < "vanligvis" >,
+    SYNSEM.LKEYS.KEYREL.PRED _vanligvis_sadv_rel ].
+
+vanligvis_degadv := degadv-word &
   [ STEM < "vanligvis" >,
     SYNSEM.LKEYS.KEYREL.PRED vanligvis_prd ].
+
 
 vann-n-neut := neut-cmp-count-noun-lxm &
   [ STEM < "vann" >,
@@ -6446,7 +7195,7 @@ vareutvalg-n-neut := neut-cmp-count-noun-lxm &
     SYNSEM.LKEYS.KEYREL.PRED "_vareutvalg_n_rel" ].
 
 varm-sjokolade-n-masc := masc-cmp-count-noun-lxm &
-  [ STEM < "varm", "sjokolade" >,
+  [ STEM < "varm","sjokolade" >,
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_varm-sjokolade_n_rel" ].
 
@@ -6484,7 +7233,7 @@ velkommen-word := verb_imp_word &
   [ STEM < "velkommen" >,
     SYNSEM.LKEYS.KEYREL.PRED velkommen_v ].
 
-vellykket-a := adj-lxm &
+vellykket_a := adj-lxm &
   [ STEM < "vellykket" >,
     SYNSEM.LKEYS.KEYREL.PRED "_vellykket_a_rel",
     INFLECTION a4a ].
@@ -6509,11 +7258,11 @@ verdsette_v := main-verb-lxm &
     STEM < "verdsette" >,
     SYNSEM.LKEYS.KEYREL.PRED verdsette_v ].
 
-verken := func-word &
+verken_conj := func-word &
   [ STEM < "verken" >,
     SYNSEM.LKEYS.KEYREL.PRED verken_prd ].
 
-hverken := func-word &
+hverken_conj := func-word &
   [ STEM < "hverken" >,
     SYNSEM.LKEYS.KEYREL.PRED verken_prd ].
 
@@ -6530,15 +7279,15 @@ vest-n-masc := masc-cmp-count-noun-lxm &
     INFLECTION m1,
     SYNSEM.LKEYS.KEYREL.PRED "_vest_n_rel" ].
 
-vest-pn := sg-neut-pn &
+vest_pn := sg-neut-pn &
   [ STEM < "vest" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vest" ].
 
-vetledalen-pn := sg-comm-pn &
+vetledalen_pn := sg-comm-pn &
   [ STEM < "vetledalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vetledalen" ].
 
-vetti-pn := sg-comm-pn &
+vetti_pn := sg-comm-pn &
   [ STEM < "vetti" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vetti" ].
 
@@ -6621,11 +7370,11 @@ vite_v := main-verb-lxm &
     STEM < "vite" >,
     SYNSEM.LKEYS.KEYREL.PRED vite_v ].
 
-vivaldi-pn := sg-comm-pn &
+vivaldi_pn := sg-comm-pn &
   [ STEM < "vivaldi" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vivaldi" ].
 
-vole-pn := sg-comm-pn &
+vole_pn := sg-comm-pn &
   [ STEM < "vole" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vole" ].
 
@@ -6673,7 +7422,7 @@ web-n-masc := masc-cmp-count-noun-lxm &
 webersatz := mod-noun-word &
   [ STEM < "webersatz" > ].
 
-windows-pn := sg-comm-pn &
+windows_pn := sg-comm-pn &
   [ STEM < "windows" >,
     SYNSEM.LKEYS.KEYREL.CARG "Windows" ].
 
@@ -6685,11 +7434,11 @@ windows-pn := sg-comm-pn &
 yearersatz := pl-card-word &
   [ STEM < "yearersatz" > ].
 
-yksendalsbu-pn := sg-comm-pn &
+yksendalsbu_pn := sg-comm-pn &
   [ STEM < "yksendalsbu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Yksendalsbu" ].
 
-ytre-a := adj-lxm &
+ytre_a := adj-lxm &
   [ INFLECTION a2,
     STEM < "ytre" >,
     SYNSEM.LKEYS.KEYREL.PRED "_ytre_a_rel" ].
@@ -6720,7 +7469,7 @@ ytre_v := main-verb-lxm &
     SYNSEM.LKEYS.KEYREL.PRED åpne_v ].
 
 år-n-neut := neut-mwe-count-noun-lxm &
-  [ STEM <"år">,
+  [ STEM < "år" >,
     INFLECTION n1,
     SYNSEM.LKEYS.KEYREL.PRED år_prd ].
 
@@ -6831,7 +7580,7 @@ ytre_v := main-verb-lxm &
     INFLECTION n1,
     SYNSEM.LKEYS.KEYREL.PRED "_øl_n_rel" ].
 
-ømhjertet-a := adj-lxm &
+ømhjertet_a := adj-lxm &
   [ INFLECTION a4a,
     STEM < "ømhjertet" >,
     SYNSEM.LKEYS.KEYREL.PRED "_ømhjertet_a_rel" ].
@@ -6846,1315 +7595,1315 @@ ytre_v := main-verb-lxm &
     INFLECTION v1, 
     SYNSEM.LKEYS.KEYREL.PRED ønske_v ].
 
-øst-pn := sg-neut-pn &
+øst_pn := sg-neut-pn &
   [ STEM < "øst" >,
     SYNSEM.LKEYS.KEYREL.CARG "Øst" ].
 
-østlig-a := adj-lxm &
+østlig_a := adj-lxm &
   [ INFLECTION a2,
     STEM < "østlig" >,
     SYNSEM.LKEYS.KEYREL.PRED "_østlig_a_rel" ].
 
-øvre-a := adj-lxm &
+øvre_a := adj-lxm &
   [ INFLECTION a2,
     STEM < "øvre" >,
     SYNSEM.LKEYS.KEYREL.PRED "_øvre_a_rel" ].
 
 ;;; Missing proper nouns from the Jotunheimen corpus
 
-Aajei-pn := pn-word &
+Aajei_pn := pn-word &
   [ STEM < "Aajei" >,
     SYNSEM.LKEYS.KEYREL.CARG "Aajei" ].
 
-Aand-pn := pn-word &
+Aand_pn := pn-word &
   [ STEM < "Aand" >,
     SYNSEM.LKEYS.KEYREL.CARG "Aand" ].
 
-Aasmund-pn := pn-word &
+Aasmund_pn := pn-word &
   [ STEM < "Aasmund" >,
     SYNSEM.LKEYS.KEYREL.CARG "Aasmund" ].
 
-Andrevatnet-pn := pn-word &
+Andrevatnet_pn := pn-word &
   [ STEM < "Andrevatnet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Andrevatnet" ].
 
-Arbo-pn := pn-word &
+Arbo_pn := pn-word &
   [ STEM < "Arbo" >,
     SYNSEM.LKEYS.KEYREL.CARG "Arbo" ].
 
-Arentzbu-pn := pn-word &
+Arentzbu_pn := pn-word &
   [ STEM < "Arentzbu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Arentzbu" ].
 
-Axel-pn := pn-word &
+Axel_pn := pn-word &
   [ STEM < "Axel" >,
     SYNSEM.LKEYS.KEYREL.CARG "Axel" ].
 
-Bakkeberg-pn := pn-word &
+Bakkeberg_pn := pn-word &
   [ STEM < "Bakkeberg" >,
     SYNSEM.LKEYS.KEYREL.CARG "Bakkeberg" ].
 
-Bergaåntjern-pn := pn-word &
+Bergaåntjern_pn := pn-word &
   [ STEM < "Bergaåntjern" >,
     SYNSEM.LKEYS.KEYREL.CARG "Bergaåntjern" ].
 
-Berteau-pn := pn-word &
+Berteau_pn := pn-word &
   [ STEM < "Berteau" >,
     SYNSEM.LKEYS.KEYREL.CARG "Berteau" ].
 
-Besseter-pn := pn-word &
+Besseter_pn := pn-word &
   [ STEM < "Besseter" >,
     SYNSEM.LKEYS.KEYREL.CARG "Besseter" ].
 
-Bitihorn-pn := pn-word &
+Bitihorn_pn := pn-word &
   [ STEM < "Bitihorn" >,
     SYNSEM.LKEYS.KEYREL.CARG "Bitihorn" ].
 
-Bjørnstigen-pn := pn-word &
+Bjørnstigen_pn := pn-word &
   [ STEM < "Bjørnstigen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Bjørnstigen" ].
 
-Boeck-pn := pn-word &
+Boeck_pn := pn-word &
   [ STEM < "Boeck" >,
     SYNSEM.LKEYS.KEYREL.CARG "Boeck" ].
 
-Borgny-pn := pn-word &
+Borgny_pn := pn-word &
   [ STEM < "Borgny" >,
     SYNSEM.LKEYS.KEYREL.CARG "Borgny" ].
 
-Breheimen-pn := pn-word &
+Breheimen_pn := pn-word &
   [ STEM < "Breheimen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Breheimen" ].
 
-Bruaas-pn := pn-word &
+Bruaas_pn := pn-word &
   [ STEM < "Bruaas" >,
     SYNSEM.LKEYS.KEYREL.CARG "Bruaas" ].
 
-Bygdisheim-pn := pn-word &
+Bygdisheim_pn := pn-word &
   [ STEM < "Bygdisheim" >,
     SYNSEM.LKEYS.KEYREL.CARG "Bygdisheim" ].
 
-Bøverbreen-pn := pn-word &
+Bøverbreen_pn := pn-word &
   [ STEM < "Bøverbreen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Bøverbreen" ].
 
-Bøverdalen-pn := pn-word &
+Bøverdalen_pn := pn-word &
   [ STEM < "Bøverdalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Bøverdalen" ].
 
-Bøyesen-pn := pn-word &
+Bøyesen_pn := pn-word &
   [ STEM < "Bøyesen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Bøyesen" ].
 
-Charlotte-pn := pn-word &
+Charlotte_pn := pn-word &
   [ STEM < "Charlotte" >,
     SYNSEM.LKEYS.KEYREL.CARG "Charlotte" ].
 
-Dryllin-pn := pn-word &
+Dryllin_pn := pn-word &
   [ STEM < "Dryllin" >,
     SYNSEM.LKEYS.KEYREL.CARG "Dryllin" ].
 
-Drægni-pn := pn-word &
+Drægni_pn := pn-word &
   [ STEM < "Drægni" >,
     SYNSEM.LKEYS.KEYREL.CARG "Drægni" ].
 
-Dummdalen-pn := pn-word &
+Dummdalen_pn := pn-word &
   [ STEM < "Dummdalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Dummdalen" ].
 
-Dyrehaugsryggen-pn := pn-word &
+Dyrehaugsryggen_pn := pn-word &
   [ STEM < "Dyrehaugsryggen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Dyrehaugsryggen" ].
 
-Dyrnesodden-pn := pn-word &
+Dyrnesodden_pn := pn-word &
   [ STEM < "Dyrnesodden" >,
     SYNSEM.LKEYS.KEYREL.CARG "Dyrnesodden" ].
 
-Eiliv-pn := pn-word &
+Eiliv_pn := pn-word &
   [ STEM < "Eiliv" >,
     SYNSEM.LKEYS.KEYREL.CARG "Eiliv" ].
 
-Ekrehytta-pn := pn-word &
+Ekrehytta_pn := pn-word &
   [ STEM < "Ekrehytta" >,
     SYNSEM.LKEYS.KEYREL.CARG "Ekrehytta" ].
 
-Elveseter-pn := pn-word &
+Elveseter_pn := pn-word &
   [ STEM < "Elveseter" >,
     SYNSEM.LKEYS.KEYREL.CARG "Elveseter" ].
 
-Emanuel-pn := pn-word &
+Emanuel_pn := pn-word &
   [ STEM < "Emanuel" >,
     SYNSEM.LKEYS.KEYREL.CARG "Emanuel" ].
 
-Falketind-pn := pn-word &
+Falketind_pn := pn-word &
   [ STEM < "Falketind" >,
     SYNSEM.LKEYS.KEYREL.CARG "Falketind" ].
 
-Fannaråkbreen-pn := pn-word &
+Fannaråkbreen_pn := pn-word &
   [ STEM < "Fannaråkbreen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fannaråkbreen" ].
 
-Fannaråknosa-pn := pn-word &
+Fannaråknosa_pn := pn-word &
   [ STEM < "Fannaråknosa" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fannaråknosa" ].
 
-Fannaråknosi-pn := pn-word &
+Fannaråknosi_pn := pn-word &
   [ STEM < "Fannaråknosi" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fannaråknosi" ].
 
-Ferdinand-pn := pn-word &
+Ferdinand_pn := pn-word &
   [ STEM < "Ferdinand" >,
     SYNSEM.LKEYS.KEYREL.CARG "Ferdinand" ].
 
-Fivlemyrane-pn := pn-word &
+Fivlemyrane_pn := pn-word &
   [ STEM < "Fivlemyrane" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fivlemyrane" ].
 
-Fjellhotell-pn := pn-word &
+Fjellhotell_pn := pn-word &
   [ STEM < "Fjellhotell" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fjellhotell" ].
 
-Fjelli-pn := pn-word &
+Fjelli_pn := pn-word &
   [ STEM < "Fjelli" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fjelli" ].
 
-Fjellradirne-pn := pn-word &
+Fjellradirne_pn := pn-word &
   [ STEM < "Fjellradirne" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fjellradirne" ].
 
-Fleskedalen-pn := pn-word &
+Fleskedalen_pn := pn-word &
   [ STEM < "Fleskedalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fleskedalen" ].
 
-Fleskedalsfossen-pn := pn-word &
+Fleskedalsfossen_pn := pn-word &
   [ STEM < "Fleskedalsfossen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fleskedalsfossen" ].
 
-Fondsfinans-pn := pn-word &
+Fondsfinans_pn := pn-word &
   [ STEM < "Fondsfinans" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fondsfinans" ].
 
-Fortundalselva-pn := pn-word &
+Fortundalselva_pn := pn-word &
   [ STEM < "Fortundalselva" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fortundalselva" ].
 
-Galdeberget-pn := pn-word &
+Galdeberget_pn := pn-word &
   [ STEM < "Galdeberget" >,
     SYNSEM.LKEYS.KEYREL.CARG "Galdeberget" ].
 
-Galdebergstjern-pn := pn-word &
+Galdebergstjern_pn := pn-word &
   [ STEM < "Galdebergstjern" >,
     SYNSEM.LKEYS.KEYREL.CARG "Galdebergstjern" ].
 
-Galdhøpiggmassivet-pn := pn-word &
+Galdhøpiggmassivet_pn := pn-word &
   [ STEM < "Galdhøpiggmassivet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Galdhøpiggmassivet" ].
 
-Geithø-pn := pn-word &
+Geithø_pn := pn-word &
   [ STEM < "Geithø" >,
     SYNSEM.LKEYS.KEYREL.CARG "Geithø" ].
 
-Gjendebuløypa-pn := pn-word &
+Gjendebuløypa_pn := pn-word &
   [ STEM < "Gjendebuløypa" >,
     SYNSEM.LKEYS.KEYREL.CARG "Gjendebuløypa" ].
 
-Gjendestunga-pn := pn-word &
+Gjendestunga_pn := pn-word &
   [ STEM < "Gjendestunga" >,
     SYNSEM.LKEYS.KEYREL.CARG "Gjendestunga" ].
 
-Gjertvassbøen-pn := pn-word &
+Gjertvassbøen_pn := pn-word &
   [ STEM < "Gjertvassbøen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Gjertvassbøen" ].
 
-Gjertvassdalen-pn := pn-word &
+Gjertvassdalen_pn := pn-word &
   [ STEM < "Gjertvassdalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Gjertvassdalen" ].
 
-Gjertvasstind-pn := pn-word &
+Gjertvasstind_pn := pn-word &
   [ STEM < "Gjertvasstind" >,
     SYNSEM.LKEYS.KEYREL.CARG "Gjertvasstind" ].
 
-Gjesingedalen-pn := pn-word &
+Gjesingedalen_pn := pn-word &
   [ STEM < "Gjesingedalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Gjesingedalen" ].
 
-Granfasta-pn := pn-word &
+Granfasta_pn := pn-word &
   [ STEM < "Granfasta" >,
     SYNSEM.LKEYS.KEYREL.CARG "Granfasta" ].
 
-Gravafjellet-pn := pn-word &
+Gravafjellet_pn := pn-word &
   [ STEM < "Gravafjellet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Gravafjellet" ].
 
-Grisletjørnene-pn := pn-word &
+Grisletjørnene_pn := pn-word &
   [ STEM < "Grisletjørnene" >,
     SYNSEM.LKEYS.KEYREL.CARG "Grisletjørnene" ].
 
-Gruvefjellet-pn := pn-word &
+Gruvefjellet_pn := pn-word &
   [ STEM < "Gruvefjellet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Gruvefjellet" ].
 
-Grønebergtjernet-pn := pn-word &
+Grønebergtjernet_pn := pn-word &
   [ STEM < "Grønebergtjernet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Grønebergtjernet" ].
 
-Grønevatn-pn := pn-word &
+Grønevatn_pn := pn-word &
   [ STEM < "Grønevatn" >,
     SYNSEM.LKEYS.KEYREL.CARG "Grønevatn" ].
 
-Grønevatnet-pn := pn-word &
+Grønevatnet_pn := pn-word &
   [ STEM < "Grønevatnet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Grønevatnet" ].
 
-Gudmundahl-pn := pn-word &
+Gudmundahl_pn := pn-word &
   [ STEM < "Gudmundahl" >,
     SYNSEM.LKEYS.KEYREL.CARG "Gudmundahl" ].
 
-Guridalen-pn := pn-word &
+Guridalen_pn := pn-word &
   [ STEM < "Guridalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Guridalen" ].
 
-Gynt-pn := pn-word &
+Gynt_pn := pn-word &
   [ STEM < "Gynt" >,
     SYNSEM.LKEYS.KEYREL.CARG "Gynt" ].
 
-Haavi-pn := pn-word &
+Haavi_pn := pn-word &
   [ STEM < "Haavi" >,
     SYNSEM.LKEYS.KEYREL.CARG "Haavi" ].
 
-Hagaberg-pn := pn-word &
+Hagaberg_pn := pn-word &
   [ STEM < "Hagaberg" >,
     SYNSEM.LKEYS.KEYREL.CARG "Hagaberg" ].
 
-Halli-pn := pn-word &
+Halli_pn := pn-word &
   [ STEM < "Halli" >,
     SYNSEM.LKEYS.KEYREL.CARG "Halli" ].
 
-Hallvardson-pn := pn-word &
+Hallvardson_pn := pn-word &
   [ STEM < "Hallvardson" >,
     SYNSEM.LKEYS.KEYREL.CARG "Hallvardson" ].
 
-Harbardsbreen-pn := pn-word &
+Harbardsbreen_pn := pn-word &
   [ STEM < "Harbardsbreen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Harbardsbreen" ].
 
-Haugseter-pn := pn-word &
+Haugseter_pn := pn-word &
   [ STEM < "Haugseter" >,
     SYNSEM.LKEYS.KEYREL.CARG "Haugseter" ].
 
-Heftye-pn := pn-word &
+Heftye_pn := pn-word &
   [ STEM < "Heftye" >,
     SYNSEM.LKEYS.KEYREL.CARG "Heftye" ].
 
-Heggdal-pn := pn-word &
+Heggdal_pn := pn-word &
   [ STEM < "Heggdal" >,
     SYNSEM.LKEYS.KEYREL.CARG "Heggdal" ].
 
-Helgedalen-pn := pn-word &
+Helgedalen_pn := pn-word &
   [ STEM < "Helgedalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Helgedalen" ].
 
-Hellstuguåa-pn := pn-word &
+Hellstuguåa_pn := pn-word &
   [ STEM < "Hellstuguåa" >,
     SYNSEM.LKEYS.KEYREL.CARG "Hellstuguåa" ].
 
-Herva-pn := pn-word &
+Herva_pn := pn-word &
   [ STEM < "Herva" >,
     SYNSEM.LKEYS.KEYREL.CARG "Herva" ].
 
-Hestbrepiggane-pn := pn-word &
+Hestbrepiggane_pn := pn-word &
   [ STEM < "Hestbrepiggane" >,
     SYNSEM.LKEYS.KEYREL.CARG "Hestbrepiggane" ].
 
-Hestbrepigger-pn := pn-word &
+Hestbrepigger_pn := pn-word &
   [ STEM < "Hestbrepigger" >,
     SYNSEM.LKEYS.KEYREL.CARG "Hestbrepigger" ].
 
-Hestdalshøgdi-pn := pn-word &
+Hestdalshøgdi_pn := pn-word &
   [ STEM < "Hestdalshøgdi" >,
     SYNSEM.LKEYS.KEYREL.CARG "Hestdalshøgdi" ].
 
-Hestevollen-pn := pn-word &
+Hestevollen_pn := pn-word &
   [ STEM < "Hestevollen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Hestevollen" ].
 
-Holåtindane-pn := pn-word &
+Holåtindane_pn := pn-word &
   [ STEM < "Holåtindane" >,
     SYNSEM.LKEYS.KEYREL.CARG "Holåtindane" ].
 
-Holåtinder-pn := pn-word &
+Holåtinder_pn := pn-word &
   [ STEM < "Holåtinder" >,
     SYNSEM.LKEYS.KEYREL.CARG "Holåtinder" ].
 
-Hotel-pn := pn-word &
+Hotel_pn := pn-word &
   [ STEM < "Hotel" >,
     SYNSEM.LKEYS.KEYREL.CARG "Hotel" ].
 
-Hurrungane-pn := pn-word &
+Hurrungane_pn := pn-word &
   [ STEM < "Hurrungane" >,
     SYNSEM.LKEYS.KEYREL.CARG "Hurrungane" ].
 
-Høgbrothøgda-pn := pn-word &
+Høgbrothøgda_pn := pn-word &
   [ STEM < "Høgbrothøgda" >,
     SYNSEM.LKEYS.KEYREL.CARG "Høgbrothøgda" ].
 
-Høgebrotet-pn := pn-word &
+Høgebrotet_pn := pn-word &
   [ STEM < "Høgebrotet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Høgebrotet" ].
 
-Høgevagltindar-pn := pn-word &
+Høgevagltindar_pn := pn-word &
   [ STEM < "Høgevagltindar" >,
     SYNSEM.LKEYS.KEYREL.CARG "Høgevagltindar" ].
 
-Høgvaglen-pn := pn-word &
+Høgvaglen_pn := pn-word &
   [ STEM < "Høgvaglen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Høgvaglen" ].
 
-Høgvagltjønn-pn := pn-word &
+Høgvagltjønn_pn := pn-word &
   [ STEM < "Høgvagltjønn" >,
     SYNSEM.LKEYS.KEYREL.CARG "Høgvagltjønn" ].
 
-Høgvagltjørnene-pn := pn-word &
+Høgvagltjørnene_pn := pn-word &
   [ STEM < "Høgvagltjørnene" >,
     SYNSEM.LKEYS.KEYREL.CARG "Høgvagltjørnene" ].
 
-Høystakktjernet-pn := pn-word &
+Høystakktjernet_pn := pn-word &
   [ STEM < "Høystakktjernet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Høystakktjernet" ].
 
-IV-pn := pn-word &
+IV_pn := pn-word &
   [ STEM < "IV" >,
     SYNSEM.LKEYS.KEYREL.CARG "IV" ].
 
-Jakhelln-pn := pn-word &
+Jakhelln_pn := pn-word &
   [ STEM < "Jakhelln" >,
     SYNSEM.LKEYS.KEYREL.CARG "Jakhelln" ].
 
-Jessie-pn := pn-word &
+Jessie_pn := pn-word &
   [ STEM < "Jessie" >,
     SYNSEM.LKEYS.KEYREL.CARG "Jessie" ].
 
-Jotunheimveien-pn := pn-word &
+Jotunheimveien_pn := pn-word &
   [ STEM < "Jotunheimveien" >,
     SYNSEM.LKEYS.KEYREL.CARG "Jotunheimveien" ].
 
-Juvflya-pn := pn-word &
+Juvflya_pn := pn-word &
   [ STEM < "Juvflya" >,
     SYNSEM.LKEYS.KEYREL.CARG "Juvflya" ].
 
-Juvvatnet-pn := pn-word &
+Juvvatnet_pn := pn-word &
   [ STEM < "Juvvatnet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Juvvatnet" ].
 
-Kaldedalsbræerne-pn := pn-word &
+Kaldedalsbræerne_pn := pn-word &
   [ STEM < "Kaldedalsbræerne" >,
     SYNSEM.LKEYS.KEYREL.CARG "Kaldedalsbræerne" ].
 
-Kalvåhøgda-pn := pn-word &
+Kalvåhøgda_pn := pn-word &
   [ STEM < "Kalvåhøgda" >,
     SYNSEM.LKEYS.KEYREL.CARG "Kalvåhøgda" ].
 
-Keilhau-pn := pn-word &
+Keilhau_pn := pn-word &
   [ STEM < "Keilhau" >,
     SYNSEM.LKEYS.KEYREL.CARG "Keilhau" ].
 
-Keilhaus-pn := pn-word &
+Keilhaus_pn := pn-word &
   [ STEM < "Keilhaus" >,
     SYNSEM.LKEYS.KEYREL.CARG "Keilhaus" ].
 
-Keisaren-pn := pn-word &
+Keisaren_pn := pn-word &
   [ STEM < "Keisaren" >,
     SYNSEM.LKEYS.KEYREL.CARG "Keisaren" ].
 
-Keisarpasset-pn := pn-word &
+Keisarpasset_pn := pn-word &
   [ STEM < "Keisarpasset" >,
     SYNSEM.LKEYS.KEYREL.CARG "Keisarpasset" ].
 
-Kierulf-pn := pn-word &
+Kierulf_pn := pn-word &
   [ STEM < "Kierulf" >,
     SYNSEM.LKEYS.KEYREL.CARG "Kierulf" ].
 
-Kjellargluggen-pn := pn-word &
+Kjellargluggen_pn := pn-word &
   [ STEM < "Kjellargluggen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Kjellargluggen" ].
 
-Kjellfrid-pn := pn-word &
+Kjellfrid_pn := pn-word &
   [ STEM < "Kjellfrid" >,
     SYNSEM.LKEYS.KEYREL.CARG "Kjellfrid" ].
 
-Kjerringhetta-pn := pn-word &
+Kjerringhetta_pn := pn-word &
   [ STEM < "Kjerringhetta" >,
     SYNSEM.LKEYS.KEYREL.CARG "Kjerringhetta" ].
 
-Kleppeskaret-pn := pn-word &
+Kleppeskaret_pn := pn-word &
   [ STEM < "Kleppeskaret" >,
     SYNSEM.LKEYS.KEYREL.CARG "Kleppeskaret" ].
 
-Knutseggi-pn := pn-word &
+Knutseggi_pn := pn-word &
   [ STEM < "Knutseggi" >,
     SYNSEM.LKEYS.KEYREL.CARG "Knutseggi" ].
 
-Knutsholstind-pn := pn-word &
+Knutsholstind_pn := pn-word &
   [ STEM < "Knutsholstind" >,
     SYNSEM.LKEYS.KEYREL.CARG "Knutsholstind" ].
 
-Koldedalen-pn := pn-word &
+Koldedalen_pn := pn-word &
   [ STEM < "Koldedalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Koldedalen" ].
 
-Kongsdøla-pn := pn-word &
+Kongsdøla_pn := pn-word &
   [ STEM < "Kongsdøla" >,
     SYNSEM.LKEYS.KEYREL.CARG "Kongsdøla" ].
 
-Krossboden-pn := pn-word &
+Krossboden_pn := pn-word &
   [ STEM < "Krossboden" >,
     SYNSEM.LKEYS.KEYREL.CARG "Krossboden" ].
 
-Krosshø-pn := pn-word &
+Krosshø_pn := pn-word &
   [ STEM < "Krosshø" >,
     SYNSEM.LKEYS.KEYREL.CARG "Krosshø" ].
 
-Kvitevatnet-pn := pn-word &
+Kvitevatnet_pn := pn-word &
   [ STEM < "Kvitevatnet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Kvitevatnet" ].
 
-Kyrkja-pn := pn-word &
+Kyrkja_pn := pn-word &
   [ STEM < "Kyrkja" >,
     SYNSEM.LKEYS.KEYREL.CARG "Kyrkja" ].
 
-Kyrkjeglupen-pn := pn-word &
+Kyrkjeglupen_pn := pn-word &
   [ STEM < "Kyrkjeglupen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Kyrkjeglupen" ].
 
-Kyrkjetjørna-pn := pn-word &
+Kyrkjetjørna_pn := pn-word &
   [ STEM < "Kyrkjetjørna" >,
     SYNSEM.LKEYS.KEYREL.CARG "Kyrkjetjørna" ].
 
-Langedalen-pn := pn-word &
+Langedalen_pn := pn-word &
   [ STEM < "Langedalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Langedalen" ].
 
-Langeskavlen-pn := pn-word &
+Langeskavlen_pn := pn-word &
   [ STEM < "Langeskavlen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Langeskavlen" ].
 
-Langeskavltind-pn := pn-word &
+Langeskavltind_pn := pn-word &
   [ STEM < "Langeskavltind" >,
     SYNSEM.LKEYS.KEYREL.CARG "Langeskavltind" ].
 
-Leirbreen-pn := pn-word &
+Leirbreen_pn := pn-word &
   [ STEM < "Leirbreen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Leirbreen" ].
 
-Leirdalen-pn := pn-word &
+Leirdalen_pn := pn-word &
   [ STEM < "Leirdalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Leirdalen" ].
 
-Leirungene-pn := pn-word &
+Leirungene_pn := pn-word &
   [ STEM < "Leirungene" >,
     SYNSEM.LKEYS.KEYREL.CARG "Leirungene" ].
 
-Leirungsdalen-pn := pn-word &
+Leirungsdalen_pn := pn-word &
   [ STEM < "Leirungsdalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Leirungsdalen" ].
 
-Leirungsåa-pn := pn-word &
+Leirungsåa_pn := pn-word &
   [ STEM < "Leirungsåa" >,
     SYNSEM.LKEYS.KEYREL.CARG "Leirungsåa" ].
 
-Leirvann-pn := pn-word &
+Leirvann_pn := pn-word &
   [ STEM < "Leirvann" >,
     SYNSEM.LKEYS.KEYREL.CARG "Leirvann" ].
 
-Leirvannet-pn := pn-word &
+Leirvannet_pn := pn-word &
   [ STEM < "Leirvannet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Leirvannet" ].
 
-Leirvatnet-pn := pn-word &
+Leirvatnet_pn := pn-word &
   [ STEM < "Leirvatnet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Leirvatnet" ].
 
-Liabreen-pn := pn-word &
+Liabreen_pn := pn-word &
   [ STEM < "Liabreen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Liabreen" ].
 
-Liabrekulen-pn := pn-word &
+Liabrekulen_pn := pn-word &
   [ STEM < "Liabrekulen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Liabrekulen" ].
 
-Liabrevatnet-pn := pn-word &
+Liabrevatnet_pn := pn-word &
   [ STEM < "Liabrevatnet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Liabrevatnet" ].
 
-Liaflua-pn := pn-word &
+Liaflua_pn := pn-word &
   [ STEM < "Liaflua" >,
     SYNSEM.LKEYS.KEYREL.CARG "Liaflua" ].
 
-Lomseggen-pn := pn-word &
+Lomseggen_pn := pn-word &
   [ STEM < "Lomseggen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Lomseggen" ].
 
-Lundadalen-pn := pn-word &
+Lundadalen_pn := pn-word &
   [ STEM < "Lundadalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Lundadalen" ].
 
-Lundadalsbandet-pn := pn-word &
+Lundadalsbandet_pn := pn-word &
   [ STEM < "Lundadalsbandet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Lundadalsbandet" ].
 
-Lusahaugane-pn := pn-word &
+Lusahaugane_pn := pn-word &
   [ STEM < "Lusahaugane" >,
     SYNSEM.LKEYS.KEYREL.CARG "Lusahaugane" ].
 
-Magny-pn := pn-word &
+Magny_pn := pn-word &
   [ STEM < "Magny" >,
     SYNSEM.LKEYS.KEYREL.CARG "Magny" ].
 
-Marabotthornet-pn := pn-word &
+Marabotthornet_pn := pn-word &
   [ STEM < "Marabotthornet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Marabotthornet" ].
 
-Mardalsfossen-pn := pn-word &
+Mardalsfossen_pn := pn-word &
   [ STEM < "Mardalsfossen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Mardalsfossen" ].
 
-Medalsbu-pn := pn-word &
+Medalsbu_pn := pn-word &
   [ STEM < "Medalsbu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Medalsbu" ].
 
-Melheim-pn := pn-word &
+Melheim_pn := pn-word &
   [ STEM < "Melheim" >,
     SYNSEM.LKEYS.KEYREL.CARG "Melheim" ].
 
-Middalen-pn := pn-word &
+Middalen_pn := pn-word &
   [ STEM < "Middalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Middalen" ].
 
-Midthun-pn := pn-word &
+Midthun_pn := pn-word &
   [ STEM < "Midthun" >,
     SYNSEM.LKEYS.KEYREL.CARG "Midthun" ].
 
-Midtmaradalen-pn := pn-word &
+Midtmaradalen_pn := pn-word &
   [ STEM < "Midtmaradalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Midtmaradalen" ].
 
-Mjølkedalsbreen-pn := pn-word &
+Mjølkedalsbreen_pn := pn-word &
   [ STEM < "Mjølkedalsbreen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Mjølkedalsbreen" ].
 
-Mjølkedalsvatn-pn := pn-word &
+Mjølkedalsvatn_pn := pn-word &
   [ STEM < "Mjølkedalsvatn" >,
     SYNSEM.LKEYS.KEYREL.CARG "Mjølkedalsvatn" ].
 
-Mjølkedalsvatnet-pn := pn-word &
+Mjølkedalsvatnet_pn := pn-word &
   [ STEM < "Mjølkedalsvatnet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Mjølkedalsvatnet" ].
 
-Mjølkedøla-pn := pn-word &
+Mjølkedøla_pn := pn-word &
   [ STEM < "Mjølkedøla" >,
     SYNSEM.LKEYS.KEYREL.CARG "Mjølkedøla" ].
 
-Mohn-pn := pn-word &
+Mohn_pn := pn-word &
   [ STEM < "Mohn" >,
     SYNSEM.LKEYS.KEYREL.CARG "Mohn" ].
 
-Moria-pn := pn-word &
+Moria_pn := pn-word &
   [ STEM < "Moria" >,
     SYNSEM.LKEYS.KEYREL.CARG "Moria" ].
 
-Mundhjeld-pn := pn-word &
+Mundhjeld_pn := pn-word &
   [ STEM < "Mundhjeld" >,
     SYNSEM.LKEYS.KEYREL.CARG "Mundhjeld" ].
 
-Murane-pn := pn-word &
+Murane_pn := pn-word &
   [ STEM < "Murane" >,
     SYNSEM.LKEYS.KEYREL.CARG "Murane" ].
 
-Mørkrisdalen-pn := pn-word &
+Mørkrisdalen_pn := pn-word &
   [ STEM < "Mørkrisdalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Mørkrisdalen" ].
 
-Mørstadstølen-pn := pn-word &
+Mørstadstølen_pn := pn-word &
   [ STEM < "Mørstadstølen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Mørstadstølen" ].
 
-Naturhus-pn := pn-word &
+Naturhus_pn := pn-word &
   [ STEM < "Naturhus" >,
     SYNSEM.LKEYS.KEYREL.CARG "Naturhus" ].
 
-Nedstestølen-pn := pn-word &
+Nedstestølen_pn := pn-word &
   [ STEM < "Nedstestølen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Nedstestølen" ].
 
-Nilsestugu-pn := pn-word &
+Nilsestugu_pn := pn-word &
   [ STEM < "Nilsestugu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Nilsestugu" ].
 
-Nordtorp-pn := pn-word &
+Nordtorp_pn := pn-word &
   [ STEM < "Nordtorp" >,
     SYNSEM.LKEYS.KEYREL.CARG "Nordtorp" ].
 
-Norig-pn := pn-word &
+Norig_pn := pn-word &
   [ STEM < "Norig" >,
     SYNSEM.LKEYS.KEYREL.CARG "Norig" ].
 
-Nybod-pn := pn-word &
+Nybod_pn := pn-word &
   [ STEM < "Nybod" >,
     SYNSEM.LKEYS.KEYREL.CARG "Nybod" ].
 
-Nybua-pn := pn-word &
+Nybua_pn := pn-word &
   [ STEM < "Nybua" >,
     SYNSEM.LKEYS.KEYREL.CARG "Nybua" ].
 
-Nærheden-pn := pn-word &
+Nærheden_pn := pn-word &
   [ STEM < "Nærheden" >,
     SYNSEM.LKEYS.KEYREL.CARG "Nærheden" ].
 
-OA-pn := pn-word &
+OA_pn := pn-word &
   [ STEM < "OA" >,
     SYNSEM.LKEYS.KEYREL.CARG "OA" ].
 
-Oksedalen-pn := pn-word &
+Oksedalen_pn := pn-word &
   [ STEM < "Oksedalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Oksedalen" ].
 
-Oleberga-pn := pn-word &
+Oleberga_pn := pn-word &
   [ STEM < "Oleberga" >,
     SYNSEM.LKEYS.KEYREL.CARG "Oleberga" ].
 
-Olefjorden-pn := pn-word &
+Olefjorden_pn := pn-word &
   [ STEM < "Olefjorden" >,
     SYNSEM.LKEYS.KEYREL.CARG "Olefjorden" ].
 
-Ormelid-pn := pn-word &
+Ormelid_pn := pn-word &
   [ STEM < "Ormelid" >,
     SYNSEM.LKEYS.KEYREL.CARG "Ormelid" ].
 
-Oskampen-pn := pn-word &
+Oskampen_pn := pn-word &
   [ STEM < "Oskampen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Oskampen" ].
 
-Otterness-pn := pn-word &
+Otterness_pn := pn-word &
   [ STEM < "Otterness" >,
     SYNSEM.LKEYS.KEYREL.CARG "Otterness" ].
 
-Piggrovi-pn := pn-word &
+Piggrovi_pn := pn-word &
   [ STEM < "Piggrovi" >,
     SYNSEM.LKEYS.KEYREL.CARG "Piggrovi" ].
 
-Prestesteinsvatnet-pn := pn-word &
+Prestesteinsvatnet_pn := pn-word &
   [ STEM < "Prestesteinsvatnet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Prestesteinsvatnet" ].
 
-Raubergstulen-pn := pn-word &
+Raubergstulen_pn := pn-word &
   [ STEM < "Raubergstulen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Raubergstulen" ].
 
-Raudalen-pn := pn-word &
+Raudalen_pn := pn-word &
   [ STEM < "Raudalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Raudalen" ].
 
-Raudalsbandet-pn := pn-word &
+Raudalsbandet_pn := pn-word &
   [ STEM < "Raudalsbandet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Raudalsbandet" ].
 
-Raudalsegga-pn := pn-word &
+Raudalsegga_pn := pn-word &
   [ STEM < "Raudalsegga" >,
     SYNSEM.LKEYS.KEYREL.CARG "Raudalsegga" ].
 
-Raudalseggi-pn := pn-word &
+Raudalseggi_pn := pn-word &
   [ STEM < "Raudalseggi" >,
     SYNSEM.LKEYS.KEYREL.CARG "Raudalseggi" ].
 
-Raudalstind-pn := pn-word &
+Raudalstind_pn := pn-word &
   [ STEM < "Raudalstind" >,
     SYNSEM.LKEYS.KEYREL.CARG "Raudalstind" ].
 
-Raudalstindan-pn := pn-word &
+Raudalstindan_pn := pn-word &
   [ STEM < "Raudalstindan" >,
     SYNSEM.LKEYS.KEYREL.CARG "Raudalstindan" ].
 
-Raudalstindane-pn := pn-word &
+Raudalstindane_pn := pn-word &
   [ STEM < "Raudalstindane" >,
     SYNSEM.LKEYS.KEYREL.CARG "Raudalstindane" ].
 
-Raudalstindar-pn := pn-word &
+Raudalstindar_pn := pn-word &
   [ STEM < "Raudalstindar" >,
     SYNSEM.LKEYS.KEYREL.CARG "Raudalstindar" ].
 
-Raudfjorden-pn := pn-word &
+Raudfjorden_pn := pn-word &
   [ STEM < "Raudfjorden" >,
     SYNSEM.LKEYS.KEYREL.CARG "Raudfjorden" ].
 
-Rauhamrane-pn := pn-word &
+Rauhamrane_pn := pn-word &
   [ STEM < "Rauhamrane" >,
     SYNSEM.LKEYS.KEYREL.CARG "Rauhamrane" ].
 
-Reiremo-pn := pn-word &
+Reiremo_pn := pn-word &
   [ STEM < "Reiremo" >,
     SYNSEM.LKEYS.KEYREL.CARG "Reiremo" ].
 
-Resort-pn := pn-word &
+Resort_pn := pn-word &
   [ STEM < "Resort" >,
     SYNSEM.LKEYS.KEYREL.CARG "Resort" ].
 
-Rundtom-pn := pn-word &
+Rundtom_pn := pn-word &
   [ STEM < "Rundtom" >,
     SYNSEM.LKEYS.KEYREL.CARG "Rundtom" ].
 
-Råmund-pn := pn-word &
+Råmund_pn := pn-word &
   [ STEM < "Råmund" >,
     SYNSEM.LKEYS.KEYREL.CARG "Råmund" ].
 
-Rønjus-pn := pn-word &
+Rønjus_pn := pn-word &
   [ STEM < "Rønjus" >,
     SYNSEM.LKEYS.KEYREL.CARG "Rønjus" ].
 
-Rønnaug-pn := pn-word &
+Rønnaug_pn := pn-word &
   [ STEM < "Rønnaug" >,
     SYNSEM.LKEYS.KEYREL.CARG "Rønnaug" ].
 
-Sagstuen-pn := pn-word &
+Sagstuen_pn := pn-word &
   [ STEM < "Sagstuen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sagstuen" ].
 
-Sandelvbrean-pn := pn-word &
+Sandelvbrean_pn := pn-word &
   [ STEM < "Sandelvbrean" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sandelvbrean" ].
 
-Sandelvbreen-pn := pn-word &
+Sandelvbreen_pn := pn-word &
   [ STEM < "Sandelvbreen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sandelvbreen" ].
 
-Schelderup-pn := pn-word &
+Schelderup_pn := pn-word &
   [ STEM < "Schelderup" >,
     SYNSEM.LKEYS.KEYREL.CARG "Schelderup" ].
 
-Schreiber-pn := pn-word &
+Schreiber_pn := pn-word &
   [ STEM < "Schreiber" >,
     SYNSEM.LKEYS.KEYREL.CARG "Schreiber" ].
 
-Seksin-pn := pn-word &
+Seksin_pn := pn-word &
   [ STEM < "Seksin" >,
     SYNSEM.LKEYS.KEYREL.CARG "Seksin" ].
 
-Semmeldalsmunnen-pn := pn-word &
+Semmeldalsmunnen_pn := pn-word &
   [ STEM < "Semmeldalsmunnen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Semmeldalsmunnen" ].
 
-Serine-pn := pn-word &
+Serine_pn := pn-word &
   [ STEM < "Serine" >,
     SYNSEM.LKEYS.KEYREL.CARG "Serine" ].
 
-Simledalsbandet-pn := pn-word &
+Simledalsbandet_pn := pn-word &
   [ STEM < "Simledalsbandet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Simledalsbandet" ].
 
-Sjodalen-pn := pn-word &
+Sjodalen_pn := pn-word &
   [ STEM < "Sjodalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sjodalen" ].
 
-Sjogholstind-pn := pn-word &
+Sjogholstind_pn := pn-word &
   [ STEM < "Sjogholstind" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sjogholstind" ].
 
-Sjogholsvatnet-pn := pn-word &
+Sjogholsvatnet_pn := pn-word &
   [ STEM < "Sjogholsvatnet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sjogholsvatnet" ].
 
-Skagastølsdalen-pn := pn-word &
+Skagastølsdalen_pn := pn-word &
   [ STEM < "Skagastølsdalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skagastølsdalen" ].
 
-Skagastølsryggen-pn := pn-word &
+Skagastølsryggen_pn := pn-word &
   [ STEM < "Skagastølsryggen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skagastølsryggen" ].
 
-Skagastølstind-pn := pn-word &
+Skagastølstind_pn := pn-word &
   [ STEM < "Skagastølstind" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skagastølstind" ].
 
-Skagastølstindarne-pn := pn-word &
+Skagastølstindarne_pn := pn-word &
   [ STEM < "Skagastølstindarne" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skagastølstindarne" ].
 
-Skagastølstinder-pn := pn-word &
+Skagastølstinder_pn := pn-word &
   [ STEM < "Skagastølstinder" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skagastølstinder" ].
 
-Skamdalen-pn := pn-word &
+Skamdalen_pn := pn-word &
   [ STEM < "Skamdalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skamdalen" ].
 
-Skarvheimen-pn := pn-word &
+Skarvheimen_pn := pn-word &
   [ STEM < "Skarvheimen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skarvheimen" ].
 
-Skautevatnet-pn := pn-word &
+Skautevatnet_pn := pn-word &
   [ STEM < "Skautevatnet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skautevatnet" ].
 
-Skineggen-pn := pn-word &
+Skineggen_pn := pn-word &
   [ STEM < "Skineggen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skineggen" ].
 
-Skinneggin-pn := pn-word &
+Skinneggin_pn := pn-word &
   [ STEM < "Skinneggin" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skinneggin" ].
 
-Skjeldrehornet-pn := pn-word &
+Skjeldrehornet_pn := pn-word &
   [ STEM < "Skjeldrehornet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skjeldrehornet" ].
 
-Skogadalsbreen-pn := pn-word &
+Skogadalsbreen_pn := pn-word &
   [ STEM < "Skogadalsbreen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skogadalsbreen" ].
 
-Skredbergene-pn := pn-word &
+Skredbergene_pn := pn-word &
   [ STEM < "Skredbergene" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skredbergene" ].
 
-Skåbu-pn := pn-word &
+Skåbu_pn := pn-word &
   [ STEM < "Skåbu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skåbu" ].
 
-Skålabotn-pn := pn-word &
+Skålabotn_pn := pn-word &
   [ STEM < "Skålabotn" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skålabotn" ].
 
-Skålabotnskaret-pn := pn-word &
+Skålabotnskaret_pn := pn-word &
   [ STEM < "Skålabotnskaret" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skålabotnskaret" ].
 
-Skålavatnet-pn := pn-word &
+Skålavatnet_pn := pn-word &
   [ STEM < "Skålavatnet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skålavatnet" ].
 
-Skålevatn-pn := pn-word &
+Skålevatn_pn := pn-word &
   [ STEM < "Skålevatn" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skålevatn" ].
 
-Skåri-pn := pn-word &
+Skåri_pn := pn-word &
   [ STEM < "Skåri" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skåri" ].
 
-Slethamn-pn := pn-word &
+Slethamn_pn := pn-word &
   [ STEM < "Slethamn" >,
     SYNSEM.LKEYS.KEYREL.CARG "Slethamn" ].
 
-Slettningsbu-pn := pn-word &
+Slettningsbu_pn := pn-word &
   [ STEM < "Slettningsbu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Slettningsbu" ].
 
-Slingsby-pn := pn-word &
+Slingsby_pn := pn-word &
   [ STEM < "Slingsby" >,
     SYNSEM.LKEYS.KEYREL.CARG "Slingsby" ].
 
-Sløtafjellet-pn := pn-word &
+Sløtafjellet_pn := pn-word &
   [ STEM < "Sløtafjellet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sløtafjellet" ].
 
-Smiugjelet-pn := pn-word &
+Smiugjelet_pn := pn-word &
   [ STEM < "Smiugjelet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Smiugjelet" ].
 
-Smørstabbreen-pn := pn-word &
+Smørstabbreen_pn := pn-word &
   [ STEM < "Smørstabbreen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Smørstabbreen" ].
 
-Smørstabbtinder-pn := pn-word &
+Smørstabbtinder_pn := pn-word &
   [ STEM < "Smørstabbtinder" >,
     SYNSEM.LKEYS.KEYREL.CARG "Smørstabbtinder" ].
 
-Sognefjeldet-pn := pn-word &
+Sognefjeldet_pn := pn-word &
   [ STEM < "Sognefjeldet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sognefjeldet" ].
 
-Sognefjellveien-pn := pn-word &
+Sognefjellveien_pn := pn-word &
   [ STEM < "Sognefjellveien" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sognefjellveien" ].
 
-Solglansen-pn := pn-word &
+Solglansen_pn := pn-word &
   [ STEM < "Solglansen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Solglansen" ].
 
-Spiterhø-pn := pn-word &
+Spiterhø_pn := pn-word &
   [ STEM < "Spiterhø" >,
     SYNSEM.LKEYS.KEYREL.CARG "Spiterhø" ].
 
-Steinar-pn := pn-word &
+Steinar_pn := pn-word &
   [ STEM < "Steinar" >,
     SYNSEM.LKEYS.KEYREL.CARG "Steinar" ].
 
-Steinarstugu-pn := pn-word &
+Steinarstugu_pn := pn-word &
   [ STEM < "Steinarstugu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Steinarstugu" ].
 
-Steinbusjøen-pn := pn-word &
+Steinbusjøen_pn := pn-word &
   [ STEM < "Steinbusjøen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Steinbusjøen" ].
 
-Steindalen-pn := pn-word &
+Steindalen_pn := pn-word &
   [ STEM < "Steindalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Steindalen" ].
 
-Steindøla-pn := pn-word &
+Steindøla_pn := pn-word &
   [ STEM < "Steindøla" >,
     SYNSEM.LKEYS.KEYREL.CARG "Steindøla" ].
 
-Stetind-pn := pn-word &
+Stetind_pn := pn-word &
   [ STEM < "Stetind" >,
     SYNSEM.LKEYS.KEYREL.CARG "Stetind" ].
 
-Storebjørn-pn := pn-word &
+Storebjørn_pn := pn-word &
   [ STEM < "Storebjørn" >,
     SYNSEM.LKEYS.KEYREL.CARG "Storebjørn" ].
 
-Storebrua-pn := pn-word &
+Storebrua_pn := pn-word &
   [ STEM < "Storebrua" >,
     SYNSEM.LKEYS.KEYREL.CARG "Storebrua" ].
 
-Storegut-pn := pn-word &
+Storegut_pn := pn-word &
   [ STEM < "Storegut" >,
     SYNSEM.LKEYS.KEYREL.CARG "Storegut" ].
 
-Storeskag-pn := pn-word &
+Storeskag_pn := pn-word &
   [ STEM < "Storeskag" >,
     SYNSEM.LKEYS.KEYREL.CARG "Storeskag" ].
 
-Storevatn-pn := pn-word &
+Storevatn_pn := pn-word &
   [ STEM < "Storevatn" >,
     SYNSEM.LKEYS.KEYREL.CARG "Storevatn" ].
 
-Storevatnet-pn := pn-word &
+Storevatnet_pn := pn-word &
   [ STEM < "Storevatnet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Storevatnet" ].
 
-Storura-pn := pn-word &
+Storura_pn := pn-word &
   [ STEM < "Storura" >,
     SYNSEM.LKEYS.KEYREL.CARG "Storura" ].
 
-Storutladalen-pn := pn-word &
+Storutladalen_pn := pn-word &
   [ STEM < "Storutladalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Storutladalen" ].
 
-Storåa-pn := pn-word &
+Storåa_pn := pn-word &
   [ STEM < "Storåa" >,
     SYNSEM.LKEYS.KEYREL.CARG "Storåa" ].
 
-Storådalen-pn := pn-word &
+Storådalen_pn := pn-word &
   [ STEM < "Storådalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Storådalen" ].
 
-Stuup-pn := pn-word &
+Stuup_pn := pn-word &
   [ STEM < "Stuup" >,
     SYNSEM.LKEYS.KEYREL.CARG "Stuup" ].
 
-Styggebreen-pn := pn-word &
+Styggebreen_pn := pn-word &
   [ STEM < "Styggebreen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Styggebreen" ].
 
-Styggedalstinder-pn := pn-word &
+Styggedalstinder_pn := pn-word &
   [ STEM < "Styggedalstinder" >,
     SYNSEM.LKEYS.KEYREL.CARG "Styggedalstinder" ].
 
-Styggehø-pn := pn-word &
+Styggehø_pn := pn-word &
   [ STEM < "Styggehø" >,
     SYNSEM.LKEYS.KEYREL.CARG "Styggehø" ].
 
-Stølsmaradalen-pn := pn-word &
+Stølsmaradalen_pn := pn-word &
   [ STEM < "Stølsmaradalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Stølsmaradalen" ].
 
-Stølsmaradalsfossen-pn := pn-word &
+Stølsmaradalsfossen_pn := pn-word &
   [ STEM < "Stølsmaradalsfossen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Stølsmaradalsfossen" ].
 
-Stølsnostind-pn := pn-word &
+Stølsnostind_pn := pn-word &
   [ STEM < "Stølsnostind" >,
     SYNSEM.LKEYS.KEYREL.CARG "Stølsnostind" ].
 
-Stølsnostindane-pn := pn-word &
+Stølsnostindane_pn := pn-word &
   [ STEM < "Stølsnostindane" >,
     SYNSEM.LKEYS.KEYREL.CARG "Stølsnostindane" ].
 
-Sulheim-pn := pn-word &
+Sulheim_pn := pn-word &
   [ STEM < "Sulheim" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sulheim" ].
 
-Sumar-pn := pn-word &
+Sumar_pn := pn-word &
   [ STEM < "Sumar" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sumar" ].
 
-Surtningsbreen-pn := pn-word &
+Surtningsbreen_pn := pn-word &
   [ STEM < "Surtningsbreen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Surtningsbreen" ].
 
-Surtningstind-pn := pn-word &
+Surtningstind_pn := pn-word &
   [ STEM < "Surtningstind" >,
     SYNSEM.LKEYS.KEYREL.CARG "Surtningstind" ].
 
-Svartdalen-pn := pn-word &
+Svartdalen_pn := pn-word &
   [ STEM < "Svartdalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Svartdalen" ].
 
-Svartdalspiggen-pn := pn-word &
+Svartdalspiggen_pn := pn-word &
   [ STEM < "Svartdalspiggen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Svartdalspiggen" ].
 
-Svartedauen-pn := pn-word &
+Svartedauen_pn := pn-word &
   [ STEM < "Svartedauen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Svartedauen" ].
 
-Svarthammarbua-pn := pn-word &
+Svarthammarbua_pn := pn-word &
   [ STEM < "Svarthammarbua" >,
     SYNSEM.LKEYS.KEYREL.CARG "Svarthammarbua" ].
 
-Svarttjørna-pn := pn-word &
+Svarttjørna_pn := pn-word &
   [ STEM < "Svarttjørna" >,
     SYNSEM.LKEYS.KEYREL.CARG "Svarttjørna" ].
 
-Sveidalsbreen-pn := pn-word &
+Sveidalsbreen_pn := pn-word &
   [ STEM < "Sveidalsbreen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sveidalsbreen" ].
 
-Svellnosbreen-pn := pn-word &
+Svellnosbreen_pn := pn-word &
   [ STEM < "Svellnosbreen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Svellnosbreen" ].
 
-Svellnoså-pn := pn-word &
+Svellnoså_pn := pn-word &
   [ STEM < "Svellnoså" >,
     SYNSEM.LKEYS.KEYREL.CARG "Svellnoså" ].
 
-Svensøy-pn := pn-word &
+Svensøy_pn := pn-word &
   [ STEM < "Svensøy" >,
     SYNSEM.LKEYS.KEYREL.CARG "Svensøy" ].
 
-Systerbottjernet-pn := pn-word &
+Systerbottjernet_pn := pn-word &
   [ STEM < "Systerbottjernet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Systerbottjernet" ].
 
-Therese-pn := pn-word &
+Therese_pn := pn-word &
   [ STEM < "Therese" >,
     SYNSEM.LKEYS.KEYREL.CARG "Therese" ].
 
-Tora-pn := pn-word &
+Tora_pn := pn-word &
   [ STEM < "Tora" >,
     SYNSEM.LKEYS.KEYREL.CARG "Tora" ].
 
-Torfinnsdøla-pn := pn-word &
+Torfinnsdøla_pn := pn-word &
   [ STEM < "Torfinnsdøla" >,
     SYNSEM.LKEYS.KEYREL.CARG "Torfinnsdøla" ].
 
-Torfinnstind-pn := pn-word &
+Torfinnstind_pn := pn-word &
   [ STEM < "Torfinnstind" >,
     SYNSEM.LKEYS.KEYREL.CARG "Torfinnstind" ].
 
-Torfinnstindane-pn := pn-word &
+Torfinnstindane_pn := pn-word &
   [ STEM < "Torfinnstindane" >,
     SYNSEM.LKEYS.KEYREL.CARG "Torfinnstindane" ].
 
-Trulsbu-pn := pn-word &
+Trulsbu_pn := pn-word &
   [ STEM < "Trulsbu" >,
     SYNSEM.LKEYS.KEYREL.CARG "Trulsbu" ].
 
-Turistsenter-pn := pn-word &
+Turistsenter_pn := pn-word &
   [ STEM < "Turistsenter" >,
     SYNSEM.LKEYS.KEYREL.CARG "Turistsenter" ].
 
-Tussetind-pn := pn-word &
+Tussetind_pn := pn-word &
   [ STEM < "Tussetind" >,
     SYNSEM.LKEYS.KEYREL.CARG "Tussetind" ].
 
-Tverrbyttfjellet-pn := pn-word &
+Tverrbyttfjellet_pn := pn-word &
   [ STEM < "Tverrbyttfjellet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Tverrbyttfjellet" ].
 
-Tverrdalsnosi-pn := pn-word &
+Tverrdalsnosi_pn := pn-word &
   [ STEM < "Tverrdalsnosi" >,
     SYNSEM.LKEYS.KEYREL.CARG "Tverrdalsnosi" ].
 
-Tvindehaugen-pn := pn-word &
+Tvindehaugen_pn := pn-word &
   [ STEM < "Tvindehaugen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Tvindehaugen" ].
 
-Tyinholmen-pn := pn-word &
+Tyinholmen_pn := pn-word &
   [ STEM < "Tyinholmen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Tyinholmen" ].
 
-Uradalen-pn := pn-word &
+Uradalen_pn := pn-word &
   [ STEM < "Uradalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Uradalen" ].
 
-Uradalsvatnet-pn := pn-word &
+Uradalsvatnet_pn := pn-word &
   [ STEM < "Uradalsvatnet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Uradalsvatnet" ].
 
-Uraknatten-pn := pn-word &
+Uraknatten_pn := pn-word &
   [ STEM < "Uraknatten" >,
     SYNSEM.LKEYS.KEYREL.CARG "Uraknatten" ].
 
-Uranosbreen-pn := pn-word &
+Uranosbreen_pn := pn-word &
   [ STEM < "Uranosbreen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Uranosbreen" ].
 
-Uranostind-pn := pn-word &
+Uranostind_pn := pn-word &
   [ STEM < "Uranostind" >,
     SYNSEM.LKEYS.KEYREL.CARG "Uranostind" ].
 
-Urdadalstindar-pn := pn-word &
+Urdadalstindar_pn := pn-word &
   [ STEM < "Urdadalstindar" >,
     SYNSEM.LKEYS.KEYREL.CARG "Urdadalstindar" ].
 
-Urden-pn := pn-word &
+Urden_pn := pn-word &
   [ STEM < "Urden" >,
     SYNSEM.LKEYS.KEYREL.CARG "Urden" ].
 
-Utladalsjuvet-pn := pn-word &
+Utladalsjuvet_pn := pn-word &
   [ STEM < "Utladalsjuvet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Utladalsjuvet" ].
 
-VH-pn := pn-word &
+VH_pn := pn-word &
   [ STEM < "VH" >,
     SYNSEM.LKEYS.KEYREL.CARG "VH" ].
 
-Vareggene-pn := pn-word &
+Vareggene_pn := pn-word &
   [ STEM < "Vareggene" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vareggene" ].
 
-Vennestølsdalen-pn := pn-word &
+Vennestølsdalen_pn := pn-word &
   [ STEM < "Vennestølsdalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vennestølsdalen" ].
 
-Vennistøldalen-pn := pn-word &
+Vennistøldalen_pn := pn-word &
   [ STEM < "Vennistøldalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vennistøldalen" ].
 
-Vennistølsdalen-pn := pn-word &
+Vennistølsdalen_pn := pn-word &
   [ STEM < "Vennistølsdalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vennistølsdalen" ].
 
-Veobreen-pn := pn-word &
+Veobreen_pn := pn-word &
   [ STEM < "Veobreen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Veobreen" ].
 
-Veodalen-pn := pn-word &
+Veodalen_pn := pn-word &
   [ STEM < "Veodalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Veodalen" ].
 
-Vesledalen-pn := pn-word &
+Vesledalen_pn := pn-word &
   [ STEM < "Vesledalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vesledalen" ].
 
-Vesledalstinden-pn := pn-word &
+Vesledalstinden_pn := pn-word &
   [ STEM < "Vesledalstinden" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vesledalstinden" ].
 
-Veslegjuvbreen-pn := pn-word &
+Veslegjuvbreen_pn := pn-word &
   [ STEM < "Veslegjuvbreen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Veslegjuvbreen" ].
 
-Vesleåa-pn := pn-word &
+Vesleåa_pn := pn-word &
   [ STEM < "Vesleåa" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vesleåa" ].
 
-Vesleådalen-pn := pn-word &
+Vesleådalen_pn := pn-word &
   [ STEM < "Vesleådalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vesleådalen" ].
 
-Veslådalen-pn := pn-word &
+Veslådalen_pn := pn-word &
   [ STEM < "Veslådalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Veslådalen" ].
 
-Vestfjell-pn := pn-word &
+Vestfjell_pn := pn-word &
   [ STEM < "Vestfjell" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vestfjell" ].
 
-Vestland-pn := pn-word &
+Vestland_pn := pn-word &
   [ STEM < "Vestland" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vestland" ].
 
-Vestoppland-pn := pn-word &
+Vestoppland_pn := pn-word &
   [ STEM < "Vestoppland" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vestoppland" ].
 
-Vetledøla-pn := pn-word &
+Vetledøla_pn := pn-word &
   [ STEM < "Vetledøla" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vetledøla" ].
 
-Vetlestova-pn := pn-word &
+Vetlestova_pn := pn-word &
   [ STEM < "Vetlestova" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vetlestova" ].
 
-Vetleutladalen-pn := pn-word &
+Vetleutladalen_pn := pn-word &
   [ STEM < "Vetleutladalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vetleutladalen" ].
 
-Vettisfossen-pn := pn-word &
+Vettisfossen_pn := pn-word &
   [ STEM < "Vettisfossen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vettisfossen" ].
 
-Vettismorki-pn := pn-word &
+Vettismorki_pn := pn-word &
   [ STEM < "Vettismorki" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vettismorki" ].
 
-Vigdal-pn := pn-word &
+Vigdal_pn := pn-word &
   [ STEM < "Vigdal" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vigdal" ].
 
-Vinjebua-pn := pn-word &
+Vinjebua_pn := pn-word &
   [ STEM < "Vinjebua" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vinjebua" ].
 
-Vinstri-pn := pn-word &
+Vinstri_pn := pn-word &
   [ STEM < "Vinstri" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vinstri" ].
 
-Visbretindar-pn := pn-word &
+Visbretindar_pn := pn-word &
   [ STEM < "Visbretindar" >,
     SYNSEM.LKEYS.KEYREL.CARG "Visbretindar" ].
 
-Visdalen-pn := pn-word &
+Visdalen_pn := pn-word &
   [ STEM < "Visdalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Visdalen" ].
 
-Volehytta-pn := pn-word &
+Volehytta_pn := pn-word &
   [ STEM < "Volehytta" >,
     SYNSEM.LKEYS.KEYREL.CARG "Volehytta" ].
 
-Vormeli-pn := pn-word &
+Vormeli_pn := pn-word &
   [ STEM < "Vormeli" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vormeli" ].
 
-Vøloa-pn := pn-word &
+Vøloa_pn := pn-word &
   [ STEM < "Vøloa" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vøloa" ].
 
-Vølodalen-pn := pn-word &
+Vølodalen_pn := pn-word &
   [ STEM < "Vølodalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vølodalen" ].
 
-Vølohornet-pn := pn-word &
+Vølohornet_pn := pn-word &
   [ STEM < "Vølohornet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vølohornet" ].
 
-Yksendalen-pn := pn-word &
+Yksendalen_pn := pn-word &
   [ STEM < "Yksendalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Yksendalen" ].
 
-Ytterdalssetrene-pn := pn-word &
+Ytterdalssetrene_pn := pn-word &
   [ STEM < "Ytterdalssetrene" >,
     SYNSEM.LKEYS.KEYREL.CARG "Ytterdalssetrene" ].
 
-Ådal-pn := pn-word &
+Ådal_pn := pn-word &
   [ STEM < "Ådal" >,
     SYNSEM.LKEYS.KEYREL.CARG "Ådal" ].
 
-Åmund-pn := pn-word &
+Åmund_pn := pn-word &
   [ STEM < "Åmund" >,
     SYNSEM.LKEYS.KEYREL.CARG "Åmund" ].
 
-Øvstestølen-pn := pn-word &
+Øvstestølen_pn := pn-word &
   [ STEM < "Øvstestølen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Øvstestølen" ].
 
@@ -8796,323 +9545,323 @@ stølsgrend-n-comm := comm-cmp-count-noun-lxm &
 
 ;;; Jotunheimen Proper Nouns missing in NKL
 
-Luster-pn := pn-word &
+Luster_pn := pn-word &
   [ STEM < "Luster" >,
     SYNSEM.LKEYS.KEYREL.CARG "Luster" ].
 
-Årdal-pn := pn-word &
+Årdal_pn := pn-word &
   [ STEM < "Årdal" >,
     SYNSEM.LKEYS.KEYREL.CARG "Årdal" ].
 
-Hjelle-pn := pn-word &
+Hjelle_pn := pn-word &
   [ STEM < "Hjelle" >,
     SYNSEM.LKEYS.KEYREL.CARG "Hjelle" ].
 
-Skjåk-pn := pn-word &
+Skjåk_pn := pn-word &
   [ STEM < "Skjåk" >,
     SYNSEM.LKEYS.KEYREL.CARG "Skjåk" ].
 
-Vinje-pn := pn-word &
+Vinje_pn := pn-word &
   [ STEM < "Vinje" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vinje" ].
 
-Olav-pn := pn-word &
+Olav_pn := pn-word &
   [ STEM < "Olav" >,
     SYNSEM.LKEYS.KEYREL.CARG "Olav" ].
 
-Tyin-pn := pn-word &
+Tyin_pn := pn-word &
   [ STEM < "Tyin" >,
     SYNSEM.LKEYS.KEYREL.CARG "Tyin" ].
 
-Gravdalen-pn := pn-word &
+Gravdalen_pn := pn-word &
   [ STEM < "Gravdalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Gravdalen" ].
 
-Wiker-pn := pn-word &
+Wiker_pn := pn-word &
   [ STEM < "Wiker" >,
     SYNSEM.LKEYS.KEYREL.CARG "Wiker" ].
 
-Ragnhild-pn := pn-word &
+Ragnhild_pn := pn-word &
   [ STEM < "Ragnhild" >,
     SYNSEM.LKEYS.KEYREL.CARG "Ragnhild" ].
 
-Anne-pn := pn-word &
+Anne_pn := pn-word &
   [ STEM < "Anne" >,
     SYNSEM.LKEYS.KEYREL.CARG "Anne" ].
 
-Torill-pn := pn-word &
+Torill_pn := pn-word &
   [ STEM < "Torill" >,
     SYNSEM.LKEYS.KEYREL.CARG "Torill" ].
 
-Valdres-pn := pn-word &
+Valdres_pn := pn-word &
   [ STEM < "Valdres" >,
     SYNSEM.LKEYS.KEYREL.CARG "Valdres" ].
 
-Beito-pn := pn-word &
+Beito_pn := pn-word &
   [ STEM < "Beito" >,
     SYNSEM.LKEYS.KEYREL.CARG "Beito" ].
 
-Øystre-pn := pn-word &
+Øystre_pn := pn-word &
   [ STEM < "Øystre" >,
     SYNSEM.LKEYS.KEYREL.CARG "Øystre" ].
 
-Kvame-pn := pn-word &
+Kvame_pn := pn-word &
   [ STEM < "Kvame" >,
     SYNSEM.LKEYS.KEYREL.CARG "Kvame" ].
 
-Fjellmuseum-pn := pn-word &
+Fjellmuseum_pn := pn-word &
   [ STEM < "Fjellmuseum" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fjellmuseum" ].
 
-Vest-Jotunheimen-pn := pn-word &
+Vest-Jotunheimen_pn := pn-word &
   [ STEM < "Vest-Jotunheimen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vest-Jotunheimen" ].
 
-T-merkede-pn := pn-word &
+T-merkede_pn := pn-word &
   [ STEM < "T-merkede" >,
     SYNSEM.LKEYS.KEYREL.CARG "T-merkede" ].
 
-Olavsson-pn := pn-word &
+Olavsson_pn := pn-word &
   [ STEM < "Olavsson" >,
     SYNSEM.LKEYS.KEYREL.CARG "Olavsson" ].
 
-Olsen-pn := pn-word &
+Olsen_pn := pn-word &
   [ STEM < "Olsen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Olsen" ].
 
-Slidre-pn := pn-word &
+Slidre_pn := pn-word &
   [ STEM < "Slidre" >,
     SYNSEM.LKEYS.KEYREL.CARG "Slidre" ].
 
-Martin-pn := pn-word &
+Martin_pn := pn-word &
   [ STEM < "Martin" >,
     SYNSEM.LKEYS.KEYREL.CARG "Martin" ].
 
-Leif-pn := pn-word &
+Leif_pn := pn-word &
   [ STEM < "Leif" >,
     SYNSEM.LKEYS.KEYREL.CARG "Leif" ].
 
-Lindstad-pn := pn-word &
+Lindstad_pn := pn-word &
   [ STEM < "Lindstad" >,
     SYNSEM.LKEYS.KEYREL.CARG "Lindstad" ].
 
-Ingrid-pn := pn-word &
+Ingrid_pn := pn-word &
   [ STEM < "Ingrid" >,
     SYNSEM.LKEYS.KEYREL.CARG "Ingrid" ].
 
-Erling-pn := pn-word &
+Erling_pn := pn-word &
   [ STEM < "Erling" >,
     SYNSEM.LKEYS.KEYREL.CARG "Erling" ].
 
-Sognefjorden-pn := pn-word &
+Sognefjorden_pn := pn-word &
   [ STEM < "Sognefjorden" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sognefjorden" ].
 
-Bjørgen-pn := pn-word &
+Bjørgen_pn := pn-word &
   [ STEM < "Bjørgen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Bjørgen" ].
 
-Lars-pn := pn-word &
+Lars_pn := pn-word &
   [ STEM < "Lars" >,
     SYNSEM.LKEYS.KEYREL.CARG "Lars" ].
 
-Arvid-pn := pn-word &
+Arvid_pn := pn-word &
   [ STEM < "Arvid" >,
     SYNSEM.LKEYS.KEYREL.CARG "Arvid" ].
 
-Kristoffer-pn := pn-word &
+Kristoffer_pn := pn-word &
   [ STEM < "Kristoffer" >,
     SYNSEM.LKEYS.KEYREL.CARG "Kristoffer" ].
 
-Austre-pn := pn-word &
+Austre_pn := pn-word &
   [ STEM < "Austre" >,
     SYNSEM.LKEYS.KEYREL.CARG "Austre" ].
 
-Else-pn := pn-word &
+Else_pn := pn-word &
   [ STEM < "Else" >,
     SYNSEM.LKEYS.KEYREL.CARG "Else" ].
 
-Gøril-pn := pn-word &
+Gøril_pn := pn-word &
   [ STEM < "Gøril" >,
     SYNSEM.LKEYS.KEYREL.CARG "Gøril" ].
 
-DNT-lås-pn := pn-word &
+DNT-lås_pn := pn-word &
   [ STEM < "DNT-lås" >,
     SYNSEM.LKEYS.KEYREL.CARG "DNT-lås" ].
 
-Magnus-pn := pn-word &
+Magnus_pn := pn-word &
   [ STEM < "Magnus" >,
     SYNSEM.LKEYS.KEYREL.CARG "Magnus" ].
 
-Andersen-pn := pn-word &
+Andersen_pn := pn-word &
   [ STEM < "Andersen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Andersen" ].
 
-Einar-pn := pn-word &
+Einar_pn := pn-word &
   [ STEM < "Einar" >,
     SYNSEM.LKEYS.KEYREL.CARG "Einar" ].
 
-Morka-pn := pn-word &
+Morka_pn := pn-word &
   [ STEM < "Morka" >,
     SYNSEM.LKEYS.KEYREL.CARG "Morka" ].
 
-Nils-pn := pn-word &
+Nils_pn := pn-word &
   [ STEM < "Nils" >,
     SYNSEM.LKEYS.KEYREL.CARG "Nils" ].
 
-Thon-pn := pn-word &
+Thon_pn := pn-word &
   [ STEM < "Thon" >,
     SYNSEM.LKEYS.KEYREL.CARG "Thon" ].
 
-Ulrik-pn := pn-word &
+Ulrik_pn := pn-word &
   [ STEM < "Ulrik" >,
     SYNSEM.LKEYS.KEYREL.CARG "Ulrik" ].
 
-Sør-Norges-pn := pn-word &
+Sør-Norges_pn := pn-word &
   [ STEM < "Sør-Norges" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sør-Norges" ].
 
-Oslo-borgeren-pn := pn-word &
+Oslo-borgeren_pn := pn-word &
   [ STEM < "Oslo-borgeren" >,
     SYNSEM.LKEYS.KEYREL.CARG "Oslo-borgeren" ].
 
-Jostedalsbreen-pn := pn-word &
+Jostedalsbreen_pn := pn-word &
   [ STEM < "Jostedalsbreen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Jostedalsbreen" ].
 
-Torbjørn-pn := pn-word &
+Torbjørn_pn := pn-word &
   [ STEM < "Torbjørn" >,
     SYNSEM.LKEYS.KEYREL.CARG "Torbjørn" ].
 
-Håkon-pn := pn-word &
+Håkon_pn := pn-word &
   [ STEM < "Håkon" >,
     SYNSEM.LKEYS.KEYREL.CARG "Håkon" ].
 
-Fortun-pn := pn-word &
+Fortun_pn := pn-word &
   [ STEM < "Fortun" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fortun" ].
 
-Aase-pn := pn-word &
+Aase_pn := pn-word &
   [ STEM < "Aase" >,
     SYNSEM.LKEYS.KEYREL.CARG "Aase" ].
 
-Arnfinn-pn := pn-word &
+Arnfinn_pn := pn-word &
   [ STEM < "Arnfinn" >,
     SYNSEM.LKEYS.KEYREL.CARG "Arnfinn" ].
 
-Vinjes-pn := pn-word &
+Vinjes_pn := pn-word &
   [ STEM < "Vinjes" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vinjes" ].
 
-Frognerparken-pn := pn-word &
+Frognerparken_pn := pn-word &
   [ STEM < "Frognerparken" >,
     SYNSEM.LKEYS.KEYREL.CARG "Frognerparken" ].
 
-Åge-pn := pn-word &
+Åge_pn := pn-word &
   [ STEM < "Åge" >,
     SYNSEM.LKEYS.KEYREL.CARG "Åge" ].
 
-Vågå-pn := pn-word &
+Vågå_pn := pn-word &
   [ STEM < "Vågå" >,
     SYNSEM.LKEYS.KEYREL.CARG "Vågå" ].
 
-Johannes-pn := pn-word &
+Johannes_pn := pn-word &
   [ STEM < "Johannes" >,
     SYNSEM.LKEYS.KEYREL.CARG "Johannes" ].
 
-Glittertind-pn := pn-word &
+Glittertind_pn := pn-word &
   [ STEM < "Glittertind" >,
     SYNSEM.LKEYS.KEYREL.CARG "Glittertind" ].
 
-Rudi-pn := pn-word &
+Rudi_pn := pn-word &
   [ STEM < "Rudi" >,
     SYNSEM.LKEYS.KEYREL.CARG "Rudi" ].
 
-Fredrik-pn := pn-word &
+Fredrik_pn := pn-word &
   [ STEM < "Fredrik" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fredrik" ].
 
-Magnar-pn := pn-word &
+Magnar_pn := pn-word &
   [ STEM < "Magnar" >,
     SYNSEM.LKEYS.KEYREL.CARG "Magnar" ].
 
-Rikshospitalet-pn := pn-word &
+Rikshospitalet_pn := pn-word &
   [ STEM < "Rikshospitalet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Rikshospitalet" ].
 
-Semelhol-tjønnet-pn := pn-word &
+Semelhol-tjønnet_pn := pn-word &
   [ STEM < "Semelhol-tjønnet" >,
     SYNSEM.LKEYS.KEYREL.CARG "Semelhol-tjønnet" ].
 
-Nina-pn := pn-word &
+Nina_pn := pn-word &
   [ STEM < "Nina" >,
     SYNSEM.LKEYS.KEYREL.CARG "Nina" ].
 
-Turlag-pn := pn-word &
+Turlag_pn := pn-word &
   [ STEM < "Turlag" >,
     SYNSEM.LKEYS.KEYREL.CARG "Turlag" ].
 
-Torkjell-pn := pn-word &
+Torkjell_pn := pn-word &
   [ STEM < "Torkjell" >,
     SYNSEM.LKEYS.KEYREL.CARG "Torkjell" ].
 
-Arnesen-pn := pn-word &
+Arnesen_pn := pn-word &
   [ STEM < "Arnesen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Arnesen" ].
 
-Haavard-pn := pn-word &
+Haavard_pn := pn-word &
   [ STEM < "Haavard" >,
     SYNSEM.LKEYS.KEYREL.CARG "Haavard" ].
 
-Lombværingers-pn := pn-word &
+Lombværingers_pn := pn-word &
   [ STEM < "Lombværingers" >,
     SYNSEM.LKEYS.KEYREL.CARG "Lombværingers" ].
 
-Johan-pn := pn-word &
+Johan_pn := pn-word &
   [ STEM < "Johan" >,
     SYNSEM.LKEYS.KEYREL.CARG "Johan" ].
 
-Wergeland-pn := pn-word &
+Wergeland_pn := pn-word &
   [ STEM < "Wergeland" >,
     SYNSEM.LKEYS.KEYREL.CARG "Wergeland" ].
 
-Sars-pn := pn-word &
+Sars_pn := pn-word &
   [ STEM < "Sars" >,
     SYNSEM.LKEYS.KEYREL.CARG "Sars" ].
 
-Roger-pn := pn-word &
+Roger_pn := pn-word &
   [ STEM < "Roger" >,
     SYNSEM.LKEYS.KEYREL.CARG "Roger" ].
 
-Soria-pn := pn-word &
+Soria_pn := pn-word &
   [ STEM < "Soria" >,
     SYNSEM.LKEYS.KEYREL.CARG "Soria" ].
 
-Øystein-pn := pn-word &
+Øystein_pn := pn-word &
   [ STEM < "Øystein" >,
     SYNSEM.LKEYS.KEYREL.CARG "Øystein" ].
 
-Østland-pn := pn-word &
+Østland_pn := pn-word &
   [ STEM < "Østland" >,
     SYNSEM.LKEYS.KEYREL.CARG "Østland" ].
 
-Truls-pn := pn-word &
+Truls_pn := pn-word &
   [ STEM < "Truls" >,
     SYNSEM.LKEYS.KEYREL.CARG "Truls" ].
 
-Ringdal-pn := pn-word &
+Ringdal_pn := pn-word &
   [ STEM < "Ringdal" >,
     SYNSEM.LKEYS.KEYREL.CARG "Ringdal" ].
 
-Fjeldstad-pn := pn-word &
+Fjeldstad_pn := pn-word &
   [ STEM < "Fjeldstad" >,
     SYNSEM.LKEYS.KEYREL.CARG "Fjeldstad" ].
 
-Reiseliv-pn := pn-word &
+Reiseliv_pn := pn-word &
   [ STEM < "Reiseliv" >,
     SYNSEM.LKEYS.KEYREL.CARG "Reiseliv" ].
 
-Gudbrandsdalen-pn := pn-word &
+Gudbrandsdalen_pn := pn-word &
   [ STEM < "Gudbrandsdalen" >,
     SYNSEM.LKEYS.KEYREL.CARG "Gudbrandsdalen" ].
 
@@ -9553,29 +10302,61 @@ løfte_v := main-verb-lxm &
     INFLECTION v1,
     SYNSEM.LKEYS.KEYREL.PRED løfte_v ].
 
-; på_func := func-word &
-;   [ STEM < "på" >,
-;     SYNSEM.LKEYS.KEYREL.PRED på_prd ].
-
-på_func := func-word &
+på_prp := prep-word &
   [ STEM < "på" >,
-    SYNSEM.LKEYS.KEYREL.PRED på_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED på_prp ].
 
-på*lenge_func := adv-word &
-  [ STEM < "på", "lenge" >,
-    SYNSEM.LKEYS.KEYREL.PRED på*lenge_prd ].
+på_prt := part-word &
+  [ STEM < "på" >,
+    SYNSEM.LKEYS.KEYREL.PRED på_prt ].
 
-til_func := func-word &
+på-lenge_adv := adv-word &
+  [ STEM < "på","lenge" >,
+    SYNSEM.LKEYS.KEYREL.PRED _på*lenge_adv_rel ].
+
+påstand-n-masc := masc-mwe-count-noun-lxm &
+  [ STEM < "påstand" >,
+    INFLECTION m1,
+    SYNSEM.LKEYS.KEYREL.PRED påstand_prd ].
+
+til_prp := prep-word &
   [ STEM < "til" >,
-    SYNSEM.LKEYS.KEYREL.PRED til_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED til_prp ].
 
-i_func := func-word &
+til_prt := part-word &
+  [ STEM < "til" >,
+    SYNSEM.LKEYS.KEYREL.PRED til_prt ].
+
+til_adv := adv-word &
+  [ STEM < "til" >,
+    SYNSEM.LKEYS.KEYREL.PRED _til_adv_rel ].
+
+til_cadv := cadv-word &
+  [ STEM < "til" >,
+    SYNSEM.LKEYS.KEYREL.PRED _til_x_rel ].
+
+
+i_prp := prep-word &
   [ STEM < "i" >,
-    SYNSEM.LKEYS.KEYREL.PRED i_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED i_prp ].
 
-ved_func := func-word &
+i_prt := part-word &
+  [ STEM < "i" >,
+    SYNSEM.LKEYS.KEYREL.PRED i_prt ].
+
+i_adv := adv-word &
+  [ STEM < "i" >,
+    SYNSEM.LKEYS.KEYREL.PRED _i_adv_rel ].
+
+
+ved_prp := prep-word &
   [ STEM < "ved" >,
-    SYNSEM.LKEYS.KEYREL.PRED ved_prd ].
+    SYNSEM.LKEYS.KEYREL.PRED ved_prp ].
+
+ved_prt := part-word &
+  [ STEM < "ved" >,
+    SYNSEM.LKEYS.KEYREL.PRED ved_prt ].
+
 
 bane-n-masc := masc-cmp-count-noun-lxm &
   [ STEM < "bane" >,
@@ -9620,10 +10401,10 @@ seg-refl := empty-refl-word &
     SYNSEM [ LOCAL.CONT.HOOK.INDEX.PNG.PN 3p,
 	     LINK refl ] ].
 
-skjul-n-neut := neut-cmp-count-noun-lxm &
+skjul-n-neut := neut-mwe-count-noun-lxm &
   [ STEM < "skjul" >,
     INFLECTION n1,
-    SYNSEM.LKEYS.KEYREL.PRED "_skjul_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED skjul_prd ].
 
 tema-n-neut := neut-cmp-count-noun-lxm &
   [ STEM < "tema" >,

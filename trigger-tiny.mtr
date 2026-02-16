@@ -1,0 +1,163 @@
+;;; Hey, emacs(1), this is -*- Mode: TDL; Package: LKB; -*- got it?
+
+at-comp_rule := arg0e_gtr &
+ [ CONTEXT.RELS <! [ PRED 2cp ], [ PRED "subord_rel" ] !>,
+   FLAGS.TRIGGER "at-comp" ].
+
+inf-comp_rule := arg0e_gtr &
+ [ CONTEXT.RELS <! [ PRED inf+ ] !>,
+   FLAGS.TRIGGER "inf-comp" ].
+
+det-expl_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ ] !> ],
+   FLAGS.TRIGGER "det-expl" ].
+
+som_restr_relpron_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "rel-clause_rel" ] !> ],
+   FLAGS.TRIGGER "som_restr_relpron" ].
+
+hvilket_relpron_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "rel-clause-s_rel" ] !> ],
+   FLAGS.TRIGGER "hvilket_relpron" ].
+
+enn_rel_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "rel-clause-s_rel" ] !> ],
+   FLAGS.TRIGGER "enn_rel" ].
+
+noe_som_relpron_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "rel-clause-s_rel" ] !> ],
+   FLAGS.TRIGGER "noe_som_relpron" ].
+
+ha-aux_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_ha_aux_rel" ] !> ],
+   FLAGS.TRIGGER "ha-aux" ].
+
+burde-aux1_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_burde_aux_rel",
+		       ARG0.E.TENSE infin-pres ] !> ],
+   FLAGS.TRIGGER "burde-aux1" ].
+
+burde-aux2_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_burde_aux_rel",
+		       ARG0.E.TENSE pret-perf ] !> ],
+   FLAGS.TRIGGER "burde-aux2" ].
+
+kunne-aux1_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_kunne_aux_rel",
+		       ARG0.E.TENSE infin-pres ] !> ],
+   FLAGS.TRIGGER "kunne-aux1" ].
+
+kunne-aux2_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_kunne_aux_rel",
+		       ARG0.E.TENSE pret-perf ] !> ],
+   FLAGS.TRIGGER "kunne-aux2" ].
+
+måtte-aux1_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_måtte_aux_rel",
+		       ARG0.E.TENSE infin-pres ] !> ],
+   FLAGS.TRIGGER "måtte-aux1" ].
+
+måtte-aux2_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_måtte_aux_rel",
+		       ARG0.E.TENSE pret-perf ] !> ],
+   FLAGS.TRIGGER "måtte-aux2" ].
+
+skulle-aux1_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_skulle_aux_rel",
+		       ARG0.E.TENSE infin-pres ] !> ],
+   FLAGS.TRIGGER "skulle-aux1" ].
+
+skulle-aux2_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_skulle_aux_rel",
+		       ARG0.E.TENSE pret-perf ] !> ],
+   FLAGS.TRIGGER "skulle-aux2" ].
+
+ville-aux1_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_ville_aux_rel",
+		       ARG0.E.TENSE infin-pres ] !> ],
+   FLAGS.TRIGGER "ville-aux1" ].
+
+ville-aux2_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_ville_aux_rel",
+		       ARG0.E.TENSE pret-perf ] !> ],
+   FLAGS.TRIGGER "ville-aux2" ].
+
+start_rule := generator_rule &
+ [ CONTEXT [ RELS <! [ ] !> ],
+   FLAGS.TRIGGER "start-punct" ].
+
+de-d1_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED def_q_rel,
+		      ARG0.PNG.PN pl ] !>,
+    FLAGS.TRIGGER "de-d1" ].
+
+den-d1_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED def_q_rel,
+		      ARG0.PNG [ PN sg,
+				 GEN comm ] ] !>,
+    FLAGS.TRIGGER "den-d1" ].
+
+det_q_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED def_q_rel,
+		      ARG0.PNG [ PN sg,
+				 GEN neut ] ] !>,
+    FLAGS.TRIGGER "det_q" ].
+
+denne_q_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED demonstr_q_rel,
+		      ARG0.PNG [ PN sg,
+				 GEN comm ] ] !>,
+    FLAGS.TRIGGER "denne_q" ].
+
+dette_q_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED demonstr_q_rel,
+		      ARG0.PNG [ PN sg,
+				 GEN neut ] ] !>,
+    FLAGS.TRIGGER "dette_q" ].
+
+disse_q_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED demonstr_q_rel,
+		      ARG0.PNG.PN pl ] !>,
+    FLAGS.TRIGGER "disse_q" ].
+
+jeg-np_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED pron_rel ] !>,
+    FLAGS.TRIGGER "jeg-np" ].
+
+all_q_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED _all_q_rel,
+		      ARG0.PNG [ PN sg,
+				 GEN comm ] ] !>,
+    FLAGS.TRIGGER "all_q" ].
+
+alt_q_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED _all_q_rel,
+		      ARG0.PNG [ PN sg,
+				 GEN neut ] ] !>,
+    FLAGS.TRIGGER "alt_q" ].
+    
+alle_q_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED _all_q_rel,
+		      ARG0.PNG [ PN pl ] ] !>,
+    FLAGS.TRIGGER "alle_q" ].
+
+
+; gi_v_rule := generator_rule &
+;   [ CONTEXT.RELS <! [ PRED gi_v ] !>,
+;     FLAGS.TRIGGER "gi_v" ].
+
+overrekke_v_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED overrekke_v ] !>,
+    FLAGS.TRIGGER "overrekke_v" ].
+
+til_prp_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED til_prp ] !>,
+    FLAGS.TRIGGER "til_prp" ].
+
+smile_v_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED smile_v ] !>,
+    FLAGS.TRIGGER "smile_v" ].
+
+skog-n-masc_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED "_skog_n_rel" ] !>,
+    FLAGS.TRIGGER "skog-n-masc" ].

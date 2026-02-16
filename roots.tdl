@@ -1,7 +1,7 @@
 ;;; Hey, emacs(1), this is -*- Mode: TDL; Coding: utf-8; -*- got it?
 ;;;
 
-root := phrase &
+root := force-phrase-min &
   [ BOUNDARY +,
     SYNSEM [ LOCAL.CAT [ HEAD aux-verb,
                          VAL [ CMP1.LINK arg1-,
@@ -18,3 +18,4 @@ root := phrase &
 ; 	     MODIFIED notmod,
 ;              NON-LOCAL.SLASH < [] > ] ].
 
+; root_ij := interj-phrase.

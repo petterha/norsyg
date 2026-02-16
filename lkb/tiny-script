@@ -81,7 +81,7 @@
 ;;;
 (lkb-load-lisp (this-directory) "mrsglobals.lisp" t)
 ;(read-mrs-rule-file-aux (lkb-pathname (parent-directory) "transfer.mrs"))
-(index-for-generator)
+;(index-for-generator)
 
 ;#+unknown-words
 ;(lkb-load-lisp (this-directory) "grammar-saargram.lisp")

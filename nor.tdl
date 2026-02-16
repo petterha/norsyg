@@ -116,14 +116,16 @@ arg4- := link.
 
 ;;; Modified/added link type from vpidiom paper
 
-nom+ := link.
+nom+ := predsort.
 nom- := link.
-vbl+ := link.
-expl+ := link.
-comp+ := nom+.
+vbl+ := predsort.
+expl+ := predsort.
+comp-inf := predsort.
+comp+ := nom+ & comp-inf.
+comp- := predsort.
 inq+ := nom+.
 wh+ := nom+.
-inf+ := nom-.
+inf+ := nom- & comp-inf.
 mod+ := nom-.
 mass+ := nom+.
 
@@ -131,8 +133,9 @@ restr_rel_rel := mod+ & arg2+.
 non-restr_rel_rel := mod+ & arg2+.
 time_rel := mod+ & nom+.
 poss_rel := norm_rel & mod+ & nom+.
+subord_rel := comp+.
 
-1np := arg1+ & wh+.
+1np := arg1+ & nom+.
 1cp := arg1+ & comp+.
 1ip := arg1+ & inf+.
 2expl := arg2+ & expl+.
@@ -151,17 +154,20 @@ rais := 2ip.
 4cp := arg4+ & comp+.
 4wh := arg4+ & wh+.
 4ip := arg4+ & inf+.
+4vp := arg4+ & inf+.
 4ip1 := arg4+ & inf+.
 4ip2 := arg4+ & inf+.
 4infbare1 := arg4+ & inf+.
 4infbare2 := arg4+ & inf+.
+2infbare := arg2+ & inf+.
 4np := arg4+ & nom+.
 4ap := arg4+.
 4advp := arg4+.
 4idiom := arg4+.
 
-vrb+ := link.
+vrb+ := predsort.
 prt+ := link.
+ground+ := prt+ & prp+.
 prt- := predsort.
 refl := idiomform.
 2refl := arg2+ & refl.
@@ -194,6 +200,12 @@ time-loc_prd := predsort.
 kveld_prd := link.
 _kveld_n_rel := kveld_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom & time-loc_prd.
 
+påstand_prd := predsort.
+_påstand*om-cp_rel := påstand_prd & arg1- & arg2- & arg3- & om_prd & prp+ & 4cp & prt- & atom.
+_påstand-cp_rel := påstand_prd & arg1- & 2cp & arg3- & arg4- & prt- & atom.
+_påstand_n_rel := påstand_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom.
+
+
 liter_prd := predsort.
 _liter_meas_rel := liter_prd & arg1- & arg2- & arg3- & arg4- & prt- & meas+.
 
@@ -213,7 +225,7 @@ hvorvidt_prt := hvorvidt_prd & prt+.
 _hvorvidt_x_rel := hvorvidt_prd & cadv+.
 selv*om_prd := predsort.
 _selv*om_x_rel := selv*om_prd & cadv+.
-_siden_adv_rel := siden_prp & adv-link.
+_siden_adv_rel := siden_prd & adv-link.
 _siden_p_rel := siden_prp & arg1+ & 2np & arg3- & arg4- & prt-.
 _siden_sadv_rel := siden_prd & sadv+.
 _siden_x_rel := siden_prd & cadv+.
@@ -227,12 +239,12 @@ som*om_prd := predsort.
 _som*om_x_rel := som*om_prd & cadv+.
 da_prd := predsort.
 da_prp := da_prd & prp+.
-_da_adv_rel := da_prp & adv-link.
+_da_adv_rel := da_prd & adv-link.
 _da_sadv_rel := da_prd & sadv+.
 _da_x_rel := da_prd & cadv+.
 etc_prd := predsort.
 etc_prp := etc_prd & prp+.
-_etc_adv_rel := etc_prp & adv-link.
+_etc_adv_rel := etc_prd & adv-link.
 dersom_prd := predsort.
 _dersom_x_rel := dersom_prd & cadv+.
 det*at_prd := predsort.
@@ -240,7 +252,7 @@ _det*at_x_rel := det*at_prd & cadv+.
 efter_prd := predsort.
 efter_prp := efter_prd & prp+.
 efter_prt := efter_prd & prt+.
-_efter_adv_rel := efter_prp & adv-link.
+_efter_adv_rel := efter_prd & adv-link.
 _efter_p_rel := efter_prp & arg1+ & 2np & arg3- & arg4- & prt-.
 _efter-cp_p_rel := efter_prp & arg1+ & 2cp & arg3- & arg4- & prt-.
 _efter-ip_p_rel := efter_prp & arg1+ & 2ip & arg3- & arg4- & prt-.
@@ -285,62 +297,62 @@ fordi_prd := predsort.
 _fordi_x_rel := fordi_prd & cadv+.
 før_prd := predsort.
 før_prp := før_prd & prp+.
-_før_adv_rel := før_prp & adv-link.
+_før_adv_rel := før_prd & adv-link.
 _før_p_rel := før_prp & arg1+ & 2np & arg3- & arg4- & prt-.
 _før_x_rel := før_prd & cadv+.
 
 flest_prd := predsort.
 flest_prp := flest_prd & prp+.
-_flest_adv_rel := flest_prp & adv-link.
+_flest_adv_rel := flest_prd & adv-link.
 
 innenlands_prd := predsort.
 innenlands_prp := innenlands_prd & prp+.
-_innenlands_adv_rel := innenlands_prp & adv-link.
+_innenlands_adv_rel := innenlands_prd & adv-link.
 
 utenlands_prd := predsort.
 utenlands_prp := utenlands_prd & prp+.
-_utenlands_adv_rel := utenlands_prp & adv-link.
+_utenlands_adv_rel := utenlands_prd & adv-link.
 
 etterpå_prd := predsort.
 etterpå_prp := etterpå_prd & prp+.
-_etterpå_adv_rel := etterpå_prp & adv-link.
+_etterpå_adv_rel := etterpå_prd & adv-link.
 
 ene_v := vrb+.
-_ene_1_rel := ene_v & vbl+ & 1np & arg2- & arg3- & arg4- & prt-.
+_ene_1_rel := ene_v & 1np & arg2- & arg3- & arg4- & prt-.
 
 mandag_prd := predsort.
 mandag_prp := mandag_prd & prp+.
-_mandag_adv_rel := arg1+ & prt- & mandag_prp & arg2- & arg3- & arg4-.
+_mandag_adv_rel := mandag_prp & adv-link.
 _mandag_n_rel := mandag_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom & time-loc_prd.
 
 tirsdag_prd := predsort.
 tirsdag_prp := tirsdag_prd & prp+.
-_tirsdag_adv_rel := arg1+ & prt- & tirsdag_prp & arg2- & arg3- & arg4-.
+_tirsdag_adv_rel := tirsdag_prp & adv-link.
 _tirsdag_n_rel := tirsdag_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom & time-loc_prd.
 
 onsdag_prd := predsort.
 onsdag_prp := onsdag_prd & prp+.
-_onsdag_adv_rel := arg1+ & prt- & onsdag_prp & arg2- & arg3- & arg4-.
+_onsdag_adv_rel := onsdag_prp & adv-link.
 _onsdag_n_rel := onsdag_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom & time-loc_prd.
 
 torsdag_prd := predsort.
 torsdag_prp := torsdag_prd & prp+.
-_torsdag_adv_rel := arg1+ & prt- & torsdag_prp & arg2- & arg3- & arg4-.
+_torsdag_adv_rel := torsdag_prp & adv-link.
 _torsdag_n_rel := torsdag_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom & time-loc_prd.
 
 fredag_prd := predsort.
 fredag_prp := fredag_prd & prp+.
-_fredag_adv_rel := arg1+ & prt- & fredag_prp & arg2- & arg3- & arg4-.
+_fredag_adv_rel := fredag_prp & adv-link.
 _fredag_n_rel := fredag_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom & time-loc_prd.
 
 lørdag_prd := predsort.
 lørdag_prp := lørdag_prd & prp+.
-_lørdag_adv_rel := arg1+ & prt- & lørdag_prp & arg2- & arg3- & arg4-.
+_lørdag_adv_rel := lørdag_prp & adv-link.
 _lørdag_n_rel := lørdag_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom & time-loc_prd.
 
 søndag_prd := predsort.
 søndag_prp := søndag_prd & prp+.
-_søndag_adv_rel := arg1+ & prt- & søndag_prp & arg2- & arg3- & arg4-.
+_søndag_adv_rel := søndag_prp & adv-link.
 _søndag_n_rel := søndag_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom & time-loc_prd.
 
 heldigvis_prd := predsort.
@@ -349,23 +361,29 @@ _heldigvis_sadv_rel := heldigvis_prd & sadv+.
 
 kanskje_prd := predsort.
 kanskje_prp := kanskje_prd & prp+.
-kanskje_prt := kanskje_prd & prt+.
 _kanskje_sadv_rel := kanskje_prd & sadv+.
 
-hva_prd := predsort.
+hva_prd := link.
 _hva_pron_rel := hva_prd & wh+.
+_hva*som_rel := hva_prd & wh+.
 
-hvem_prd := predsort.
+hvem_prd := link.
 _hvem_pron_rel := hvem_prd & wh+.
+_hvem*som_rel := hvem_prd & wh+.
 
 _noe-som-helst_pron_rel := pron_rel.
 _man_pron_rel := pron_rel.
+_noenting_pron_rel := pron_rel.
+pers-pron_rel := pron_rel.
 
-hvor_prd := predsort.
+hvor_prd := link.
 hvor_prp := hvor_prd & prp+.
 _hvor_adv_rel := arg1+ & prt- & hvor_prp & arg2- & arg3- & arg4- & wh+.
 _hvor_x_rel := hvor_prd & cadv+.
 _hvor_deg-pos_rel := hvor_prd & deg-pos.
+
+hvilket_prd := link.
+_hvilket_x_rel := hvilket_prd & cadv+.
 
 der_prd := predsort.
 der_prp := der_prd & prp+.
@@ -382,12 +400,14 @@ _hvorledes_adv_rel := adv-link & hvorledes_prp & wh+.
 hvorfor_prd := predsort.
 hvorfor_prp := hvorfor_prd & prp+.
 _hvorfor_adv_rel := adv-link & hvorfor_prp & wh+.
-_hvorfor_x_rel := hvorfor_prd & cadv+.
+;_hvorfor_x_rel := hvorfor_prd & cadv+.
 
 
 enn_prd := predsort.
 enn_prp := enn_prd & prp+.
 _enn_p_rel := arg1+ & enn_prp & 2np & arg3- & arg4- & prt-.
+_enn_cp_rel := arg1+ & enn_prp & 2cp & arg3- & arg4- & prt-.
+_enn_x_rel := enn_prd & cadv+.
 
 klokka_prd := predsort.
 klokka_prp := klokka_prd & prp+.
@@ -434,10 +454,13 @@ _ikke_deg-imp_rel := ikke_prd & deg-imp.
 
 nok_prd := predsort.
 _nok_part_rel := nok_prd & sadv+.
+nok_prp := nok_prd & prp+.
+_nok_adv_rel := nok_prd & adv-link.
+
 
 bare_prd := predsort.
 _bare_sadv_rel := bare_prd & sadv+.
-_bare_mod_rel := bare_prd & degadv+.
+_bare_deg-adv_rel := bare_prd & deg-adv.
 
 herr_prd := predsort.
 _herr_ttl_rel := herr_prd & deg-nom.
@@ -451,7 +474,10 @@ _hvor_deg_rel := hvor_prd & degadv+.
 
 
 så_prd := predsort.
-_så_deg_rel := så_prd & degadv+.
+så_deg := så_prd & deg-pos.
+_så_deg_rel := så_deg & comp-.
+_så_deg-cp_rel := så_deg & comp+.
+
 
 mest_prd := predsort.
 mest_grade_rel := mest_prd & degadv+.
@@ -481,6 +507,10 @@ selv_prp := selv_prd & prp+.
 snart_prd := predsort.
 snart_prp := snart_prd & prp+.
 
+uten_prd := predsort.
+uten_prp := uten_prd & prp+.
+_uten_p_rel := arg1+ & uten_prp & 2np & arg3- & arg4- & prt-.
+
 utenom_prd := predsort.
 utenom_prp := utenom_prd & prp+.
 _utenom_p_rel := arg1+ & utenom_prp & 2np & arg3- & arg4- & prt-.
@@ -491,167 +521,164 @@ unna_prt := unna_prd & prt+.
 
 ;; FIXME
 velkommen_v := vrb+.
-velkommen_2_rel := velkommen_v & vbl+ & prt- & arg1- & 2np & arg3- & arg4-.
+velkommen_2_rel := velkommen_v & prt- & arg1- & 2np & arg3- & arg4-.
 
 prøve_v := vrb+.
-prøve-refl-frem_1_rel := prøve_v & vbl+ & 1np & refl & arg2+ & arg3- & arg4- & frem_prt.
-_prøve*for_124_rel := prøve_v & vbl+ & 1np & 2np & arg3- & 4np & for_prp & prt-.
-_prøve-ut_12_rel := prøve_v & vbl+ & 1np & 2np & arg3- & arg4- & ut_prt.
-_prøve-refl*på-ip1_14_rel := prøve_v & vbl+ & 1np & refl & arg2+ & arg3- & 4ip1 & på_prp & prt-.
-_prøve-refl*på_14_rel := prøve_v & vbl+ & 1np & refl & arg2+ & arg3- & 4np & på_prp & prt-.
-_prøve-refl_1_rel := prøve_v & vbl+ & 1np & refl & arg2+ & arg3- & arg4- & prt-.
-_prøve-ip1_12_rel := prøve_v & vbl+ & 1np & 2ip1 & arg3- & arg4- & prt-.
-_prøve_12_rel := prøve_v & vbl+ & 1np & 2np & arg3- & arg4- & prt-.
-_prøve_a_rel := prøve_v & adj+ & 1np & 2np & arg3- & arg4- & prt-.
-_prøve-infbare_14_rel := prøve_v & vbl+ & 1np & arg2- & arg3- & 4infbare1 & prt-.
-_prøve*på-ip1_14_rel := prøve_v & vbl+ & 1np & arg2- & arg3- & 4ip1 & på_prp & prt-.
-_prøve_1_rel := prøve_v & vbl+ & 1np & arg2- & arg3- & arg4- & prt-.
+prøve-refl-frem_1_rel := prøve_v & 1np & refl & arg2+ & arg3- & arg4- & frem_prt.
+_prøve*for_124_rel := prøve_v & 1np & 2np & arg3- & 4np & for_prp & prt-.
+_prøve-ut_12_rel := prøve_v & 1np & 2np & arg3- & arg4- & ut_prt.
+_prøve-refl*på-ip1_14_rel := prøve_v & 1np & refl & arg2+ & arg3- & 4ip1 & på_prp & prt-.
+_prøve-refl*på_14_rel := prøve_v & 1np & refl & arg2+ & arg3- & 4np & på_prp & prt-.
+_prøve-refl_1_rel := prøve_v & 1np & refl & arg2+ & arg3- & arg4- & prt-.
+_prøve-ip1_12_rel := prøve_v & 1np & 2ip1 & arg3- & arg4- & prt-.
+_prøve_12_rel := prøve_v & 1np & 2np & arg3- & arg4- & prt-.
+;_prøve_a_rel := prøve_v & adj+ & 1np & 2np & arg3- & arg4- & prt-.
+_prøve-infbare_14_rel := prøve_v & 1np & arg2- & arg3- & 4infbare1 & prt-.
+_prøve*på-ip1_14_rel := prøve_v & 1np & arg2- & arg3- & 4ip1 & på_prp & prt-.
+_prøve_1_rel := prøve_v & 1np & arg2- & arg3- & arg4- & prt-.
 
 dette_v := vrb+.
-_dette-ned_1_rel := dette_v & vbl+ & 1np & arg2- & arg3- & arg4- & ned_prt.
-_dette_2_rel := dette_v & vbl+ & arg1- & 2np & arg3- & arg4- & prt-.
+_dette-ned_1_rel := dette_v & 1np & arg2- & arg3- & arg4- & ned_prt.
+_dette_2_rel := dette_v & arg1- & 2np & arg3- & arg4- & prt-.
 
 vise_v := vrb+.
-_vise-cp-cp_12_rel := vise_v & vbl+ & 1cp & 2cp & arg3- & arg4- & prt- & nom-.
-_vise-cp-wh_12_rel := vise_v & vbl+ & 1cp & 2wh & arg3- & arg4- & prt-.
-_vise-wh_12_rel := vise_v & vbl+ & 1np & 2wh & arg3- & arg4- & prt-.
-_vise*til_14_rel := vise_v & vbl+ & 1np & arg2- & arg3- & 4np & til_prp & prt-.
-_vise-tilbake_12_rel := vise_v & vbl+ & 1np & 2np & arg3- & arg4- & tilbake_prt.
-_vise-bort_12_rel := vise_v & vbl+ & 1np & 2np & arg3- & arg4- & bort_prt.
-_vise-ut_12_rel := vise_v & vbl+ & 1np & 2np & arg3- & arg4- & ut_prt.
-_vise-refl_1_rel := vise_v & vbl+ & 1np & refl & arg2+ & arg3- & arg4- & prt-.
-_vise-cp_123_rel := vise_v & vbl+ & 1np & 2cp & 3np & arg4- & prt-.
-_vise_123_rel := vise_v & vbl+ & 1np & 2np & 3np & arg4- & prt-.
-_vise-cp_12_rel := vise_v & vbl+ & 1np & 2cp & arg3- & arg4- & prt-.
-_vise_12_rel := vise_v & vbl+ & 1np & 2np & arg3- & arg4- & prt-.
-_vise_a_rel := vise_v & adj+ & 1np & 2np & arg3- & arg4- & prt-.
-_vise_1_rel := vise_v & vbl+ & 1np & arg2- & arg3- & arg4- & prt-.
-_vise-frem_12_rel := vise_v & vbl+ & 1np & 2np & arg3- & arg4- & frem_prt.
-_vise*til-cp_14_rel := vise_v & vbl+ & 1np & arg2- & arg3- & 4cp & til_prp & prt-.
-_vise-refl-cp_2_rel := vise_v & vbl+ & arg1- & 2cp & arg3+ & refl & arg4- & prt-.
-_vise-refl-ip1_12_rel := vise_v & vbl+ & 1np & 2ip1 & arg3+ & refl & arg4- & prt-.
-_vise*til_124_rel := vise_v & vbl+ & 1np & 2np & arg3- & 4np & til_prp & prt-.
-
+_vise-cp-cp_12_rel := vise_v & 1cp & 2cp & arg3- & arg4- & prt- & nom-.
+_vise-cp-wh_12_rel := vise_v & 1cp & 2wh & arg3- & arg4- & prt-.
+_vise*til-cp_14_rel := vise_v & 1np & arg2- & arg3- & 4cp & til_prp & prt-.
+_vise*til_124_rel := vise_v & 1np & 2np & arg3- & 4np & til_prp & prt-.
+_vise*til_14_rel := vise_v & 1np & arg2- & arg3- & 4np & til_prp & prt-.
+_vise-bort_12_rel := vise_v & 1np & 2np & arg3- & arg4- & bort_prt.
+_vise-cp_123_rel := vise_v & 1np & 2cp & 3np & arg4- & prt-.
+_vise-cp_12_rel := vise_v & 1np & 2cp & arg3- & arg4- & prt-.
+_vise-frem_12_rel := vise_v & 1np & 2np & arg3- & arg4- & frem_prt.
+_vise-inq_12_rel := vise_v & 1np & 2inq & arg3- & arg4- & prt-.
+_vise-refl-cp_2_rel := vise_v & arg1- & 2cp & arg3+ & refl & arg4- & prt-.
+_vise-refl-ip1_12_rel := vise_v & 1np & 2ip1 & arg3+ & refl & arg4- & prt-.
+_vise-refl_1_rel := vise_v & 1np & refl & arg2+ & arg3- & arg4- & prt-.
+_vise-tilbake_12_rel := vise_v & 1np & 2np & arg3- & arg4- & tilbake_prt.
+_vise-ut_12_rel := vise_v & 1np & 2np & arg3- & arg4- & ut_prt.
+_vise-wh_12_rel := vise_v & 1np & 2wh & arg3- & arg4- & prt-.
+_vise_123_rel := vise_v & 1np & 2np & 3np & arg4- & prt-.
+_vise_12_rel := vise_v & 1np & 2np & arg3- & arg4- & prt-.
+_vise_1_rel := vise_v & 1np & arg2- & arg3- & arg4- & prt-.
 
 være_v := vrb+.
-_være_12_rel := være_v & vbl+ & 1np & 2np & arg3- & arg4- & prt-.
-_være-ap_14_rel := være_v & vbl+ & 1np & arg2- & arg3- & 4ap & prp- & prt-.
-_være_14_rel := være_v & vbl+ & 1np & arg2- & arg3- & 4np & prp- & prt-.
-_være-til_1_rel := være_v & vbl+ & 1np & arg2- & arg3- & arg4- & til_prt.
-_være-i*med-ip1_14_rel := være_v & vbl+ & 1np & arg2- & arg3- & 4ip1 & med_prp & i_prt.
-_være-lei*av-cp_14_rel := være_v & vbl+ & 1np & arg2- & arg3- & 4cp & av_prp & lei_prt.
-_være-med*på-ip1_14_rel := være_v & vbl+ & 1np & arg2- & arg3- & 4ip1 & på_prp & med_prt.
-_være-med*på_14_rel := være_v & vbl+ & 1np & arg2- & arg3- & 4np & på_prp & med_prt.
-_være-med-ip1_12_rel := være_v & vbl+ & 1np & 2ip1 & arg3- & arg4- & med_prt.
-_være-opp*til_14_rel := være_v & vbl+ & 1np & arg2- & arg3- & 4np & til_prp & opp_prt.
-_være-ip-ip1_12_rel := være_v & vbl+ & 1ip & 2ip1 & arg3- & arg4- & prt- & prp-.
-_være-ip-4ap_14_rel := være_v & vbl+ & 1ip & arg2- & arg3- & 4ap & prt- & prp-.
-_være-cp-4ap_14_rel := være_v & vbl+ & 1cp & arg2- & arg3- & 4ap & prt- & prp-.
-_være_2_rel := være_v & vbl+ & prt- & arg1- & 2np & arg3- & arg4-.
-_være*som-ip1_14_rel := være_v & vbl+ & 1np & arg2- & arg3- & 4ip1 & som_prp & prt-.
-_være*som-ip-ip1_14_rel := være_v & vbl+ & 1ip & arg2- & arg3- & 4ip1 & som_prp & prt-.
+_være_12_rel := være_v & 1np & 2np & arg3- & arg4- & prt-.
+_være-ap_14_rel := være_v & 1np & arg2- & arg3- & 4ap & prp- & prt-.
+_være_14_rel := være_v & 1np & arg2- & arg3- & 4np & prp- & prt-.
+_være-til_1_rel := være_v & 1np & arg2- & arg3- & arg4- & til_prt.
+_være-i*med-ip1_14_rel := være_v & 1np & arg2- & arg3- & 4ip1 & med_prp & i_prt.
+_være-lei*av-cp_14_rel := være_v & 1np & arg2- & arg3- & 4cp & av_prp & lei_prt.
+_være-med*på-ip1_14_rel := være_v & 1np & arg2- & arg3- & 4ip1 & på_prp & med_prt.
+_være-med*på_14_rel := være_v & 1np & arg2- & arg3- & 4np & på_prp & med_prt.
+_være-med-ip1_12_rel := være_v & 1np & 2ip1 & arg3- & arg4- & med_prt.
+_være-opp*til_14_rel := være_v & 1np & arg2- & arg3- & 4np & til_prp & opp_prt.
+_være-ip-ip1_12_rel := være_v & 1ip & 2ip1 & arg3- & arg4- & prt- & prp-.
+_være-ip-4ap_14_rel := være_v & 1ip & arg2- & arg3- & 4ap & prt- & prp-.
+_være-cp-4ap_14_rel := være_v & 1cp & arg2- & arg3- & 4ap & prt- & prp-.
+_være_2_rel := være_v & prt- & arg1- & 2np & arg3- & arg4-.
+_være*som-ip1_14_rel := være_v & 1np & arg2- & arg3- & 4ip1 & som_prp & prt-.
+_være*som-ip-ip1_14_rel := være_v & 1ip & arg2- & arg3- & 4ip1 & som_prp & prt-.
 
 bli_v := vrb+.
-_bli_12_rel := bli_v & vbl+ & prt- & 1np & 2np & arg3- & arg4-.
-_bli_2_rel := bli_v & vbl+ & arg1- & 2np & arg3- & arg4- & prt-.
-_bli-igjen_1_rel := bli_v & vbl+ & 1np & arg2- & arg3- & arg4- & igjen_prt.
-_bli-til_1_rel := bli_v & vbl+ & 1np & arg2- & arg3- & arg4- & til_prt.
-_bli*ved_14_rel := bli_v & vbl+ & 1np & arg2- & arg3- & 4np & ved_prp & prt-.
-_bli*med_14_rel := bli_v & vbl+ & 1np & arg2- & arg3- & 4np & med_prp & prt-.
-_bli-ap_14_rel := bli_v & vbl+ & 1np & arg2- & arg3- & 4ap & prp- & prt-.
-_bli_1_rel := bli_v & vbl+ & 1np & arg2- & arg3- & arg4- & prt-.
-_bli-lei*av-cp_14_rel := bli_v & vbl+ & 1np & arg2- & arg3- & 4cp & av_prp & lei_prt.
-_bli-med_1_rel := bli_v & vbl+ & 1np & arg2- & arg3- & arg4- & med_prt.
-_bli-ved_1_rel := bli_v & vbl+ & 1np & arg2- & arg3- & arg4- & ved_prt.
-_bli-noe_1_rel := bli_v & vbl+ & 1np & arg2- & arg3- & arg4- & noe_prt.
-_bli*til_14_rel := bli_v & vbl+ & 1np & arg2- & arg3- & 4np & til_prp & prt-.
+_bli_12_rel := bli_v & prt- & 1np & 2np & arg3- & arg4-.
+_bli_2_rel := bli_v & arg1- & 2np & arg3- & arg4- & prt-.
+_bli-igjen_1_rel := bli_v & 1np & arg2- & arg3- & arg4- & igjen_prt.
+_bli-til_1_rel := bli_v & 1np & arg2- & arg3- & arg4- & til_prt.
+_bli*ved_14_rel := bli_v & 1np & arg2- & arg3- & 4np & ved_prp & prt-.
+_bli*med_14_rel := bli_v & 1np & arg2- & arg3- & 4np & med_prp & prt-.
+_bli-ap_14_rel := bli_v & 1np & arg2- & arg3- & 4ap & prp- & prt-.
+_bli_1_rel := bli_v & 1np & arg2- & arg3- & arg4- & prt-.
+_bli-lei*av-cp_14_rel := bli_v & 1np & arg2- & arg3- & 4cp & av_prp & lei_prt.
+_bli-med_1_rel := bli_v & 1np & arg2- & arg3- & arg4- & med_prt.
+_bli-ved_1_rel := bli_v & 1np & arg2- & arg3- & arg4- & ved_prt.
+_bli-noe_1_rel := bli_v & 1np & arg2- & arg3- & arg4- & noe_prt.
+_bli*til_14_rel := bli_v & 1np & arg2- & arg3- & 4np & til_prp & prt-.
 
 ha_v := vrb+.
-_ha*det-ap_14_rel := ha_v & vbl+ & 1np & 2expl & arg3- & 4ap & prp- & prt-.
-_ha-tilbake_12_rel := ha_v & vbl+ & 1np & 2np & arg3- & arg4- & tilbake_prt.
-_ha*imot_124_rel := ha_v & vbl+ & 1np & 2np & arg3- & 4np & imot_prp & prt-.
-_ha*imot_14_rel := ha_v & vbl+ & 1np & arg2- & arg3- & 4np & imot_prp & prt-.
-_ha-refl_12_rel := ha_v & vbl+ & 1np & 2np & arg3+ & refl & arg4- & prt-.
-_ha*til-ip2_124_rel := ha_v & vbl+ & 1np & 2np & arg3- & 4ip2 & til_prp & prt-.
-_ha-frem_12_rel := ha_v & vbl+ & 1np & 2np & arg3- & arg4- & frem_prt.
-_ha-igjen_12_rel := ha_v & vbl+ & 1np & 2np & arg3- & arg4- & igjen_prt.
-_ha-opp_12_rel := ha_v & vbl+ & 1np & 2np & arg3- & arg4- & opp_prt.
-_ha_12_rel := ha_v & vbl+ & 1np & 2np & arg3- & arg4- & prt-.
-_ha_1_rel := ha_v & vbl+ & 1np & arg2- & arg3- & arg4- & prt-.
-_ha-med_12_rel := ha_v & vbl+ & 1np & 2np & arg3- & arg4- & med_prt.
-_ha*med-refl_12_rel := ha_v & vbl+ & 1np & 2np & arg3- & arg4+ & refl & med_prp & prt-.
-_ha*på-refl_12_rel := ha_v & vbl+ & 1np & 2np & arg3- & arg4+ & refl & på_prp & prt-.
-_ha*rundt-refl_12_rel := ha_v & vbl+ & 1np & 2np & arg3- & arg4+ & refl & rundt_prp & prt-.
-_ha*i-refl_12_rel := ha_v & vbl+ & 1np & 2np & arg3- & arg4+ & refl & i_prp & prt-.
-_ha-til-ip1_12_rel := ha_v & vbl+ & 1np & 2ip1 & arg3- & arg4- & til_prt.
-_ha-på_12_rel := ha_v & vbl+ & 1np & 2np & arg3- & arg4- & på_prt.
-_ha-godt*av-ip1_14_rel := ha_v & vbl+ & 1np & arg2- & arg3- & 4ip1 & av_prp & godt_prt.
-_ha-godt*av_14_rel := ha_v & vbl+ & 1np & arg2- & arg3- & 4np & av_prp & godt_prt.
-_ha-med-cp_12_rel := ha_v & vbl+ & 1np & 2cp & arg3- & arg4- & med_prt.
-_ha-å*med_14_rel := ha_v & vbl+ & 1np & arg2- & arg3- & 4np & med_prp & å_prt.
-_ha-å*med_124_rel := ha_v & vbl+ & 1np & 2np & arg3- & 4np & med_prp & å_prt.
-; _ha-rede*på-wh_14_rel := ha_v & vbl+ & 1np & arg2- & arg3- & 4wh & på_prp & rede_prt.
-; _ha-rede*på_14_rel := ha_v & vbl+ & 1np & arg2- & arg3- & 4np & på_prp & rede_prt.
-_ha-på*på_14_rel := ha_v & vbl+ & 1np & arg2- & arg3- & 4np & på_prt & på_prp.
+_ha*det-ap_14_rel := ha_v & 1np & 2expl & arg3- & 4ap & prp- & prt-.
+_ha-tilbake_12_rel := ha_v & 1np & 2np & arg3- & arg4- & tilbake_prt.
+_ha*imot_124_rel := ha_v & 1np & 2np & arg3- & 4np & imot_prp & prt-.
+_ha*imot_14_rel := ha_v & 1np & arg2- & arg3- & 4np & imot_prp & prt-.
+_ha-refl_12_rel := ha_v & 1np & 2np & arg3+ & refl & arg4- & prt-.
+_ha*til-ip2_124_rel := ha_v & 1np & 2np & arg3- & 4ip2 & til_prp & prt-.
+_ha-frem_12_rel := ha_v & 1np & 2np & arg3- & arg4- & frem_prt.
+_ha-igjen_12_rel := ha_v & 1np & 2np & arg3- & arg4- & igjen_prt.
+_ha-opp_12_rel := ha_v & 1np & 2np & arg3- & arg4- & opp_prt.
+_ha_12_rel := ha_v & 1np & 2np & arg3- & arg4- & prt-.
+_ha_1_rel := ha_v & 1np & arg2- & arg3- & arg4- & prt-.
+_ha-med_12_rel := ha_v & 1np & 2np & arg3- & arg4- & med_prt.
+_ha*med-refl_12_rel := ha_v & 1np & 2np & arg3- & arg4+ & refl & med_prp & prt-.
+_ha*på-refl_12_rel := ha_v & 1np & 2np & arg3- & arg4+ & refl & på_prp & prt-.
+_ha*rundt-refl_12_rel := ha_v & 1np & 2np & arg3- & arg4+ & refl & rundt_prp & prt-.
+_ha*i-refl_12_rel := ha_v & 1np & 2np & arg3- & arg4+ & refl & i_prp & prt-.
+_ha-til-ip1_12_rel := ha_v & 1np & 2ip1 & arg3- & arg4- & til_prt.
+_ha-på_12_rel := ha_v & 1np & 2np & arg3- & arg4- & på_prt.
+_ha-godt*av-ip1_14_rel := ha_v & 1np & arg2- & arg3- & 4ip1 & av_prp & godt_prt.
+_ha-godt*av_14_rel := ha_v & 1np & arg2- & arg3- & 4np & av_prp & godt_prt.
+_ha-med-cp_12_rel := ha_v & 1np & 2cp & arg3- & arg4- & med_prt.
+_ha-å*med_14_rel := ha_v & 1np & arg2- & arg3- & 4np & med_prp & å_prt.
+_ha-å*med_124_rel := ha_v & 1np & 2np & arg3- & 4np & med_prp & å_prt.
+; _ha-rede*på-wh_14_rel := ha_v & 1np & arg2- & arg3- & 4wh & på_prp & rede_prt.
+; _ha-rede*på_14_rel := ha_v & 1np & arg2- & arg3- & 4np & på_prp & rede_prt.
 rett_prd := predsort.
 rett_n := rett_prd & idiomform.
 _rett_n_rel := rett_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom.
-_ha*rett*i-cp_14_rel := ha_v & vbl+ & 1np & rett_n & arg2+ & arg3- & 4cp & i_prd & prp+ & prt-.
+_ha*rett*i-cp_14_rel := ha_v & 1np & rett_n & arg2+ & arg3- & 4cp & i_prd & prp+ & prt-.
 tak_n := tak_prd & idiomform.
 tak_prd := predsort.
-_ha*tak*i_14_rel := ha_v & vbl+ & 1np & tak_n & arg2+ & arg3- & 4np & i_prd & prp+ & prt-.
-_ha-refl-frabedt-cp_12_rel := ha_v & vbl+ & 1np & 2cp & arg3+ & refl & arg4- & frabedt_prt.
+_ha*tak*i_14_rel := ha_v & 1np & tak_n & arg2+ & arg3- & 4np & i_prd & prp+ & prt-.
+_ha-refl-frabedt-cp_12_rel := ha_v & 1np & 2cp & arg3+ & refl & arg4- & frabedt_prt.
 
 rydde_v := vrb+.
-_rydde*av_14_rel := rydde_v & vbl+ & 1np & arg2- & arg3- & 4np & av_prp & prt-.
-_rydde-av*av_14_rel := rydde_v & vbl+ & 1np & arg2- & arg3- & 4np & av_prp & av_prt.
-_rydde*etter-refl_1_rel := rydde_v & vbl+ & 1np & arg2- & arg3- & arg4+ & refl & etter_prp & prt-.
-_rydde*opp_14_rel := rydde_v & vbl+ & 1np & arg2- & arg3- & 4np & opp_prp & prt-.
-_rydde-bort_12_rel := rydde_v & vbl+ & 1np & 2np & arg3- & arg4- & bort_prt.
-_rydde-inn_12_rel := rydde_v & vbl+ & 1np & 2np & arg3- & arg4- & inn_prt.
-_rydde-opp_1_rel := rydde_v & vbl+ & 1np & arg2- & arg3- & arg4- & opp_prt.
-_rydde-refl_12_rel := rydde_v & vbl+ & 1np & 2np & arg3+ & refl & arg4- & prt-.
-_rydde-refl_1_rel := rydde_v & vbl+ & 1np & refl & arg2+ & arg3- & arg4- & prt-.
-_rydde-unna_12_rel := rydde_v & vbl+ & 1np & 2np & arg3- & arg4- & unna_prt.
-_rydde-ut_12_rel := rydde_v & vbl+ & 1np & 2np & arg3- & arg4- & ut_prt.
-_rydde-vekk_12_rel := rydde_v & vbl+ & 1np & 2np & arg3- & arg4- & vekk_prt.
-_rydde_12_rel := rydde_v & vbl+ & 1np & 2np & arg3- & arg4- & prt-.
-_rydde_1_rel := rydde_v & vbl+ & 1np & arg2- & arg3- & arg4- & prt-.
+_rydde*av_14_rel := rydde_v & 1np & arg2- & arg3- & 4np & av_prp & prt-.
+_rydde-av*av_14_rel := rydde_v & 1np & arg2- & arg3- & 4np & av_prp & av_prt.
+_rydde*etter-refl_1_rel := rydde_v & 1np & arg2- & arg3- & arg4+ & refl & etter_prp & prt-.
+_rydde*opp_14_rel := rydde_v & 1np & arg2- & arg3- & 4np & opp_prp & prt-.
+_rydde-bort_12_rel := rydde_v & 1np & 2np & arg3- & arg4- & bort_prt.
+_rydde-inn_12_rel := rydde_v & 1np & 2np & arg3- & arg4- & inn_prt.
+_rydde-opp_1_rel := rydde_v & 1np & arg2- & arg3- & arg4- & opp_prt.
+_rydde-refl_12_rel := rydde_v & 1np & 2np & arg3+ & refl & arg4- & prt-.
+_rydde-refl_1_rel := rydde_v & 1np & refl & arg2+ & arg3- & arg4- & prt-.
+_rydde-unna_12_rel := rydde_v & 1np & 2np & arg3- & arg4- & unna_prt.
+_rydde-ut_12_rel := rydde_v & 1np & 2np & arg3- & arg4- & ut_prt.
+_rydde-vekk_12_rel := rydde_v & 1np & 2np & arg3- & arg4- & vekk_prt.
+_rydde_12_rel := rydde_v & 1np & 2np & arg3- & arg4- & prt-.
+_rydde_1_rel := rydde_v & 1np & arg2- & arg3- & arg4- & prt-.
 
 dekke_v := vrb+.
-_dekke*opp_14_rel := dekke_v & vbl+ & 1np & arg2- & arg3- & 4np & opp_prp & prt-.
-_dekke*over_14_rel := dekke_v & vbl+ & 1np & arg2- & arg3- & 4np & over_prp & prt-.
-_dekke*på_14_rel := dekke_v & vbl+ & 1np & arg2- & arg3- & 4np & på_prp & prt-.
-_dekke-på*på_14_rel := dekke_v & vbl+ & 1np & arg2- & arg3- & 4np & på_prp & på_prt.
-_dekke-på_1_rel := dekke_v & vbl+ & 1np & arg2- & arg3- & arg4- & på_prt.
-_dekke-refl_1_rel := dekke_v & vbl+ & 1np & refl & arg2+ & arg3- & arg4- & prt-.
-_dekke-til_12_rel := dekke_v & vbl+ & 1np & 2np & arg3- & arg4- & til_prt.
-_dekke_12_rel := dekke_v & vbl+ & 1np & 2np & arg3- & arg4- & prt-.
-_dekke_1_rel := dekke_v & vbl+ & 1np & arg2- & arg3- & arg4- & prt-.
-_dekke_2_rel := dekke_v & vbl+ & arg1- & 2np & arg3- & arg4- & prt-.
+_dekke*opp_14_rel := dekke_v & 1np & arg2- & arg3- & 4np & opp_prp & prt-.
+_dekke*over_14_rel := dekke_v & 1np & arg2- & arg3- & 4np & over_prp & prt-.
+_dekke*på_14_rel := dekke_v & 1np & arg2- & arg3- & 4np & på_prp & prt-.
+_dekke-på_1_rel := dekke_v & 1np & arg2- & arg3- & arg4- & på_prt.
+_dekke-refl_1_rel := dekke_v & 1np & refl & arg2+ & arg3- & arg4- & prt-.
+_dekke-til_12_rel := dekke_v & 1np & 2np & arg3- & arg4- & til_prt.
+_dekke_12_rel := dekke_v & 1np & 2np & arg3- & arg4- & prt-.
+_dekke_1_rel := dekke_v & 1np & arg2- & arg3- & arg4- & prt-.
+_dekke_2_rel := dekke_v & arg1- & 2np & arg3- & arg4- & prt-.
 
 hete_v := vrb+.
-_hete_12_rel := hete_v & vbl+ & 1np & 2np & arg3- & arg4- & prt-.
-_hete-opp_12_rel := hete_v & vbl+ & 1np & 2np & arg3- & arg4- & opp_prt.
+_hete_12_rel := hete_v & 1np & 2np & arg3- & arg4- & prt-.
+_hete-opp_12_rel := hete_v & 1np & 2np & arg3- & arg4- & opp_prt.
 
-la_v := vrb+.
-la-vp_123_rel := la_v & vbl+ & prt- & 1np & 2vp & 3np & arg4-.
+;la_v := vrb+.
+;la-vp_123_rel := la_v & prt- & 1np & 2vp & 3np & arg4-.
 
 beundre_v := vrb+.
-beundre-cp_12_rel := beundre_v & vbl+ & prt- & 1np & 2cp & arg3- & arg4-.
+beundre-cp_12_rel := beundre_v & prt- & 1np & 2cp & arg3- & arg4-.
 
 bane_prd := idiomform.
-bringe_v := vrb+.
-bringe*på*bane_rel := bringe_v & vbl+ & 1np & 2np & på_prd & prp+ & bane_prd & arg3- & prt- & 4idiom.
-_bringe_123_rel := bringe_v & vbl+ & 1np & 2np & 3np & arg4- & prt-.
-_bringe_12_rel := bringe_v & vbl+ & 1np & 2np & arg3- & arg4- & prt-.
-_bringe_a_rel := bringe_v & adj+ & 1np & 2np & arg3- & arg4- & prt-.
+; bringe_v := vrb+.
+; bringe*på*bane_rel := bringe_v & 1np & 2np & på_prd & prp+ & bane_prd & arg3- & prt- & 4idiom.
+; _bringe_123_rel := bringe_v & 1np & 2np & 3np & arg4- & prt-.
+; _bringe_12_rel := bringe_v & 1np & 2np & arg3- & arg4- & prt-.
+; _bringe_a_rel := bringe_v & adj+ & 1np & 2np & arg3- & arg4- & prt-.
 
 kalle_v := vrb+.
-_kalle_124_rel := kalle_v & vbl+ & 1np & 2np & arg3- & 4np & prp- & prt-.
+_kalle_124_rel := kalle_v & 1np & 2np & arg3- & 4np & prp- & prt-.
 
 tenke_v := vrb+.
-_tenke_134_rel := tenke_v & vbl+ & 1np & refl & arg2+ & 3np & 4ap & prp- & prt-.
+_tenke_134_rel := tenke_v & 1np & refl & arg2+ & 3np & 4ap & prp- & prt-.
 
 idiomform := link.
 
@@ -665,12 +692,12 @@ _arbeid_mass_rel := arbeid_prd & arg1- & arg2- & arg3- & arg4- & prt- & mass+.
 _arbeid*med-ip1_rel := arbeid_prd & arg1- & arg2- & arg3- & 4ip1 & med_prp & prt-.
 
 dryppe_v := vrb+.
-_dryppe_0_rel := dryppe_v & vbl+ & arg1- & arg2- & arg3- & arg4- & prt-.
-_dryppe_12_rel := dryppe_v & vbl+ & 1np & 2np & arg3- & arg4- & prt-.
-_dryppe_a_rel := dryppe_v & adj+ & 1np & 2np & arg3- & arg4- & prt-.
-_dryppe_123_rel := dryppe_v & vbl+ & 1np & 2np & 3np & arg4- & prt-.
-_dryppe*i_1234_rel := dryppe_v & vbl+ & 1np & 2np & 3np & 4np & i_prp & prt-.
-_dryppe_2_rel := dryppe_v & vbl+ & arg1- & 2np & arg3- & arg4- & prt-.
+_dryppe_0_rel := dryppe_v & arg1- & arg2- & arg3- & arg4- & prt-.
+_dryppe_12_rel := dryppe_v & 1np & 2np & arg3- & arg4- & prt-.
+;_dryppe_a_rel := dryppe_v & adj+ & 1np & 2np & arg3- & arg4- & prt-.
+_dryppe_123_rel := dryppe_v & 1np & 2np & 3np & arg4- & prt-.
+_dryppe*i_1234_rel := dryppe_v & 1np & 2np & 3np & 4np & i_prp & prt-.
+_dryppe_2_rel := dryppe_v & arg1- & 2np & arg3- & arg4- & prt-.
 
 
 ;;;;;
@@ -731,6 +758,7 @@ adj-noun-prep := adj-noun-prep-verb.
 adj-adv-compl-prep-sadv-verb := head.
 adj-adv-compl-noun-prep-verb := head.
 adj-adv-compl-prep-verb := adj-adv-compl-prep-sadv-verb & adj-adv-compl-noun-prep-verb.
+adj-compl-prep-verb := adj-adv-compl-prep-verb.
 adv-compl-prep-sadv-verb := adj-adv-compl-prep-sadv-verb.
 adv-compl-prep-sadv := adv-compl-prep-sadv-verb.
 adv-cadv-prep-sadv := adv-compl-prep-sadv.
@@ -744,7 +772,7 @@ adj-adv-card-compl-det-poss-prep := adj-adv-card-cond-compl-det-poss-prep.
 adv-compl-prep := adv-compl-prep-verb & adj-adv-card-compl-det-poss-prep & adv-compl-prep-sadv.
 ; PH 05-dec-2005: RESTRICTED is introduced in order to distiguish between 
 ; restricted and nonrestricted relative clauses
-compl-prep-verb := adv-compl-prep-verb & compl-det-prep-verb &
+compl-prep-verb := adv-compl-prep-verb & compl-det-prep-verb & adj-compl-prep-verb &
   [ RESTRICTED bool ].
 prep-relcompl-verb := compl-prep-verb.
 subcompl-prep-verb := compl-prep-verb.
@@ -854,7 +882,7 @@ adj-adv-cadv-prep := adj-adv-cadv-poss-prep & adj-adv-card-cond-compl-noun-prep.
 adj-adv-prep := adj-adv-nominal-prep & adj-adv-prep-sadv & 
 		adj-adv-cadv-prep & adj-adv-poss-prep-refl.
 adj-adv := adj-adv-prep & adj-adv-nominal & adj-adv-verb.
-adj-prep-verb := adj-noun-prep-verb.
+adj-prep-verb := adj-noun-prep-verb & adj-compl-prep-verb.
 adj-prep := adj-adv-prep & adj-prep-verb.
 adv-prep-verb := adv-compl-prep-verb.
 adj-adv-prep-sadv := adj-adv-card-cond-compl-noun-prep.
@@ -1002,6 +1030,7 @@ anti-quant_m_rel := quant-or-anti-quant_m_rel.
 non-bare_q := quant-or-anti-quant_m_rel.
 def_q := non-bare_q.
 def_q_rel := def_q & quant_m_rel.
+dem-or-def_q_rel := def_q & quant_m_rel.
 anti-def_q_rel := def_q & anti-quant_m_rel.
 def_implicit_q := quant-or-anti-quant_m_rel.
 def_implicit_q_rel := def_implicit_q & quant_m_rel.
@@ -1057,7 +1086,7 @@ _mange_q_rel := non-bare_q & quant_m_rel.
 every_q_rel := non-bare_q & quant_m_rel.
 unknown_q_rel := quant_m_rel & non-bare_q.
 _selve_q_rel := non-bare_q & quant_m_rel.
-
+pron_prd := predsort.
 generic_entity_rel := atom.
 
 scope-relation := quant-relation &
@@ -1066,10 +1095,16 @@ scope-relation := quant-relation &
 sub-relation := arg0-relation.
 nom-relation := arg0-relation &
   [ ARG0 ref-ind ].
+; PH 2022-11-02: "Det at han smiler, beundrer jeg." "Det om at han smiler, beundrer jeg."
+;_pron_rel := pron_prd & no-link.
+;_pron-cp_rel := pron_prd & arg1- & 2cp & arg3- & arg4- & prp-.
+;_pron*om-cp_rel := pron_prd & arg1- & arg2- & arg3- & 4cp & om_prp.
 pron-relation := nom-relation &
   [ PRED "pron_rel" ].
 def-relation := scope-relation &
   [ PRED def_q_rel ].
+dem-or-def-relation := scope-relation &
+  [ PRED dem-or-def_q_rel ].
 demonstr-relation := scope-relation &
   [ PRED demonstr_q ].
 def-implicit-relation := scope-relation &
@@ -1216,7 +1251,7 @@ frastå_v := vrb+.
 _frastå_12_rel := trans-link & frastå_v.
 
 rule_v := vrb+.
-_rule_1_rel := vbl+ & 1np & arg2- & arg3- & arg4- & prt- & rule_v.
+_rule_1_rel := 1np & arg2- & arg3- & arg4- & prt- & rule_v.
 
 complex-pass-verb_le := verb-lxm & 1rel-lex-item &
   [ SYNSEM [ LOCAL.CAT [ HEAD #head & verb,
@@ -1326,7 +1361,7 @@ indef-art-lex-item := indef-lex-item & quant-lex-item &
 
 def-det-item := def-lex-item & 
   [ SYNSEM [ LOCAL [ CAT [ QUANT +,
-			   VAL.SISTER synsem,
+			   VAL.SISTER synsem-min,
 			   HEAD.AGREE.GENDER #gen ],
 		     CONT [ HOOK [ LTOP #larg,
 				   INDEX #ind ],
@@ -1339,7 +1374,7 @@ def-det-item := def-lex-item &
 			      ARG0 #ind & [ PNG.GEN #gen ] ] ] ] ].
 
 def-art-lex-item := def-det-item & qrel-lex-item &
-  [ SYNSEM.LKEYS.Q.QREL def-relation ].
+  [ SYNSEM.LKEYS.Q.QREL dem-or-def-relation ].
 
 dem-lex-item := def-det-item &
   [ SYNSEM.LKEYS.Q.QREL demonstr-relation ].
@@ -1370,6 +1405,10 @@ noun-lxm := noun-lxm-min &
 ;Jon kommer fredag
 mod-noun-lxm := count-noun-lxm &
   [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT.HEAD compl-verb ] > ].
+
+;Jon kommer fredag kveld
+mod-noun-noun-lxm := count-noun-lxm &
+  [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT.HEAD noun & [ MOD < [] > ] ] > ].
 
 ;Trondheim sentrum
 mod-pn-noun-lxm := noun-lxm-min &
@@ -1533,7 +1572,8 @@ adj-lxm-min := lexeme & adj-mod &
 		     CONT [ HOOK [ LTOP #ltop ],
 			    RELS <! !>,
 			    HCONS <!!> ] ],
-	     LKEYS.KEYREL relation & [ LBL #ltop ] ] ].
+	     LKEYS.KEYREL relation & [ LBL #ltop,
+				       ARG0 event ] ] ].
 
 adj-lxm := adj-lxm-min &
   [ SYNSEM.LOCAL.CAT.VAL.ARGFRAME arg1+ & arg2- & arg3- & arg4- & prt- & prp- & atom ].
@@ -1656,7 +1696,8 @@ pl-card-word := card-word & pl-item &
   [ SYNSEM [ LOCAL [ CAT.HEAD card,
 		     CONT.RELS <! #rel !> ],
 	     LKEYS [ Q.QREL indef-relation,
-		     ALTKEYREL.ARG0.COGN-ST type-id ] ],
+		     ALTKEYREL [ PRED generic_entity_rel,
+				 ARG0.COGN-ST type-id ] ] ],
     LEXREL <!#rel!> ].
 
 digit-word := pl-card-word &
@@ -1671,7 +1712,7 @@ def-mod-word := word &
 def-card-word := card-word & def-mod-word &
   [ SYNSEM [ LOCAL [ CAT [ HEAD carddef & [ MOD < [ LOCAL.CAT.HEAD verb ] > ],
 			   VAL.SISTER.LOCAL.CAT.HEAD adj-andre-card-noun ],
-		     CONT.RELS <!!> ],
+		     CONT.RELS <! #rel !> ],
 	     LKEYS [ KEYREL #rel,
 		     ALTKEYREL.PRED def_digit ] ],
     LEXREL <!#rel!> ].
@@ -1806,9 +1847,10 @@ genitive-word := inflecting-lex-rule & word & keyrel-lex-item &
 	     HCONS <! qeq & [ HARG #harg,
 			      LARG #larg ] !> ] ].
 
+; PH 2022-11-02: Took out the ARGFRAME no-link constraint in order to allow for NPs with complements.
 marker-word := word &
   [ SYNSEM [ FIRST-WORD -,
-	     LOCAL [ CAT [ VAL [ ARGFRAME no-link,
+	     LOCAL [ CAT [ VAL [ ARGFRAME arg1- & arg3-,
 				 CMP4.MARKED -,
 				 SISTER synsem-min & 
 					  [ LOCAL [ CONT.HOOK [ LTOP handle ] ],
@@ -1868,9 +1910,11 @@ per-word := keyrel-lex-item &
 		     CONT.RELS <! !> ],
 	     LKEYS.ALTKEYREL.PRED generic_entity_rel ] ].
 
+; PH 2022-11-04: Removed the SISTER anti-synsem constraint in order to
+; parse "Alle som brauter, brauter".
 quant-word := marker-word & qrel-lex-item &
   [ SYNSEM [ LOCAL [ CAT [ HEAD quant & [ AGREE #agree ],
-                         VAL.SISTER synsem &
+                         VAL.SISTER synsem-min &
 			      [ LOCAL.CAT.HEAD adj-card-det-commnoun &
 					       [ AGREE #agree ] ] ],
                    CONT [ RELS <! !> ] ],
@@ -1977,20 +2021,24 @@ empty-refl-word := empty-sign &
 	   LKEYS.KEYREL.PRED idiomform & refl ] ].
 
 func-word-min := empty-sign &
-  [ SYNSEM.LOCAL.CAT.HEAD adv-cadv-prep-sadv &
+  [ SYNSEM.LOCAL.CAT.HEAD adv-compl-prep-sadv &
 			  [ MOD < [ LOCAL.CAT.HEAD head ] > ] ]. ;
 
 func-word-prd := func-word-min &
   [ SYNSEM [ LOCAL.CAT.VAL.ARGFRAME #frame,
 	     LKEYS.KEYREL.PRED #frame ] ].
 
-func-word := func-word-prd & non-down-entailing & non-wh-word.
+func-word-super := func-word-prd & non-down-entailing & non-wh-word.
 
-part-word := func-word &
-  [ SYNSEM.LKEYS.KEYREL.PRED prt+ ].
+part-word := func-word-super &
+  [ SYNSEM [ LOCAL.CAT.HEAD part,
+	     LKEYS.KEYREL.PRED prt+ ] ].
 
-; prep-word := func-word &
-;   [ SYNSEM.LKEYS.KEYREL.PRED prp+ ].
+prep-word := func-word-super &
+  [ SYNSEM [ LOCAL.CAT.HEAD prep,
+	     LKEYS.KEYREL.PRED prp+ ] ].
+
+func-word := func-word-super.
 
 down-func-word := downward-entailing & func-word-prd.
 
@@ -1999,12 +2047,12 @@ number-mod-word := func-word &
   [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT.VAL.SISTER anti-synsem ] > ].
   
 
-adv-link := prp+ & arg1+ & arg2- & arg3- & arg4- & prt-.
+adv-link := adv+ & arg1+ & arg2- & arg3- & arg4- & prt-.
 prp-link := prp+ & arg1+ & 2np & arg3- & arg4- & prt-.
 
-adv-word := func-word-min & non-wh-word &
-  [ SYNSEM [ LOCAL.CAT.VAL.ARGFRAME adv-link,
-	     LKEYS.KEYREL.ARG0.SF prop_m_rel ] ].
+; adv-word := func-word-min & non-wh-word &
+;   [ SYNSEM [ LOCAL.CAT.VAL.ARGFRAME adv-link,
+; 	     LKEYS.KEYREL.ARG0.SF prop_m_rel ] ].
 
 prp-word := func-word-min & non-wh-word &
   [ SYNSEM.LOCAL.CAT.VAL.ARGFRAME prp-link ].
@@ -2511,6 +2559,10 @@ non-wh-word := word-or-lexrule &
 wh-word := non-gen-word & native-lex-item &
   [ SYNSEM.LOCAL [ CAT.HEAD.MESS wh-question_m_rel ] ].
 
+reg-wh-word := wh-word &
+  [ SYNSEM.LOCAL.CONT [ RELS <!  !>,
+			HCONS <! !> ] ].
+
 adv-wh-word := adv-nocomp-word & wh-word &
   [ SYNSEM [ LOCAL [ CAT.HEAD.MOD < [ ] >,
 		     CONT [ HOOK.INDEX #ind & event,
@@ -2533,7 +2585,7 @@ pl-wh-det-word := wh-det-word & pl-item.
 
 indef-art-det-word-min := indef-lex-item & no-def-suffix-det-word &
   [ SYNSEM [ LOCAL [ CAT [ HEAD.MESS prop_m_rel,
-			   VAL.SISTER synsem,
+			   VAL.SISTER synsem-min,
 			   QUANT + ],
 		     CONT.HOOK.INDEX #ind & [ COGN-ST type-id ] ],
 	     LKEYS [ Q.QREL.ARG0 #ind,
@@ -2657,7 +2709,7 @@ nominal-phrase-min-min := basic-binary-phrase &
 	     SYNSEM [ FIRST-WORD -,
 			LOCAL [ CAT [ HEAD #head & adj-nominal,
 				      VAL [ ARGFRAME #frame,
-					    CMP2.LINK arg2-,
+					    CMP2.LINK link,
 					    CMP3.LINK arg3-,
 					    CMP4 [ LINK arg4-,
 						   MARKED - ],
@@ -2881,12 +2933,14 @@ arg3-idiom-struc := idiom-struc &
   [ SYNSEM [ LOCAL [ CAT [ VAL [ CMP2 #arg2 & [ LINK arg2+ ],
 				 CMP3 [ LINK arg3-,
 					LOCAL #local ],
-				 CMP4 #arg4 ] ] ] ],
+				 CMP4 #arg4 ] ] ],
+	     LKEYS.KEYREL.ARG1.PNG.PN #pn ],
     ARGS < [ SYNSEM.LOCAL.CAT.VAL [ CMP2 #arg2,
 				    CMP3 [ LINK #idiomform & arg3+ & idiomform,
 					   LOCAL #local ],
 				    CMP4 #arg4 ] ], 
-	   [ SYNSEM [ LOCAL.CAT.HEAD noun-refl,
+	   [ SYNSEM [ LOCAL [ CAT.HEAD noun-refl,
+			      CONT.HOOK.INDEX.PNG.PN #pn ],
 		      LKEYS.KEYREL.PRED #idiomform ] ] > ].
 
 ; PH 2020-06-23: Removed the CMP2.LINK arg2- constraint in order to allow for
@@ -2991,7 +3045,8 @@ arg4-np-phrase := arg4-val-min &
 ;arg4-emb-np-phrase := arg4-emb-pred-phrase & arg4-np-phrase.
 
 arg4-ap-phrase := arg4-val-min &
-  [ SYNSEM.LOCAL.CAT.VAL.SISTER anti-synsem,
+  [ SYNSEM.LOCAL.CAT [ HEAD.NOM -,
+		       VAL.SISTER anti-synsem ],
     ARGS < [ SYNSEM [ LOCAL.CAT [ HEAD.AGREE.DEFINITENESS def,
 				  VAL.CMP4 [ LOCAL [ CAT.HEAD adj ],
 					     LINK 4ap ] ] ] ],
@@ -3054,8 +3109,8 @@ val-min-min := val-or-mod-sign &
 				    ARGUMENT [ SAT +,
 					       LINK #v,
 					       LOCAL [ CAT [ QUANT bool ],
-						       CONT.HOOK.INDEX #parg ] ] ],
-			      CONT.HOOK.PARG #parg ],
+						       CONT.HOOK.INDEX individual ] ] ],
+			      CONT.HOOK.PARG individual ],
 		      MODIFIED xmod ] ] ].
 
 val-min := val-min-min &
@@ -3159,20 +3214,22 @@ valence-word := inflecting-lex-rule & non-gen-word & keyrel-lex-item &
     DTR #2,
     INFLECTED #1 ].
 
-embedded-phrase-min-min := phrase &
-  [ SYNSEM [ LOCAL.CAT [ STACK < [ LOCAL [ CAT [ HEAD #head,
-						 VAL.PART #part,
+embedded-phrase-min-min-min := phrase &
+  [ SYNSEM [ LOCAL.CAT [ STACK < [ LOCAL [ CAT [ VAL.PART #part,
 						 QUANT #quant ],
 					   CONT [ HOOK #hook,
 						  MSG #msg ] ],
 				   LKEYS #lkeys ] . #stack > ] ],
-    ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD #head,
-				    VAL.PART #part,
+    ARGS < [ SYNSEM [ LOCAL [ CAT [ VAL.PART #part,
 				    STACK #stack,
 				    QUANT #quant ],
 			      CONT [ HOOK #hook,
 				     MSG #msg ] ],
 		      LKEYS #lkeys ] ], ... > ].
+
+embedded-phrase-min-min := embedded-phrase-min-min-min &
+  [ SYNSEM.LOCAL.CAT.STACK < [ LOCAL.CAT.HEAD #head ], ... >,
+    ARGS < [ SYNSEM.LOCAL.CAT.HEAD #head ], ... > ].
 
 embedded-phrase-min := embedded-phrase-min-min &
   [ START - ].
@@ -3233,13 +3290,14 @@ val-embedded := binary-phrase & subconstruction &
 		c-parameter & val-emb-stack-arg & neg-embedded-phrase &
   [ CONJ no-conj,
     LINK-INPUT -,
-    SYNSEM [ LOCAL [ CAT [ HEAD #head,
+    SYNSEM [ LOCAL [ CAT [ HEAD #head & [ DEGREL #degrel ],
 			   VAL #val,
 			   CASE #case,
 			   STACK < [ LOCAL [ CAT #out & 
 						 [ VBL #m,
 						   ARGUMENT.LOCAL.CAT.CASE case,
-						   C #c ],
+						   C #c,
+						   AAIF #aaif ],
 					     CONT.HOOK #cont,
 					     AGR #agr,
 					     TOPIC #top ],
@@ -3249,12 +3307,14 @@ val-embedded := binary-phrase & subconstruction &
 		     CONT.HOOK.LTOP #ltop ],
 	     MODIFIED xmod ],
     ARGS < [ CONJ no-conj,
-	     SYNSEM [ LOCAL [ CAT #in & [ HEAD adj-adv-compl-noun-prep-verb,
+	     SYNSEM [ LOCAL [ CAT #in & [ HEAD adj-adv-compl-noun-prep-verb &
+					       [ DEGREL #degrel ],
 					  VAL.ARGFRAME #link,
 					  ARGUMENT #arg,
 					  VBL #m,
 					  STACK #rest,
-					  C #c ],
+					  C #c,
+					  AAIF #aaif ],
 			      CONT.HOOK #cont,
 			      AGR #agr,
 			      TOPIC #top ],
@@ -3305,14 +3365,17 @@ nom-embedded := embedded-phrase & uni-link &
 	     HCONS <! [ HARG #harg,
 			LARG #larg ] !> ] ].
 
-comp-embedded := embedded-phrase & uni-link &
+comp-embedded-min := uni-link & phrase &
   [ SYNSEM [ LOCAL.CAT.HEAD subcompl-infcompl,
 	     LKEYS.KEYREL [ LBL #lbl,
 			    ARG0 #ind ] ],
     ARGS < [], [ SYNSEM.LKEYS.KEYREL [ LBL #lbl,
+				       PRED comp-inf,
 				       ARG0 #ind ] ] >,
     C-CONT [ RELS <! !>,
 	     HCONS <! !> ] ].
+
+comp-embedded := comp-embedded-min & embedded-phrase.
 
 nom-embedded-val := nom-embedded-val-min & nom-embedded.
 
@@ -3333,7 +3396,7 @@ adj-embedded-val := nom-embedded-val-min &
 		     Q.QREL [ PRED udef_q_rel,
 			      ARG0 #ind,
 			      RSTR #harg ] ] ],
-    ARGS <[ SYNSEM [ LOCAL.CAT.HEAD adj-prep-verb ] ],
+    ARGS <[ SYNSEM [ LOCAL.CAT.HEAD adj-compl-prep-verb ] ],
 	  [ SYNSEM.LKEYS [ KEYREL #adjrel & [ LBL #lbl,
 					    ARG0 event,
 					    ARG1 #ind ],
@@ -3377,7 +3440,8 @@ c-cont-rel-0 := phrase &
 subj-val := phrase &
   [ SYNSEM.LOCAL.CAT [ ARGUMENT.LOCAL.CAT.CASE non-subj-case,
 		       INTRANS + ],
-    ARGS.FIRST.SYNSEM.LOCAL [ CAT [ HEAD compl-verb &
+    ARGS.FIRST.SYNSEM.LOCAL [ CONT.HOOK.PARG #ind,
+			      CAT [ HEAD compl-verb &
 					 [ SU-IND #ind ],
 				    ARGUMENT [ LOCAL local-min &
 						     [ CAT.CASE subj-case,
@@ -3460,8 +3524,7 @@ arg2-emb-phrase := arg2-val-min & non-pred-val-emb &
 	   [ ] > ].
 
 wh-min := non-subj-val & val-embedded &
-  [ SYNSEM [ LOCAL.CAT [ HEAD adj-adv-nominal,
-			 STACK.FIRST.NON-LOCAL #nl,
+  [ SYNSEM [ LOCAL.CAT [ STACK.FIRST.NON-LOCAL #nl,
 			 QUANT #q ],
 	     NON-LOCAL.SLASH <> ],
     ARGS < [ SYNSEM [ LOCAL.CAT.ARGUMENT [ LOCAL.CAT.QUANT #q ],
@@ -3480,11 +3543,13 @@ wh-mod-struc := wh-min &
 				    VAL.SISTER.LKEYS.KEYREL.ARG0.COGN-ST type-id ] ] > ].
 
 arg2-wh-min := wh-min & arg2-sign &
-  [ ARGS < [ SYNSEM [ LOCAL.CAT.ARGUMENT [ LINK 2wh ],
+  [ ARGS < [ SYNSEM [ LOCAL.CAT [ HEAD compl-verb,
+				  ARGUMENT [ LINK 2wh ] ],
 		      LKEYS.KEYREL.ARG2 #arg2 ] ],
 	   [ SYNSEM.LKEYS.KEYREL.ARG0 #arg2 ] > ].
 
-arg2-wh-phrase := wh-phrase & arg2-wh-min.
+arg2-wh-phrase := arg2-wh-min & nom-embedded.
+
 arg2-wh-mod-struc := wh-mod-struc & arg2-wh-min.
 
 arg4-wh-min := wh-min & arg4-sign &
@@ -3513,9 +3578,11 @@ arg2-emb-adj-su-phrase := arg2-emb-su-phrase & arg2-nom-phrase & arg2-emb-adj-ph
 arg2-emb-no-nom-su-phrase := no-nom-embedded-val & arg2-emb-su-phrase.
 arg2-emb-non-su-phrase := arg2-non-su-val & arg2-emb-phrase &
   [ ARGS.REST.FIRST.SYNSEM.LOCAL.CAT.CASE non-subj-case ].
-arg2-emb-nom-non-su-phrase := arg2-emb-non-su-phrase & arg2-nom-phrase & nom-embedded-val.
+; PH 2022-10-28: Removed AAIF - constraint in order to parse "Jon beundrer henne ikke"
+arg2-emb-nom-non-su-phrase := arg2-emb-non-su-phrase & arg2-nom-phrase & nom-embedded-val &
+  [ SYNSEM.LOCAL.CAT [ STACK < [ LOCAL.CAT.AAIF bool ], ... > ] ].
 arg2-emb-adj-non-su-phrase := arg2-emb-non-su-phrase & arg2-nom-phrase & arg2-emb-adj-phrase &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX #ind,
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX #ind, ;
     ARGS < [ SYNSEM.LKEYS.KEYREL.ARG2 #ind ], [] > ].
 
 
@@ -3542,11 +3609,17 @@ arg2-extr-nom-non-su-phrase := arg2-extr-non-su-phrase &
   [ ARGS < [ SYNSEM.LOCAL.CAT.ARGUMENT [ LINK 2np,
 					 LOCAL.CAT.HEAD adj-nominal &
 					      [ NOM + ] ] ] > ].
-arg2-extr-compl-non-su-phrase := arg2-extr-non-su-phrase &
-  [ ARGS < [ SYNSEM [ LOCAL.CAT.ARGUMENT.LOCAL.CAT.HEAD subcompl,
+
+arg2-extr-compl-phrase := arg2-extr-phrase &
+  [ ARGS < [ SYNSEM [ LOCAL.CAT [ HEAD.SU-IND event-or-ref-index,
+				  ARGUMENT.LOCAL.CAT.HEAD subcompl ],
 		      NON-LOCAL.SLASH < [ CONT.HOOK.INDEX #ind ] >,
 		      LKEYS.KEYREL [ PRED comp+,
 				     ARG2 #ind ] ] ] > ].
+
+arg2-extr-compl-su-phrase := arg2-extr-compl-phrase & subj-extr.
+arg2-extr-compl-non-su-phrase := arg2-extr-compl-phrase & arg2-non-su-val.
+
 arg2-extr-inq-non-su-phrase := arg2-extr-non-su-phrase &
   [ ARGS < [ SYNSEM [ NON-LOCAL.SLASH < [ CONT.HOOK.INDEX #ind ] >,
 		      LKEYS.KEYREL [ PRED 2inq,
@@ -3563,10 +3636,13 @@ arg2-3f-word := arg2-word &
 								 GEN fem ],
     C-CONT.RELS.LIST.FIRST.PRED "hun_pron_rel" ].
 
+; PH 2022-11-04: Removed the ARGS.CMP2.LINK arg2+ constraint in order to
+; parse sentences with CPM2 subjects "Den gis henne", "at jeg smiler,
+; forbauset alle"
 arg3-val := arg3-sign &
   [ ARGS.FIRST.SYNSEM [ LOCAL.CAT [ HEAD compl-verb,
 				    VAL [ ARGFRAME arg2+,
-					  CMP2.LINK arg2+,
+					  CMP2.LINK link,
 					  CMP3 [ LINK 3np,
 						 LOCAL.CAT [ HEAD adj-nominal &
 								  [ NOM + ]] ] ],
@@ -3581,9 +3657,12 @@ arg3-emb-phrase := arg3-val & non-pred-val-emb & nom-embedded-val-min &
 		       STACK < [ LOCAL.CAT.VAL.CMP3.LOCAL.CONT.HOOK.INDEX #ind ], ... > ],
     ARGS < [ SYNSEM.LOCAL.CAT.VAL.CMP3.LOCAL.CONT.HOOK.INDEX #ind ], [] > ].
 
-arg3-extr-phrase := basic-val & arg3-val & valence-extr-phrase.
+arg3-extr-phrase := basic-val & arg3-val & valence-extr-phrase &
+  [ SYNSEM.LOCAL.CAT.VAL.CMP3.LOCAL.CONT.HOOK.INDEX #ind,
+    ARGS < [ SYNSEM.LOCAL.CAT.VAL.CMP3.LOCAL.CONT.HOOK.INDEX #ind ] > ].
 
-arg3-emb-su-phrase := subj-val & arg3-emb-phrase & nom-embedded-val.
+arg3-emb-su-phrase := subj-val & arg3-emb-phrase & nom-embedded-val &
+  [ ARGS < [ ALTS.PASSIVE + ], ... > ].
 arg3-emb-non-su-phrase := non-subj-val & arg3-emb-phrase & nom-embedded-val.
 
 arg3-emb-adj-phrase := adj-embedded-val &
@@ -3740,7 +3819,7 @@ part-prep-phrase := val-min &
 	     HCONS <!!> ] ].
 
 part-prep-binary := part-prep-phrase & non-emb-subconstr &
-  [ ARGS < [ SYNSEM.LKEYS.KEYREL.PRED #pred ], func-word & [ SYNSEM.LKEYS.KEYREL.PRED #pred ] > ].
+  [ ARGS < [ SYNSEM.LKEYS.KEYREL.PRED #pred ], func-word-super & [ SYNSEM.LKEYS.KEYREL.PRED #pred ] > ].
 
 part-prep-ellipsis := part-prep-phrase & unary-phrase &
   [ SYNSEM [ LOCAL.CAT.HEAD.ELLIPSIS +,
@@ -3761,7 +3840,7 @@ part-struc := part-struc-min &
 
 part-binary := part-struc & part-prep-binary &
   [ SYNSEM.LOCAL.CAT.VAL.CMP4.MARKED -,
-    ARGS < [], [ SYNSEM.LOCAL.CAT.HEAD part ] > ].
+    ARGS < [], part-word & [ SYNSEM.LOCAL.CAT.HEAD part ] > ].
 
 part-ellipsis-phrase := part-struc & part-prep-ellipsis &
   [ SYNSEM.LOCAL.CAT.VAL.CMP4.MARKED -,
@@ -3784,14 +3863,15 @@ prepsel-struc := prepsel-struc-min &
     ARGS < [ SYNSEM.LOCAL.CAT.VAL.PART prt- ], ... >].
 
 prepsel-binary := prepsel-struc & part-prep-binary & 
-  [ ARGS < [], [ SYNSEM.LOCAL.CAT.HEAD prep ] > ].
+  [ ARGS < [], prep-word & [ SYNSEM.LOCAL.CAT.HEAD prep ] > ].
 
 prepsel-ellipsis-phrase := prepsel-struc & part-prep-ellipsis.
 
 ; PH 2022-03-09: Rule for ground objects:
 ; Han dekket på bordet
 ground-obj-struc := prepsel-struc-min & part-struc-min & part-prep-binary &
-  [ ARGS < [], part-word > ].
+  [ SYNSEM.LKEYS.KEYREL.PRED ground+,
+    ARGS < [ ], part-word > ].
 
 arg4-extr-phrase := non-subj-extr & arg4-val &
   [ HD-DTR.SYNSEM [ LOCAL.CAT.VAL.CMP2.LINK arg2-,
@@ -3855,7 +3935,10 @@ binary-expl-phrase := val-min & head-initial & phrasal & binary-headed-gap-phras
     HD-DTR.SYNSEM.LOCAL.CONT.MSG #msg2,
     NH-DTR expletive-noun-phrase ].
 
-expl-subj-struc := basic-pres & binary-expl-phrase.
+expl-subj-min := basic-pres &
+  [ SYNSEM.LOCAL [ CAT.ARGUMENT.LOCAL.CONT.HOOK.INDEX #parg,
+		   CONT.HOOK.PARG #parg ] ].
+expl-subj-struc := expl-subj-min & binary-expl-phrase.
 cleft-subj-struc := basic-cleft & binary-expl-phrase.
 
 expl-obj-struc := binary-expl-phrase &
@@ -3884,14 +3967,14 @@ extr-pres-min := valence-extr-phrase-min & unary-extr-phrase &
   [ CONJ no-conj,
     SYNSEM [ FIRST-WORD +,
 	     LOCAL [ CAT.HEAD aux-verb,
-                     CONT [ HOOK.INDEX.SF prop_m_rel,
+                     CONT [ HOOK [ INDEX.SF prop_m_rel ],
                             MSG prop_m_rel ] ],
              NON-LOCAL.SLASH <> ],
     ARGS < [ SYNSEM.LOCAL.CAT.ARGUMENT.LOCAL.CONT.HOOK.INDEX expl-ind ] >,
     C-CONT [ RELS <!!>,
 	     HCONS <!!> ] ].
 
-extr-pres-phrase := extr-pres-min & basic-pres.
+extr-pres-phrase := extr-pres-min & expl-subj-min.
 extr-cleft-phrase := extr-pres-min & basic-cleft.
 
 ;;;;;
@@ -3899,14 +3982,15 @@ extr-cleft-phrase := extr-pres-min & basic-cleft.
 ;;;;;
 
 passive-phrase-min := binary-phrase & arg1-sign &
-  [ SYNSEM [ LOCAL [ CAT #out & [ HEAD.SU-IND #arg2 ],
-		     CONT.HOOK.LTOP #lbl ],
+  [ SYNSEM [ LOCAL [ CAT #out,
+		     CONT.HOOK [ LTOP #lbl,
+				 PARG #arg2 ] ],
 	     LKEYS.KEYREL #rel & [ LBL #lbl,
 				   PRED #pred,
 				   ARG0 #arg1 & event ] ],
     IN #in,
     OUT #out,
-    ARGS < [ SYNSEM.LOCAL.CAT #in & [ VAL.ARGFRAME #pred ] ], 
+    ARGS < [ SYNSEM.LOCAL [ CAT #in & [ VAL.ARGFRAME #pred ] ] ], 
 	   [ ALTS.PASSIVE +,
 	     SYNSEM.LKEYS.KEYREL.LBL #lbl ] >,
     C-CONT [ RELS.LIST.FIRST arg12-relation &
@@ -4129,7 +4213,8 @@ verb_imp_word := arg1-sign & verb_basic &
 ;;;;;
 
 basic-complementizer-sign := uni-link &
-  [ SYNSEM [ LOCAL [ CAT.C -,
+  [ SYNSEM [ LOCAL [ CAT [ HEAD.DEGREL.PRED comp-,
+			   C - ],
 		     CONT.HOOK.INDEX #ind & event-or-ref-index ],
 	     LKEYS.KEYREL.ARG0 #ind ] ].
 
@@ -4152,8 +4237,7 @@ complementizer-sign := subord-rel-compl-sign &
 complementizer-word := complementizer-sign & norm-lex-item & keyrel-lex-item &
   [ SYNSEM [ FIRST-WORD -,
 	     LOCAL [ CONT [ RELS <! #relation &
-				       [ PRED "subord_rel",
-					 ARG0 event ] !>,
+				       [ ARG0 event ] !>,
 			    HCONS <! !> ] ],
 	     LKEYS.KEYREL #relation,
              NON-LOCAL.SLASH <> ] ].
@@ -4172,14 +4256,20 @@ compl-first-arg-vbl := phrase &
 
 ; PH 2016-01-22: Removed link between VBL.INDEX and INDEX in order to parse
 ; "Jon hevder at hun har sovet."
+; PH 2022-11-01: Removed STACK.CASE non-subj-case constraint in order to
+; parse "Ideen at jeg sover, sover."
+; PH 2025-06-12: Added STACK.ARGUMENT.CASE non-subj-case in order to
+; avoid "Nina hevdes det at sover, det."
 compl-phrase-min := complementizer-sign & compl-first-arg-vbl &
-                    embedded-phrase & subconstruction &
+                    embedded-phrase-min-min-min & subconstruction &
   [ CONJ no-conj,
     SYNSEM [ LOCAL [ CAT [ HEAD.CATEGORY #c,
 			   VAL [ ARGFRAME #pred,
 				 CMP4.MARKED - ],
-			   STACK < [ LOCAL [ CAT #out & [ CASE non-subj-case,
-							  VBL #verbal ],
+			   STACK < [ LOCAL [ CAT #out & [ CASE case,
+							  VBL #verbal,
+							  VAL.CMP3.LINK arg3-,
+							  ARGUMENT.LOCAL.CAT.CASE non-subj-case ],
 					     CONT.MSG #msg,
 					     AGR #agr,
 					     TOPIC #topic ],
@@ -4210,25 +4300,27 @@ compl-phrase := compl-phrase-min.
 ; PH 2013-01-31: replaced the ARGS.FIRST.HEAD compl-som-verb
 ; constraint with compl-verb in order to prevent too many parses with
 ; som
-unary-compl-phrase := compl-phrase & unary-phrase & gap-unary & arg2-sign &
+unary-compl-phrase := compl-phrase & unary-phrase & gap-unary & arg2-sign & embedded-phrase &
   [ SYNSEM [ LOCAL [ CAT [ HEAD subcompl-omcompl,
-			   STACK < [ LOCAL [ CAT [ VAL [ CMP1.LINK arg1-,
-				       	  CMP2.LOCAL.CAT.HEAD subcompl ],
-				          C-COGN-ST activ-or-less ] ] ], ... > ],
+		   STACK < [ LOCAL [ CAT [ HEAD.DEGREL #degrel,
+					   VAL [ CMP1.LINK arg1-,
+						 CMP2.LOCAL.CAT.HEAD subcompl ],
+					   ARGUMENT.LOCAL.CAT.CASE #case,
+					   C-COGN-ST activ-or-less ] ] ], ... > ],
 		     CONT.HOOK [ LTOP #ltop,
 				 INDEX #index & event ] ],
 	     LKEYS.KEYREL.LBL #ltop,
-	     --PHR-KEY arg2-relation ],
-    ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD compl-verb,
+	     --PHR-KEY arg2-relation ], ;
+    ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD compl-verb & [ DEGREL #degrel ],
 				    VAL.CMP2 [ LINK 2cp,
 					       LOCAL.CAT.HEAD atnull ],
-				    ARGUMENT.LOCAL.CAT.CASE non-subj-case,
+				    ARGUMENT.LOCAL.CAT.CASE #case & non-subj-case,
 				    VBL anti-synsem,
 				    C - ],
 			      CONT.HOOK.LTOP #lbl ],
 		      LKEYS.KEYREL [ LBL #lbl,
 				     ARG2 #index ]] ] >,
-    C-CONT [ RELS <! [ PRED "subord_rel",
+    C-CONT [ RELS <! [ PRED subord_rel,
 		       LBL #ltop,
 		       ARG0 #index ] !>,
 	     HCONS <!!> ] ].
@@ -4237,10 +4329,11 @@ unary-compl-phrase := compl-phrase & unary-phrase & gap-unary & arg2-sign &
 stack-cmp1-link := phrase &
 [ SYNSEM.LOCAL.CAT.STACK < [ LOCAL.CAT.VAL.CMP1.LINK arg1- ], ... > ].
 
-binary-compl-phrase := compl-phrase & head-final & stack-cmp1-link &
+binary-compl-phrase := compl-phrase-min & stack-cmp1-link & binary-phrase &
   [ SYNSEM [ LOCAL [ CAT [ HEAD subcompl-omcompl,
-		   STACK < [ LOCAL.CAT [ C-COGN-ST type-id ],
-				     NON-LOCAL.SLASH <> ], ... > ] ],
+		   STACK < [ LOCAL.CAT [ C-COGN-ST type-id,
+					 AAIF - ],
+			     NON-LOCAL.SLASH <> ], ... > ] ],
              NON-LOCAL #sl,
 	     LKEYS.KEYREL [ LBL #ltop,
 			    ARG0 #event ] ],
@@ -4253,7 +4346,27 @@ binary-compl-phrase := compl-phrase & head-final & stack-cmp1-link &
     C-CONT [ RELS <! !>,
 	     HCONS <! !> ] ].
 
-mod-compl-phrase := compl-phrase & head-final & stack-cmp1-link &
+; type for "Han er så pen at jeg smiler."
+delayed-compl-phrase := binary-compl-phrase &
+  [ START -,
+    SYNSEM [ LOCAL.CAT [ HEAD.DEGREL.PRED comp-,
+			 STACK < [ MODIFIED.PERIPH +,
+				   LOCAL [ CAT [ HEAD [ DEGREL.PRED comp- ],
+						 VAL #val ] ] ], ... > ],
+	     NON-LOCAL.SLASH <>,
+	     LKEYS.KEYREL.ARG0 #event ],
+    ARGS < [ BOUNDARY -,
+	     SYNSEM [ LOCAL [ CAT [ HEAD compl-verb &
+					 [ DEGREL [ PRED comp+,
+						    ARG2 #event ] ],
+				    VAL #val & [ CMP1.LINK arg1-,
+					  CMP2.LINK arg2-,
+					  CMP3.LINK arg3-,
+					  CMP4.LINK arg4-,
+					  PART prt- ] ] ],
+		      MODIFIED.PERIPH - ] ], [] > ].
+
+mod-compl-phrase := compl-phrase & head-final & stack-cmp1-link & embedded-phrase &
   [ SYNSEM [ LOCAL [ CAT [ HEAD subcompl,
 			   STACK < [ LOCAL.CAT [ C-COGN-ST type-id ],
 				     NON-LOCAL.SLASH <> ], ... > ],
@@ -4268,7 +4381,7 @@ mod-compl-phrase := compl-phrase & head-final & stack-cmp1-link &
     C-CONT [ RELS <! !>,
 	     HCONS <! !> ] ].
 
-binary-compl2-min := binary-compl-phrase & arg2-sign &
+binary-compl2-min := binary-compl-phrase & arg2-sign & head-final & compl-phrase & embedded-phrase &
   [ SYNSEM [ LOCAL [ CAT.VBL.LOCAL.CONT.HOOK.INDEX #index ],
              --PHR-KEY arg2-rel-min ],
     ARGS < [ SYNSEM [ LOCAL.CAT [ VAL [ ARGFRAME #pred,
@@ -4280,11 +4393,12 @@ binary-compl2-min := binary-compl-phrase & arg2-sign &
 binary-compl2-phrase := binary-compl2-min &
   [ ARGS.FIRST.SYNSEM.LOCAL.CAT.HEAD adj-adv-compl-prep-verb ].
 binary-compl2-noun-phrase := binary-compl2-min &
-  [ ARGS.FIRST.SYNSEM [ LOCAL.CAT [ HEAD noun,
+  [ ARGS.FIRST.SYNSEM [ LOCAL.CAT [ HEAD card-det-noun-poss,
 				    VAL.CMP2.LINK #pred & arg3- & arg4- & prt- & atom ],
+			NON-LOCAL.SLASH <>,
 			LKEYS.KEYREL.PRED #pred ] ].
 
-binary-compl4-phrase := binary-compl-phrase & arg4-sign &
+binary-compl4-phrase := binary-compl-phrase & arg4-sign & head-final & compl-phrase & embedded-phrase &
   [ SYNSEM [ LOCAL [ CONT.HOOK [ INDEX event & #index ] ] ],
     ARGS < [ SYNSEM [ LOCAL.CAT [ VAL [ ARGFRAME #pred,
 					CMP4 [ LINK #pred,
@@ -4311,14 +4425,15 @@ wh2-struc := embedded-phrase & arg2-val-min & binary-phrase &
 		      LKEYS #lkeys & [ KEYREL #rel & [ PRED wh+,
 						       ARG2 #index ],
 				       CNSTR #rel ] ] ],
-	   func-wh-word &
+	   wh-word &
 	   [ SYNSEM [ LOCAL.CAT.CASE #case,
 		      LKEYS.KEYREL #relation &
-				     [ ARG0 #index ] ] ]>,
+				     [ PRED cadv+,
+				       ARG0 #index ] ] ]>,
     IN #in,
     OUT #out,
     MEANING #rel,
-    C-CONT [ RELS <! !>,
+    C-CONT [ RELS <! #relation !>,
 	     HCONS <!!> ] ].
   
 
@@ -4377,10 +4492,12 @@ pop-phrase := pop-phrase-min-min &
 ; ambiguity with extr-sadv-rule, which may otherwise apply both before
 ; and after non-subjects.
 pop-nominal-phrase := pop-phrase & unary-phrase & pop-phrase-min &
-  [ SYNSEM [ LOCAL.CAT.CASE #case,
+  [ SYNSEM [ LOCAL.CAT [ HEAD.DEGREL #degadv,
+			 CASE #case ],
 	     NON-LOCAL #nl ],
     ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD adj-nominal &
-					 [ NOM + ],
+					 [ NOM +,
+					   DEGREL #degadv ],
 				    CASE #case,
 				    STACK < [ NON-LOCAL #nl ], ... >] ],
 		      NON-LOCAL.SLASH <>,
@@ -4454,12 +4571,10 @@ pop-xp-par-phrase := pop-par-phrase &
 				  STACK < [ LOCAL.CAT.HEAD start ], [ LOCAL [ CAT #cat & [ HEAD #head ],
 									      CONT.HOOK #hook ] ] . #2 > ] ] ], [] > ].
 
-; PH 2013-01-31: Removed the ARGS.SISTER anti-synsem constraint in order to 
-; allow the rule to apply to determiners and cardinals
+; PH 2013-01-31: Removed the ARGS.SISTER anti-synsem constraint in order to allow the rule to apply to determiners and cardinals
 rel-phrase := embedded-phrase & subord-rel-compl-sign & 
-  [ CONJ no-conj,
-    SYNSEM [ LOCAL [ CAT [ HEAD relcompl,
-			   STACK < [ LOCAL.CAT [ VAL.SISTER anti-synsem,
+  [ SYNSEM [ LOCAL [ CAT [ HEAD relcompl,
+			   STACK < [ LOCAL.CAT [ VAL.SISTER synsem-min,
 						 CASE #case,
 						 QUANT #q ],
 				     MODIFIED rmod,
@@ -4469,15 +4584,15 @@ rel-phrase := embedded-phrase & subord-rel-compl-sign &
 	     NON-LOCAL.SLASH < [ CAT.HEAD [ MOD #mod ],
 				 CONT.HOOK.INDEX #index ] >,
 	     LKEYS.KEYREL.LBL #lbl ],
-    ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD adj-adv-nominal & [ MOD #mod ],
+    ARGS < [ BOUNDARY -,
+	     SYNSEM [ LOCAL [ CAT [ HEAD [ MOD #mod ],
 				    CASE #case,
 				    QUANT #q ],
                               CONT.HOOK.INDEX #index ],
                       NON-LOCAL.SLASH <>,
 		      LKEYS.KEYREL.LBL #lbl,
 		      FIRST-WORD #fw ] ], ... >,
-    C-CONT [ RELS <!  [ PRED "rel-clause_rel",
-			ARG0 #0 ] !>,
+    C-CONT [ RELS <!  [ ARG0 #0 ] !>,
 	     HCONS <!!> ] ].
 
 ; PH 2006-12-02: Constrained the daughter to have SISTER value anti-synsem 
@@ -4492,7 +4607,9 @@ unary-rel-min := rel-phrase & unary-phrase &
 			   VBL synsem ],
 		     CONT.HOOK [ INDEX event ] ],
 	     EXTR - ],
-    ARGS < [ SYNSEM [ LOCAL.CAT [ STACK.FIRST.LOCAL.CAT.HEAD compl-verb ],
+    C-CONT.RELS <! [ PRED "rel-clause_rel" ] !>,
+    ARGS < [ SYNSEM [ LOCAL.CAT [ HEAD adj-adv-nominal,
+				  STACK.FIRST.LOCAL.CAT.HEAD compl-verb ],
 		      FIRST-WORD +,
 		      MODIFIED notmod,
                       SAT - ] ] > ].
@@ -4522,26 +4639,40 @@ wh-rel-phrase := unary-rel-min &
 binary-rel-phrase := rel-phrase & binary-phrase &
   [ SYNSEM phr-synsem &
 	   [ LOCAL [ CAT [ HEAD [ RESTRICTED + ],
-                           STACK < [ SAT #sat,
+			   STACK < [ SAT #sat,
+				     LOCAL.CAT.VAL #val,
                                      NON-LOCAL.SLASH <> ], ... >,
 			   VBL synsem ],
 		     CONT.HOOK [ LTOP #lbl2,
                                  INDEX event & [ RESTR #restr ] ] ],
-	     NON-LOCAL.SLASH < [ CAT.HEAD noun-pn ] > ],
-    ARGS < [ SYNSEM [ SAT #sat,
-                      LOCAL [ CAT [ QUANT + ] ],
-                      MODIFIED notmod-or-rmod ] ],
+	     NON-LOCAL.SLASH < [ CAT.HEAD #head ] > ],
+    C-CONT.RELS <! #keyrel !>,
+    ARGS < [ CONJ no-pre-conj,
+	     SYNSEM [ SAT #sat,
+		      LOCAL [ CAT [ HEAD #mod,
+				    VAL #val ] ],
+		      MODIFIED notmod-or-rmod ] ],
            rel-compl-sign &
-           [ SYNSEM [ LOCAL.CAT.VBL.LOCAL.CONT.HOOK [ LTOP #lbl2,
-						      INDEX [ E.TENSE finite ] ],
-		      LKEYS.KEYREL.ARG0.RESTR #restr ] ] >].
+           [ SYNSEM [ LOCAL.CAT [ HEAD.MOD < [ LOCAL.CAT.HEAD #mod ] >,
+				  VBL.LOCAL.CONT.HOOK [ LTOP #lbl2,
+						      INDEX [ E.TENSE finite ] ] ],
+		      LKEYS.KEYREL #keyrel & [ ARG0.RESTR #restr ],
+		      NON-LOCAL.SLASH < [ CAT.HEAD #head ] > ] ] >].
+
+; binary-rel-phrase := binary-rel-min &
+;   [ C-CONT.RELS <! [ PRED "rel-clause_rel" ] !>,
+;     ARGS <[], nom-rel-compl-word > ].
+    
+; binary-rel-s-phrase := binary-rel-min &
+;   [ C-CONT.RELS <! [ PRED "rel-clause-s_rel" ] !>,
+;     ARGS <[], clause-rel-compl > ].
+    
 
 arg0 := arg1- & arg2- & arg3- & arg4- & prt-.
-rel-compl-sign := subord-rel-compl-sign &
+
+rel-compl-sign := subord-rel-compl-sign & norm-lex-item & mod-word & keyrel-lex-item &
   [ SYNSEM [ LOCAL [ CAT [ HEAD relcompl & 
-                              [ MOD < [ LOCAL [ CAT [ HEAD nominal & 
-                                                        [ AGREE #agr ] ],
-                                                CONT.HOOK [ INDEX #1 ] ],
+                              [ MOD < [ LOCAL [ CONT.HOOK [ INDEX #1 ] ],
                                         LEX + ] > ],
                            VBL anti-synsem & 
 				[ LOCAL [ CONT.HOOK [ INDEX.E.TENSE finite ] ] ],
@@ -4551,15 +4682,40 @@ rel-compl-sign := subord-rel-compl-sign &
                                  CMP4.LINK arg4- ] ],
                      CONT [ RELS <! !>,
 			    HCONS <!!> ] ],
-	     NON-LOCAL.SLASH < [ CAT [ HEAD nominal & 
-                                               [ AGREE #agr ] ],
-                                    CONT.HOOK [ INDEX #1 ] ] > ] ].
+	     NON-LOCAL.SLASH < [ CONT.HOOK [ INDEX #1 ] ] > ] ].
 
-rel-compl-word := rel-compl-sign & norm-lex-item & mod-word & keyrel-lex-item &
+; Hun smiler, noe som jeg beundrer.
+clause-rel-compl := rel-compl-sign &
+  [ SYNSEM [ LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT.VAL [ CMP1.LINK arg1-,
+						    CMP2.LINK arg2-,
+						    CMP3.LINK arg3-,
+						    CMP4.LINK arg4- ] ] >,
+	     NON-LOCAL.SLASH < [ CAT.HEAD subcompl ] >,
+	     LKEYS.KEYREL #rel & [ PRED "rel-clause-s_rel" ] ],
+    LEXREL <! #rel !>].
+
+; Hun smiler, noe som jeg beundrer.
+clause-rel-compl-word := clause-rel-compl &
+  [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT.HEAD compl-verb ] > ].
+
+; Hun er sterkere enn jeg trodde.
+enn-rel-compl-word := clause-rel-compl &
+  [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT [ HEAD adj-adv,
+					      COMPARATIVE + ] ] > ].
+
+nom-rel-compl-word := rel-compl-sign &
+  [ SYNSEM [ LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT [ HEAD nominal & 
+						   [ AGREE #agr ],
+						QUANT + ] ] >,
+	     NON-LOCAL.SLASH < [ CAT. HEAD nominal & 
+				      [ AGREE #agr ] ] >,
+	     LKEYS.KEYREL.PRED "rel-clause_rel" ] ].
+
+rel-compl-word := nom-rel-compl-word &
   [ SYNSEM.LKEYS.KEYREL [ PRED "rel-clause_rel",
 			  ARG0.RESTR + ] ].
 
-nonrestr-rel-compl-word := rel-compl-sign & norm-lex-item & mod-word & keyrel-lex-item &
+nonrestr-rel-compl-word := nom-rel-compl-word &
   [ SYNSEM.LKEYS.KEYREL.ARG0.RESTR - ].
 
 basic-predicate-phrase := binary-phrase &
@@ -4649,7 +4805,7 @@ verbal-phrase-min :=  basic-predicate-phrase & in-const-struct &
                               TOPIC #topic,
 			      CONT [ HOOK [ INDEX.SF #sf,
 					    XARG #xarg,
-					    PARG #parg ] ],
+					    PARG individual ] ],
 			      AGR #agr,
 			      NEG-OUT #negout ],
 		      NON-LOCAL #list,
@@ -4668,7 +4824,7 @@ verbal-phrase-min :=  basic-predicate-phrase & in-const-struct &
 				    VBL #sel2,
 				    ARGUMENT synsem-min ],
 			      CONT [ HOOK [ XARG #xarg,
-						    PARG #parg ],
+						    PARG individual ],
 				     MSG #msg ],
 			      AGR #agr ],
 		      NON-LOCAL.SLASH <> ] ] >,
@@ -4682,7 +4838,7 @@ verbal-phrase-nonpass := verbal-phrase-min &
 
 verbal-phrase-main := verbal-phrase-min &
   [ ARGS < [ SYNSEM.LKEYS [ KEYREL #rel & [ LBL #lbl,
-					    PRED #pred & vbl+ ],
+					    PRED #pred & vrb+ ],
 			    CNSTR #rel ] ], 
 	   [ SYNSEM [ LOCAL.CAT.HEAD mainverb,
 		      LKEYS.KEYREL [ LBL #lbl,
@@ -4756,7 +4912,8 @@ verbal-c-min := verbal-phrase-min2 &
 			    CONT.HOOK #hook & [ INDEX.E.TENSE finite ] ] ] > ].
 
 verbal-v-min := verbal-phrase-min &
-  [ SYNSEM.LOCAL [ CAT.C -,
+  [ SYNSEM.LOCAL [ CAT [ C -,
+			 AAIF - ],
 		   CONT.HOOK #hook & [ LTOP #ltop,
 				       INDEX.E #e ] ],
     ARGS < [ SYNSEM.LOCAL [ CAT.C -,
@@ -4825,9 +4982,16 @@ at-om-compl-word := complementizer-word & non-gen-word &
 ;     SYNSEM.LOCAL [ CAT.HEAD [ KEYS.KEY #pred ],
 ;                    CONT.RELS <! [ PRED #pred ] !> ] ].
 
-at-complementizer-word := complementizer-word & non-gen-word &
+sub-complementizer-word := complementizer-word & non-gen-word &
+  [ SYNSEM [ LOCAL.CAT.HEAD [ MOD <> ] ] ].
+
+at-complementizer-word := sub-complementizer-word &
   [ SYNSEM [ LINK comp+,
-	     LOCAL.CAT.HEAD.MOD <> ] ].
+	     LOCAL.CAT.HEAD subcompl ] ].
+
+wh-complementizer-word := sub-complementizer-word &
+  [ SYNSEM [ LINK wh+,
+	     LOCAL.CAT.HEAD.MESS wh-question_m_rel ] ].
 
 ; at-complementizer-word := complementizer-word & non-gen-word &
 ;   [ SYNSEM.LOCAL [ CAT.HEAD.MOD <>,
@@ -4846,8 +5010,8 @@ cond-complementizer-word-min := cond-complementizer-word-mini &
 cond-complementizer-word := cond-complementizer-word-min &
   [ SYNSEM.LOCAL.CAT.HEAD.MESS prop_m_rel ].
 
-wh-complementizer-word := cond-complementizer-word-min &
-  [ SYNSEM.LOCAL.CAT.HEAD.MESS wh-question_m_rel ].
+; wh-complementizer-word := cond-complementizer-word-min &
+;   [ SYNSEM.LOCAL.CAT.HEAD.MESS wh-question_m_rel ].
 
 inf-phrase := embedded-phrase & subconstruction &
   [ CONJ no-conj,
@@ -4995,6 +5159,9 @@ ip-phrase := arg2-sign &
     ARGS.FIRST.SYNSEM [ LKEYS.KEYREL.PRED 2ip4,
 			LOCAL.CAT.VAL.CMP4.LOCAL.CONT.HOOK.INDEX #ind ] ].
 
+4ip-phrase := arg4-sign &
+  [ ARGS.FIRST.SYNSEM [ LKEYS.KEYREL [ PRED 4ip ],
+			LOCAL.CAT.VAL [ CMP4.MARKED + ] ] ].
 4ip1-phrase := arg4-sign &
   [ SYNSEM.LOCAL.CAT.ARGUMENT.LOCAL.CONT.HOOK.INDEX #ind,
     ARGS.FIRST.SYNSEM [ LKEYS.KEYREL [ PRED 4ip1,
@@ -5057,7 +5224,7 @@ unary-inf-phrase := basic-unary-phrase & arg2-sign & inf-phrase &
 			   VBL synsem & 
 				[ LOCAL.CONT.HOOK [ LTOP handle,
 						    INDEX [ E.TENSE infin ] ] ] ],
-		     CONT.HOOK [ INDEX event ] ],
+		     CONT.HOOK [ INDEX #arg2 & event ] ],
 	     NON-LOCAL #sl,
 	     --PHR-KEY arg2-rel-min ],
     OUT #out,
@@ -5067,7 +5234,7 @@ unary-inf-phrase := basic-unary-phrase & arg2-sign & inf-phrase &
 	   [ SYNSEM [ LOCAL [ CAT #cat & 
 				  [ HEAD #head & subcompl-infcompl-verb,
 				    STACK #rest & 0-1-list,
-				    VAL [ ARGFRAME arg2+ & arg1+,
+				    VAL [ ARGFRAME arg1+,
 					  CMP1.LINK arg1-,
 					  CMP3 [ LINK arg3-,
                                                  LOCAL.CONT.HOOK.INDEX #xarg ],
@@ -5075,14 +5242,16 @@ unary-inf-phrase := basic-unary-phrase & arg2-sign & inf-phrase &
 						 LINK 2vp,
 						 LOCAL [ CAT [ HEAD infcompl,
 							       VBL.LOCAL.CONT.HOOK.INDEX.E.TENSE infin ],
-						    CONT.HOOK.XARG #xarg ] ] ],
+						    CONT.HOOK [ INDEX #arg2,
+								XARG #xarg ] ] ] ],
 				    AAIF bool,
 				    VBL anti-synsem ],
 			      CONT [ HOOK #hook & [ LTOP #lbl2 ],
 				     MSG #msg ],
 			      TOPIC #topic ],
 		      NON-LOCAL #sl,
-		      LKEYS.CNSTR #rel & [ LBL #lbl2 ] ] ] >,
+		      LKEYS.CNSTR #rel & [ LBL #lbl2,
+					   ARG2 #arg2 ] ] ] >,
     C-CONT [ RELS <! !>,
 	     HCONS <!!> ],
     LINK-INPUT + ].
@@ -5168,7 +5337,8 @@ basic-inf := subconstruction & inf-min &
 inf-word-min := inf-min &
   [ SYNSEM [ FIRST-WORD -,
 	     LOCAL.CONT [ RELS <! !>,
-			  HCONS <!!> ] ],
+			  HCONS <!!> ],
+	     LKEYS.KEYREL.PRED inf+ ],
     LINK-INPUT + ].
 
 inf-word := inf-word-min.
@@ -5201,7 +5371,8 @@ emb-filler-phrase := nextword-phrase &
   [ SYNSEM phr-synsem &
 	   [ LOCAL [ CAT [ HEAD #head &
 				[ MESS #mess,
-				  ELLIPSIS - ],
+				  ELLIPSIS -,
+				  DEGREL #degrel ],
 			   VAL valence & [ CMP4.MARKED - ],
 			   QUANT #q & bool,
 			   ARGUMENT #arg,
@@ -5240,7 +5411,8 @@ emb-filler-phrase := nextword-phrase &
 		     Q #qitems ],
 	     NON-LOCAL.SLASH <> ],
     ARGS < [ START +,
-	     SYNSEM [ LOCAL.CAT [ HEAD.ELLIPSIS #ell,
+	     SYNSEM [ LOCAL.CAT [ HEAD [ ELLIPSIS #ell,
+					 DEGREL #degrel ],
 				  VAL #val2,
 				  VBL #vbl2,
 				  INTRANS #intrans ] ] ],
@@ -5258,10 +5430,10 @@ emb-filler-phrase := nextword-phrase &
 				    CASE #case & [ SU #su ],
 				    INTRANS #intrans ],
 			      AGR #agr,
-			      EXTR-REL #rel & [ PRED #pred ],
+			      EXTR-REL #rel,; & [ PRED #pred ],
 			      NEG-IN prop-wh_m_rel,
 			      NEG-OUT #negout ],
-		      LKEYS [ KEYREL relation & [ PRED #pred ],
+		      LKEYS [ KEYREL relation,; & [ PRED #pred ],
 			      ALTKEYREL #altkeyrel,
 			      Q #qitems ] ],
 	     LINK-INPUT #bool ] >,
@@ -5313,7 +5485,8 @@ coord-filler-phrase :=  uni-link & basic-binary-phrase &
              --PHR-KEY no-msg ],
     ARGS < filler-input &
 	   [ SYNSEM.LOCAL.CONT.HOOK #hook ], 
-	   [ SYNSEM [ SAT +,
+	   word & [ INFLECTED +,
+	     SYNSEM [ SAT +,
                       LOCAL #local & 
                             [ CAT [ HEAD adj-adv-card-cond-compl-noun-prep &
                                          [ MESS #mess ],
@@ -5340,7 +5513,8 @@ neg-link := phrase &
 
 force-phrase-min := clause & basic-unary-phrase & neg-link &
   [ SYNSEM [ LOCAL [ CAT [ HEAD #1 & aux-verb & [ MOD <>,
-                                             CATEGORY verb-cat ],
+                                             CATEGORY verb-cat,
+					     DEGREL.PRED comp- ],
 			   INTRANS #intrans,
 			   VAL [ CMP1.LINK arg1-,
                                  CMP2.LINK arg2-,
@@ -5458,8 +5632,7 @@ filler-phrase := emb-filler-phrase & cond-embedded-phrase &
 sem-filler-phrase := filler-phrase & 
   [ SYNSEM [ LOCAL [ CAT [ VAL #valence,
 			   STACK < [ NON-LOCAL.SLASH < [ CAT.VAL #valence,
-							 CONT.HOOK.INDEX #index,
-							 EXTR-REL #rel ] > ] > ],
+							 CONT.HOOK.INDEX #index ] > ] > ],
 		     CONT.HOOK.INDEX #index ],
 	     LKEYS.KEYREL #rel ],
     ARGS < [], [ SYNSEM [ LOCAL [ CAT.VAL #valence ],
@@ -5478,16 +5651,22 @@ cadv-filler-phrase := filler-phrase & uni-link &
 ; constraint in order to make generation work.
 ; ex: Alene smiler mannen.
 adv-filler-phrase := sem-filler-phrase &
-  [ SYNSEM [ LOCAL.CAT [ HEAD adv-prep-sadv,
-		       VAL [ CMP2.LINK #link,
-			     CMP3.LINK #link,
-			     CMP4.LINK #link ],
-		       VBL anti-synsem ],
-	     LKEYS [ KEYREL #keyrel & [ PRED #link,
-					ARG0 #arg0 ],
+  [ SYNSEM [ LOCAL.CAT [ HEAD adv-prep-sadv &
+			      [ NOM - ],
+			 VAL [ CMP1.LINK arg1-,
+			       CMP2.LINK #cmp2,
+			       CMP3.LINK arg3-,
+			       CMP4.LINK arg4- ],
+			 VBL anti-synsem,
+			 STACK < [ LKEYS.KEYREL.ARG0 #arg1,
+				   NON-LOCAL.SLASH < [ EXTR-REL.PRED #argframe,
+						       CONT.HOOK [ LTOP #ltop ] ] > ] >],
+	     LKEYS [ KEYREL #keyrel &
+			    [ LBL #ltop,
+			      ARG1 #arg1 ],
 		     Q.QREL.PRED anti-quant_m_rel ] ],
-    ARGS < [], [ SYNSEM.LKEYS.KEYREL [ PRED #link,
-				       ARG0 #arg0 ] ] >,
+    ARGS < [], [ SYNSEM [ LOCAL.CAT.VAL.ARGFRAME #argframe & arg1+ & #cmp2 & arg3- & arg4- & prt-,
+			  LKEYS.KEYREL.ARG0 event ] ] >,
     C-CONT [ RELS <! #keyrel !>,
 	     HCONS <!!> ] ].
 
@@ -5507,7 +5686,7 @@ comp-filler-phrase := filler-phrase & comp-embedded.
 expl-filler-phrase := nextword-phrase &
   [ START -,
     LINK-INPUT -,
-    SYNSEM [ LOCAL [ CAT #cat,
+    SYNSEM [ LOCAL [ CAT #cat & [ HEAD compl-verb ],
 		     CONT #cont,
 		     AGR #agr,
 		     MODAL #modal,
@@ -5559,11 +5738,17 @@ adj-mod-filler-phrase := filler-phrase &
 			LARG #lbl ] !> ] ].
 
 adj-filler-phrase := sem-filler-phrase &
-  [ SYNSEM [ LOCAL.CAT [ HEAD adj,
-			 STACK < [ NON-LOCAL.SLASH < [ EXTR-REL #rel ] > ] > ],
+  [ SYNSEM [ LOCAL.CAT [ HEAD adj & [ NOM - ],
+			 STACK < [ NON-LOCAL.SLASH < [ EXTR-REL [ LBL #lbl,
+								  PRED #argframe,
+								  ARG0 #event,
+								  ARG1 #arg1 ] ] > ] > ],
 	     LKEYS.Q.QREL.PRED anti-quant_m_rel ],
     ARGS < [], [ SYNSEM [ LINK 4ap,
-			  LKEYS.KEYREL #rel & [ ARG0 event ] ] ] >,
+			  LOCAL.CAT.VAL.ARGFRAME #argframe,
+			  LKEYS.KEYREL #rel & [ LBL #lbl,
+						ARG0 #event,
+						ARG1 #arg1 ] ] ] >,
     C-CONT [ RELS <! #rel !>,
 	     HCONS <!!> ] ].
 
@@ -5595,8 +5780,9 @@ noun-phrase-min := phrase & norm-lex-item & non-gen-word & keyrel-lex-item &
   [ SYNSEM [ LOCAL [ CAT [ HEAD nominal & [ MOD null,
 					    AGREE.DEFINITENESS definiteness,
 					    NOM + ],
-                           VAL.SISTER anti-synsem ] ],
-             NON-LOCAL.SLASH <>,
+                           VAL [ SISTER anti-synsem,
+				 CMP4.MARKED - ] ] ],
+	     NON-LOCAL.SLASH <>,
 	     FIRST-WORD - ],
     C-CONT.RELS <!!>,
     LINK-INPUT - ].
@@ -5609,7 +5795,8 @@ non-pronoun :=  lex-item.
 noun-phrase := noun-phrase2 & non-pronoun.
 
 no-link-item := sign &
-  [ SYNSEM.LOCAL.CAT.VAL.ARGFRAME no-link ].
+  [ SYNSEM.LOCAL.CAT [ HEAD.DEGREL.PRED comp-,
+		       VAL.ARGFRAME no-link ] ].
 
 ;proper-noun := phrase & continuative-item.
 ;last-pn := proper-noun.
@@ -5792,14 +5979,16 @@ pron-word := pron-word-min &
 
 3sg-pron := pron-word & 3sg-item & non-down-entailing.
 general-pron := pron-word & 3sg-item & non-down-entailing.
-comm-pron := 3sg-pron & comm-item.
-masc-pron := 3sg-pron & masc-item.
-fem-pron := 3sg-pron & fem-item.
-neut-pron := 3sg-pron & neut-item.
-1sg-pron := pron-word & 1sg-item & comm-item.
-1pl-pron := pron-word & 1pl-item.
-2sg-pron := pron-word & 2sg-item.
-2pl-pron := pron-word & 2pl-item.
+pers-pron := pron-word &
+  [ SYNSEM.LKEYS.KEYREL.PRED pers-pron_rel ].
+comm-pron := 3sg-pron & comm-item & pers-pron.
+masc-pron := 3sg-pron & masc-item & pers-pron.
+fem-pron := 3sg-pron & fem-item & pers-pron.
+neut-pron := 3sg-pron & neut-item & pers-pron.
+1sg-pron := pers-pron & 1sg-item & comm-item.
+1pl-pron := pers-pron & 1pl-item.
+2sg-pron := pers-pron & 2sg-item.
+2pl-pron := pers-pron & 2pl-item.
 
 noe-pron := nominal-item & phrase &
   [ SYNSEM [ FIRST-WORD -,
@@ -5977,7 +6166,7 @@ prep-word-min := super-mod-word-min & non-down-entailing &
 
 ; PH 18-jul-2006: These prepositions have non-optional complements:
 ; Han gikk til skogen
-prep-word := prep-word-min &
+cmp-prep-word := prep-word-min &
   [ SYNSEM.LOCAL [ CAT [ HEAD.KEYS.KEY predsort,
 			 VAL [ CMP2 [ LOCAL.CAT.HEAD adj-subcompl-infcompl-noun ],
 			       CMP3.LINK arg3-,
@@ -5985,14 +6174,14 @@ prep-word := prep-word-min &
 			       SISTER anti-synsem ] ],
 		   CONT.RELS.LIST.FIRST.PRED predsort ] ].
 
-prep_np_word := prep-word & 
+prep_np_word := cmp-prep-word & 
   [ SYNSEM.LOCAL.CAT.VAL.CMP2.LOCAL.CAT.HEAD nominal ].
 ; inkl. moms
-prep-nounmod-word := prep-word &
+prep-nounmod-word := cmp-prep-word &
   [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT.HEAD nominal ] > ].
 
 ; han sov deler-av turen
-prep-verbmod-word := prep-word &
+prep-verbmod-word := cmp-prep-word &
   [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT.HEAD verb ] > ].
 
 ; naturen rundt (oss) er pen
@@ -6001,13 +6190,12 @@ prep-pp-word := prep-word-min &
 				  LOCAL.CAT.HEAD subcompl-infcompl-noun ],
 			   SISTER anti-synsem ] ].
   
-fordi-prep-word := prep-word &
+fordi-prep-word := cmp-prep-word &
   [ SYNSEM.LOCAL.CAT [ HEAD.MOD < [ LOCAL.CAT.HEAD verb ] >,
                        VAL.CMP2.LOCAL.CAT.HEAD subcompl ] ].
 
 enn-word := func-word &
-  [ SYNSEM.LOCAL.CAT.HEAD prep & 
-			  [ MOD < [ LOCAL.CAT [ HEAD adj-nominal,
+  [ SYNSEM.LOCAL.CAT.HEAD [ MOD < [ LOCAL.CAT [ HEAD adj-nominal,
 						COMPARATIVE + ] ] > ] ].
 
 som-prep-word := prep-word-min &
@@ -6232,7 +6420,7 @@ pres-part-word := inflecting-lex-rule & word & keyrel-lex-item &
 			   QUANT - ],
 		     CONT.HOOK [ LTOP #lbl ] ],
 	     SAT #bool,
-	     LKEYS [ KEYREL #keyrel & [ PRED 1np & arg2- & arg3- & arg4- & prt- ],
+	     LKEYS [ KEYREL #keyrel & [ PRED 1np & arg3- & arg4- & prt- ],
 		     CNSTR #keyrel & [ LBL #lbl,
 				       ARG0.E.TENSE prespart ] ] ],
     ARGS < [ INFLECTED -,
@@ -6250,12 +6438,15 @@ non-extr-phrase := phrase &
   [ SYNSEM.EXTR - ].
 
 
+mod-mod-cat-phrase := nextword-phrase &
+  [ SYNSEM.LOCAL.CAT #cat,
+    ARGS < [ SYNSEM.LOCAL.CAT #cat ], [] > ].
+
 mod-mod-phrase-min := nextword-phrase & 
   [ BOUNDARY -,
     NEXTWORD #2 & synsem & [ LOCAL.CAT.HEAD head,
 			     LKEYS.ALTKEYREL #alt ],
-    SYNSEM [ LOCAL [ CAT #cat,
-		     CONT [ HOOK #hook,
+    SYNSEM [ LOCAL [ CONT [ HOOK #hook,
 			    MSG #msg ],
 		     TOPIC #t ],
 	     NON-LOCAL #nl,
@@ -6264,8 +6455,7 @@ mod-mod-phrase-min := nextword-phrase &
 	     COMP-IND #comp ],
     ARGS < [ BOUNDARY -,
 	     SYNSEM [ FIRST-WORD +,
-		      LOCAL [ CAT #cat,
-			      CONT [ HOOK #hook,
+		      LOCAL [ CONT [ HOOK #hook,
 				     MSG #msg ],
 			      TOPIC #t ],
 		      NON-LOCAL #nl,
@@ -6314,7 +6504,7 @@ mwe-conj-phrase := nextword-phrase &
 
 mod-mod-phrase := mod-mod-phrase-min &
   [ START #start,
-    ARGS < [ START #start ], [ SYNSEM.LOCAL.CAT.HEAD adv ] > ].
+    ARGS < [ START #start ], [ SYNSEM.LOCAL.CAT.HEAD mod-mod ] > ].
 
 deg-arg0-phrase := mod-mod-phrase &
   [ NEXTWORD.LKEYS.KEYREL.ARG0 #index,
@@ -6323,56 +6513,119 @@ deg-arg0-phrase := mod-mod-phrase &
 deg-adj-phrase := deg-arg0-phrase &
   [ NEXTWORD.LOCAL.CAT.HEAD adj ].
 
+deg-pos-phrase-min := deg-adj-phrase &
+  [ ARGS < [ ], [ SYNSEM.LKEYS.KEYREL [ PRED deg-pos,
+					ARG1.GRADE positive] ] > ].
+
 ;; En veldig dyr is
-deg-pos-phrase := deg-adj-phrase &
-  [ ARGS < [], [ SYNSEM.LKEYS.KEYREL [ PRED deg-pos,
-				       ARG1.GRADE positive] ] > ].
+deg-pos-phrase := deg-pos-phrase-min & mod-mod-cat-phrase &
+  [ ARGS < [ SYNSEM.LOCAL.CAT.HEAD.DEGREL #degrel ],
+	   [ SYNSEM [ LOCAL.CAT.HEAD.DEGREL #degrel ] ] > ].
+
+;; Delayed complement construction
+;; Bilen er så fin at jeg smiler
+saa-deg-pos-phrase := deg-arg0-phrase &
+  [ SYNSEM.LOCAL.CAT [ HEAD [ MOD #mod,
+			      KEYS #keys,
+			      MESS #mess,
+			      AGREE #agree,
+			      CATEGORY #category,
+			      PREDICATIVE #bool,
+			      NOM #nom,
+			      SU-IND #individual,
+			      ELLIPSIS #ell,
+			      PERFPART #perf,
+			      DEGREL #degrel & [ PRED comp+ ] ],
+		       VAL #val,
+		       CASE #case,
+		       MC #mc,
+		       ARGUMENT #argument,
+		       VBL #vbl,
+		       C-COGN-ST #cogn,
+		       STACK #stack,
+		       COMPARATIVE #comp,
+		       QUANT #quant,
+		       AAIF #aaif,
+		       C #c,
+		       INTRANS #intrans ],
+    ARGS < [ SYNSEM.LOCAL.CAT [ HEAD [ MOD #mod,
+				       KEYS #keys,
+				       MESS #mess,
+				       AGREE #agree,
+				       CATEGORY #category,
+				       PREDICATIVE #bool,
+				       NOM #nom,
+				       SU-IND #individual,
+				       ELLIPSIS #ell,
+				       PERFPART #perf,
+				       DEGREL.PRED comp- ],
+				VAL #val,
+				CASE #case,
+				MC #mc,
+				ARGUMENT #argument,
+				VBL #vbl,
+				C-COGN-ST #cogn,
+				STACK #stack,
+				COMPARATIVE #comp,
+				QUANT #quant,
+				AAIF #aaif,
+				C #c,
+				INTRANS #intrans ] ],
+	   [ SYNSEM.LKEYS.KEYREL #degrel & [ PRED comp+,
+					     ARG1.GRADE positive] ] > ].
+
+
 
 ;; Den langt dyrere isen
-deg-cmp-phrase := deg-adj-phrase &
+deg-cmp-phrase := deg-adj-phrase & mod-mod-cat-phrase &
   [ ARGS < [], [ SYNSEM.LKEYS.KEYREL [ PRED deg-cmp,
 				       ARG1.GRADE comparative ] ] > ].
 
 ;; Den omtrent dyreste isen
-deg-sup-phrase := deg-adj-phrase &
+deg-sup-phrase := deg-adj-phrase & mod-mod-cat-phrase &
   [ ARGS < [], [ SYNSEM.LKEYS.KEYREL [ PRED deg-sup,
 				       ARG1.GRADE superlative ] ] > ].
 
 ;; Jon sover omtrent ved isen
-deg-adv-phrase := deg-arg0-phrase &
+deg-adv-phrase := deg-arg0-phrase & mod-mod-cat-phrase &
   [ NEXTWORD.LOCAL.CAT.HEAD adv,
     ARGS < [], [ SYNSEM.LKEYS.KEYREL.PRED deg-adv ] > ].
 
-;; Jon sover omtrent ved isen
-deg-sadv-phrase := deg-arg0-phrase &
+;; Jon sover omtrent ikke
+deg-sadv-phrase := deg-arg0-phrase & mod-mod-cat-phrase &
   [ NEXTWORD.LOCAL.CAT.HEAD sadv,
     ARGS < [], [ SYNSEM.LKEYS.KEYREL.PRED deg-sadv ] > ].
 
+;; Svært godt likte menn smiler
+deg-degadv-phrase := deg-arg0-phrase & mod-mod-cat-phrase &
+  [ NEXTWORD.LOCAL.CAT.HEAD mod-mod,
+    ARGS < [], [ SYNSEM.LKEYS.KEYREL.PRED deg-adv ] > ].
+
 ;; Bl.a. mannen smiler
-deg-nom-phrase := deg-arg0-phrase &
+deg-nom-phrase := deg-arg0-phrase & mod-mod-cat-phrase &
   [ NEXTWORD.LOCAL.CAT.HEAD nominal,
     ARGS < [], [ SYNSEM.LKEYS.KEYREL.PRED deg-nom ] > ].
 
 ;; Omtrent alle smiler
-deg-qnt-phrase := deg-arg0-phrase &
+deg-qnt-phrase := deg-arg0-phrase & mod-mod-cat-phrase &
   [ NEXTWORD [ LOCAL.CAT.HEAD quant,
 	       LKEYS.Q.QREL.PRED quant_m_rel ],
     ARGS < [], [ SYNSEM.LKEYS.KEYREL.PRED deg-qnt ] > ].
 
 ;; Mannen bare smiler
-deg-verb-phrase := deg-arg0-phrase &
+deg-verb-phrase := deg-arg0-phrase & mod-mod-cat-phrase &
   [ NEXTWORD.LOCAL [ CAT.HEAD verb,
 		     CONT.HOOK.INDEX.E.TENSE fin-infin ],
     ARGS < [], [ SYNSEM.LKEYS.KEYREL.PRED deg-verb ] > ].
 
 ;; Bare smil!
-deg-imp-phrase := deg-arg0-phrase &
+deg-imp-phrase := deg-arg0-phrase & mod-mod-cat-phrase &
   [ NEXTWORD.LOCAL [ CAT.HEAD verb,
 		     CONT.HOOK.INDEX.E.TENSE imp ],
     ARGS < [], [ SYNSEM.LKEYS.KEYREL.PRED deg-imp ] > ].
 
 ;; Omtrent tre menn smiler
-deg-num-phrase := mod-mod-phrase &
+deg-num-phrase := mod-mod-phrase & mod-mod-cat-phrase &
   [ NEXTWORD [ LOCAL [ CAT.HEAD card,
 		       CONT.RELS.LIST.FIRST.ARG0 #index ] ],
     ARGS < [], [ SYNSEM.LKEYS.KEYREL [ PRED deg-num,
@@ -6501,7 +6754,8 @@ basic-mod-embedded-phrase := gap-binary & binary-phrase &
 			       CONT.HOOK #hook2,
 			       TOPIC #topic ],
 		       NON-LOCAL #nl,
-		       LKEYS #lk ] ], [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ MODIFIED rmod ] > ] > ].
+		       LKEYS #lk,
+		       MODIFIED.PERIPH - ] ], [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ MODIFIED rmod ] > ] > ].
 
 ; PH 201-06-15: Changed the Q.QREL anti-quant_m_rel constraint to 
 ; quant-or-anti-quant_m_rel in order to allow for "Jeg kom fredag"
@@ -6554,10 +6808,13 @@ mod-embedded-phrase2 := mod-cond-embedded-phrase &
     C-CONT.RELS <! #rel & [ ] !> ].
 
 mod-embedded-regular-phrase := basic-mod-embedded-phrase &
-  [ ARGS < [ SYNSEM.LOCAL.CAT.QUANT + ], [] > ].
+  [ ARGS < [ SYNSEM.LOCAL.CAT.QUANT bool ], [] > ].
 mod-embedded-phrase := mod-embedded-phrase2 & mod-embedded-regular-phrase.
+; PH 2022-10-17: Removed STACK.AAIF - constraint in order to parse
+; "Jeg sover der".
 mod-emb-vbl-phrase := mod-embedded-phrase &
-  [ SYNSEM [ LOCAL.CAT.VAL.SISTER #sister,
+  [ SYNSEM [ LOCAL.CAT [ STACK < [ LOCAL.CAT.AAIF bool ], ... >,
+			 VAL.SISTER #sister ],
 	     LKEYS [ KEYREL.ARG0 event,
 		     Q.QREL.PRED anti-quant_m_rel ] ],
     ARGS < [ SYNSEM.LOCAL.CAT.HEAD compl-verb ],
@@ -6590,8 +6847,14 @@ mod-emb-vbl-np-phrase := mod-cond-embedded-phrase-min & uni-link &
 			LARG #larg ]  !> ] ].
 
 mod-emb-nom-phrase := mod-embedded-phrase &
-  [ ARGS < [ SYNSEM [ LOCAL.CAT.HEAD adv-nominal ] ],
-	   [ SYNSEM.LOCAL.CAT.HEAD adv-prep ] > ].
+  [ ARGS < [ SYNSEM [ LOCAL.CAT [ QUANT +,
+				  HEAD adv-nominal ] ] ],
+	   [ SYNSEM.LOCAL.CAT.HEAD adv-nominal-prep ] > ].
+
+; Den er gul nok
+mod-emb-adj-phrase := mod-embedded-phrase &
+  [ ARGS < [ SYNSEM [ LOCAL.CAT.HEAD adj ] ],
+	   [ SYNSEM.LOCAL.CAT.HEAD adv ] > ].
 
 mod-emb-enn-phrase := mod-embedded-phrase2 &
   [ ARGS < [ SYNSEM.LOCAL.CAT.QUANT - ], [ SYNSEM.LKEYS.KEYREL.PRED enn_prd ] > ].
@@ -6601,7 +6864,8 @@ mod-emb-enn-phrase := mod-embedded-phrase2 &
 ;     ARGS < [ SYNSEM.LOCAL.CAT.HEAD nominal ], [] > ].
 
 mod-embedded-part-phrase := mod-cond-embedded-phrase & mod-embedded-regular-phrase &
-  [ SYNSEM [ LOCAL.CAT [ HEAD adj &
+  [ SYNSEM [ LOCAL.CAT [ QUANT +,
+			 HEAD adj &
 			      [ NOM - ],
 			 VAL [ CMP3.LINK arg3-,
 			       CMP4.LINK arg4- ] ],
@@ -6611,9 +6875,10 @@ mod-embedded-part-phrase := mod-cond-embedded-phrase & mod-embedded-regular-phra
 ; FIXME: This rule allows "et smil" as a modifier. I guess the idea was to 
 ; allow numerals as modifiers.                                (2016-01-14; ph)
 modnom-embedded-phrase := mod-cond-embedded-phrase & mod-embedded-regular-phrase &
-  [ SYNSEM.LOCAL.CAT.HEAD card-commnoun-det-quant & 
-			  [ MOD < [ LOCAL [ CAT.HEAD compl-verb,
-					    CONT.HOOK.INDEX #ind ] ] > ],
+  [ SYNSEM.LOCAL.CAT [ QUANT +,
+		       HEAD card-commnoun-det-quant & 
+			     [ MOD < [ LOCAL [ CAT.HEAD compl-verb,
+					    CONT.HOOK.INDEX #ind ] ] > ] ],
     C-CONT.RELS <! arg12-relation &
 		 [ PRED time_rel,
 		     ARG2 #ind ] !> ].
@@ -6727,7 +6992,8 @@ extr-mod-phrase := unary-extr-phrase &
 		     TOPIC #topic ],
 	     NON-LOCAL.SLASH <>,
 	     LKEYS.KEYREL.LBL #ltop ],
-    ARGS < [ SYNSEM [ MODIFIED notmod-or-rmod,
+    ARGS < [ SYNSEM [ MODIFIED notmod-or-rmod &
+			       [ PERIPH - ],
 		      LOCAL [ CAT [ HEAD #head,
 				    VAL #val2 & [ CMP1.LINK arg1-,
 						  CMP2.LINK arg2-,
@@ -6741,17 +7007,42 @@ extr-mod-phrase := unary-extr-phrase &
 		      NON-LOCAL.SLASH < [ CAT [ HEAD adj-adv-card-cond-compl-noun-prep & 
 						     [ MOD < [ LOCAL [ CAT [ HEAD #head ],
 								       CONT.HOOK #hook ] ] >,
-						       AGREE.GENDER neut ],
+						       AGREE.GENDER neut,
+						       NOM - ],
 						VAL valence &
 						     [ SISTER.LOCAL.CONT.HOOK.INDEX.PNG.PN sg ] ],
 					  CONT [ HOOK [ LTOP #ltop ],
 						 MSG #msg ],
 					  EXTR-REL [ LBL #ltop,
-						PRED prt- & arg1+ & arg3- & arg4- & prp+,
+						PRED prt- & arg1+ & arg3- & arg4-,
 						ARG0 event,
 						ARG1 #arg1 ] ] > ] ] >,
     C-CONT [ RELS <! !>,
 	     HCONS <!!> ] ].
+
+
+
+cadv-word := func-word &
+  [ SYNSEM [ LOCAL.CAT.HEAD complementizer,
+	     LKEYS.KEYREL.PRED cadv+ ] ].
+
+
+degadv-word := mod-mod-word &
+  [ SYNSEM [ LOCAL.CAT.HEAD mod-mod,
+	     LKEYS.KEYREL.PRED degadv+ ] ].
+
+
+adv-word := func-word &
+  [ SYNSEM [ LOCAL.CAT.HEAD adv,
+	     LKEYS.KEYREL.PRED adv-link ] ].
+
+sadv-word := func-word &
+  [ SYNSEM [ LOCAL.CAT.HEAD sadv,
+	     LKEYS.KEYREL.PRED sadv+ ] ].
+
+postp-word := func-word &
+  [ SYNSEM [ LKEYS.KEYREL.PRED postp+ ] ].
+
 
 ;;;;;
 ;;;;;   SENTENCE ADVERBIALS
@@ -6772,8 +7063,6 @@ s-word := basic-adv-word & norm-lex-item &
 	     LKEYS.KEYREL [ LBL #lbl,
 			    ARG1 #xarg ] ] ].
 
-sadv-word := s-word &
-  [ SYNSEM.LOCAL.CAT.HEAD sadv ].
 ;; Han sover da ikke.
 spart-word := s-word &
   [ SYNSEM.LOCAL.CAT.HEAD sadv & [ MOD < [ MODIFIED notmod ] > ] ].
@@ -6781,11 +7070,11 @@ spart-word := s-word &
 univ-sadv-word := sadv-word &
   [ SYNSEM.LOCAL.CAT.HEAD.UNIV + ].
 
-up-univ-sadv-word := univ-sadv-word & non-down-entailing.
+up-univ-sadv-word := univ-sadv-word.
 
-down-entail-sadv-word := univ-sadv-word & downward-entailing.
+down-entail-sadv-word := univ-sadv-word.; & downward-entailing.
 
-norm-sadv-word := sadv-word & non-down-entailing &
+norm-sadv-word := sadv-word &
   [ SYNSEM.LOCAL.CAT.HEAD.UNIV - ].
 
 
@@ -6942,12 +7231,15 @@ conj-adj-phrase := binary-phrase &
 	   [ SYNSEM [ LOCAL.CAT.VAL.SISTER #sister,
 		      LKEYS.KEYREL [ R-INDEX #rind & event ] ] ],
 	   adj-word &
-	   [ SYNSEM [ LOCAL.CAT.HEAD #head,
-		      LKEYS.KEYREL #keyrel &
-				     [ ARG0 #rind,
-				       ARG1 #1 ] ] ] >,
+	   [ SYNSEM [ LOCAL.CAT [ HEAD #head,
+				  VAL.SISTER [ LOCAL.CONT.HOOK.INDEX #1,
+					       LKEYS.KEYREL.ARG0.COGN-ST #cs ] ],
+		      LKEYS [ KEYREL #keyrel &
+					  [ ARG0 #rind & [ COGN-ST #cs ],
+					    ARG1 #1 & [ COGN-ST #cs ] ] ] ] ] >,
     C-CONT [ RELS <! #keyrel !>,
 	     HCONS <!  !> ] ].
+
 
 conj-adj-end-phrase := binary-phrase &
   [ SYNSEM [ LOCAL.CAT [ HEAD conj,
@@ -7257,7 +7549,8 @@ close-bracket-word := post-punct-word & punct-word & popping-mark.
 start-item := sign &
   [ START +,
     SYNSEM [ FIRST-WORD +,
-	     LOCAL.CAT [ AAIF +,
+	     LOCAL.CAT [ HEAD.DEGREL.PRED comp-,
+			 AAIF +,
 			 C +,
 			 VAL.CMP4.MARKED - ],
 	     NON-LOCAL.SLASH <>,
@@ -7424,16 +7717,22 @@ inquit-xp-phrase := inquit-input-phrase &
 		     MODIFIED notmod,
 		     NON-LOCAL.SLASH < [ CONT.HOOK.INDEX #1 ] > ] ], [] > ].
 
+
+vanligvis_prd := predsort.
+vanligvis_prp := vanligvis_prd & prp+.
+_vanligvis_adv_rel := vanligvis_prd & adv-link.
+
+
 ;;; Rel types for tiny lexicon
 når_prd := predsort.
 når_prp := når_prd & prp+.
-_når_adv_rel := når_prp & adv-link.
+_når_adv_rel := når_prd & adv-link.
 
 senere_prd := predsort.
 senere_prp := senere_prd & prp+.
-_senere_adv_rel := senere_prp & adv-link.
+_senere_adv_rel := senere_prd & adv-link.
 
-_på_adv_rel := på_prp & adv-link.
+_på_adv_rel := på_prd & adv-link.
 _på_p_rel := på_prp & arg1+ & 2np & arg3- & arg4- & prt-.
 _lodd_n_rel := lodd_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom.
 lodd_n := lodd_prd & idiomform.
@@ -7460,7 +7759,7 @@ ut_prt := ut_prd & prt+.
 bort_prd := predsort.
 bort_prp := bort_prd & prp+.
 bort_prt := bort_prd & prt+.
-_bort_adv_rel := bort_prp & adv-link.
+_bort_adv_rel := bort_prd & adv-link.
 _bort_p_rel := bort_prp & arg1+ & 2np & arg3- & arg4- & prt-.
 med_prd := predsort.
 med_prp := med_prd & prp+.
@@ -7472,7 +7771,7 @@ _i_p_rel := i_prp & arg1+ & 2np & arg3- & arg4- & prt-.
 opp_prd := predsort.
 opp_prp := opp_prd & prp+.
 opp_prt := opp_prd & prt+.
-_opp_adv_rel := opp_prp & adv-link.
+_opp_adv_rel := opp_prd & adv-link.
 _opp_p_rel := opp_prp & arg1+ & 2np & arg3- & arg4- & prt-.
 igjen_prd := predsort.
 igjen_prp := igjen_prd & prp+.
@@ -7485,7 +7784,7 @@ noe_prt := noe_prd & prt+.
 imot_prd := predsort.
 imot_prp := imot_prd & prp+.
 imot_prt := imot_prd & prt+.
-_imot_adv_rel := imot_prp & adv-link.
+_imot_adv_rel := imot_prd & adv-link.
 _imot_p_rel := imot_prp & arg1+ & 2np & arg3- & arg4- & prt-.
 rundt_prd := predsort.
 rundt_prp := rundt_prd & prp+.
@@ -7493,7 +7792,7 @@ rundt_prt := rundt_prd & prt+.
 av_prd := predsort.
 av_prp := av_prd & prp+.
 av_prt := av_prd & prt+.
-_av_adv_rel := av_prp & adv-link.
+_av_adv_rel := av_prd & adv-link.
 _av_p_rel := av_prp & arg1+ & 2np & arg3- & arg4- & prt-.
 godt_prt := godt_prd & prt+.
 å_prd := predsort.
@@ -7503,16 +7802,16 @@ rede_prt := rede_prd & prt+.
 frabedt_prd := predsort.
 frabedt_prt := frabedt_prd & prt+.
 braute_v := vrb+.
-_braute_1_rel := braute_v & vbl+ & 1np & arg2- & arg3- & arg4- & prt-.
-_braute-inq_12_rel := braute_v & vbl+ & 1np & 2inq & arg3- & arg4- & prt-.
+_braute_1_rel := braute_v & 1np & arg2- & arg3- & arg4- & prt-.
+_braute-inq_12_rel := braute_v & 1np & 2inq & arg3- & arg4- & prt-.
 sove_v := vrb+.
-_sove-bort_12_rel := sove_v & vbl+ & 1np & 2np & arg3- & arg4- & bort_prt.
-_sove-over_1_rel := sove_v & vbl+ & 1np & arg2- & arg3- & arg4- & over_prt.
-_sove-hen_1_rel := sove_v & vbl+ & 1np & arg2- & arg3- & arg4- & hen_prt.
-_sove-inn_1_rel := sove_v & vbl+ & 1np & arg2- & arg3- & arg4- & inn_prt.
-_sove-ut_1_rel := sove_v & vbl+ & 1np & arg2- & arg3- & arg4- & ut_prt.
-_sove_2_rel := sove_v & vbl+ & arg1- & 2np & arg3- & arg4- & prt-.
-_sove-ut_12_rel := sove_v & vbl+ & 1np & 2np & arg3- & arg4- & ut_prt.
+_sove-bort_12_rel := sove_v & 1np & 2np & arg3- & arg4- & bort_prt.
+_sove-over_1_rel := sove_v & 1np & arg2- & arg3- & arg4- & over_prt.
+_sove-hen_1_rel := sove_v & 1np & arg2- & arg3- & arg4- & hen_prt.
+_sove-inn_1_rel := sove_v & 1np & arg2- & arg3- & arg4- & inn_prt.
+_sove-ut_1_rel := sove_v & 1np & arg2- & arg3- & arg4- & ut_prt.
+_sove_2_rel := sove_v & arg1- & 2np & arg3- & arg4- & prt-.
+_sove-ut_12_rel := sove_v & 1np & 2np & arg3- & arg4- & ut_prt.
 over_prd := predsort.
 over_prp := over_prd & prp+.
 over_prt := over_prd & prt+.
@@ -7522,7 +7821,7 @@ hen_prt := hen_prd & prt+.
 inn_prd := predsort.
 inn_prp := inn_prd & prp+.
 inn_prt := inn_prd & prt+.
-_over_adv_rel := over_prp & adv-link.
+_over_adv_rel := over_prd & adv-link.
 _over_p_rel := over_prp & arg1+ & 2np & arg3- & arg4- & prt-.
 
 mann_prd := predsort.
@@ -7532,123 +7831,123 @@ konkurs_n := konkurs_prd & idiomform.
 konkurs_prd := predsort.
 _konkurs_n_rel := konkurs_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom.
 smile_v := vrb+.
-_smile*av_14_rel := smile_v & vbl+ & 1np & arg2- & arg3- & 4np & av_prp & prt-.
-_smile*til_14_rel := smile_v & vbl+ & 1np & arg2- & arg3- & 4np & til_prp & prt-.
-_smile_1_rel := smile_v & vbl+ & 1np & arg2- & arg3- & arg4- & prt-.
+_smile*av_14_rel := smile_v & 1np & arg2- & arg3- & 4np & av_prp & prt-.
+_smile*til_14_rel := smile_v & 1np & arg2- & arg3- & 4np & til_prp & prt-.
+_smile_1_rel := smile_v & 1np & arg2- & arg3- & arg4- & prt-.
 hevde_v := vrb+.
-_hevde-cp_12_rel := hevde_v & vbl+ & 1np & 2cp & arg3- & arg4- & prt-.
-_hevde-refl_1_rel := hevde_v & vbl+ & 1np & refl & arg2+ & arg3- & arg4- & prt-.
-_hevde_12_rel := hevde_v & vbl+ & 1np & 2np & arg3- & arg4- & prt-.
-_hevde_a_rel := hevde_v & adj+ & 1np & 2np & arg3- & arg4- & prt-.
-_hevde-ip1_12_rel := hevde_v & vbl+ & 1np & 2ip1 & arg3- & arg4- & prt-.
+_hevde-cp_12_rel := hevde_v & 1np & 2cp & arg3- & arg4- & prt-.
+_hevde-refl_1_rel := hevde_v & 1np & refl & arg2+ & arg3- & arg4- & prt-.
+_hevde_12_rel := hevde_v & 1np & 2np & arg3- & arg4- & prt-.
+;_hevde_a_rel := hevde_v & adj+ & 1np & 2np & arg3- & arg4- & prt-.
+_hevde-ip1_12_rel := hevde_v & 1np & 2ip1 & arg3- & arg4- & prt-.
 legge_v := vrb+.
-_legge*til-cp_14_rel := legge_v & vbl+ & 1np & arg2- & arg3- & 4cp & til_prp & prt-.
-_legge*inn_14_rel := legge_v & vbl+ & 1np & arg2- & arg3- & 4np & inn_prp & prt-.
-_legge*til_14_rel := legge_v & vbl+ & 1np & arg2- & arg3- & 4np & til_prp & prt-.
-_legge-ap_14_rel := legge_v & vbl+ & 1np & refl & arg2+ & arg3- & 4ap & prp- & prt-.
-_legge*under-refl_12_rel := legge_v & vbl+ & 1np & 2np & arg3- & arg4+ & refl & under_prp & prt-.
-_legge*på-refl_12_rel := legge_v & vbl+ & 1np & 2np & arg3- & arg4+ & refl & på_prp & prt-.
-_legge*fra-refl_12_rel := legge_v & vbl+ & 1np & 2np & arg3- & arg4+ & refl & fra_prp & prt-.
-_legge-på_1_rel := legge_v & vbl+ & 1np & arg2- & arg3- & arg4- & på_prt.
-_legge-opp_1_rel := legge_v & vbl+ & 1np & arg2- & arg3- & arg4- & opp_prt.
-_legge-til_12_rel := legge_v & vbl+ & 1np & 2np & arg3- & arg4- & til_prt.
-_legge-på_12_rel := legge_v & vbl+ & 1np & 2np & arg3- & arg4- & på_prt.
-_legge-inn_12_rel := legge_v & vbl+ & 1np & 2np & arg3- & arg4- & inn_prt.
-_legge-opp_12_rel := legge_v & vbl+ & 1np & 2np & arg3- & arg4- & opp_prt.
-_legge-ned_12_rel := legge_v & vbl+ & 1np & 2np & arg3- & arg4- & ned_prt.
-_legge_12_rel := legge_v & vbl+ & 1np & 2np & arg3- & arg4- & prt-.
-_legge_a_rel := legge_v & adj+ & 1np & 2np & arg3- & arg4- & prt-.
-_legge-refl_1_rel := legge_v & vbl+ & 1np & refl & arg2+ & arg3- & arg4- & prt-.
-_legge-til-cp_12_rel := legge_v & vbl+ & 1np & 2cp & arg3- & arg4- & til_prt.
-_legge-frem_12_rel := legge_v & vbl+ & 1np & 2np & arg3- & arg4- & frem_prt.
-_legge-igjen_12_rel := legge_v & vbl+ & 1np & 2np & arg3- & arg4- & igjen_prt.
-_legge*på-refl_1_rel := legge_v & vbl+ & 1np & arg2- & arg3- & arg4+ & refl & på_prp & prt-.
-_legge-til_1_rel := legge_v & vbl+ & 1np & arg2- & arg3- & arg4- & til_prt.
-_legge-i_12_rel := legge_v & vbl+ & 1np & 2np & arg3- & arg4- & i_prt.
-_legge-om_12_rel := legge_v & vbl+ & 1np & 2np & arg3- & arg4- & om_prt.
-_legge-vekk_12_rel := legge_v & vbl+ & 1np & 2np & arg3- & arg4- & vekk_prt.
-_legge-ut_1_rel := legge_v & vbl+ & 1np & arg2- & arg3- & arg4- & ut_prt.
-_legge-ut_12_rel := legge_v & vbl+ & 1np & 2np & arg3- & arg4- & ut_prt.
-_legge-ut*på_14_rel := legge_v & vbl+ & 1np & arg2- & arg3- & 4np & på_prp & ut_prt.
-_legge-refl-ut*med_14_rel := legge_v & vbl+ & 1np & refl & arg2+ & arg3- & 4np & med_prp & ut_prt.
-_legge-opp*til-cp_14_rel := legge_v & vbl+ & 1np & arg2- & arg3- & 4cp & til_prp & opp_prt.
-_legge-over*til_14_rel := legge_v & vbl+ & 1np & arg2- & arg3- & 4np & til_prp & over_prt.
-_legge-til*for_14_rel := legge_v & vbl+ & 1np & arg2- & arg3- & 4np & for_prp & til_prt.
-_legge-til*for_124_rel := legge_v & vbl+ & 1np & 2np & arg3- & 4np & for_prp & til_prt.
+; _legge*til-cp_14_rel := legge_v & 1np & arg2- & arg3- & 4cp & til_prp & prt-.
+; _legge*inn_14_rel := legge_v & 1np & arg2- & arg3- & 4np & inn_prp & prt-.
+; _legge*til_14_rel := legge_v & 1np & arg2- & arg3- & 4np & til_prp & prt-.
+; _legge-ap_14_rel := legge_v & 1np & refl & arg2+ & arg3- & 4ap & prp- & prt-.
+; _legge*under-refl_12_rel := legge_v & 1np & 2np & arg3- & arg4+ & refl & under_prp & prt-.
+; _legge*på-refl_12_rel := legge_v & 1np & 2np & arg3- & arg4+ & refl & på_prp & prt-.
+; _legge*fra-refl_12_rel := legge_v & 1np & 2np & arg3- & arg4+ & refl & fra_prp & prt-.
+; _legge-på_1_rel := legge_v & 1np & arg2- & arg3- & arg4- & på_prt.
+; _legge-opp_1_rel := legge_v & 1np & arg2- & arg3- & arg4- & opp_prt.
+; _legge-til_12_rel := legge_v & 1np & 2np & arg3- & arg4- & til_prt.
+; _legge-på_12_rel := legge_v & 1np & 2np & arg3- & arg4- & på_prt.
+; _legge-inn_12_rel := legge_v & 1np & 2np & arg3- & arg4- & inn_prt.
+; _legge-opp_12_rel := legge_v & 1np & 2np & arg3- & arg4- & opp_prt.
+; _legge-ned_12_rel := legge_v & 1np & 2np & arg3- & arg4- & ned_prt.
+; _legge_12_rel := legge_v & 1np & 2np & arg3- & arg4- & prt-.
+      ; _legge_a_rel := legge_v & adj+ & 1np & 2np & arg3- & arg4- & prt-.
+; _legge-refl_1_rel := legge_v & 1np & refl & arg2+ & arg3- & arg4- & prt-.
+; _legge-til-cp_12_rel := legge_v & 1np & 2cp & arg3- & arg4- & til_prt.
+; _legge-frem_12_rel := legge_v & 1np & 2np & arg3- & arg4- & frem_prt.
+; _legge-igjen_12_rel := legge_v & 1np & 2np & arg3- & arg4- & igjen_prt.
+; _legge*på-refl_1_rel := legge_v & 1np & arg2- & arg3- & arg4+ & refl & på_prp & prt-.
+; _legge-til_1_rel := legge_v & 1np & arg2- & arg3- & arg4- & til_prt.
+; _legge-i_12_rel := legge_v & 1np & 2np & arg3- & arg4- & i_prt.
+; _legge-om_12_rel := legge_v & 1np & 2np & arg3- & arg4- & om_prt.
+; _legge-vekk_12_rel := legge_v & 1np & 2np & arg3- & arg4- & vekk_prt.
+; _legge-ut_1_rel := legge_v & 1np & arg2- & arg3- & arg4- & ut_prt.
+; _legge-ut_12_rel := legge_v & 1np & 2np & arg3- & arg4- & ut_prt.
+; _legge-ut*på_14_rel := legge_v & 1np & arg2- & arg3- & 4np & på_prp & ut_prt.
+; _legge-refl-ut*med_14_rel := legge_v & 1np & refl & arg2+ & arg3- & 4np & med_prp & ut_prt.
+; _legge-opp*til-cp_14_rel := legge_v & 1np & arg2- & arg3- & 4cp & til_prp & opp_prt.
+; _legge-over*til_14_rel := legge_v & 1np & arg2- & arg3- & 4np & til_prp & over_prt.
+; _legge-til*for_14_rel := legge_v & 1np & arg2- & arg3- & 4np & for_prp & til_prt.
+; _legge-til*for_124_rel := legge_v & 1np & 2np & arg3- & 4np & for_prp & til_prt.
 merke_prd := predsort.
 merke_n := merke_prd & idiomform.
 _merke_n_rel := merke_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom.
-_legge*merke*til_14_rel := legge_v & vbl+ & 1np & merke_n & arg2+ & arg3- & 4np & til_prd & prp+ & prt-.
-_legge*merke*til-cp_14_rel := legge_v & vbl+ & 1np & merke_n & arg2+ & arg3- & 4cp & til_prd & prp+ & prt-.
-_legge*merke*til-wh_14_rel := legge_v & vbl+ & 1np & merke_n & arg2+ & arg3- & 4wh & til_prd & prp+ & prt-.
+; _legge*merke*til_14_rel := legge_v & 1np & merke_n & arg2+ & arg3- & 4np & til_prd & prp+ & prt-.
+; _legge*merke*til-cp_14_rel := legge_v & 1np & merke_n & arg2+ & arg3- & 4cp & til_prd & prp+ & prt-.
+; _legge*merke*til-wh_14_rel := legge_v & 1np & merke_n & arg2+ & arg3- & 4wh & til_prd & prp+ & prt-.
 vekt_n := vekt_prd & idiomform.
 vekt_prd := predsort.
 _vekt_n_rel := vekt_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom.
-_legge*vekt*på_14_rel := legge_v & vbl+ & 1np & vekt_n & arg2+ & arg3- & 4np & på_prd & prp+ & prt-.
-_legge*vekt*på-cp_14_rel := legge_v & vbl+ & 1np & vekt_n & arg2+ & arg3- & 4cp & på_prd & prp+ & prt-.
+; _legge*vekt*på_14_rel := legge_v & 1np & vekt_n & arg2+ & arg3- & 4np & på_prd & prp+ & prt-.
+; _legge*vekt*på-cp_14_rel := legge_v & 1np & vekt_n & arg2+ & arg3- & 4cp & på_prd & prp+ & prt-.
 skjul_n := skjul_prd & idiomform.
 skjul_prd := predsort.
 _skjul_n_rel := skjul_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom.
-_legge*skjul*på_14_rel := legge_v & vbl+ & 1np & skjul_n & arg2+ & arg3- & 4np & på_prd & prp+ & prt-.
-_legge*skjul*på-cp_14_rel := legge_v & vbl+ & 1np & skjul_n & arg2+ & arg3- & 4cp & på_prd & prp+ & prt-.
+; _legge*skjul*på_14_rel := legge_v & 1np & skjul_n & arg2+ & arg3- & 4np & på_prd & prp+ & prt-.
+; _legge*skjul*på-cp_14_rel := legge_v & 1np & skjul_n & arg2+ & arg3- & 4cp & på_prd & prp+ & prt-.
 svøm_n := svøm_prd & idiomform.
 svøm_prd := predsort.
 _svøm_n_rel := svøm_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom.
-_legge*på*svøm_1_rel := legge_v & vbl+ & 1np & arg2- & arg3- & på_prd & prp+ & 4idiom & svøm_n & prt-.
+; _legge*på*svøm_1_rel := legge_v & 1np & arg2- & arg3- & på_prd & prp+ & 4idiom & svøm_n & prt-.
 gå_v := vrb+.
-_gå_12_rel := gå_v & vbl+ & 1np & 2np & arg3- & arg4- & prt-.
-_gå*av_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4np & av_prp & prt-.
-_gå*gjennom_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4np & gjennom_prp & prt-.
-_gå*med_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4np & med_prp & prt-.
-_gå*på_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4np & på_prp & prt-.
-_gå*for_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4np & for_prp & prt-.
-_gå-refl_12_rel := gå_v & vbl+ & 1np & 2np & arg3+ & refl & arg4- & prt-.
-gå-refl-bort_1_rel := gå_v & vbl+ & 1np & refl & arg2+ & arg3- & arg4- & bort_prt.
-_gå*konkurs_1_rel := gå_v & vbl+ & 1np & konkurs_n & arg2+ & arg3- & arg4- & prt-.
-_gå-ip_2_rel := gå_v & vbl+ & arg1- & 2ip & arg3- & arg4- & prt-.
-_gå-an-ip_2_rel := gå_v & vbl+ & arg1- & 2ip & arg3- & arg4- & an_prt.
-_gå-an-cp_2_rel := gå_v & vbl+ & arg1- & 2cp & arg3- & arg4- & an_prt.
-_gå-med*på_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4np & på_prp & med_prt.
-_gå-ut*over_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4np & over_prp & ut_prt.
-_gå-ut*på_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4np & på_prp & ut_prt.
-_gå-opp*for-wh_24_rel := gå_v & vbl+ & arg1- & 2wh & arg3- & 4np & for_prp & opp_prt.
-_gå-med*på-cp_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4cp & på_prp & med_prt.
-_gå-ut*fra-cp_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4cp & fra_prp & ut_prt.
-_gå-ut*ifra-cp_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4cp & ifra_prp & ut_prt.
-_gå-med*på-ip1_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4ip1 & på_prp & med_prt.
-_gå-sammen*om-ip1_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4ip1 & om_prp & sammen_prt.
-_gå-ut*på-cp_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4cp & på_prp & ut_prt.
-_gå-ut*på-ip1_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4ip1 & på_prp & ut_prt.
-_gå-over*til-ip1_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4ip1 & til_prp & over_prt.
-_gå*for-refl_1_rel := gå_v & vbl+ & 1np & arg2- & arg3- & arg4+ & refl & for_prp & prt-.
-_gå-i*med_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4np & med_prp & i_prt.
-_gå-i_1_rel := gå_v & vbl+ & 1np & arg2- & arg3- & arg4- & i_prt.
-_gå-igjen_1_rel := gå_v & vbl+ & 1np & arg2- & arg3- & arg4- & igjen_prt.
-_gå*i*oppløsning_1_rel := gå_v & vbl+ & 1np & arg2- & arg3- & i_prd & prp+ & 4idiom & oppløsning_n & prt-.
-_gå-under_1_rel := gå_v & vbl+ & 1np & arg2- & arg3- & arg4- & under_prt.
-_gå-av_1_rel := gå_v & vbl+ & 1np & arg2- & arg3- & arg4- & av_prt.
-_gå-med_1_rel := gå_v & vbl+ & 1np & arg2- & arg3- & arg4- & med_prt.
-_gå-tilbake_1_rel := gå_v & vbl+ & 1np & arg2- & arg3- & arg4- & tilbake_prt.
-_gå_2_rel := gå_v & vbl+ & arg1- & 2np & arg3- & arg4- & prt-.
-_gå_0_rel := gå_v & vbl+ & arg1- & arg2- & arg3- & arg4- & prt-.
-_gå-av*med_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4np & med_prp & av_prt.
-_gå-ut*med_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4np & med_prp & ut_prt.
-_gå-ned_1_rel := gå_v & vbl+ & 1np & arg2- & arg3- & arg4- & ned_prt.
-_gå-istykker_1_rel := gå_v & vbl+ & 1np & arg2- & arg3- & arg4- & istykker_prt.
-_gå-sund_1_rel := gå_v & vbl+ & 1np & arg2- & arg3- & arg4- & sund_prt.
-_gå-lei_1_rel := gå_v & vbl+ & 1np & arg2- & arg3- & arg4- & lei_prt.
-_gå-lei*av-cp_14_rel := gå_v & vbl+ & 1np & arg2- & arg3- & 4cp & av_prp & lei_prt.
-_gå-ut_1_rel := gå_v & vbl+ & 1np & arg2- & arg3- & arg4- & ut_prt.
-_gå-over_1_rel := gå_v & vbl+ & 1np & arg2- & arg3- & arg4- & over_prt.
-_gå-ap_14_rel := gå_v & vbl+ & 1np & refl & arg2+ & arg3- & 4ap & prp- & prt-.
-gå-refl-til_1_rel := gå_v & vbl+ & 1np & refl & arg2+ & arg3- & arg4- & til_prt.
-gå-refl-vekk_1_rel := gå_v & vbl+ & 1np & refl & arg2+ & arg3- & arg4- & vekk_prt.
-_gå-ut_12_rel := gå_v & vbl+ & 1np & 2np & arg3- & arg4- & ut_prt.
-_gå-inn_12_rel := gå_v & vbl+ & 1np & 2np & arg3- & arg4- & inn_prt.
-_gå_1_rel := gå_v & vbl+ & 1np & arg2- & arg3- & arg4- & prt-.
+_gå_12_rel := gå_v & 1np & 2np & arg3- & arg4- & prt-.
+_gå*av_14_rel := gå_v & 1np & arg2- & arg3- & 4np & av_prp & prt-.
+_gå*gjennom_14_rel := gå_v & 1np & arg2- & arg3- & 4np & gjennom_prp & prt-.
+_gå*med_14_rel := gå_v & 1np & arg2- & arg3- & 4np & med_prp & prt-.
+_gå*på_14_rel := gå_v & 1np & arg2- & arg3- & 4np & på_prp & prt-.
+_gå*for_14_rel := gå_v & 1np & arg2- & arg3- & 4np & for_prp & prt-.
+_gå-refl_12_rel := gå_v & 1np & 2np & arg3+ & refl & arg4- & prt-.
+gå-refl-bort_1_rel := gå_v & 1np & refl & arg2+ & arg3- & arg4- & bort_prt.
+_gå*konkurs_1_rel := gå_v & 1np & konkurs_n & arg2+ & arg3- & arg4- & prt-.
+_gå-ip_2_rel := gå_v & arg1- & 2ip & arg3- & arg4- & prt-.
+_gå-an-ip_2_rel := gå_v & arg1- & 2ip & arg3- & arg4- & an_prt.
+_gå-an-cp_2_rel := gå_v & arg1- & 2cp & arg3- & arg4- & an_prt.
+_gå-med*på_14_rel := gå_v & 1np & arg2- & arg3- & 4np & på_prp & med_prt.
+_gå-ut*over_14_rel := gå_v & 1np & arg2- & arg3- & 4np & over_prp & ut_prt.
+_gå-ut*på_14_rel := gå_v & 1np & arg2- & arg3- & 4np & på_prp & ut_prt.
+_gå-opp*for-wh_24_rel := gå_v & arg1- & 2wh & arg3- & 4np & for_prp & opp_prt.
+_gå-med*på-cp_14_rel := gå_v & 1np & arg2- & arg3- & 4cp & på_prp & med_prt.
+_gå-ut*fra-cp_14_rel := gå_v & 1np & arg2- & arg3- & 4cp & fra_prp & ut_prt.
+_gå-ut*ifra-cp_14_rel := gå_v & 1np & arg2- & arg3- & 4cp & ifra_prp & ut_prt.
+_gå-med*på-ip1_14_rel := gå_v & 1np & arg2- & arg3- & 4ip1 & på_prp & med_prt.
+_gå-sammen*om-ip1_14_rel := gå_v & 1np & arg2- & arg3- & 4ip1 & om_prp & sammen_prt.
+_gå-ut*på-cp_14_rel := gå_v & 1np & arg2- & arg3- & 4cp & på_prp & ut_prt.
+_gå-ut*på-ip1_14_rel := gå_v & 1np & arg2- & arg3- & 4ip1 & på_prp & ut_prt.
+_gå-over*til-ip1_14_rel := gå_v & 1np & arg2- & arg3- & 4ip1 & til_prp & over_prt.
+_gå*for-refl_1_rel := gå_v & 1np & arg2- & arg3- & arg4+ & refl & for_prp & prt-.
+_gå-i*med_14_rel := gå_v & 1np & arg2- & arg3- & 4np & med_prp & i_prt.
+_gå-i_1_rel := gå_v & 1np & arg2- & arg3- & arg4- & i_prt.
+_gå-igjen_1_rel := gå_v & 1np & arg2- & arg3- & arg4- & igjen_prt.
+_gå*i*oppløsning_1_rel := gå_v & 1np & arg2- & arg3- & i_prd & prp+ & 4idiom & oppløsning_n & prt-.
+_gå-under_1_rel := gå_v & 1np & arg2- & arg3- & arg4- & under_prt.
+_gå-av_1_rel := gå_v & 1np & arg2- & arg3- & arg4- & av_prt.
+_gå-med_1_rel := gå_v & 1np & arg2- & arg3- & arg4- & med_prt.
+_gå-tilbake_1_rel := gå_v & 1np & arg2- & arg3- & arg4- & tilbake_prt.
+_gå_2_rel := gå_v & arg1- & 2np & arg3- & arg4- & prt-.
+_gå_0_rel := gå_v & arg1- & arg2- & arg3- & arg4- & prt-.
+_gå-av*med_14_rel := gå_v & 1np & arg2- & arg3- & 4np & med_prp & av_prt.
+_gå-ut*med_14_rel := gå_v & 1np & arg2- & arg3- & 4np & med_prp & ut_prt.
+_gå-ned_1_rel := gå_v & 1np & arg2- & arg3- & arg4- & ned_prt.
+_gå-istykker_1_rel := gå_v & 1np & arg2- & arg3- & arg4- & istykker_prt.
+_gå-sund_1_rel := gå_v & 1np & arg2- & arg3- & arg4- & sund_prt.
+_gå-lei_1_rel := gå_v & 1np & arg2- & arg3- & arg4- & lei_prt.
+_gå-lei*av-cp_14_rel := gå_v & 1np & arg2- & arg3- & 4cp & av_prp & lei_prt.
+_gå-ut_1_rel := gå_v & 1np & arg2- & arg3- & arg4- & ut_prt.
+_gå-over_1_rel := gå_v & 1np & arg2- & arg3- & arg4- & over_prt.
+_gå-ap_14_rel := gå_v & 1np & refl & arg2+ & arg3- & 4ap & prp- & prt-.
+gå-refl-til_1_rel := gå_v & 1np & refl & arg2+ & arg3- & arg4- & til_prt.
+gå-refl-vekk_1_rel := gå_v & 1np & refl & arg2+ & arg3- & arg4- & vekk_prt.
+_gå-ut_12_rel := gå_v & 1np & 2np & arg3- & arg4- & ut_prt.
+_gå-inn_12_rel := gå_v & 1np & 2np & arg3- & arg4- & inn_prt.
+_gå_1_rel := gå_v & 1np & arg2- & arg3- & arg4- & prt-.
 
 skulle_v := vrb+. 
-_skulle_12_rel := skulle_v & vbl+ & 1np & 2np & arg3- & arg4- & prt-.
+_skulle_12_rel := skulle_v & 1np & 2np & arg3- & arg4- & prt-.
 
 
 oppløsning_prd := predsort.
@@ -7679,11 +7978,11 @@ vekk_prp := vekk_prd & prp+.
 vekk_prt := vekk_prd & prt+.
 på*lenge_prd := predsort.
 på*lenge_prp := på*lenge_prd & prp+.
-_på*lenge_adv_rel := på*lenge_prp & adv-link.
+_på*lenge_adv_rel := på*lenge_prd & adv-link.
 alene_prd := predsort.
 alene_prp := alene_prd & prp+.
-_alene_adv_rel := alene_prp & adv-link.
-_fra_adv_rel := fra_prp & adv-link.
+_alene_adv_rel := alene_prd & adv-link.
+_fra_adv_rel := fra_prd & adv-link.
 _fra_p_rel := fra_prp & arg1+ & 2np & arg3- & arg4- & prt-.
 _fra_x_rel := fra_prd & cadv+.
 
@@ -7702,7 +8001,7 @@ mer_prd := predsort.
 _mer_deg-pos_rel := mer_prd & deg-pos.
 _mer_deg-cmp_rel := mer_prd & deg-cmp.
 mer_prp := mer_prd & prp+.
-_mer_adv_rel := mer_prp & adv-link.
+_mer_adv_rel := mer_prd & adv-link.
 
 mindre_prd := predsort.
 _mindre_deg-pos_rel := mindre_prd & deg-pos.
@@ -7762,7 +8061,7 @@ minimum_prd := predsort.
 _minimum_deg-num_rel := minimum_prd & deg-num.
 
 _kanskje_deg-verb_rel := kanskje_prd & deg-verb.
-_kanskje_adv_rel := kanskje_prp & adv-link.
+_kanskje_adv_rel := kanskje_prd & adv-link.
 _kanskje_deg-adv_rel := kanskje_prd & deg-adv.
 _kanskje_deg-cmp_rel := kanskje_prd & deg-cmp.
 _kanskje_deg-pos_rel := kanskje_prd & deg-pos.
@@ -7816,7 +8115,7 @@ vocative_rel := init_rel.
 
 dit_prd := predsort.
 dit_prp := dit_prd & prp+.
-_dit_adv_rel := dit_prp & adv-link.
+_dit_adv_rel := dit_prd & adv-link.
 
 flokk_n := flokk_prd & idiomform.
 flokk_prd := predsort.
@@ -7829,30 +8128,30 @@ _godt_deg-pos_rel := godt_prd & deg-pos.
 
 noensteds_prd := predsort.
 noensteds_prp := noensteds_prd & prp+.
-_noensteds_adv_rel := noensteds_prp & adv-link.
+_noensteds_adv_rel := noensteds_prd & adv-link.
 
 
 overhodet_prd := predsort.
 overhodet_prp := overhodet_prd & prp+.
-_overhodet_adv_rel := overhodet_prp & adv-link.
+_overhodet_adv_rel := overhodet_prd & adv-link.
 _overhodet_deg-sadv_rel := overhodet_prd & deg-sadv.
 
-_gjøre_124-ap_rel := gjøre_v & vbl+ & 1np & 2np & arg3- & 4ap & prp- & prt-.
+_gjøre_124-ap_rel := gjøre_v & 1np & 2np & arg3- & 4ap & prp- & prt-.
 gjøre_v := vrb+.
-_gjøre-ferdig_12_rel := gjøre_v & vbl+ & 1np & 2np & arg3- & arg4- & ferdig_prt.
-_gjøre-klar_12_rel := gjøre_v & vbl+ & 1np & 2np & arg3- & arg4- & klar_prt.
+_gjøre-ferdig_12_rel := gjøre_v & 1np & 2np & arg3- & arg4- & ferdig_prt.
+_gjøre-klar_12_rel := gjøre_v & 1np & 2np & arg3- & arg4- & klar_prt.
 
 ; Hunden kommer til å bjeffe
 komme_v := vrb+.
-_komme*til-ip1_14_rel := komme_v & vbl+ & 1np & arg2- & arg3- & 4ip1 & til_prp & prt-.
+_komme*til-ip1_14_rel := komme_v & 1np & arg2- & arg3- & 4ip1 & til_prp & prt-.
 
 plage_v := vrb+.
-_plage-cp_23_rel := plage_v & vbl+ & arg1- & 2cp & 3np & arg4- & prt-.
-_plage_12_rel := plage_v & vbl+ & 1np & 2np & arg3- & arg4- & prt-.
-_plage_a_rel := plage_v & adj+ & 1np & 2np & arg3- & arg4- & prt-.
+_plage-cp_23_rel := plage_v & arg1- & 2cp & 3np & arg4- & prt-.
+_plage_12_rel := plage_v & 1np & 2np & arg3- & arg4- & prt-.
+;_plage_a_rel := plage_v & adj+ & 1np & 2np & arg3- & arg4- & prt-.
 
 overlate_v := vrb+.
-_overlate*til-ip4_124_rel := overlate_v & vbl+ & 1np & 2ip4 & arg3- & 4np & til_prp & prt-.
+_overlate*til-ip4_124_rel := overlate_v & 1np & 2ip4 & arg3- & 4np & til_prp & prt-.
 
 ide_prd := predsort.
 _ide-cp_rel := ide_prd & arg1- & 2cp & arg3- & arg4- & prt- & atom.
@@ -7860,6 +8159,34 @@ _ide_n_rel := ide_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom.
 
 tidt*og*ofte_prd := predsort.
 tidt*og*ofte_prp := tidt*og*ofte_prd & prp+.
-_tidt*og*ofte_adv_rel := tidt*og*ofte_prp & adv-link.
+_tidt*og*ofte_adv_rel := tidt*og*ofte_prd & adv-link.
 
+evne_prd := predsort.
+evne_v := vrb+ & evne_prd.
+_evne*til-ip1_rel := evne_prd & arg1- & arg2- & arg3- & 4ip1 & til_prp & prt- & atom.
+_evne*til-np_rel := evne_prd & arg1- & arg2- & arg3- & til_prd & prp+ & 4np & prt- & atom.
+_evne_n_rel := evne_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom.
+_evne-ip1_12_rel := evne_v & 1np & 2ip1 & arg3- & arg4- & prt-.
+_evne_12_rel := evne_v & 1np & 2np & arg3- & arg4- & prt-.
+
+forbause_v := vrb+.
+_forbause-cp_23_rel := forbause_v & arg1- & 2cp & 3np & arg4- & prt-.
+_forbause_12_rel := forbause_v & 1np & 2np & arg3- & arg4- & prt-.
 ; Rule for direct object in second conjunct should be unary rule
+
+; Test of generation of synonyms
+;transfer_v := vrb+.
+
+
+gi_v := vrb+.
+overrekke_v := vrb+.
+hente_v := vrb+.
+transfer_rel := vrb+.
+
+_overrekke*til_124_rel := overrekke_v & 1np & 2np & arg3- & 4np & til_prp & prt-.
+_gi*til_124_rel := gi_v & 1np & 2np & arg3- & 4np & til_prp & prt- & transfer_rel.
+_hente*fra_124_rel := hente_v & 1np & 2np & arg3- & 4np & fra_prp & prt- & transfer_rel.
+_kalle-inn*til_124_rel := kalle_v & 1np & 2np & arg3- & 4np & til_prp & inn_prt & transfer_rel.
+
+;transfer_rel := _gi*til_124_rel & _hente*fra_124_rel.
+

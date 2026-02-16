@@ -371,7 +371,8 @@ head := head-min &
     NOM bool,
     SU-IND individual,
     ELLIPSIS bool,
-    PERFPART bool ].
+    PERFPART bool,
+    DEGREL relation ].
 
 modal-min := avm.
 

@@ -54,6 +54,9 @@ generator_rule := mrs_transfer_rule &
 card_rule := generator_rule &
 [ CONTEXT.RELS <! [ PRED card_rel ] !> ].
 
+pn_rule := generator_rule &
+[ CONTEXT.RELS <! [ PRED named_rel ] !> ].
+
 poss_rule := generator_rule &
 [ CONTEXT.RELS <! pronoun-relation,
 		  pronoun-q-relation,

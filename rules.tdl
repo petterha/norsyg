@@ -10,6 +10,7 @@ arg2-emb-nom-su := arg2-emb-nom-su-phrase.
 arg2-emb-adj-non-su := arg2-emb-adj-non-su-phrase.
 ;arg2-emb-no-nom-su := arg2-emb-non-nom-su-phrase.
 arg2-extr-nom-non-su := arg2-extr-nom-non-su-phrase.
+arg2-extr-compl-su := arg2-extr-compl-su-phrase.
 arg2-extr-compl-non-su := arg2-extr-compl-non-su-phrase.
 arg2-emb-nom-non-su := arg2-emb-nom-non-su-phrase.
 ;arg2-emb-no-nom-non-su := arg2-emb-no-nom-non-su-phrase.
@@ -104,6 +105,7 @@ cadv-filler := cadv-filler-phrase.
 mod-emb-vbl := mod-emb-vbl-phrase.
 mod-emb-vbl-np := mod-emb-vbl-np-phrase.
 mod-emb-nom := mod-emb-nom-phrase.
+mod-emb-adj := mod-emb-adj-phrase.
 mod-emb-enn := mod-emb-enn-phrase.
 ; PH 2016-12-06: This rule is made to account for postpositions.
 ;post-prep := post-prep-phrase.
@@ -117,6 +119,7 @@ deg-cmp := deg-cmp-phrase.
 deg-sup := deg-sup-phrase.
 deg-adv := deg-adv-phrase.
 deg-sadv := deg-sadv-phrase.
+deg-degadv := deg-degadv-phrase.
 deg-nom := deg-nom-phrase.
 deg-qnt := deg-qnt-phrase.
 deg-num := deg-num-phrase.
@@ -149,6 +152,9 @@ eoc-coord := eoc-coord.
 ; This rule is not semantically wellformed: 
 ; "Jeg brauter med Jon på at jeg brauter"
 ; mod-compl := mod-compl-phrase.
+;; Bilen er så fin at jeg smiler
+saa-deg-pos := saa-deg-pos-phrase.
+delayed-compl := delayed-compl-phrase.
 binary-compl2 := binary-compl2-phrase.
 binary-compl2-noun := binary-compl2-noun-phrase.
 binary-compl4 := binary-compl4-phrase.

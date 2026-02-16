@@ -1,4 +1,5 @@
 "
+ansvarlig SG-NEUT-ADJ ansvarlig
 synes PRES synes
 leende PRES-PART le
 seende PRES-PART se
@@ -146,6 +147,8 @@ fjernsynsprogrammer INDEF-PL-N1 fjernsynsprogram
 fjernsynsprogrammet DEF-SG-NOUN-NEUT fjernsynsprogram
 fjernsynsprogrammene DEF-PL-NOUN fjernsynsprogram
 fjernsynsprogramma DEF-PL-NEUT-NOUN fjernsynsprogram
+fisk INDEF-PL-M1-NOUN fisk
+fisker INDEF-PL-M1-NOUN fisk
 kilometer INDEF-PL-M1-NOUN kilometer
 kilometerne DEF-PL-NOUN kilometer
 menn INDEF-PL-M1-NOUN mann
@@ -192,6 +195,9 @@ iskaffe INDEF-PL-M1-NOUN iskaffe
 boken DEF-COMM-NOUN-M1-M2 bok
 bøker INDEF-PL-M1-NOUN bok
 bøkene DEF-PL-NOUN bok
+pensumboken DEF-COMM-NOUN-M1-M2 pensumbok
+pensumbøker INDEF-PL-M1-NOUN pensumbok
+pensumbøkene DEF-PL-NOUN pensumbok
 føtter INDEF-PL-M1-NOUN fot
 føttene DEF-PL-NOUN fot
 kuer INDEF-PL-M1-NOUN ku

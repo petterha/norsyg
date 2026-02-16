@@ -5,3 +5,7 @@ mwe-conj
 init-struc-comma
 conj-comma-sat
 conj-comma-unsat
+inquit-xp
+inquit-s
+; This rule is needed to generate "Er det henne?"
+; cleft-subj

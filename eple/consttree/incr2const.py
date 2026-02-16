@@ -22,6 +22,8 @@
 #
 # python incr2const.py tex
 # 
+# PH 2022-11-22: In order to add gaps, search for GAP and uncomment lines
+#
 # Petter Haugereid, petterha@gmail.com
 # 
 
@@ -37,7 +39,7 @@ try:
     number = sys.argv[2]
 #    exported = open('/tmp/avm.txt')
 except:
-    print 'AVM missing in \''+sys.argv[1]+'\'.' 
+    print('AVM missing in \''+sys.argv[1]+'\'.') 
     quit()
 
 try:
@@ -62,6 +64,7 @@ for line in exported:
     items = line.split()
     newavm = ''
     oldstring = ''
+    prevhead = ''
 #    level = 0
     value = False
     for item in items:
@@ -159,7 +162,7 @@ def gramfunc(arg,subjtype,tense,head,mtype,perf,keypred):
         arg = '0'
     else:
         arg = arg[:1]
-    if (subjtype == '+' and (not head == 'V' and not head == 'Aux' and not head == 'AuxP' and not head == 'SAdv' and not head == 'SAdvP' and not head == 'P' and not head == 'PP' and not head == '')) or ('-su-' in mtype and not 'non-su' in mtype):
+    if ((subjtype == '+' and (not head == 'V' and not head == 'Aux' and not head == 'AuxP' and not head == 'SAdv' and not head == 'SAdvP' and not head == 'P' and not head == 'PP' and not head == '' and not mtype == 'binary-compl2-phrase')) or ('-su-' in mtype and not 'non-su' in mtype and not head == 'CP')) and arg in set(['1','2','3','4']):
         gram = 'Subj'
     else:
         if arg == '2':
@@ -189,14 +192,17 @@ def gramfunc(arg,subjtype,tense,head,mtype,perf,keypred):
             gram = 'Conj'
         elif mtype == 'prepsel-binary':
             gram = 'PPobj'
+        elif mtype == 'ground-obj':
+            gram = 'PRT'
+            print 'ground-obj'
         elif mtype[:4] == 'deg-' or mtype == 'mwe-conj-phrase':
             gram = 'DegAdv'
         else:
             gram = 'Adv'
     return gram
     
-type2word = {'aux': 'Aux', 'adv-prep': 'P', 'prep': 'P', 'prep-min': 'P', 'part': 'PRT', 'refl-pron-light': 'RFL', 'noun': 'N', 'nominal': 'N', 'noun-pn': 'N', 'mainverb': 'V', 'verb': 'V', 'aux-verb': 'V', 'subcompl-infcompl-verb': 'V','pron': 'PRON','expl-pron': 'Expl_Subj','cop-pron': 'PRON', 'proper-noun': 'PN', 'det': 'Det', 'card': 'Det', 'carddef': 'Det', 'det-quant': 'Det', 'quant': 'Det', 'poss': 'Det', 'adj': 'Adj', 'adj-adv': 'Adj', 'mod-mod': 'Adv', 'sadv': 'SAdv', 'cadv': 'C', 'complementizer': 'C', 'subcompl': 'C', 'subcompl-omcompl': 'C', 'adv': 'Adv', 'condcompl': 'C', 'subcompl': 'C', 'atfull': 'C', 'relcompl': 'R', 'infcompl': 'Inf', 'conj': 'Conj', 'start': 'S', 'continuative': 'Forb'} 
-type2phrase = {'aux': 'AuxP', 'adv-prep': 'PP', 'prep': 'PP', 'prep-min': 'PP', 'noun': 'NP', 'nominal': 'NP', 'noun-pn': 'NP', 'pron': 'NP', 'expl-pron': 'NP', 'det': 'NP', 'card': 'NP', 'carddef': 'NP', 'det-quant': 'NP', 'quant': 'NP', 'poss': 'NP', 'proper-noun': 'NP', 'adj': 'AP', 'adj-adv': 'AP', 'mainverb': 'VP', 'verb': 'VP', 'aux-verb': 'VP', 'subcompl-infcompl-verb': 'VP', 'sadv': 'SAdvP', 'cadv': 'CP', 'complementizer': 'CP', 'infcompl': 'InfP', 'subcompl': 'CP', 'condcompl': 'CP', 'subcompl-omcompl': 'CP', 'atfull': 'CP', 'relcompl': 'RP', 'adv': 'AdvP', 'verb': 'VP', 'conj': 'ConjP', 'start': 'S', 'continuative': 'Forb', 'adj-subcompl-infcompl-noun-prep': 'XP'} 
+type2word = {'aux': 'Aux', 'adv-prep': 'P', 'adv-cadv-prep-sadv': 'P', 'prep': 'P', 'prep-min': 'P', 'part': 'PRT', 'refl-pron-light': 'RFL', 'noun': 'N', 'nominal': 'N', 'noun-pn': 'N', 'mainverb': 'V', 'verb': 'V', 'aux-verb': 'V', 'subcompl-infcompl-verb': 'V','pron': 'PRON','expl-pron': 'Expl_Subj','cop-pron': 'PRON', 'proper-noun': 'PN', 'det': 'Det', 'card': 'Det', 'carddef': 'Det', 'det-quant': 'Det', 'quant': 'Det', 'poss': 'Det', 'adj': 'Adj', 'adj-adv': 'Adj', 'mod-mod': 'Adv', 'sadv': 'SAdv', 'cadv': 'C', 'complementizer': 'C', 'subcompl': 'C', 'subcompl-omcompl': 'C', 'adv': 'Adv', 'condcompl': 'C', 'subcompl': 'C', 'atfull': 'C', 'relcompl': 'R', 'infcompl': 'Inf', 'conj': 'Conj', 'start': 'S', 'continuative': 'Forb'} 
+type2phrase = {'aux': 'AuxP', 'adv-prep-sadv': 'PP', 'adv-prep': 'PP', 'prep': 'PP', 'prep-min': 'PP', 'noun': 'NP', 'nominal': 'NP', 'noun-pn': 'NP', 'pron': 'NP', 'expl-pron': 'NP', 'det': 'NP', 'card': 'NP', 'carddef': 'NP', 'det-quant': 'NP', 'quant': 'NP', 'poss': 'NP', 'proper-noun': 'NP', 'adj': 'AP', 'adj-adv': 'AP', 'mainverb': 'VP', 'verb': 'VP', 'compl-verb': 'CP', 'aux-verb': 'VP', 'subcompl-infcompl-verb': 'VP', 'sadv': 'SAdvP', 'cadv': 'CP', 'complementizer': 'CP', 'infcompl': 'InfP', 'subcompl': 'CP', 'condcompl': 'CP', 'subcompl-omcompl': 'CP', 'atfull': 'CP', 'relcompl': 'RP', 'adv': 'AdvP', 'verb': 'VP', 'conj': 'ConjP', 'start': 'S', 'continuative': 'Forb', 'adj-subcompl-infcompl-noun-prep': 'XP'} # 
 
 
 coord = False
@@ -417,6 +423,8 @@ for avm in avms:
         except:
             keypred = 'predtype'
         head = type2phrase[headtype]
+        if head == 'AP' and phrkey[3] in set(['1','2','3']):
+            head = 'NP'
         prevprevgram = prevgram
         prevgram = gram
         gram = gramfunc(phrkey[3],subjtype,tensetype,head,mtype,perf,keypred)
@@ -446,7 +454,12 @@ for avm in avms:
                     index = '_' + tag2ind[tag]
                     ind2gram[index[1:]] = gram
         try:
-            phrase = type2phrase[headtype] + arg
+            if not 'prep' in prevhead and not 'noun' in prevhead:
+                phrase = type2phrase[headtype] + arg
+            elif prevgram == 'PPobj':
+                phrase = type2phrase[headtype] + '_PPobj'
+            else:                
+                phrase = type2phrase[headtype]
         except:
             phrase = '?'
         if newdepth > olddepth:
@@ -460,6 +473,8 @@ for avm in avms:
                 phrase = phrase + index
                 stacktree = stacktree + phrase + ' '
                 javatree = javatree + '<a href="#">'+phrase + '</a>\n<ul>\n'
+                # GAP: Uncomment in order to add indices
+#                javatree = javatree + '<a href="#">'+phrase + '</a>'+index+'INDXX\n<ul>\n'
                 x=x-1
         elif newdepth < olddepth:
             x = olddepth - newdepth
@@ -488,8 +503,8 @@ for avm in avms:
 #            javatree = javatree.replace(falsefunc,rightfunc)
             phrase = type2phrase[slashhead] + arg + index
             stacktree = stacktree + phrase + ' '
-            # Add empty node with gap
-            # javatree = javatree + '<li><a href="#">'+phrase + '</a>\n'
+            # GAP: Add empty node with gap
+            #javatree = javatree + '<li><a href="#">'+phrase + '</a>\n'
             gapbranch = phrase
 
         elif argresttype == 'null' and vbltype == 'synsem' and mvbltype == 'anti-synsem':
@@ -508,6 +523,8 @@ for avm in avms:
             except:
                 if interj:
                     word = 'Interj'
+                elif head == 'adv-prep-sadv':
+                    word = 'Adv'
                 else:
                     word = '?'
             if gram == 'DegAdv':
@@ -531,7 +548,7 @@ for avm in avms:
                 # orth = path2type(argrestpath + ['FIRST','STEM','FIRST'])
 
             if 'cons' in path2type(argrestpath + ['REST']):
-                print path2type(argrestpath + ['FIRST','REST','FIRST','STEM','FORM'])
+                print(path2type(argrestpath + ['FIRST','REST','FIRST','STEM','FORM']))
             z = 0
             while not orth[0] == '"':
                 argrestpath = argrestpath + ['FIRST','ARGS']
@@ -541,15 +558,21 @@ for avm in avms:
             if orth[0] == '"':
                 orth = orth[1:-1]
             orth = orth
+            if orth[:2] == ', ':
+                orth = orth[2:]
             stacktree = stacktree + orth  + ' ] '
             javatree = javatree + '<li>\n<a href="#">'+orth + '</a>\n</li>\n</ul>\n'
         lastpath = lastpath[2:]
         olddepth = newdepth
         oldslash = slashtype
+        prevhead = head
     stacktree = stacktree + ']'
     javatree = javatree + '</li>\n</ul>\n</li>\n</ul>\n</div>\n'
     gapitems = gapbranch.split('_')
     javatree = javatree.replace('Forb_Adv','Forb')
+    javatree = javatree.replace('N_PPobj','N')
+    javatree = javatree.replace('N_PPobj','N')
+    javatree = javatree.replace('C_PPobj','C')
     javatree = javatree.replace('RP_Adv','RelS')
     javatree = javatree.replace('SAdv_SAdv','SAdv')
     javatree = javatree.replace('_1','')
@@ -582,8 +605,8 @@ for avm in avms:
                             item2 = '<a href="#">'+cat+'_'+func+'</a>'
                         except:
                             item2 = '<a href="#">'+cat+'</a>'
-                        if conjnum == 0:
-                            javatree1 = javatree
+                        if conjnum == 0 and not javatree == '':
+                            javatree1 = javatree[:]
                             javatree = ''
                             parsed2=parsed2+['<a href="#">'+cat+'</a>', '<li>', '<ul>']
                     parsed2.append(item2)
@@ -612,7 +635,7 @@ for avm in avms:
             restitems = restitems[1:]
             parsed = parsed2
             parsed.append(item)
-    javatree = javatree.replace('NP_Adv','NP')
+#    javatree = javatree.replace('NP_Adv','NP')
     if javatree == '':
         try:
             javatree = javatree1
@@ -629,9 +652,11 @@ for avm in avms:
                 func = item.split('_')[1]
         stacktree = stacktree.replace('_Adv_i','_'+func+'_i')
         javatree = javatree.replace('_Adv_i','_'+func)
-#    if 'NP_Adv' in javatree:
-#        javatree = javatree.replace('NP_Adv','NP_'+func)
     javatree = javatree.replace('_Subj_i','_Subj')
+    javatree = javatree.replace('AP_Subj','NP_Subj')
+    javatree = javatree.replace('AP_DO','NP_DO')
+    javatree = javatree.replace('AP_IO','NP_IO')
+    javatree = javatree.replace('RP_PPobj','RP')
     treeData = '[ { "name": "S", "parent": "null", "children": [ '
     treeitems = stacktree.split()
     mother = 'S'
@@ -742,6 +767,9 @@ for avm in avms:
                 javatree = javatree[:-1]
             else:
                 x = x-1
+    previtem = ''
+    prevconstnr = ''
+    prevfunc = ''
     for item in stacktree.split():
         if item == '[':
             level = level+1
@@ -795,6 +823,8 @@ for avm in avms:
                         fields = fields1
                         sadvinv = True
                 if func == 'SAdv':
+                    if prevfunc == 'DegAdv':
+                        item = previtem + ' ' + item
                     analysis['a'+str(constnr)] = analysis.get('a'+str(constnr), '') + item + ' '
                     sadvanal = True
                     if n:
@@ -804,19 +834,28 @@ for avm in avms:
                                 analysis['n'+key[1:]] = analysis[key]
                                 del analysis[key]
                 if func == 'PRT':
+                    if prevfunc == 'DegAdv':
+                        item = previtem + ' ' + item
                     if n:
                         analysis['A'+str(constnr)] = analysis.get('A'+str(constnr), '') + item + ' '
                     else:
                         analysis['V'+str(constnr)] = analysis.get('V'+str(constnr), '') + item + ' '
                 if func == 'Adv' or func == 'PPobj':
+                    if prevfunc == 'DegAdv':
+                        item = previtem + ' ' + item
                     analysis['A'+str(constnr)] = analysis.get('A'+str(constnr), '') + item + ' '
-                if func == 'DO' or func == 'IO' or func == 'Pred' or func == 'DegAdv' or func == 'RFL':
+                if func == 'DO' or func == 'IO' or func == 'Pred' or func == 'RFL':
+                    if prevfunc == 'DegAdv':
+                        item = previtem + ' ' + item
                     analysis['N'+str(constnr)] = analysis.get('N'+str(constnr), '') + item + ' '
                     n = True
                 if func == 'Vinfin':
                     analysis['V'+str(constnr)] = analysis.get('V'+str(constnr), '') + item + ' '
+                if not prevfunc == func:
+                    prevfunc = func
+                    previtem = item
             const2func[str(constnr)] = func
-
+        prevconstnr = constnr
     funckeys = analysis.keys()
     mouseOverStyle = 'style="background-color:#DDFFFF;color:#000000;text-decoration:none">'
     fields = fields + '    <td>' + analysis['Forbinder'] + '</td>'
@@ -824,51 +863,50 @@ for avm in avms:
     fields = fields + '<td><a href="syntaksveiledning/syntaks-kap-h003.html#sec8" title="Finitt verbal"'+ mouseOverStyle  + analysis['v'] + '</a></td>'
     if sadvinv:
         fields = fields + '<td>'
-        keylist = analysis.keys()
-        keylist.sort()
+        keylist = sorted(analysis.keys())
         for key in keylist:
             if key[:1] == 'a':
                 fields = fields + '<a href=" " title="Setningsadverbial"'+ mouseOverStyle  + analysis['a'+key[1:]][:-1] + ' </a>'
 
         fields = fields + '</td>'
-        keylist = analysis.keys()
-        keylist.sort()
+        keylist = sorted(analysis.keys())
+#        keylist.sort()
         for key in keylist:
             if key[:1] == 'n':
                 fields = fields + '<td><a href=" " title="Subjekt"'+ mouseOverStyle + analysis['n'+key[1:]][:-1] + '</a>'
         fields = fields + '</td>'
     else:
         fields = fields + '<td>'
-        keylist = analysis.keys()
-        keylist.sort()
+        keylist = sorted(analysis.keys())
+#        keylist.sort()
         for key in keylist:
             if key[:1] == 'n':
                 fields = fields + '<a href=" " title="'+const2func[key[1:]]+'"'+ mouseOverStyle + analysis['n'+key[1:]][:-1] + '</a> '
 
         fields = fields + '</td>'
         fields = fields + '<td>'
-        keylist = analysis.keys()
-        keylist.sort()
+        keylist = sorted(analysis.keys())
+#        keylist.sort()
         for key in keylist:
             if key[:1] == 'a':
                 fields = fields + '<a href=" " title="Setningsadverbial"'+ mouseOverStyle  + analysis['a'+key[1:]][:-1] + ' </a>'
         fields = fields + '</td>'
     fields = fields + '<td>'
-    keylist = analysis.keys()
-    keylist.sort()
+    keylist = sorted(analysis.keys())
+#    keylist.sort()
     for key in keylist:
         if key[:1] == 'V':
             fields = fields + '<a href=" " title="'+const2func[key[1:]]+'"'+ mouseOverStyle  + analysis['V'+key[1:]][:-1] + ' </a>'    
     fields = fields + '</td>'
     fields = fields + '<td>'
-    keylist = analysis.keys()
-    keylist.sort()
+    keylist = sorted(analysis.keys())
+#    keylist.sort()
     for key in keylist:
         if key[:1] == 'N':
             fields = fields + '<a href=" " title="'+const2func[key[1:]]+'"'+ mouseOverStyle  + analysis['N'+key[1:]][:-1] + '</a> '
     fields = fields + '</td><td>'
-    keylist = analysis.keys()
-    keylist.sort()
+    keylist = sorted(analysis.keys())
+#    keylist.sort()
     for key in keylist:
         if key[:1] == 'A':
             fields = fields + '<a href=" " title="'+const2func[key[1:]]+'"'+ mouseOverStyle  + analysis['A'+key[1:]][:-1] + '</a> '
@@ -886,16 +924,28 @@ for avm in avms:
 #    tabularData.write(fields)
 #    tabularFile.write(fields)
 #    resultFile.write('    <tr>\n      <td>\n        '+str(number)+'\n')
-    print '    <tr>\n      <td>\n        '+str(number)
+    print('    <tr>\n      <td>\n        '+str(number))
+    javatree = javatree.replace('<li> <a href="#">Conj</a> <ul> <li> <a href="#">,</a> </li> </ul>','')
+    javatree = javatree.replace('<li>\n<a href="#">Conj</a>\n<ul>\n<li>\n<a href="#">,</a>\n</li>\n</ul>','')
 #    javatree = javatree.replace('<a href="#">NP_Subj_i </a>','<a href="syntaksveiledning/syntaks-kap-h003.html#sec9" title="Subjekt"style="background-color:#DDFFFF;color:#000000;text-decoration:none">NP_i </a>')
     if coord:
-        print 'Analysen har flere koordinerte setninger eller verbfraser. Del setningen opp og prøv igjen med én og én setning.'
+        print('Analysen har flere koordinerte setninger eller verbfraser. Del setningen opp og prøv igjen med én og én setning.')
     else:
-        print javatree
+        newjavatree = ''
+        # GAP: for adding indices to moved items
+        if 'INDXX' in javatree:
+            javaitems = javatree.split('INDXX')
+            lastitem = javaitems[-1]
+            for javaitem in javaitems[:-1]:
+                if javaitem[-1] in set(['i','j','k','l','m']):
+                    javaitem = javaitem[:-6] + '_' + javaitem[-1] + '</a>'
+                newjavatree = newjavatree + javaitem
+            javatree = newjavatree + lastitem 
+        print(javatree)
     #<div w3-include-html="analyses/' + sys.argv[1][5:-4]+'.tree.html"></div>\n
-    print '      </td>\n      <td>'
+    print('      </td>\n      <td>')
     if not coord:
-        print fields
+        print(fields)
     #<script>\n          w3IncludeHTML();\n        </script>\n        <br>\n        <div w3-include-html="analyses/' + sys.argv[1][5:-4]+'.tab.html"></div>\n        <script>\n          w3IncludeHTML();\n        </script>\n
-    print '</td></tr>'
+    print('</td></tr>')
 

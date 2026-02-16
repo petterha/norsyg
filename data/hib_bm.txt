@@ -60,7 +60,8 @@ Han malte huset rødt.
 Han malte husene røde. 
 Jenta heter Anne-Lene.
 Boka er mi.
-Å leve, det er å elske. 
+; Parser ikke
+Å leve, det er å elske.
 Han kom hit.
 De bor ved sjøen. 
 De var her mandag. 
@@ -69,13 +70,18 @@ De hadde heldigvis ikke reist ennå.
 De hadde ikke reist til Ålesund.
 De norske jentene gjorde det godt i landskampen.
 Gjorde de norske jentene det godt i landskampen?
+; Parser ikke
 Gjør det nå godt i landskampen, da, jenter!
+; Parser ikke
 Gid de norske jentene må gjøre det godt i landskampen!
 ;; Helsetninger med leddsetninger
 De kunne ikke komme fordi de var sjuke. 
+; Parser ikke
 Mannen slo plenen, og kona skjøt kråker.
 Jeg trur jeg tar imot tilbudet du gav før du reiste.
+; Parser ikke
 Hun reiste jorda rundt og fisket i fjellvann.
+; Parser ikke
 Hun reiste jorda rundt, og da fisket hun i fjellvann.
 Fordi postbudet falt i bakken, kom pakken aldri fram.
 Broren min, som er fem år, er en likendes kar.
@@ -83,6 +89,7 @@ Når de hadde det for travelt, droppa de middagen.
 ;Kurs ved private skoler som det blir søkt støtte til, skal godkjennes etter tilsvarende regler.
 Jeg skal spise middag om jeg får tid.
 De mener han bør gå av.
+; Parser ikke
 At du tier, viser hvor klok du er. 
 Alle som hadde gjort det de skulle, fikk gå heim tidlig.
 Jeg trur nok at du har rett.
@@ -92,13 +99,15 @@ Per fortalte at han skulle reise på ferie til helga.
 Jeg kan vel ikke vite om han kommer hit.
 Hun lurte på hvorfor alle måtte gå så tidlig.
 Om skolen er god nok, er et evig aktuelt spørsmål.
-Presten kunne ikke komme til gudstjenesten fordi det var så sterk storm på fjorden. 
+Presten kunne ikke komme til gudstjenesten fordi det var så sterk storm på fjorden.
+; Parser ikke
 Bilen kom susende så fort at ingen fikk tid til å komme seg vekk.
 Vi må sende pakkene nå for at de skal komme fram til jul.
 Dersom du betaler meg godt, skal jeg hjelpe deg.
 Vi levde oss da gjennom krigen enda det ofte så mørkt ut.
 Dra hvor du vil.
 Barna ble sittende foran fjernsynet så lenge. 
+; Parser ikke
 Du er faktisk skarpere enn jeg trodde.
 Dette er et problem som vi sliter med for tida.
 Alle deltakerne som hadde spist pizza, ble syke.
@@ -106,8 +115,10 @@ Alle deltakerne, som hadde spist pizza, ble syke.
 Hytta ligger der snaufjellet begynner.
 Alle pensumbøkene som er på engelsk, kan bestilles direkte.
 Jeg har ikke lest boka som kom i fjor.
+; ranking
 Jenta som juryen ga førstepremien, heter Irmelin.
 Dette er et problem som vi sliter med for tida.
+; Parser ikke
 Det er mulig de hadde rett.
 Man spør seg hvorfor det aldri kommer et skikkelig svar.
 Barna likte å lese eventyr.
@@ -121,7 +132,7 @@ Hun myrdet tanta si for at hun skulle bli rik.
 Dersom hun myrder tanta si, blir hun rik.
 Selv om hun myrdet tanta si, ble hun ikke rik.
 Han falt uti der. 
-Per strøk til eksamen hvilket ikke forbauset noen. 
+Per strøk til eksamen, hvilket ikke forbauset noen. 
 I går skjedde hva alle hadde fryktet.
 Jeg kjenner ikke den kvinnen som du snakker om. 
 En rekke av de ladestedene var oppført som byer ... hvis navn vi lærte utenat.
@@ -160,14 +171,14 @@ Da faren min var liten, var det bare sjuårig grunnskole.
 De spilte ikke like godt som de gjorde i forrige finale.
 ;; Setninger hentet fra elevteksten «Påsken» - Elevens tekst 
 Vi var på ski hver dag.
-På søndag gikk vi på Blåryggen,
-vi kjørte Telemark ned,
-det var gøy.
+På søndag gikk vi på Blåryggen.
+Vi kjørte Telemark ned.
+Det var gøy.
 På påskeaften hadde vi skirenn.
 det var: hopp, kulekjøring, idialtid og super g. 
 På mandag var vi på fisketur.
-vi fikk 3 fisk,
-men de var for små så vi kasta dem uti
+vi fikk 3 fisk
+men de var for små, så vi kasta dem uti
 Så dro vi hjem.
 ;; Adverbial
 Han kom hit.

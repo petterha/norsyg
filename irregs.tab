@@ -189,7 +189,10 @@ kaffe INDEF-PL-M1-NOUN_infl_rule kaffe
 iskaffe INDEF-PL-M1-NOUN_infl_rule iskaffe
 boken DEF-COMM-NOUN-M1-M2_infl_rule bok
 bøker INDEF-PL-M1-NOUN_infl_rule bok
-bøkene DEF-PL-NOUN_infl_rule bok
+bøkene DEF-PL-NOUN_infl_rule pensumbok
+pensumboken DEF-COMM-NOUN-M1-M2_infl_rule pensumbok
+pensumbøker INDEF-PL-M1-NOUN_infl_rule pensumbok
+pensumbøkene DEF-PL-NOUN_infl_rule pensumbok
 føtter INDEF-PL-M1-NOUN_infl_rule fot
 føttene DEF-PL-NOUN_infl_rule fot
 kuer INDEF-PL-M1-NOUN_infl_rule ku
