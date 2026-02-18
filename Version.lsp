@@ -1,3 +1,3 @@
 (in-package :common-lisp-user)
 
-(defparameter *grammar-version* "Norsyg (2204)")
+(defparameter *grammar-version* "Norsyg (2602)")

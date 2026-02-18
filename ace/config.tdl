@@ -14,7 +14,7 @@ version                   := "../Version.lsp".
 
 ;;;|| grammar-top || path to a TDL file that includes the rest of the grammar ||
 
-grammar-top               := "../norwegian.tdl".
+grammar-top               := "../norwegian-mid-wn.tdl".
 
 ;;; experimental rules to negate sentences
 ;generation-fixup-rules    := "../gen-fixup.mtr".
@@ -53,7 +53,7 @@ generation-ignore-rules   := "../lkb/nogen-rules.set".
 
 ;;;|| generation-trigger-rules || path to a TDL file defining trigger rules for generation ||
 
-generation-trigger-rules  := "../trigger.mtr".
+generation-trigger-rules  := "../trigger-mid.mtr".
 
 ;;;|| idiom-rules || path to a TDL file defining idiom-checking rules for parsing ||
 

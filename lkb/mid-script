@@ -24,8 +24,6 @@
  (list
   (lkb-pathname (parent-directory) "lkb-irregs.tab")
   (lkb-pathname (parent-directory) "lkb-irregs-nkl.tab")
-  ;(lkb-pathname (parent-directory) "lkb-irregs-nkl.tab")
-  ;(lkb-pathname (parent-directory) "nkl/irregs_nkl.tab")
   ))
 
 ;;;
@@ -42,9 +40,6 @@
   (list 
    (lkb-pathname (parent-directory) "matrix.tdl")
    (lkb-pathname (parent-directory) "nor.tdl")
-;   (lkb-pathname (parent-directory) "wordnet.tdl")
-   ;; (lkb-pathname (parent-directory) "preds-small.tdl")
-   ;; (lkb-pathname (parent-directory) "preds-mid.tdl")
    (lkb-pathname (parent-directory) "preds-small-wn.tdl")
    (lkb-pathname (parent-directory) "preds-mid-wn.tdl")
    (lkb-pathname (parent-directory) "wn-mid.tdl")

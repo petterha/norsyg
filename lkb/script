@@ -22,9 +22,8 @@
 ;;;
 (load-irregular-spellings 
  (list
+  (lkb-pathname (parent-directory) "lkb-irregs.tab")
   (lkb-pathname (parent-directory) "lkb-irregs-nkl.tab")
-  ;(lkb-pathname (parent-directory) "lkb-irregs-nkl.tab")
-  ;(lkb-pathname (parent-directory) "nkl/irregs_nkl.tab")
   ))
 
 ;;;
@@ -41,8 +40,11 @@
   (list 
    (lkb-pathname (parent-directory) "matrix.tdl")
    (lkb-pathname (parent-directory) "nor.tdl")
-   (lkb-pathname (parent-directory) "preds-small.tdl")
-   (lkb-pathname (parent-directory) "preds.tdl")
+   (lkb-pathname (parent-directory) "preds-small-wn.tdl")
+   (lkb-pathname (parent-directory) "preds-mid-wn.tdl")
+   (lkb-pathname (parent-directory) "wn-mid.tdl")
+   (lkb-pathname (parent-directory) "wn-small.tdl")
+   (lkb-pathname (parent-directory) "ground.tdl")
    (lkb-pathname (parent-directory) "infl-codes.tdl")
    (lkb-pathname (parent-directory) "tmt.tdl")
    (lkb-pathname (parent-directory) "unknown.tdl")
@@ -54,7 +56,7 @@
 ;;;
 
 (read-cached-lex-if-available (list (lkb-pathname (parent-directory) "dummy-lex.tdl")))
-(read-cached-sublex-if-available "nkl.tdl" (list (lkb-pathname (parent-directory) "nkl.tdl")))
+(read-cached-sublex-if-available "nkl-mid.tdl" (list (lkb-pathname (parent-directory) "nkl-mid.tdl")))
 (read-tdl-lex-file-aux (list (lkb-pathname (parent-directory) "lexicon.tdl")))
 (read-cached-sublex-if-available "funclex.tdl" (list (lkb-pathname (parent-directory) "funclex.tdl")))
 ;;;
