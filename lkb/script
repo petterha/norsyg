@@ -40,9 +40,9 @@
   (list 
    (lkb-pathname (parent-directory) "matrix.tdl")
    (lkb-pathname (parent-directory) "nor.tdl")
-   (lkb-pathname (parent-directory) "preds-small-wn.tdl")
-   (lkb-pathname (parent-directory) "preds-mid-wn.tdl")
-   (lkb-pathname (parent-directory) "wn-mid.tdl")
+   (lkb-pathname (parent-directory) "preds-small.tdl")
+   (lkb-pathname (parent-directory) "preds.tdl")
+   (lkb-pathname (parent-directory) "wn.tdl")
    (lkb-pathname (parent-directory) "wn-small.tdl")
    (lkb-pathname (parent-directory) "ground.tdl")
    (lkb-pathname (parent-directory) "infl-codes.tdl")
@@ -56,7 +56,7 @@
 ;;;
 
 (read-cached-lex-if-available (list (lkb-pathname (parent-directory) "dummy-lex.tdl")))
-(read-cached-sublex-if-available "nkl-mid.tdl" (list (lkb-pathname (parent-directory) "nkl-mid.tdl")))
+(read-cached-sublex-if-available "nkl.tdl" (list (lkb-pathname (parent-directory) "nkl.tdl")))
 (read-tdl-lex-file-aux (list (lkb-pathname (parent-directory) "lexicon.tdl")))
 (read-cached-sublex-if-available "funclex.tdl" (list (lkb-pathname (parent-directory) "funclex.tdl")))
 ;;;

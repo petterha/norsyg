@@ -45,7 +45,7 @@ label-path := LABEL-NAME.
 ;generation-ignore-signs   := "generation.ignore".
 
 ;;;|| generation-ignore-lexemes || path to a file listing more lexeme names to disable for generation ||
-;generation-ignore-lexemes := "../lkb/nogen-lex.set".
+generation-ignore-lexemes := "../lkb/nogen-lex.set".
 
 generation-ignore-rules   := "../lkb/nogen-rules.set".
 

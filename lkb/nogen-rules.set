@@ -1,6 +1,6 @@
 unary-rel
 emb-par
-pop-no-nominal-comma
+pop-no-nominal-robust
 mwe-conj
 init-struc-comma
 conj-comma-sat
@@ -9,3 +9,8 @@ inquit-xp
 inquit-s
 ; This rule is needed to generate "Er det henne?"
 ; cleft-subj
+
+; pres-part_infl_rule
+; part-indef-sg-adj_infl_rule
+; part-indef-pl-adj_infl_rule
+; part-def-adj_infl_rule

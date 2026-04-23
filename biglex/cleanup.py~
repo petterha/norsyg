@@ -1,0 +1,132 @@
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+
+import re
+import time
+import datetime
+import os
+
+lexIN=open('../lexicon.tdl','r')
+nklMidIN=open('../nkl-mid.tdl','r')
+nklIN=open('../nkl.tdl','r')
+
+predsSmallIN=open('../preds-small.tdl','r')
+predsMidIN=open('../preds-mid.tdl','r')
+predsIN=open('../preds.tdl','r')
+
+norIN=open('../nor.tdl','r')
+nortypes = set([])
+for line in norIN:
+    if ':=' in line and not ';' in line:
+        head = line.split(' := ')[0]
+        nortypes.add(head)
+
+predsSmall = []
+predsSmallSet = set([])
+for line in predsSmallIN:
+    if ':=' in line and not ';' in line:
+        pred = line.split()[0]
+        if not pred in nortypes:
+            predsSmall.append(line)
+            predsSmallSet.add(pred)
+predsSmallIN.close()
+os.remove('../preds-small.tdl')
+
+predsSmallOUT=open('../preds-small.tdl','w')
+for line in predsSmall:
+    predsSmallOUT.write(line)
+
+predsMid = []
+for line in predsMidIN:
+    if ':=' in line and not ';' in line:
+        pred = line.split()[0]
+        if not pred in predsSmallSet:
+            predsMid.append(line)
+os.remove('../preds-mid.tdl')
+
+
+predsMidOUT=open('../preds-mid.tdl','w')
+for line in predsMid:
+    predsMidOUT.write(line)
+
+preds = []
+for line in predsIN:
+    if ':=' in line and not ';' in line:
+        pred = line.split()[0]
+        if not pred in predsSmall:
+            preds.append(line)
+os.remove('../preds.tdl')
+
+
+predsOUT=open('../preds.tdl','w')
+for line in preds:
+    predsOUT.write(line)
+
+
+
+
+lexheads = set([])
+for line in lexIN:
+    if ' := ' in line and not ';' in line:
+        head = line.split()[0]
+        lexheads.add(head)
+
+intype = 0
+nklMid=[]
+nklMidSet=set([])
+for line in nklMidIN:
+    if ' := ' in line:
+        head = line.split()[0]
+        head=head.lower()
+        midtype = line
+        intype = 1
+    elif intype == 1 and not '].' in line:
+        midtype = midtype+line
+    else:
+        midtype = midtype+line
+        intype = 0
+        if not head in lexheads:
+            lexheads.add(head)
+            nklMid.append(midtype)
+        
+heads = set([])
+nklMidOUT=open('../nkl-mid.tdl','w')
+for midtype in nklMid:
+    head = midtype.split()[0]
+    if not head in heads:
+        nklMidOUT.write(midtype + '\n')
+    heads.add(head)
+
+
+lexheads = set([])
+for line in lexIN:
+    if ' := ' in line and not ';' in line:
+        head = line.split()[0]
+        lexheads.add(head)
+
+intype = 0
+nkl=[]
+nklSet=set([])
+for line in nklIN:
+    if ' := ' in line:
+        head = line.split()[0]
+        head=head.lower()
+        midtype = line
+        intype = 1
+
+    elif intype == 1 and not '].' in line:
+        midtype = midtype+line
+    else:
+        midtype = midtype+line
+        intype = 0
+        if not head in lexheads:
+            lexheads.add(head)
+            nkl.append(midtype)
+        
+heads = set([])
+nklOUT=open('../nkl.tdl','w')
+for midtype in nkl:
+    head = midtype.split()[0]
+    if not head in heads:
+        nklOUT.write(midtype + '\n')
+    heads.add(head)

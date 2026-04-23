@@ -37,9 +37,7 @@
 (read-tdl-type-files-aux
   (list 
    (lkb-pathname (parent-directory) "matrix.tdl")
-;   (lkb-pathname (parent-directory) "reltypes-tiny.tdl")
    (lkb-pathname (parent-directory) "nor.tdl")
-;   (lkb-pathname (parent-directory) "functypes.tdl")
    (lkb-pathname (parent-directory) "infl-codes.tdl")
    (lkb-pathname (parent-directory) "unknown.tdl")
    (lkb-pathname (parent-directory) "tmt.tdl")

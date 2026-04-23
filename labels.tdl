@@ -877,6 +877,22 @@ mainverb4-label := label &
            LEX - ],
   LABEL-NAME "V4" ].
 
+mainverb-vp-label := label &
+[ SYNSEM phr-synsem &
+         [ LOCAL.CAT.HEAD mainverb,
+           NON-LOCAL.SLASH < [ CAT.HEAD verb ] >,
+           --PHR-KEY no-msg,
+           LEX - ],
+  LABEL-NAME "V/V" ].
+
+aux-vp-label := label &
+[ SYNSEM phr-synsem &
+         [ LOCAL.CAT.HEAD aux,
+           NON-LOCAL.SLASH < [ CAT.HEAD verb ] >,
+           --PHR-KEY no-msg,
+           LEX - ],
+  LABEL-NAME "AUX/V" ].
+
 mainverb-nominal-label := label &
 [ SYNSEM phr-synsem &
          [ LOCAL.CAT.HEAD mainverb,

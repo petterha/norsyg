@@ -1,0 +1,97 @@
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+
+import re
+import time
+import datetime
+import os
+
+predsSmallIN=open('../preds-small.tdl','r')
+predsMidIN=open('../preds-mid.tdl','r')
+predsIN=open('../preds-small.tdl','r')
+
+wordnettypes = set([])
+root2id = {}
+ancestors = set([])
+verbs = set([])
+wordnet = open('wordnet.tdl','r')
+verbRoot2id = {}
+for line in wordnet:
+    try:
+        wordnettype = line.split()[0]
+        typeId = wordnettype.split('_')[1]
+        ancestor = line.split()[2][:-1]
+        ancestors.add(ancestor)
+        root = wordnettype.split('_')[0]
+        # ancestors[wordnettype] = ancestors.get(wordnettype,[]) + [ancestor]
+        # synsetlist = [ancestor]
+        # for synset in set(ancestors[wordnettype]):
+        #     if synset in set(ancestors.keys()):
+        #         synsetlist + ancestors[synset]
+        # print ancestors[wordnettype]
+        if '@VerbSynset' in root:
+            verbs.add(root)
+            root = root.replace('@VerbSynset','')
+            wordnettypes.add(root)
+            verbRoot2id[root] = typeId
+        root2id[root] = root2id.get(root,[]) + [typeId]
+    except:
+        pass
+
+predsMidOUT = open('../preds-mid-wn.tdl','w')
+predsSmallOUT = open('../preds-small-wn.tdl','w')
+
+def readfile(predsIN,predsOUT):
+    wn_verbs = set([])
+    for line in predsIN:
+        try:
+            head = line.split()[0]
+            head = head.split('_')[1]
+            head = head.replace('-','*')
+            head = head.replace('refl','seg')
+            if head in wordnettypes:
+                supertype = verbRoot2id[head]
+                if not head +'_'+ supertype in ancestors and '_12_' in line:
+                    line = line.replace('.',' & '+ head+'_'+supertype + '.')
+                    wn_verbs.add(head+'_'+supertype)
+        except:
+            pass
+        predsOUT.write(line)
+    return wn_verbs
+    
+wn_verbs_small = readfile(predsSmallIN,predsSmallOUT)
+wn_verbs_mid = readfile(predsMidIN,predsMidOUT)
+
+wordnetset = set([])
+all_lines = []
+wordnet = open('wordnet.tdl','r')
+for line in wordnet:
+    all_lines = [line]+all_lines
+
+wnSmallOUT = open('../wn-small.tdl','w')
+wnMidOUT = open('../wn-mid.tdl','w')
+wnSmall = []
+wnMid = []
+
+for line in all_lines:
+    line = line.replace('@VerbSynset','')
+    items = line.split()
+    synset = items[0]
+    if synset in wn_verbs_small:
+        hyperonym = items[2][:-1]
+        wn_verbs_small.add(hyperonym)
+        wnSmall.append(line)
+#        wnSmallOUT.write(line)
+    elif synset in wn_verbs_mid:
+        hyperonym = items[2][:-1]
+        wn_verbs_mid.add(hyperonym)
+        wnMid.append(line)
+#        wnMidOUT.write(line)
+
+wnSmall.reverse()
+wnMid.reverse()
+
+for line in wnSmall:
+    wnSmallOUT.write(line)
+for line in wnMid:
+    wnMidOUT.write(line)

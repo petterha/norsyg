@@ -14,6 +14,7 @@
 
 :include "matrix".
 :include "nor".
+:include "wn-small".
 :include "preds-small.tdl".
 :include "infl-codes".
 :include "tmt.tdl".

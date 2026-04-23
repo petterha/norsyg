@@ -44,14 +44,26 @@ extr-pres := extr-pres-phrase.
 extr-cleft := extr-cleft-phrase.
 pres-unexpr := pres-unexpr-phrase.
 pop-nominal := pop-nominal-phrase.
-pop-no-nominal := pop-no-nominal-phrase.
+pop-no-nominal := pop-no-nominal-nocomp-phrase.
+pop-no-nominal-comp := pop-no-nominal-comp-phrase.
+pop-no-nominal-vp := pop-no-nominal-vp-phrase.
+pop-vp-unary := pop-vp-unary-phrase.
+pop-vp-c := pop-vp-c-phrase.
+extr-vp-unary := extr-vp-unary-phrase.
+extr-vp-binary-v := extr-vp-binary-v-phrase.
+;extr-vp-binary-c := extr-vp-binary-c-phrase.
+pop-no-nominal-rel := pop-no-nominal-rel-phrase.
+pop-no-nominal2-rel := pop-no-nominal-rel2-phrase.
+pop-no-nominal-robust := pop-no-nominal-robust-phrase.
 pop-no-nominal-comma := pop-no-nominal-comma-phrase.
 pop-s-par := pop-s-par-phrase.
 pop-xp-par := pop-xp-par-phrase.
 emb-par := emb-par-phrase.
 par-embedded := par-embedded-phrase.
 inquit-s := inquit-s-phrase.
-inquit-xp := inquit-xp-phrase.
+; PH 2026-03-28: This rule overgenerates, so I took it out. The
+; SLASH.HEAD value should be determined.
+;inquit-xp := inquit-xp-phrase.
 arg2-extr-inq-non-su := arg2-extr-inq-non-su-phrase.
 nominal := nominal-phrase.
 det := det-phrase.
@@ -98,6 +110,8 @@ adj-filler := adj-filler-phrase.
 adj-mod-filler := adj-mod-filler-phrase.
 adv-filler := adv-filler-phrase.
 cadv-filler := cadv-filler-phrase.
+vp-filler := vp-filler-phrase.
+vp-filler-inf := vp-filler-inf-phrase.
 ; PH 2020-04-15: Has problem with relations
 ; PH 2019-03-20: overgenerates
 ; unary-cond-filler := unary-cond-filler-phrase.
@@ -188,9 +202,21 @@ continuative := continuative-phrase.
 ;;; Rules added for the vpidiom paper (2014-04-15; ph)
 prepsel := prepsel-binary.
 ;prepsel-ellipsis := prepsel-ellipsis-phrase.
-arg2-idiom := arg2-idiom-struc.
+;arg2-idiom := arg2-idiom-struc.
+arg2-idiom := arg2-indsg-struc.
+arg2-indpl := arg2-indpl-struc.
+arg2-defsg := arg2-defsg-struc.
+arg2-defpl := arg2-defpl-struc.
+arg2-refl := arg2-refl-struc.
 arg3-idiom := arg3-idiom-struc.
-arg4-idiom := arg4-idiom-struc.
+arg3-refl := arg3-refl-struc.
+;arg4-idiom := arg4-idiom-struc.
+arg4-indsg := arg4-indsg-struc.
+arg4-indpl := arg4-indpl-struc.
+arg4-defsg := arg4-defsg-struc.
+; Dette tar på kreftene.
+arg4-defpl := arg4-defpl-struc.
+arg4-refl := arg4-refl-struc.
 arg4-emb-sel-np := arg4-emb-sel-np-phrase.
 arg4-emb-sel-adj := arg4-emb-sel-adj-phrase.
 ;arg4-emb-sel-cp := arg4-emb-sel-cp-phrase.

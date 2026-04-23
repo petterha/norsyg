@@ -1,0 +1,108 @@
+nullv	0			
+nullv1	4			pp
+nullv2	4			pp
+nullv3	4			pp
+intrans1	1			
+intrans2	2	np		
+intrans3	1			
+intrans4	1			
+hv1	12	np		
+hv2	12	np		
+hv3	12	np		
+trans1	12	np		
+trans2	12	cp		
+trans3	12	ip1		
+trans4	124	np		infbare2
+trans5	12	np		
+trans6	12	np		
+trans7	12	np		
+trans8	12	np		
+trans9	12	np		
+trans10	12	np		
+trans11	14			pp
+trans12	24	cp-np		pp
+trans13	14			pp+ip1
+trans14	12	np		
+trans15	14			pp
+trans16	12	cp		
+trans17	12	ip1		
+trans18	12	cp		
+trans19	12	ip1		
+trans20	14			pp+cp
+trans21	14			pp+cp
+trans22	14			pp+ip1
+trans23	14			pp+ip1
+scomp1	123	cp		
+ditrans1	123	np		
+ditrans2	123	cp		
+ditrans3	123	ip1		
+ditrans4	124	np		pp
+ditrans5	124	np		pp
+ditrans6	124	np		pp+ip2
+ditrans7	123	ip3		
+ditrans8	124	np		pp
+ditrans9	124	np		pp
+refl1	12	refl		
+refl2	12	refl		
+refl3	124	refl		pp+ip1
+refl4	12	refl		
+refl5	12	refl		
+refl6	123	np	refl	
+refl7	123	cp	refl	
+refl8	123	ip1	refl	
+refl9	124	refl		pp
+refl10	124	refl		pp
+refl11	124	refl		pp
+refl12	124	refl		pp
+refl13	14			pp+refl
+refl14	124	np		pp+refl
+refl15	124	refl		pp
+refl16	124	refl		pp+cp
+refl17	124	refl		pp+ip1
+refl18	124	refl		pp
+refl19	124	refl		pp
+refl20	124	np		pp+refl
+present1	2	np		
+present2	24	np		pp
+present3	24	np		pp
+predik1	24	np		np
+predik2	24	np		ap
+predik3	123	np		
+predik4	124	np		pp
+predik5	123	np	refl3	
+predik6	124	np		ap
+predik7	124	np		ap
+predik8	124	np		pp
+predik9	124	refl		pp
+predik10	124	np		pp+ip2
+predik11	14			pp
+predik12	14			pp
+predik13	14			pp
+part1	12	np		
+part2	12	refl		
+part3	124	np		pp+refl
+part4	1			
+part5	1			
+part6	12	np		
+part7	124	np		pp
+part11	12	np		
+adv2	124	refl		advp
+adv3	14			pp
+adv4	14			pp
+adv5	24	np		pp
+adv6	124	np		pp
+adv7	124	np		pp
+adv8	12	refl		
+adv9	124	refl		pp
+adv10	1234	np		pp
+adv11	124	np		pp
+adv12	24	np		pp
+adv13	124	refl		ap
+adv14	124	np		ap
+adv15	14			ap
+adv16	1			
+adv17	1			
+aux1	1			
+kaus1	124	np		infbare2
+kaus2	124	refl		infbare2
+s-verb	1			

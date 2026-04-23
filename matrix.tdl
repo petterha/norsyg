@@ -55,7 +55,8 @@ sign := basic-sign &
     LINK-INPUT bool,
     CONJ conj-value,
     NEXTWORD synsem-mini,
-    START bool ].
+    START bool,
+    FINAL bool ].
 
 punct-min := sort.
 punct := punct-min.
@@ -1064,6 +1065,7 @@ head-valence-phrase := head-nexus-phrase &
 
 basic-unary-phrase := phrase &
   [ START -,
+    FINAL #final,
     STEM #stem,
     SYNSEM.LOCAL.CONT [ RELS [ LIST #first,
 			       LAST #last ],
@@ -1075,6 +1077,7 @@ basic-unary-phrase := phrase &
 		     LAST #sclast ] ],
     ARGS < sign & [ NEXTWORD anti-synsem,
 		    STEM #stem,
+		    FINAL #final,
                     SYNSEM.LOCAL local &
 				 [ CONT [ RELS [ LIST #first,
 						 LAST #middle ],
@@ -1107,19 +1110,22 @@ basic-binary-phrase := first-word-phrase & binary-rule-right-to-left &
 		    LAST #last ],
 	     HCONS [ LIST #scmiddle2,
 		     LAST #sclast ] ],
+    FINAL #final,
     ARGS < sign & [ SYNSEM.LOCAL local &
 				 [ CONT [ RELS [ LIST #first,
 						 LAST #middle1 ],
 					  HCONS [ LIST #scfirst,
 						  LAST #scmiddle1 ] ] ],
-		    ROOT - ],
+		    ROOT -,
+		    FINAL - ],
 	   sign & [ SYNSEM.LOCAL local &
 				 [ CONT [ RELS [ LIST #middle1,
 						 LAST #middle2 ],
 					  HCONS [ LIST #scmiddle1,
 						  LAST #scmiddle2 ] ] ],
                     ROOT -,
-		    SYNSEM.FIRST-WORD - ] > ].
+		    SYNSEM.FIRST-WORD -,
+		    FINAL #final ] > ].
 
 ; PH 2013-03-11: Type added to let a modifier modify the following word
 nextword-phrase := basic-binary-phrase &

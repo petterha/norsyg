@@ -39,6 +39,8 @@ brant PRET-V1 brenne
 vant PRET-V2 vinne
 vunnet PPART-V1 vinne
 krekte PRET-V2 kreke
+krefter INDEF-PL-M1-NOUN kraft
+kreftene DEF-PL-NOUN kraft
 fulgte PRET-V1 følge
 fulgt PPART-V1 følge
 fantes PRET-V1 finnes
@@ -210,7 +212,6 @@ trær INDEF-PL-N1 tre
 trærne DEF-PL-NOUN tre
 størst SUP-SAT-ADJ stor
 største SUP-UNSAT-ADJ stor
-største SUP-ADJ-NUDE stor
 større COMP-ADJ stor
 yngst SUP-SAT-ADJ ung
 yngste SUP-UNSAT-ADJ ung
@@ -1505,6 +1506,16 @@ ytre INDEF-PL-ADJ ytre
 t-en DEF-COMM-NOUN-M1-M2 t
 t-er INDEF-PL-M1-NOUN t
 t-ene DEF-PL-NOUN t
+trukne PART-INDEF-PL-ADJ trekke
+trukket PPART-V1 trekke
+trekk VERB-IMP trekke
+trukne PART-DEF-ADJ trekke
+trakk PRET-V1 trekke
+øyer INDEF-PL-N2-NOUN øye
+øyne INDEF-PL-N2-NOUN øye
+øyet DEF-SG-NOUN-NEUT øye
+øyene DEF-PL-NOUN øye
+øynene DEF-PL-NOUN øye
 
 ;; Irregulars from 'special-irr'
 budt PPART-V2 by

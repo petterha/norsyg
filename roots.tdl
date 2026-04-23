@@ -9,13 +9,13 @@ root := force-phrase-min &
                                CMP4.LINK arg4- ] ],
              NON-LOCAL.SLASH <> ] ].
 
-; root_const := pop-phrase &
-;   [ CONJ no-conj,
-;     SYNSEM [ LOCAL.CAT [ HEAD aux-verb,
-;                          STACK < >,
-;                          VBL synsem,
-; 			 C + ],
-; 	     MODIFIED notmod,
-;              NON-LOCAL.SLASH < [] > ] ].
+root_const := pop-phrase &
+  [ CONJ no-conj,
+    SYNSEM [ LOCAL.CAT [ HEAD aux-verb,
+                         STACK < >,
+                         VBL synsem,
+			 C + ],
+	     MODIFIED notmod,
+             NON-LOCAL.SLASH < [] > ] ].
 
 ; root_ij := interj-phrase.

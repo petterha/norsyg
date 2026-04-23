@@ -1,0 +1,235 @@
+;;; Hey, emacs(1), this is -*- Mode: TDL; Package: LKB; -*- got it?
+
+at-comp_rule := arg0e_gtr &
+ [ CONTEXT.RELS <! [ PRED 2cp ], [ PRED "subord_rel" ] !>,
+   FLAGS.TRIGGER "at-comp" ].
+
+inf-comp_rule := arg0e_gtr &
+ [ CONTEXT.RELS <! [ PRED inf+ ] !>,
+   FLAGS.TRIGGER "inf-comp" ].
+
+det-expl_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ ] !> ],
+   FLAGS.TRIGGER "det-expl" ].
+
+som_restr_relpron_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "rel-clause_rel" ] !> ],
+   FLAGS.TRIGGER "som_restr_relpron" ].
+
+hvilket_relpron_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "rel-clause-s_rel" ] !> ],
+   FLAGS.TRIGGER "hvilket_relpron" ].
+
+enn_rel_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "rel-clause-s_rel" ] !> ],
+   FLAGS.TRIGGER "enn_rel" ].
+
+noe_som_relpron_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "rel-clause-s_rel" ] !> ],
+   FLAGS.TRIGGER "noe_som_relpron" ].
+
+ha-aux_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_ha_aux_rel" ] !> ],
+   FLAGS.TRIGGER "ha-aux" ].
+
+burde-aux1_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_burde_aux_rel",
+		       ARG0.E.TENSE infin-pres ] !> ],
+   FLAGS.TRIGGER "burde-aux1" ].
+
+burde-aux2_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_burde_aux_rel",
+		       ARG0.E.TENSE pret-perf ] !> ],
+   FLAGS.TRIGGER "burde-aux2" ].
+
+kunne-aux1_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_kunne_aux_rel",
+		       ARG0.E.TENSE infin-pres ] !> ],
+   FLAGS.TRIGGER "kunne-aux1" ].
+
+kunne-aux2_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_kunne_aux_rel",
+		       ARG0.E.TENSE pret-perf ] !> ],
+   FLAGS.TRIGGER "kunne-aux2" ].
+
+måtte-aux1_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_måtte_aux_rel",
+		       ARG0.E.TENSE infin-pres ] !> ],
+   FLAGS.TRIGGER "måtte-aux1" ].
+
+måtte-aux2_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_måtte_aux_rel",
+		       ARG0.E.TENSE pret-perf ] !> ],
+   FLAGS.TRIGGER "måtte-aux2" ].
+
+skulle-aux1_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_skulle_aux_rel",
+		       ARG0.E.TENSE infin-pres ] !> ],
+   FLAGS.TRIGGER "skulle-aux1" ].
+
+skulle-aux2_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_skulle_aux_rel",
+		       ARG0.E.TENSE pret-perf ] !> ],
+   FLAGS.TRIGGER "skulle-aux2" ].
+
+ville-aux1_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_ville_aux_rel",
+		       ARG0.E.TENSE infin-pres ] !> ],
+   FLAGS.TRIGGER "ville-aux1" ].
+
+ville-aux2_rule := arg0e_gtr &
+ [ CONTEXT [ RELS <! [ PRED "_ville_aux_rel",
+		       ARG0.E.TENSE pret-perf ] !> ],
+   FLAGS.TRIGGER "ville-aux2" ].
+
+start_rule := generator_rule &
+ [ CONTEXT [ RELS <! [ ] !> ],
+   FLAGS.TRIGGER "start-punct" ].
+
+de-d1_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED dem-or-def_q_rel,
+		      ARG0.PNG.PN pl ] !>,
+    FLAGS.TRIGGER "de-d1" ].
+
+den-d1_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED dem-or-def_q_rel,
+		      ARG0.PNG [ PN sg,
+				 GEN comm ] ] !>,
+    FLAGS.TRIGGER "den-d1" ].
+
+det_q_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED dem-or-def_q_rel,
+		      ARG0.PNG [ PN sg,
+				 GEN neut ] ] !>,
+    FLAGS.TRIGGER "det_q" ].
+
+hvilke_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED _hvilken_q_rel,
+		      ARG0.PNG.PN pl ] !>,
+    FLAGS.TRIGGER "hvilke_q" ].
+
+hvilken_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED _hvilken_q_rel,
+		      ARG0.PNG [ PN sg,
+				 GEN comm ] ] !>,
+    FLAGS.TRIGGER "hvilken_q" ].
+
+hvilket_q_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED _hvilken_q_rel,
+		      ARG0.PNG [ PN sg,
+				 GEN neut ] ] !>,
+    FLAGS.TRIGGER "hvilket_q" ].
+
+denne_q_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED demonstr_q_rel,
+		      ARG0.PNG [ PN sg,
+				 GEN comm ] ] !>,
+    FLAGS.TRIGGER "denne_q" ].
+
+dette_q_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED demonstr_q_rel,
+		      ARG0.PNG [ PN sg,
+				 GEN neut ] ] !>,
+    FLAGS.TRIGGER "dette_q" ].
+
+disse_q_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED demonstr_q_rel,
+		      ARG0.PNG.PN pl ] !>,
+    FLAGS.TRIGGER "disse_q" ].
+
+jeg-np_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED pron_rel ] !>,
+    FLAGS.TRIGGER "jeg-np" ].
+
+all_q_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED _all_q_rel,
+		      ARG0.PNG [ PN sg,
+				 GEN comm ] ] !>,
+    FLAGS.TRIGGER "all_q" ].
+
+alt_q_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED _all_q_rel,
+		      ARG0.PNG [ PN sg,
+				 GEN neut ] ] !>,
+    FLAGS.TRIGGER "alt_q" ].
+    
+alle_q_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED _all_q_rel,
+		      ARG0.PNG [ PN pl ] ] !>,
+    FLAGS.TRIGGER "alle_q" ].
+
+meg-refl_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED refl,
+		      ARG1.PNG.PN  1sg ] !>,
+    FLAGS.TRIGGER "meg-refl" ].
+
+deg-refl_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED refl,
+		      ARG1.PNG.PN  2sg ] !>,
+    FLAGS.TRIGGER "deg-refl" ].
+
+oss-refl_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED refl,
+		      ARG1.PNG.PN  1pl ] !>,
+    FLAGS.TRIGGER "oss-refl" ].
+
+dere-refl_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED refl,
+		      ARG1.PNG.PN  2pl ] !>,
+    FLAGS.TRIGGER "dere-refl" ].
+
+seg-refl_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED refl,
+		      ARG1.PNG.PN  3p ] !>,
+    FLAGS.TRIGGER "seg-refl" ].
+
+
+god_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED god_prd ] !>,
+    FLAGS.TRIGGER "god_a" ].
+
+ansvarlig_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED ansvarlig_prd ] !>,
+    FLAGS.TRIGGER "ansvarlig_a" ].
+
+dårlig_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED dårlig_prd ] !>,
+    FLAGS.TRIGGER "dårlig_a" ].
+
+egnet_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED egnet_prd ] !>,
+    FLAGS.TRIGGER "egnet_a" ].
+
+ferdig_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED ferdig_prd ] !>,
+    FLAGS.TRIGGER "ferdig_a" ].
+
+flink_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED flink_prd ] !>,
+    FLAGS.TRIGGER "flink_a" ].
+
+forskjellig_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED forskjellig_prd ] !>,
+    FLAGS.TRIGGER "forskjellig_a" ].
+
+glad_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED glad_prd ] !>,
+    FLAGS.TRIGGER "glad_a" ].
+
+kjent_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED kjent_prd ] !>,
+    FLAGS.TRIGGER "kjent_a" ].
+
+klar_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED klar_prd ] !>,
+    FLAGS.TRIGGER "klar_a" ].
+
+rolig_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED rolig_prd ] !>,
+    FLAGS.TRIGGER "rolig_a" ].
+
+
+gjøre_v_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED vrb+ ] !>,
+    FLAGS.TRIGGER "gjøre_v" ].
+

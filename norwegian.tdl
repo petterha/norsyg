@@ -14,7 +14,11 @@
 
 :include "matrix".
 :include "nor".
+:include "preds-small".
 :include "preds".
+:include "wn-small".
+:include "wn".
+:include "ground".
 :include "infl-codes".
 :include "tmt.tdl".
 :include "unknown".

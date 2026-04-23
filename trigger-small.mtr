@@ -103,6 +103,23 @@ det_q_rule := generator_rule &
 				 GEN neut ] ] !>,
     FLAGS.TRIGGER "det_q" ].
 
+hvilke_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED _hvilken_q_rel,
+		      ARG0.PNG.PN pl ] !>,
+    FLAGS.TRIGGER "hvilke_q" ].
+
+hvilken_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED _hvilken_q_rel,
+		      ARG0.PNG [ PN sg,
+				 GEN comm ] ] !>,
+    FLAGS.TRIGGER "hvilken_q" ].
+
+hvilket_q_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED _hvilken_q_rel,
+		      ARG0.PNG [ PN sg,
+				 GEN neut ] ] !>,
+    FLAGS.TRIGGER "hvilket_q" ].
+
 denne_q_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED demonstr_q_rel,
 		      ARG0.PNG [ PN sg,
@@ -140,9 +157,89 @@ alle_q_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _all_q_rel,
 		      ARG0.PNG [ PN pl ] ] !>,
     FLAGS.TRIGGER "alle_q" ].
+
+meg-refl_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED refl,
+		      ARG1.PNG.PN  1sg ] !>,
+    FLAGS.TRIGGER "meg-refl" ].
+
+deg-refl_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED refl,
+		      ARG1.PNG.PN  2sg ] !>,
+    FLAGS.TRIGGER "deg-refl" ].
+
+oss-refl_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED refl,
+		      ARG1.PNG.PN  1pl ] !>,
+    FLAGS.TRIGGER "oss-refl" ].
+
+dere-refl_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED refl,
+		      ARG1.PNG.PN  2pl ] !>,
+    FLAGS.TRIGGER "dere-refl" ].
+
+seg-refl_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED refl,
+		      ARG1.PNG.PN  3p ] !>,
+    FLAGS.TRIGGER "seg-refl" ].
+
+
+god_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED god_prd ] !>,
+    FLAGS.TRIGGER "god_a" ].
+
+ansvarlig_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED ansvarlig_prd ] !>,
+    FLAGS.TRIGGER "ansvarlig_a" ].
+
+dårlig_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED dårlig_prd ] !>,
+    FLAGS.TRIGGER "dårlig_a" ].
+
+egnet_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED egnet_prd ] !>,
+    FLAGS.TRIGGER "egnet_a" ].
+
+ferdig_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED ferdig_prd ] !>,
+    FLAGS.TRIGGER "ferdig_a" ].
+
+flink_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED flink_prd ] !>,
+    FLAGS.TRIGGER "flink_a" ].
+
+forskjellig_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED forskjellig_prd ] !>,
+    FLAGS.TRIGGER "forskjellig_a" ].
+
+glad_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED glad_prd ] !>,
+    FLAGS.TRIGGER "glad_a" ].
+
+kjent_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED kjent_prd ] !>,
+    FLAGS.TRIGGER "kjent_a" ].
+
+klar_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED klar_prd ] !>,
+    FLAGS.TRIGGER "klar_a" ].
+
+rolig_adj_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED rolig_prd ] !>,
+    FLAGS.TRIGGER "rolig_a" ].
+
+
+gjøre_v_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED vrb+ ] !>,
+    FLAGS.TRIGGER "gjøre_v" ].
+
 uten_prp_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED uten_prp ] !>,
     FLAGS.TRIGGER "uten_prp" ].
+
+slipp-n-neut_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED slipp_prd ] !>,
+    FLAGS.TRIGGER "slipp-n-neut" ].
 
 solsiden_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "SOLSIDEN" ] !>,
@@ -187,6 +284,10 @@ trettifire-card_rule := card_rule &
 kul_a_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_kul_a_rel" ] !>,
     FLAGS.TRIGGER "kul_a" ].
+
+liv-n-neut_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED liv_prd ] !>,
+    FLAGS.TRIGGER "liv-n-neut" ].
 
 tiltrenge_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED tiltrenge_v ] !>,
@@ -267,6 +368,10 @@ siktevarde-n-masc_rule := generator_rule &
 Sognefjeldet_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Sognefjeldet" ] !>,
     FLAGS.TRIGGER "Sognefjeldet_pn" ].
+
+avstand-n-masc_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED avstand_prd ] !>,
+    FLAGS.TRIGGER "avstand-n-masc" ].
 
 Asia_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Asia" ] !>,
@@ -371,6 +476,10 @@ Svarttjørna_pn_rule := pn_rule &
 Tussetind_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Tussetind" ] !>,
     FLAGS.TRIGGER "Tussetind_pn" ].
+
+Andersen_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Andersen" ] !>,
+    FLAGS.TRIGGER "Andersen_pn" ].
 
 kaffe-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_kaffe_n_rel" ] !>,
@@ -612,6 +721,10 @@ på_prt_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED på_prt ] !>,
     FLAGS.TRIGGER "på_prt" ].
 
+Ingrid_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Ingrid" ] !>,
+    FLAGS.TRIGGER "Ingrid_pn" ].
+
 Skogadalsbreen_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Skogadalsbreen" ] !>,
     FLAGS.TRIGGER "Skogadalsbreen_pn" ].
@@ -764,9 +877,9 @@ Piggrovi_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Piggrovi" ] !>,
     FLAGS.TRIGGER "Piggrovi_pn" ].
 
-internett-n-neut_rule := generator_rule &
-  [ CONTEXT.RELS <! [ PRED "_internett_n_rel" ] !>,
-    FLAGS.TRIGGER "internett-n-neut" ].
+Henrik_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Henrik" ] !>,
+    FLAGS.TRIGGER "Henrik_pn" ].
 
 fangstanlegg-n-neut_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_fangstanlegg_n_rel" ] !>,
@@ -783,6 +896,10 @@ eventuell_a_rule := generator_rule &
 gjelde_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_gjelde_12_rel" ] !>,
     FLAGS.TRIGGER "gjelde_v" ].
+
+Martin_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Martin" ] !>,
+    FLAGS.TRIGGER "Martin_pn" ].
 
 Geithø_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Geithø" ] !>,
@@ -803,6 +920,10 @@ februar-n-masc_rule := generator_rule &
 idé-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_idé_n_rel" ] !>,
     FLAGS.TRIGGER "idé-n-masc" ].
+
+Torkjell_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Torkjell" ] !>,
+    FLAGS.TRIGGER "Torkjell_pn" ].
 
 snill_a_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_snill_a_rel" ] !>,
@@ -996,9 +1117,9 @@ Granfasta_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Granfasta" ] !>,
     FLAGS.TRIGGER "Granfasta_pn" ].
 
-plan-n-neut_rule := generator_rule &
-  [ CONTEXT.RELS <! [ PRED plan_prd ] !>,
-    FLAGS.TRIGGER "plan-n-neut" ].
+tjueåtte-card_rule := card_rule &
+  [ CONTEXT.RELS <! [ CARG "28_rel" ] !>,
+    FLAGS.TRIGGER "tjueåtte-card" ].
 
 ytre_a_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_ytre_a_rel" ] !>,
@@ -1092,6 +1213,10 @@ steinvarde-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_steinvarde_n_rel" ] !>,
     FLAGS.TRIGGER "steinvarde-n-masc" ].
 
+kne-n-neut_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED kne_prd ] !>,
+    FLAGS.TRIGGER "kne-n-neut" ].
+
 samt_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_samt_c_rel" ] !>,
     FLAGS.TRIGGER "samt" ].
@@ -1144,10 +1269,6 @@ skrive_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED skrive_v ] !>,
     FLAGS.TRIGGER "skrive_v" ].
 
-trollheimen_pn_rule := pn_rule &
-  [ CONTEXT.RELS <! [ CARG "Trollheimen" ] !>,
-    FLAGS.TRIGGER "trollheimen_pn" ].
-
 dr-livingstone_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "DR LIVINGSTONE" ] !>,
     FLAGS.TRIGGER "dr-livingstone_pn" ].
@@ -1172,6 +1293,10 @@ forrige-card-adv_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "forrige_a_rel" ] !>,
     FLAGS.TRIGGER "forrige-card-adv" ].
 
+feil-n-masc_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED feil_prd ] !>,
+    FLAGS.TRIGGER "feil-n-masc" ].
+
 velkommen-word_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED velkommen_v ] !>,
     FLAGS.TRIGGER "velkommen-word" ].
@@ -1192,9 +1317,17 @@ brunt-n-neut_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_brunt_n_rel" ] !>,
     FLAGS.TRIGGER "brunt-n-neut" ].
 
+Leif_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Leif" ] !>,
+    FLAGS.TRIGGER "Leif_pn" ].
+
 merke_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED merke_v ] !>,
     FLAGS.TRIGGER "merke_v" ].
+
+Erling_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Erling" ] !>,
+    FLAGS.TRIGGER "Erling_pn" ].
 
 stole_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED stole_v ] !>,
@@ -1251,6 +1384,10 @@ dronningens-gate_pn_rule := pn_rule &
 bretarm-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_bretarm_n_rel" ] !>,
     FLAGS.TRIGGER "bretarm-n-masc" ].
+
+være_v_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED være_v ] !>,
+    FLAGS.TRIGGER "være_v" ].
 
 sak-n-comm_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_sak_n_rel" ] !>,
@@ -1316,6 +1453,10 @@ tørke_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED tørke_v ] !>,
     FLAGS.TRIGGER "tørke_v" ].
 
+Wergeland_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Wergeland" ] !>,
+    FLAGS.TRIGGER "Wergeland_pn" ].
+
 Skagastølstind_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Skagastølstind" ] !>,
     FLAGS.TRIGGER "Skagastølstind_pn" ].
@@ -1356,17 +1497,13 @@ Einar_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Einar" ] !>,
     FLAGS.TRIGGER "Einar_pn" ].
 
-Øystre_pn_rule := pn_rule &
-  [ CONTEXT.RELS <! [ CARG "Øystre" ] !>,
-    FLAGS.TRIGGER "Øystre_pn" ].
+SV_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "SV" ] !>,
+    FLAGS.TRIGGER "SV_pn" ].
 
 ifølge-adv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_ifølge_a_rel" ] !>,
     FLAGS.TRIGGER "ifølge-adv" ].
-
-sted-n-neut_rule := generator_rule &
-  [ CONTEXT.RELS <! [ PRED "_sted_n_rel" ] !>,
-    FLAGS.TRIGGER "sted-n-neut" ].
 
 så_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_så_c_rel" ] !>,
@@ -1387,10 +1524,6 @@ norsk_a_rule := generator_rule &
 bjeffe_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED bjeffe_v ] !>,
     FLAGS.TRIGGER "bjeffe_v" ].
-
-bye-n-comm_rule := generator_rule &
-  [ CONTEXT.RELS <! [ PRED "_bye_n_rel" ] !>,
-    FLAGS.TRIGGER "bye-n-comm" ].
 
 hvis_cadv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _hvis_x_rel ] !>,
@@ -1424,9 +1557,9 @@ Skarvheimen_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Skarvheimen" ] !>,
     FLAGS.TRIGGER "Skarvheimen_pn" ].
 
-Torill_pn_rule := pn_rule &
-  [ CONTEXT.RELS <! [ CARG "Torill" ] !>,
-    FLAGS.TRIGGER "Torill_pn" ].
+windows_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Windows" ] !>,
+    FLAGS.TRIGGER "windows_pn" ].
 
 vi-np_rule := generator_rule &
   [ CONTEXT.RELS <! pronoun-relation !>,
@@ -1552,6 +1685,10 @@ student-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ CARG "åttende_rel" ] !>,
     FLAGS.TRIGGER "åttende-card" ].
 
+Øystre_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Øystre" ] !>,
+    FLAGS.TRIGGER "Øystre_pn" ].
+
 fjellutstyr-n-neut_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_fjellutstyr_n_rel" ] !>,
     FLAGS.TRIGGER "fjellutstyr-n-neut" ].
@@ -1627,6 +1764,10 @@ legge_v_rule := generator_rule &
 over_prt_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED over_prt ] !>,
     FLAGS.TRIGGER "over_prt" ].
+
+Else_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Else" ] !>,
+    FLAGS.TRIGGER "Else_pn" ].
 
 nittifjerde-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "94-def_rel" ] !>,
@@ -1719,6 +1860,10 @@ tykkes_v_rule := generator_rule &
 Vennistøldalen_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Vennistøldalen" ] !>,
     FLAGS.TRIGGER "Vennistøldalen_pn" ].
+
+bye-n-comm_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED "_qqqqq_n_rel" ] !>,
+    FLAGS.TRIGGER "bye-n-comm" ].
 
 thomas-angells-gate_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "THOMAS ANGELLS GATE" ] !>,
@@ -1835,6 +1980,10 @@ om_cadv_rule := generator_rule &
 Høgevagltindar_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Høgevagltindar" ] !>,
     FLAGS.TRIGGER "Høgevagltindar_pn" ].
+
+lag_prt_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED lag_prt ] !>,
+    FLAGS.TRIGGER "lag_prt" ].
 
 bytte_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED bytte_v ] !>,
@@ -2132,9 +2281,9 @@ glede_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED glede_v ] !>,
     FLAGS.TRIGGER "glede_v" ].
 
-hyphen_rule := generator_rule &
-  [ CONTEXT.RELS <! [ PRED "hyphen_rel" ] !>,
-    FLAGS.TRIGGER "hyphen" ].
+Sogn-og-Fjordane_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Sogn-og-Fjordane" ] !>,
+    FLAGS.TRIGGER "Sogn-og-Fjordane_pn" ].
 
 fru-lundgreen_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "FRU LUNDGREN" ] !>,
@@ -2260,9 +2409,9 @@ mikroprogram-n-neut_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_mikroprogram_n_rel" ] !>,
     FLAGS.TRIGGER "mikroprogram-n-neut" ].
 
-unne_v_rule := generator_rule &
-  [ CONTEXT.RELS <! [ PRED unne_v ] !>,
-    FLAGS.TRIGGER "unne_v" ].
+sted-n-neut_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED sted_prd ] !>,
+    FLAGS.TRIGGER "sted-n-neut" ].
 
 syttiniende-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "79-def_rel" ] !>,
@@ -2344,6 +2493,10 @@ plan_a_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_plan_a_rel" ] !>,
     FLAGS.TRIGGER "plan_a" ].
 
+Therese_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Therese" ] !>,
+    FLAGS.TRIGGER "Therese_pn" ].
+
 plen-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_plen_n_rel" ] !>,
     FLAGS.TRIGGER "plen-n-masc" ].
@@ -2400,13 +2553,13 @@ buldre_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED buldre_v ] !>,
     FLAGS.TRIGGER "buldre_v" ].
 
-gjøre_v_rule := generator_rule &
-  [ CONTEXT.RELS <! [ PRED gjøre_v ] !>,
-    FLAGS.TRIGGER "gjøre_v" ].
-
 Leirbreen_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Leirbreen" ] !>,
     FLAGS.TRIGGER "Leirbreen_pn" ].
+
+ord-n-neut_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED ord_prd ] !>,
+    FLAGS.TRIGGER "ord-n-neut" ].
 
 nå_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED nå_v ] !>,
@@ -2419,6 +2572,10 @@ tilbake_adv_rule := generator_rule &
 derfor-sadv-mod_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_derfor_mod_rel" ] !>,
     FLAGS.TRIGGER "derfor-sadv-mod" ].
+
+Fjordane_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Fjordane" ] !>,
+    FLAGS.TRIGGER "Fjordane_pn" ].
 
 femtifemte-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "55-def_rel" ] !>,
@@ -2451,6 +2608,10 @@ storfuru-n-comm_rule := generator_rule &
 TV-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_TV_n_rel" ] !>,
     FLAGS.TRIGGER "TV-n-masc" ].
+
+Nina_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Nina" ] !>,
+    FLAGS.TRIGGER "Nina_pn" ].
 
 koselig_a_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_koselig_a_rel" ] !>,
@@ -2492,9 +2653,9 @@ overfor_prp_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED overfor_prp ] !>,
     FLAGS.TRIGGER "overfor_prp" ].
 
-hovedrute-n-comm_rule := generator_rule &
-  [ CONTEXT.RELS <! [ PRED "_hovedrute_n_rel" ] !>,
-    FLAGS.TRIGGER "hovedrute-n-comm" ].
+nevne_v_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED nevne_v ] !>,
+    FLAGS.TRIGGER "nevne_v" ].
 
 skogadalbøen_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Skogadalbøen" ] !>,
@@ -2503,6 +2664,10 @@ skogadalbøen_pn_rule := pn_rule &
 i_adv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _i_adv_rel ] !>,
     FLAGS.TRIGGER "i_adv" ].
+
+øye-n-neut_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED øye_prd ] !>,
+    FLAGS.TRIGGER "øye-n-neut" ].
 
 verden-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_verden_n_rel" ] !>,
@@ -2519,6 +2684,10 @@ Vølohornet_pn_rule := pn_rule &
 arbeide-n-neut_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_arbeide_n_rel" ] !>,
     FLAGS.TRIGGER "arbeide-n-neut" ].
+
+lodd-n-neut_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED lodd_prd ] !>,
+    FLAGS.TRIGGER "lodd-n-neut" ].
 
 harry_a_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_harry_a_rel" ] !>,
@@ -2644,6 +2813,10 @@ Hestevollen_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Hestevollen" ] !>,
     FLAGS.TRIGGER "Hestevollen_pn" ].
 
+følge-n-masc_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED følge_prd ] !>,
+    FLAGS.TRIGGER "følge-n-masc" ].
+
 innenlands_adv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _innenlands_adv_rel ] !>,
     FLAGS.TRIGGER "innenlands_adv" ].
@@ -2696,10 +2869,6 @@ Simledalsbandet_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Simledalsbandet" ] !>,
     FLAGS.TRIGGER "Simledalsbandet_pn" ].
 
-tak-n-neut_rule := generator_rule &
-  [ CONTEXT.RELS <! [ PRED "_tak_n_rel" ] !>,
-    FLAGS.TRIGGER "tak-n-neut" ].
-
 trettito-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "32_rel" ] !>,
     FLAGS.TRIGGER "trettito-card" ].
@@ -2716,6 +2885,10 @@ ingen_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _ingen_q_rel ] !>,
     FLAGS.TRIGGER "ingen" ].
 
+følge-n-neut_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED følge_prd ] !>,
+    FLAGS.TRIGGER "følge-n-neut" ].
+
 avhenge_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED avhenge_v ] !>,
     FLAGS.TRIGGER "avhenge_v" ].
@@ -2724,9 +2897,9 @@ i_prp_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED i_prp ] !>,
     FLAGS.TRIGGER "i_prp" ].
 
-fire-card_rule := card_rule &
-  [ CONTEXT.RELS <! [ CARG "4_card_rel" ] !>,
-    FLAGS.TRIGGER "fire-card" ].
+erichsen_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Erichsen" ] !>,
+    FLAGS.TRIGGER "erichsen_pn" ].
 
 fisk-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_fisk_n_rel" ] !>,
@@ -2772,6 +2945,10 @@ utleiehytte-n-comm_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_utleiehytte_n_rel" ] !>,
     FLAGS.TRIGGER "utleiehytte-n-comm" ].
 
+Petter_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Petter" ] !>,
+    FLAGS.TRIGGER "Petter_pn" ].
+
 tømmerhytte-n-comm_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_tømmerhytte_n_rel" ] !>,
     FLAGS.TRIGGER "tømmerhytte-n-comm" ].
@@ -2811,6 +2988,10 @@ førtito-card_rule := card_rule &
 totusenmeter-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_totusenmeter_n_rel" ] !>,
     FLAGS.TRIGGER "totusenmeter-n-masc" ].
+
+Fredrik_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Fredrik" ] !>,
+    FLAGS.TRIGGER "Fredrik_pn" ].
 
 sum-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_sum_n_rel" ] !>,
@@ -3028,6 +3209,10 @@ Utladalsjuvet_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Utladalsjuvet" ] !>,
     FLAGS.TRIGGER "Utladalsjuvet_pn" ].
 
+Finnmark_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Finnmark" ] !>,
+    FLAGS.TRIGGER "Finnmark_pn" ].
+
 Sandelvbrean_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Sandelvbrean" ] !>,
     FLAGS.TRIGGER "Sandelvbrean_pn" ].
@@ -3087,6 +3272,10 @@ inne_adv_rule := generator_rule &
 bygdin_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Bygdin" ] !>,
     FLAGS.TRIGGER "bygdin_pn" ].
+
+nummer-n-neut_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED nummer_prd ] !>,
+    FLAGS.TRIGGER "nummer-n-neut" ].
 
 byhaven_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Byhaven" ] !>,
@@ -3200,10 +3389,6 @@ Schelderup_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Schelderup" ] !>,
     FLAGS.TRIGGER "Schelderup_pn" ].
 
-noenting-np_rule := generator_rule &
-  [ CONTEXT.RELS <! pronoun-relation !>,
-    FLAGS.TRIGGER "noenting-np" ].
-
 adkomstmulighet-n-comm_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_adkomstmulighet_n_rel" ] !>,
     FLAGS.TRIGGER "adkomstmulighet-n-comm" ].
@@ -3235,6 +3420,10 @@ Magnar_pn_rule := pn_rule &
 åttiseks-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "86_rel" ] !>,
     FLAGS.TRIGGER "åttiseks-card" ].
+
+fyr-n-neut_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED fyr_prd ] !>,
+    FLAGS.TRIGGER "fyr-n-neut" ].
 
 def-annen-da_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_annen_da_rel" ] !>,
@@ -3284,6 +3473,10 @@ noensteds_adv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _noensteds_adv_rel ] !>,
     FLAGS.TRIGGER "noensteds_adv" ].
 
+EU_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "EU" ] !>,
+    FLAGS.TRIGGER "EU_pn" ].
+
 sommersesong-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_sommersesong_n_rel" ] !>,
     FLAGS.TRIGGER "sommersesong-n-masc" ].
@@ -3304,6 +3497,10 @@ Styggehø_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Styggehø" ] !>,
     FLAGS.TRIGGER "Styggehø_pn" ].
 
+Charlotte_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Charlotte" ] !>,
+    FLAGS.TRIGGER "Charlotte_pn" ].
+
 norsk-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_norsk_n_rel" ] !>,
     FLAGS.TRIGGER "norsk-n-masc" ].
@@ -3319,6 +3516,14 @@ det*at_cadv_rule := generator_rule &
 tjuesjette-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "26-def_rel" ] !>,
     FLAGS.TRIGGER "tjuesjette-card" ].
+
+lag-n-neut_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED lag_prd ] !>,
+    FLAGS.TRIGGER "lag-n-neut" ].
+
+Agder_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Agder" ] !>,
+    FLAGS.TRIGGER "Agder_pn" ].
 
 selv_degadv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED selv_prd ] !>,
@@ -3363,6 +3568,10 @@ Semelhol-tjønnet_pn_rule := pn_rule &
 anta_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED anta_v ] !>,
     FLAGS.TRIGGER "anta_v" ].
+
+Ola_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Ola" ] !>,
+    FLAGS.TRIGGER "Ola_pn" ].
 
 allerede_degadv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED allerede_prd ] !>,
@@ -3452,6 +3661,10 @@ syttiåttende-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "78-def_rel" ] !>,
     FLAGS.TRIGGER "syttiåttende-card" ].
 
+Kim_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Kim" ] !>,
+    FLAGS.TRIGGER "Kim_pn" ].
+
 høy_a_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_høy_a_rel" ] !>,
     FLAGS.TRIGGER "høy_a" ].
@@ -3467,6 +3680,10 @@ ide-n-masc_rule := generator_rule &
 løfte_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED løfte_v ] !>,
     FLAGS.TRIGGER "løfte_v" ].
+
+Harald_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Harald" ] !>,
+    FLAGS.TRIGGER "Harald_pn" ].
 
 stol-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_stol_n_rel" ] !>,
@@ -3612,6 +3829,10 @@ resultat-n-neut_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_resultat_n_rel" ] !>,
     FLAGS.TRIGGER "resultat-n-neut" ].
 
+Ragnhild_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Ragnhild" ] !>,
+    FLAGS.TRIGGER "Ragnhild_pn" ].
+
 dekke_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED dekke_v ] !>,
     FLAGS.TRIGGER "dekke_v" ].
@@ -3628,6 +3849,10 @@ dresse_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED dresse_v ] !>,
     FLAGS.TRIGGER "dresse_v" ].
 
+overnattingsrekord-n-masc_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED "_overnattingsrekord_n_rel" ] !>,
+    FLAGS.TRIGGER "overnattingsrekord-n-masc" ].
+
 Aasmund_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Aasmund" ] !>,
     FLAGS.TRIGGER "Aasmund_pn" ].
@@ -3639,6 +3864,10 @@ Ekrehytta_pn_rule := pn_rule &
 gjendesheim_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Gjendesheim" ] !>,
     FLAGS.TRIGGER "gjendesheim_pn" ].
+
+sjanse-n-masc_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED sjanse_prd ] !>,
+    FLAGS.TRIGGER "sjanse-n-masc" ].
 
 flere_q_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _flere_q_rel ] !>,
@@ -3667,6 +3896,10 @@ ferdig_prt_rule := generator_rule &
 så_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED så_v ] !>,
     FLAGS.TRIGGER "så_v" ].
+
+gøyal_a_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED "_gøyal_a_rel" ] !>,
+    FLAGS.TRIGGER "gøyal_a" ].
 
 hjemmeside-n-comm_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_hjemmeside_n_rel" ] !>,
@@ -3723,6 +3956,10 @@ rekke_v_rule := generator_rule &
 ca_degadv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED ca_prd ] !>,
     FLAGS.TRIGGER "ca_degadv" ].
+
+pust-n-neut_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED pust_prd ] !>,
+    FLAGS.TRIGGER "pust-n-neut" ].
 
 halvannet_q_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _halvannen_q_rel ] !>,
@@ -3800,9 +4037,9 @@ uansett_prp_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED uansett_prp ] !>,
     FLAGS.TRIGGER "uansett_prp" ].
 
-DNT-lås_pn_rule := pn_rule &
-  [ CONTEXT.RELS <! [ CARG "DNT-lås" ] !>,
-    FLAGS.TRIGGER "DNT-lås_pn" ].
+Jessie_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Jessie" ] !>,
+    FLAGS.TRIGGER "Jessie_pn" ].
 
 sånn_degadv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED sånn_prd ] !>,
@@ -3856,6 +4093,10 @@ fjellbruk-n-neut_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_fjellbruk_n_rel" ] !>,
     FLAGS.TRIGGER "fjellbruk-n-neut" ].
 
+Magnus_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Magnus" ] !>,
+    FLAGS.TRIGGER "Magnus_pn" ].
+
 Murane_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Murane" ] !>,
     FLAGS.TRIGGER "Murane_pn" ].
@@ -3900,6 +4141,10 @@ også_adv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _også_adv_rel ] !>,
     FLAGS.TRIGGER "også_adv" ].
 
+Per_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Per" ] !>,
+    FLAGS.TRIGGER "Per_pn" ].
+
 melk-n-fem_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_melk_n_rel" ] !>,
     FLAGS.TRIGGER "melk-n-fem" ].
@@ -3931,6 +4176,10 @@ femtiseks-card_rule := card_rule &
 Dyrehaugsryggen_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Dyrehaugsryggen" ] !>,
     FLAGS.TRIGGER "Dyrehaugsryggen_pn" ].
+
+Åge_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Åge" ] !>,
+    FLAGS.TRIGGER "Åge_pn" ].
 
 konstruere_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_konstruere_12_rel" ] !>,
@@ -4048,6 +4297,10 @@ godt_degadv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED godt_prd ] !>,
     FLAGS.TRIGGER "godt_degadv" ].
 
+kraft-n-fem_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED kraft_prd ] !>,
+    FLAGS.TRIGGER "kraft-n-fem" ].
+
 bord-n-neut_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_bord_n_rel" ] !>,
     FLAGS.TRIGGER "bord-n-neut" ].
@@ -4092,9 +4345,9 @@ ja-cont_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED ja_prd ] !>,
     FLAGS.TRIGGER "ja-cont" ].
 
-naturforhold-n-neut_rule := generator_rule &
-  [ CONTEXT.RELS <! [ PRED "_naturforhold_n_rel" ] !>,
-    FLAGS.TRIGGER "naturforhold-n-neut" ].
+internett-n-neut_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED "_internett_n_rel" ] !>,
+    FLAGS.TRIGGER "internett-n-neut" ].
 
 mindre_q_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _mindre_q_rel ] !>,
@@ -4196,6 +4449,10 @@ Vinjes_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Vinjes" ] !>,
     FLAGS.TRIGGER "Vinjes_pn" ].
 
+England_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "England" ] !>,
+    FLAGS.TRIGGER "England_pn" ].
+
 halve_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _halve_q_rel ] !>,
     FLAGS.TRIGGER "halve" ].
@@ -4232,6 +4489,10 @@ Harbardsbreen_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Harbardsbreen" ] !>,
     FLAGS.TRIGGER "Harbardsbreen_pn" ].
 
+Olav_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Olav" ] !>,
+    FLAGS.TRIGGER "Olav_pn" ].
+
 åttifem-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "85_rel" ] !>,
     FLAGS.TRIGGER "åttifem-card" ].
@@ -4264,6 +4525,10 @@ Rauhamrane_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Rauhamrane" ] !>,
     FLAGS.TRIGGER "Rauhamrane_pn" ].
 
+unne_v_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED unne_v ] !>,
+    FLAGS.TRIGGER "unne_v" ].
+
 Morka_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Morka" ] !>,
     FLAGS.TRIGGER "Morka_pn" ].
@@ -4295,6 +4560,10 @@ alltid_adv_rule := generator_rule &
 0-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "0" ] !>,
     FLAGS.TRIGGER "0-card" ].
+
+Ringdal_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Ringdal" ] !>,
+    FLAGS.TRIGGER "Ringdal_pn" ].
 
 nøytral_a_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_nøytral_a_rel" ] !>,
@@ -4368,6 +4637,10 @@ lørdag-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _lørdag_n_rel ] !>,
     FLAGS.TRIGGER "lørdag-n-masc" ].
 
+merke-n-neut_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED merke_prd ] !>,
+    FLAGS.TRIGGER "merke-n-neut" ].
+
 overraskelse-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_overraskelse_n_rel" ] !>,
     FLAGS.TRIGGER "overraskelse-n-masc" ].
@@ -4432,6 +4705,10 @@ syv-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "7_card_rel" ] !>,
     FLAGS.TRIGGER "syv-card" ].
 
+Kari_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Kari" ] !>,
+    FLAGS.TRIGGER "Kari_pn" ].
+
 forrige-indef-sg_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_forrige_da_rel" ] !>,
     FLAGS.TRIGGER "forrige-indef-sg" ].
@@ -4451,6 +4728,10 @@ Grønevatnet_pn_rule := pn_rule &
 Holåtinder_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Holåtinder" ] !>,
     FLAGS.TRIGGER "Holåtinder_pn" ].
+
+Rudi_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Rudi" ] !>,
+    FLAGS.TRIGGER "Rudi_pn" ].
 
 egentlig_a_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_egentlig_a_rel" ] !>,
@@ -4628,6 +4909,10 @@ verdsette_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED verdsette_v ] !>,
     FLAGS.TRIGGER "verdsette_v" ].
 
+vare-n-fem_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED vare_prd ] !>,
+    FLAGS.TRIGGER "vare-n-fem" ].
+
 sikkert_sadv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _sikkert_sadv_rel ] !>,
     FLAGS.TRIGGER "sikkert_sadv" ].
@@ -4635,6 +4920,10 @@ sikkert_sadv_rule := generator_rule &
 Bitihorn_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Bitihorn" ] !>,
     FLAGS.TRIGGER "Bitihorn_pn" ].
+
+pust-n-masc_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED pust_prd ] !>,
+    FLAGS.TRIGGER "pust-n-masc" ].
 
 mach_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Mach" ] !>,
@@ -4728,6 +5017,10 @@ fremre_adj_komp_word_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_fremre_adj_rel" ] !>,
     FLAGS.TRIGGER "fremre_adj_komp_word" ].
 
+Nord_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Nord" ] !>,
+    FLAGS.TRIGGER "Nord_pn" ].
+
 april-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _april_n_rel ] !>,
     FLAGS.TRIGGER "april-n-masc" ].
@@ -4735,6 +5028,10 @@ april-n-masc_rule := generator_rule &
 ingjerdbu_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Ingjerdbu" ] !>,
     FLAGS.TRIGGER "ingjerdbu_pn" ].
+
+fyr-n-masc_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED fyr_prd ] !>,
+    FLAGS.TRIGGER "fyr-n-masc" ].
 
 Turistsenter_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Turistsenter" ] !>,
@@ -4788,6 +5085,10 @@ postvei-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_postvei_n_rel" ] !>,
     FLAGS.TRIGGER "postvei-n-masc" ].
 
+Trondheim-Filmklubb_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Trondheim Filmklubb" ] !>,
+    FLAGS.TRIGGER "Trondheim-Filmklubb_pn" ].
+
 dukke-n-fem_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_dukke_n_rel" ] !>,
     FLAGS.TRIGGER "dukke-n-fem" ].
@@ -4816,6 +5117,10 @@ lauritz_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "LAURITZ" ] !>,
     FLAGS.TRIGGER "lauritz_pn" ].
 
+Trollheimen_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Trollheimen" ] !>,
+    FLAGS.TRIGGER "Trollheimen_pn" ].
+
 ved-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_ved_n_rel" ] !>,
     FLAGS.TRIGGER "ved-n-masc" ].
@@ -4836,9 +5141,13 @@ hevde_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED hevde_v ] !>,
     FLAGS.TRIGGER "hevde_v" ].
 
-overnattingsrekord-n-masc_rule := generator_rule &
-  [ CONTEXT.RELS <! [ PRED "_overnattingsrekord_n_rel" ] !>,
-    FLAGS.TRIGGER "overnattingsrekord-n-masc" ].
+Lars_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Lars" ] !>,
+    FLAGS.TRIGGER "Lars_pn" ].
+
+Tromsø_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Tromsø" ] !>,
+    FLAGS.TRIGGER "Tromsø_pn" ].
 
 Berteau_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Berteau" ] !>,
@@ -5016,6 +5325,10 @@ tolvte-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "tolvte_rel" ] !>,
     FLAGS.TRIGGER "tolvte-card" ].
 
+Moria_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Moria" ] !>,
+    FLAGS.TRIGGER "Moria_pn" ].
+
 glede-n-comm_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED glede_prd ] !>,
     FLAGS.TRIGGER "glede-n-comm" ].
@@ -5060,6 +5373,10 @@ ry_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED ry_v ] !>,
     FLAGS.TRIGGER "ry_v" ].
 
+synd-n-fem_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED synd_prd ] !>,
+    FLAGS.TRIGGER "synd-n-fem" ].
+
 folkesport-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_folkesport_n_rel" ] !>,
     FLAGS.TRIGGER "folkesport-n-masc" ].
@@ -5076,9 +5393,9 @@ gråsisik-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_gråsisik_n_rel" ] !>,
     FLAGS.TRIGGER "gråsisik-n-masc" ].
 
-trille-n-fem_rule := generator_rule &
-  [ CONTEXT.RELS <! [ PRED "_trille_n_rel" ] !>,
-    FLAGS.TRIGGER "trille-n-fem" ].
+bemektige_v_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED bemektige_v ] !>,
+    FLAGS.TRIGGER "bemektige_v" ].
 
 femti-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "50_rel" ] !>,
@@ -5103,6 +5420,10 @@ rike-n-neut_rule := generator_rule &
 Vølodalen_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Vølodalen" ] !>,
     FLAGS.TRIGGER "Vølodalen_pn" ].
+
+møte-n-neut_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED møte_prd ] !>,
+    FLAGS.TRIGGER "møte-n-neut" ].
 
 sekstifjerde-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "64-def_rel" ] !>,
@@ -5220,9 +5541,9 @@ sognefjellhytta_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Sognefjellhytta" ] !>,
     FLAGS.TRIGGER "sognefjellhytta_pn" ].
 
-tjueåtte-card_rule := card_rule &
-  [ CONTEXT.RELS <! [ CARG "28_rel" ] !>,
-    FLAGS.TRIGGER "tjueåtte-card" ].
+plan-n-neut_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED plan_prd ] !>,
+    FLAGS.TRIGGER "plan-n-neut" ].
 
 hva-word_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "thing_rel" ] !>,
@@ -5276,6 +5597,10 @@ uttale_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_øvre_a_rel" ] !>,
     FLAGS.TRIGGER "øvre_a" ].
 
+Nils_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Nils" ] !>,
+    FLAGS.TRIGGER "Nils_pn" ].
+
 fjellpass-n-neut_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_fjellpass_n_rel" ] !>,
     FLAGS.TRIGGER "fjellpass-n-neut" ].
@@ -5283,6 +5608,10 @@ fjellpass-n-neut_rule := generator_rule &
 andre-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "andre_rel" ] !>,
     FLAGS.TRIGGER "andre-card" ].
+
+Trøndelag_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Trøndelag" ] !>,
+    FLAGS.TRIGGER "Trøndelag_pn" ].
 
 tjueseks-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "26_rel" ] !>,
@@ -5303,6 +5632,10 @@ Nybua_pn_rule := pn_rule &
 tilfelle-n-neut_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_tilfelle_n_rel" ] !>,
     FLAGS.TRIGGER "tilfelle-n-neut" ].
+
+pris-n-masc_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED pris_prd ] !>,
+    FLAGS.TRIGGER "pris-n-masc" ].
 
 pengegave-n-comm_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_pengegave_n_rel" ] !>,
@@ -5588,6 +5921,10 @@ have-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_have_n_rel" ] !>,
     FLAGS.TRIGGER "have-n-masc" ].
 
+Olsen_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Olsen" ] !>,
+    FLAGS.TRIGGER "Olsen_pn" ].
+
 Vettisfossen_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Vettisfossen" ] !>,
     FLAGS.TRIGGER "Vettisfossen_pn" ].
@@ -5656,10 +5993,6 @@ mangle_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED mangle_v ] !>,
     FLAGS.TRIGGER "mangle_v" ].
 
-merke-n-neut_rule := generator_rule &
-  [ CONTEXT.RELS <! [ PRED "_merke_n_rel" ] !>,
-    FLAGS.TRIGGER "merke-n-neut" ].
-
 imot_prp_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED imot_prp ] !>,
     FLAGS.TRIGGER "imot_prp" ].
@@ -5683,6 +6016,10 @@ Volehytta_pn_rule := pn_rule &
 minimaskin-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_minimaskin_n_rel" ] !>,
     FLAGS.TRIGGER "minimaskin-n-masc" ].
+
+leir-n-masc_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED leir_prd ] !>,
+    FLAGS.TRIGGER "leir-n-masc" ].
 
 skramle_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED skramle_v ] !>,
@@ -5752,9 +6089,9 @@ naturoppsyn-n-neut_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_naturoppsyn_n_rel" ] !>,
     FLAGS.TRIGGER "naturoppsyn-n-neut" ].
 
-Sulheim_pn_rule := pn_rule &
-  [ CONTEXT.RELS <! [ CARG "Sulheim" ] !>,
-    FLAGS.TRIGGER "Sulheim_pn" ].
+slutt-n-masc_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED slutt_prd ] !>,
+    FLAGS.TRIGGER "slutt-n-masc" ].
 
 vegg-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_vegg_n_rel" ] !>,
@@ -5795,10 +6132,6 @@ ville_v_rule := generator_rule &
 Stuup_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Stuup" ] !>,
     FLAGS.TRIGGER "Stuup_pn" ].
-
-slutt-n-masc_rule := generator_rule &
-  [ CONTEXT.RELS <! [ PRED "_slutt_n_rel" ] !>,
-    FLAGS.TRIGGER "slutt-n-masc" ].
 
 bar-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_bar_n_rel" ] !>,
@@ -5851,6 +6184,10 @@ opera-n-masc_rule := generator_rule &
 Grisletjørnene_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Grisletjørnene" ] !>,
     FLAGS.TRIGGER "Grisletjørnene_pn" ].
+
+hovedrute-n-comm_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED "_hovedrute_n_rel" ] !>,
+    FLAGS.TRIGGER "hovedrute-n-comm" ].
 
 tjueførste-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "21-def_rel" ] !>,
@@ -5924,6 +6261,10 @@ finne-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_finne_n_rel" ] !>,
     FLAGS.TRIGGER "finne-n-masc" ].
 
+Johannes_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Johannes" ] !>,
+    FLAGS.TRIGGER "Johannes_pn" ].
+
 Skinneggin_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Skinneggin" ] !>,
     FLAGS.TRIGGER "Skinneggin_pn" ].
@@ -5996,6 +6337,10 @@ førti-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "40_rel" ] !>,
     FLAGS.TRIGGER "førti-card" ].
 
+Oslo_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Oslo" ] !>,
+    FLAGS.TRIGGER "Oslo_pn" ].
+
 lite_q_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _lite_q_rel ] !>,
     FLAGS.TRIGGER "lite_q" ].
@@ -6019,6 +6364,10 @@ bakklandet_pn_rule := pn_rule &
 trettini-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "39_rel" ] !>,
     FLAGS.TRIGGER "trettini-card" ].
+
+Øystein_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Øystein" ] !>,
+    FLAGS.TRIGGER "Øystein_pn" ].
 
 sikkilsdalsseter_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Sikkilsdalsseter" ] !>,
@@ -6112,9 +6461,9 @@ alpinkurs-n-neut_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_alpinkurs_n_rel" ] !>,
     FLAGS.TRIGGER "alpinkurs-n-neut" ].
 
-Sogn-og-Fjordane_pn_rule := pn_rule &
-  [ CONTEXT.RELS <! [ CARG "Sogn-og-Fjordane" ] !>,
-    FLAGS.TRIGGER "Sogn-og-Fjordane_pn" ].
+hyphen_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED "hyphen_rel" ] !>,
+    FLAGS.TRIGGER "hyphen" ].
 
 Midtmaradalen_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Midtmaradalen" ] !>,
@@ -6151,6 +6500,10 @@ omkring_adv_rule := generator_rule &
 tjuetre-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "23_rel" ] !>,
     FLAGS.TRIGGER "tjuetre-card" ].
+
+vekt-n-fem_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED vekt_prd ] !>,
+    FLAGS.TRIGGER "vekt-n-fem" ].
 
 snøball-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_snøball_n_rel" ] !>,
@@ -6216,6 +6569,10 @@ bessheim_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "82-def_rel" ] !>,
     FLAGS.TRIGGER "åttiandre-card" ].
 
+NRK_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "NRK" ] !>,
+    FLAGS.TRIGGER "NRK_pn" ].
+
 sekstiførste-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "61-def_rel" ] !>,
     FLAGS.TRIGGER "sekstiførste-card" ].
@@ -6224,6 +6581,10 @@ chips-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_chips_n_rel" ] !>,
     FLAGS.TRIGGER "chips-n-masc" ].
 
+Jostedalsbreen_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Jostedalsbreen" ] !>,
+    FLAGS.TRIGGER "Jostedalsbreen_pn" ].
+
 Hallvardson_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Hallvardson" ] !>,
     FLAGS.TRIGGER "Hallvardson_pn" ].
@@ -6231,6 +6592,10 @@ Hallvardson_pn_rule := pn_rule &
 indef-sg-fem-annen_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_annen_da_rel" ] !>,
     FLAGS.TRIGGER "indef-sg-fem-annen" ].
+
+Sandy_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Sandy" ] !>,
+    FLAGS.TRIGGER "Sandy_pn" ].
 
 Veodalen_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Veodalen" ] !>,
@@ -6388,9 +6753,9 @@ film-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED også_prd ] !>,
     FLAGS.TRIGGER "òg-s-adv" ].
 
-windows_pn_rule := pn_rule &
-  [ CONTEXT.RELS <! [ CARG "Windows" ] !>,
-    FLAGS.TRIGGER "windows_pn" ].
+Jesus_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Jesus" ] !>,
+    FLAGS.TRIGGER "Jesus_pn" ].
 
 Mørstadstølen_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Mørstadstølen" ] !>,
@@ -6440,6 +6805,10 @@ Aand_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Aand" ] !>,
     FLAGS.TRIGGER "Aand_pn" ].
 
+trille-n-fem_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED "_trille_n_rel" ] !>,
+    FLAGS.TRIGGER "trille-n-fem" ].
+
 rekke-n-fem_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED rekke_prd ] !>,
     FLAGS.TRIGGER "rekke-n-fem" ].
@@ -6451,6 +6820,10 @@ antagelig_sadv_rule := generator_rule &
 blåbær-n-neut_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_blåbær_n_rel" ] !>,
     FLAGS.TRIGGER "blåbær-n-neut" ].
+
+Arna_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Arna" ] !>,
+    FLAGS.TRIGGER "Arna_pn" ].
 
 Elveseter_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Elveseter" ] !>,
@@ -6776,6 +7149,10 @@ linux_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "LINUX" ] !>,
     FLAGS.TRIGGER "linux_pn" ].
 
+følge_v_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED følge_v ] !>,
+    FLAGS.TRIGGER "følge_v" ].
+
 syttisju-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "77_rel" ] !>,
     FLAGS.TRIGGER "syttisju-card" ].
@@ -6803,6 +7180,10 @@ sekstien-card_rule := card_rule &
 i-går_adv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _i*går_adv_rel ] !>,
     FLAGS.TRIGGER "i-går_adv" ].
+
+naturforhold-n-neut_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED "_naturforhold_n_rel" ] !>,
+    FLAGS.TRIGGER "naturforhold-n-neut" ].
 
 være-non-modal-aux_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_være_aux_rel" ] !>,
@@ -6944,6 +7325,10 @@ Leirungsåa_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Leirungsåa" ] !>,
     FLAGS.TRIGGER "Leirungsåa_pn" ].
 
+Norge_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Norge" ] !>,
+    FLAGS.TRIGGER "Norge_pn" ].
+
 Vøloa_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Vøloa" ] !>,
     FLAGS.TRIGGER "Vøloa_pn" ].
@@ -7024,6 +7409,10 @@ breerfaring-n-comm_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_breerfaring_n_rel" ] !>,
     FLAGS.TRIGGER "breerfaring-n-comm" ].
 
+tid-n-fem_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED tid_prd ] !>,
+    FLAGS.TRIGGER "tid-n-fem" ].
+
 Sveidalsbreen_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Sveidalsbreen" ] !>,
     FLAGS.TRIGGER "Sveidalsbreen_pn" ].
@@ -7051,6 +7440,10 @@ den-gang_adv_rule := generator_rule &
 trondheim-torg_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "TRONDHEIM TORG" ] !>,
     FLAGS.TRIGGER "trondheim-torg_pn" ].
+
+Trondheim_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Trondheim" ] !>,
+    FLAGS.TRIGGER "Trondheim_pn" ].
 
 løp-n-neut_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_løp_n_rel" ] !>,
@@ -7131,10 +7524,6 @@ Hurrungane_pn_rule := pn_rule &
 hyttevakt-n-comm_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_hyttevakt_n_rel" ] !>,
     FLAGS.TRIGGER "hyttevakt-n-comm" ].
-
-trondheim-filmklubb_pn_rule := pn_rule &
-  [ CONTEXT.RELS <! [ CARG "TRONDHEIM FILMKLUBB" ] !>,
-    FLAGS.TRIGGER "trondheim-filmklubb_pn" ].
 
 Skagastølstindarne_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Skagastølstindarne" ] !>,
@@ -7232,9 +7621,9 @@ Gravafjellet_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Gravafjellet" ] !>,
     FLAGS.TRIGGER "Gravafjellet_pn" ].
 
-Moria_pn_rule := pn_rule &
-  [ CONTEXT.RELS <! [ CARG "Moria" ] !>,
-    FLAGS.TRIGGER "Moria_pn" ].
+Telemark_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Telemark" ] !>,
+    FLAGS.TRIGGER "Telemark_pn" ].
 
 Kleppeskaret_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Kleppeskaret" ] !>,
@@ -7244,9 +7633,9 @@ fra_prp_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED fra_prp ] !>,
     FLAGS.TRIGGER "fra_prp" ].
 
-erichsen_pn_rule := pn_rule &
-  [ CONTEXT.RELS <! [ CARG "Erichsen" ] !>,
-    FLAGS.TRIGGER "erichsen_pn" ].
+fire-card_rule := card_rule &
+  [ CONTEXT.RELS <! [ CARG "4_card_rel" ] !>,
+    FLAGS.TRIGGER "fire-card" ].
 
 mercursenteret_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "MERCURSENTERET" ] !>,
@@ -7259,6 +7648,10 @@ samme_a_rule := generator_rule &
 Sognefjorden_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Sognefjorden" ] !>,
     FLAGS.TRIGGER "Sognefjorden_pn" ].
+
+slipp-n-masc_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED slipp_prd ] !>,
+    FLAGS.TRIGGER "slipp-n-masc" ].
 
 utenfor_adv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _utenfor_adv_rel ] !>,
@@ -7316,6 +7709,14 @@ fjellnatur-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_fjellnatur_n_rel" ] !>,
     FLAGS.TRIGGER "fjellnatur-n-masc" ].
 
+Ben_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Ben" ] !>,
+    FLAGS.TRIGGER "Ben_pn" ].
+
+Hans_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Hans" ] !>,
+    FLAGS.TRIGGER "Hans_pn" ].
+
 hvem_func_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED hvem_prd ] !>,
     FLAGS.TRIGGER "hvem_func" ].
@@ -7368,6 +7769,10 @@ Svartdalspiggen_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Svartdalspiggen" ] !>,
     FLAGS.TRIGGER "Svartdalspiggen_pn" ].
 
+Inge_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Inge" ] !>,
+    FLAGS.TRIGGER "Inge_pn" ].
+
 plassere_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_plassere_12_rel" ] !>,
     FLAGS.TRIGGER "plassere_v" ].
@@ -7392,9 +7797,9 @@ maksimum_degadv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED maksimum_prd ] !>,
     FLAGS.TRIGGER "maksimum_degadv" ].
 
-være_v_rule := generator_rule &
-  [ CONTEXT.RELS <! [ PRED være_v ] !>,
-    FLAGS.TRIGGER "være_v" ].
+Bjarne_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Bjarne" ] !>,
+    FLAGS.TRIGGER "Bjarne_pn" ].
 
 mars-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_mars_n_rel" ] !>,
@@ -7568,6 +7973,10 @@ bare_cadv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _bare_x_rel ] !>,
     FLAGS.TRIGGER "bare_cadv" ].
 
+tak-n-neut_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED tak_prd ] !>,
+    FLAGS.TRIGGER "tak-n-neut" ].
+
 syk_a_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_syk_a_rel" ] !>,
     FLAGS.TRIGGER "syk_a" ].
@@ -7632,9 +8041,17 @@ dråpe-n-comm_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED dråpe_prd ] !>,
     FLAGS.TRIGGER "dråpe-n-comm" ].
 
+Johan_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Johan" ] !>,
+    FLAGS.TRIGGER "Johan_pn" ].
+
 der_adv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _der_adv_rel ] !>,
     FLAGS.TRIGGER "der_adv" ].
+
+Steinar_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Steinar" ] !>,
+    FLAGS.TRIGGER "Steinar_pn" ].
 
 tjuefemte-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "25-def_rel" ] !>,
@@ -7687,6 +8104,10 @@ hvem-word_rule := generator_rule &
 senest_degadv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED senest_prd ] !>,
     FLAGS.TRIGGER "senest_degadv" ].
+
+Roger_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Roger" ] !>,
+    FLAGS.TRIGGER "Roger_pn" ].
 
 flat_a_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_flat_a_rel" ] !>,
@@ -7796,13 +8217,17 @@ siden_prp_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED siden_prp ] !>,
     FLAGS.TRIGGER "siden_prp" ].
 
-gøyal_a_rule := generator_rule &
-  [ CONTEXT.RELS <! [ PRED "_gøyal_a_rel" ] !>,
-    FLAGS.TRIGGER "gøyal_a" ].
+Marit_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Marit" ] !>,
+    FLAGS.TRIGGER "Marit_pn" ].
 
 vindu-n-neut_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_vindu_n_rel" ] !>,
     FLAGS.TRIGGER "vindu-n-neut" ].
+
+falle_v_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED falle_v ] !>,
+    FLAGS.TRIGGER "falle_v" ].
 
 onsdag_adv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _onsdag_adv_rel ] !>,
@@ -8004,6 +8429,10 @@ godt_prt_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED godt_prt ] !>,
     FLAGS.TRIGGER "godt_prt" ].
 
+Torbjørn_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Torbjørn" ] !>,
+    FLAGS.TRIGGER "Torbjørn_pn" ].
+
 bakke_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED bakke_v ] !>,
     FLAGS.TRIGGER "bakke_v" ].
@@ -8011,6 +8440,14 @@ bakke_v_rule := generator_rule &
 Magny_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Magny" ] !>,
     FLAGS.TRIGGER "Magny_pn" ].
+
+Håkon_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Håkon" ] !>,
+    FLAGS.TRIGGER "Håkon_pn" ].
+
+Torill_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Torill" ] !>,
+    FLAGS.TRIGGER "Torill_pn" ].
 
 utyv-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_utyv_n_rel" ] !>,
@@ -8031,6 +8468,10 @@ dersom_cadv_rule := generator_rule &
 femtien-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "51_rel" ] !>,
     FLAGS.TRIGGER "femtien-card" ].
+
+Anne_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Anne" ] !>,
+    FLAGS.TRIGGER "Anne_pn" ].
 
 gnr-card-select-word_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_gårdsnummer-abbriv_rel" ] !>,
@@ -8240,13 +8681,13 @@ maksimum-mod_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_maksimum_mod_rel" ] !>,
     FLAGS.TRIGGER "maksimum-mod" ].
 
+Eiliv_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Eiliv" ] !>,
+    FLAGS.TRIGGER "Eiliv_pn" ].
+
 kassere_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED kassere_v ] !>,
     FLAGS.TRIGGER "kassere_v" ].
-
-bemektige_v_rule := generator_rule &
-  [ CONTEXT.RELS <! [ PRED bemektige_v ] !>,
-    FLAGS.TRIGGER "bemektige_v" ].
 
 fordi_cadv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _fordi_x_rel ] !>,
@@ -8255,6 +8696,10 @@ fordi_cadv_rule := generator_rule &
 rosa_a_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_rosa_a_rel" ] !>,
     FLAGS.TRIGGER "rosa_a" ].
+
+DNT-lås_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "DNT-lås" ] !>,
+    FLAGS.TRIGGER "DNT-lås_pn" ].
 
 uvanlig_a_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_uvanlig_a_rel" ] !>,
@@ -8292,6 +8737,10 @@ førtien-card_rule := card_rule &
   [ CONTEXT.RELS <! [ CARG "41_rel" ] !>,
     FLAGS.TRIGGER "førtien-card" ].
 
+hive_v_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED hive_v ] !>,
+    FLAGS.TRIGGER "hive_v" ].
+
 svamp-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_svamp_n_rel" ] !>,
     FLAGS.TRIGGER "svamp-n-masc" ].
@@ -8303,10 +8752,6 @@ verken_conj_rule := generator_rule &
 snø-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_snø_n_rel" ] !>,
     FLAGS.TRIGGER "snø-n-masc" ].
-
-hverandre-refl-light_rule := generator_rule &
-  [ CONTEXT.RELS <! [ PRED refl ] !>,
-    FLAGS.TRIGGER "hverandre-refl-light" ].
 
 Heggdal_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Heggdal" ] !>,
@@ -8440,6 +8885,10 @@ fotturisme-n-masc_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED "_fotturisme_n_rel" ] !>,
     FLAGS.TRIGGER "fotturisme-n-masc" ].
 
+brud-n-fem_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED brud_prd ] !>,
+    FLAGS.TRIGGER "brud-n-fem" ].
+
 Høgvagltjørnene_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Høgvagltjørnene" ] !>,
     FLAGS.TRIGGER "Høgvagltjørnene_pn" ].
@@ -8508,6 +8957,10 @@ Fjellmuseum_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Fjellmuseum" ] !>,
     FLAGS.TRIGGER "Fjellmuseum_pn" ].
 
+Jotunheimen_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Jotunheimen" ] !>,
+    FLAGS.TRIGGER "Jotunheimen_pn" ].
+
 da_sadv_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED _da_sadv_rel ] !>,
     FLAGS.TRIGGER "da_sadv" ].
@@ -8531,6 +8984,10 @@ fortreffelig_a_rule := generator_rule &
 mene_v_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED mene_v ] !>,
     FLAGS.TRIGGER "mene_v" ].
+
+Sulheim_pn_rule := pn_rule &
+  [ CONTEXT.RELS <! [ CARG "Sulheim" ] !>,
+    FLAGS.TRIGGER "Sulheim_pn" ].
 
 Smiugjelet_pn_rule := pn_rule &
   [ CONTEXT.RELS <! [ CARG "Smiugjelet" ] !>,

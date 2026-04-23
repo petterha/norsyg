@@ -44,6 +44,7 @@ fin-infin := tense.
 infin-pres := fin-infin.
 pres-pret-perf := tense.
 pret-perf := pres-pret-perf.
+infin-perf := tense.
 finite := pres-pret-perf & imp-fin & fin-infin.
 present := finite & infin-pres.
 pret := finite & pret-perf.
@@ -51,8 +52,8 @@ no_tense := tense.
 untensed := tense.
 imp-infin := no_tense.
 imp-fin := tense.
-infin := imp-infin & infin-pres.
-perf := no_tense & pret-perf.
+infin := imp-infin & infin-pres & infin-perf.
+perf := no_tense & pret-perf & infin-perf.
 imp := imp-infin & imp-fin.
 prespart := no_tense.
 animacy := semsort.
@@ -150,6 +151,10 @@ rais := 2ip.
 2vp := arg2+ & inf+.
 2np := arg2+ & nom+.
 2idiom := arg2+.
+2indsg := 2idiom.
+2indpl := 2idiom.
+2defsg := 2idiom.
+2defpl := 2idiom.
 3np := arg3+ & nom+.
 4cp := arg4+ & comp+.
 4wh := arg4+ & wh+.
@@ -164,6 +169,10 @@ rais := 2ip.
 4ap := arg4+.
 4advp := arg4+.
 4idiom := arg4+.
+4indsg := 4idiom.
+4indpl := 4idiom.
+4defsg := 4idiom.
+4defpl := 4idiom.
 
 vrb+ := predsort.
 prt+ := link.
@@ -375,6 +384,7 @@ _noe-som-helst_pron_rel := pron_rel.
 _man_pron_rel := pron_rel.
 _noenting_pron_rel := pron_rel.
 pers-pron_rel := pron_rel.
+reciproc-pron_rel := pron_rel.
 
 hvor_prd := link.
 hvor_prp := hvor_prd & prp+.
@@ -624,10 +634,10 @@ _ha-å*med_124_rel := ha_v & 1np & 2np & arg3- & 4np & med_prp & å_prt.
 rett_prd := predsort.
 rett_n := rett_prd & idiomform.
 _rett_n_rel := rett_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom.
-_ha*rett*i-cp_14_rel := ha_v & 1np & rett_n & arg2+ & arg3- & 4cp & i_prd & prp+ & prt-.
+_ha*rett*i-cp_14_rel := ha_v & 1np & rett_n & 2indsg & arg3- & 4cp & i_prd & prp+ & prt-.
 tak_n := tak_prd & idiomform.
 tak_prd := predsort.
-_ha*tak*i_14_rel := ha_v & 1np & tak_n & arg2+ & arg3- & 4np & i_prd & prp+ & prt-.
+_ha*tak*i_14_rel := ha_v & 1np & tak_n & 2indsg & arg3- & 4np & i_prd & prp+ & prt-.
 _ha-refl-frabedt-cp_12_rel := ha_v & 1np & 2cp & arg3+ & refl & arg4- & frabedt_prt.
 
 rydde_v := vrb+.
@@ -666,13 +676,131 @@ _hete-opp_12_rel := hete_v & 1np & 2np & arg3- & arg4- & opp_prt.
 
 beundre_v := vrb+.
 beundre-cp_12_rel := beundre_v & prt- & 1np & 2cp & arg3- & arg4-.
+synset := vrb+.
+_TOP__1 := synset.
+_2ndOrder__5 := _TOP__1.
+gjøre-handle_836 := _2ndOrder__5.
+ytre_7816 := gjøre-handle_836.
+uttrykke_18802 := ytre_7816.
+ytre_31547 := uttrykke_18802.
+legge*fram_43489 := ytre_31547.
+fremføre-framføre_54368 := legge*fram_43489.
 
+nevne_61197 := fremføre-framføre_54368.
+nevne_v := vrb+.
+_nevne-cp_12_rel := nevne_v & 1np & 2cp & arg3- & arg4- & prt-.
+_nevne-wh_12_rel := nevne_v & 1np & 2wh & arg3- & arg4- & prt-.
+_nevne_12_rel := nevne_v & 1np & 2np & arg3- & arg4- & prt- & nevne_61197.
+
+stilling_n := stilling_prd & idiomform.
+stilling_prd := predsort.
+borti_prd := predsort.
+borti_prp := borti_prd & prp+.
 bane_prd := idiomform.
-; bringe_v := vrb+.
-; bringe*på*bane_rel := bringe_v & 1np & 2np & på_prd & prp+ & bane_prd & arg3- & prt- & 4idiom.
+bringe_v := vrb+.
+bringe*på*bane_rel := bringe_v & 1np & 2np & på_prp & bane_prd & arg3- & prt- & 4indsg & nevne_61197.
 ; _bringe_123_rel := bringe_v & 1np & 2np & 3np & arg4- & prt-.
 ; _bringe_12_rel := bringe_v & 1np & 2np & arg3- & arg4- & prt-.
 ; _bringe_a_rel := bringe_v & adj+ & 1np & 2np & arg3- & arg4- & prt-.
+avstand_n := avstand_prd & idiomform.
+avstand_prd := predsort.
+feil_n := feil_prd & idiomform.
+feil_prd := predsort.
+fyr_n := fyr_prd & idiomform.
+fyr_prd := predsort.
+liv_n := liv_prd & idiomform.
+liv_prd := predsort.
+mot_prd := predsort.
+mot_prp := mot_prd & prp+.
+mot_prt := mot_prd & prt+.
+sjanse_n := sjanse_prd & idiomform.
+sjanse_prd := predsort.
+slutt_n := slutt_prd & idiomform.
+slutt_prd := predsort.
+vare_n := vare_prd & idiomform.
+vare_prd := predsort.
+vare_prt := vare_prd & prt+.
+øye_n := øye_prd & idiomform.
+øye_prd := predsort.
+øye_prt := øye_prd & prt+.
+fatt_prd := predsort.
+fatt_prt := fatt_prd & prt+.
+
+ta_prd := predsort.
+ta_v := vrb+.
+_ta*av-refl_12_rel := ta_v & 1np & 2np & arg3- & arg4+ & refl & av_prp & prt-.
+_ta*av-refl_1_rel := ta_v & 1np & arg2- & arg3- & arg4+ & refl & av_prp & prt-.
+_ta*av_124_rel := ta_v & 1np & 2np & arg3- & 4np & av_prp & prt-.
+_ta*avstand*fra_14_rel := ta_v & 1np & avstand_n & 2indsg & arg3- & 4np & fra_prp & prt-.
+_ta*borti_14_rel := ta_v & 1np & arg2- & arg3- & 4np & borti_prp & prt-.
+_ta*etter_14_rel := ta_v & 1np & arg2- & arg3- & 4np & etter_prp & prt-.
+_ta*feil_1_rel := ta_v & 1np & feil_n & 2indsg & arg3- & arg4- & prt-.
+_ta*for-refl_12_rel := ta_v & 1np & 2np & arg3- & arg4+ & refl & for_prp & prt-.
+_ta*for-refl_1_rel := ta_v & 1np & arg2- & arg3- & arg4+ & refl & for_prp & prt-.
+_ta*for_124_rel := ta_v & 1np & 2np & arg3- & 4np & for_prp & prt-.
+_ta*fra_124_rel := ta_v & 1np & 2np & arg3- & 4np & fra_prp & prt-.
+_ta*fyr_1_rel := ta_v & 1np & fyr_n & 2indsg & arg3- & arg4- & prt-.
+_ta*i_14_rel := ta_v & 1np & arg2- & arg3- & 4np & i_prp & prt-.
+_ta*imot_14_rel := ta_v & 1np & arg2- & arg3- & 4np & imot_prp & prt-.
+_ta*liv*av_14_rel := ta_v & 1np & liv_n & 2defpl & arg3- & 4np & av_prp & prt-.
+_ta*med-refl_12_rel := ta_v & 1np & 2np & arg3- & arg4+ & refl & med_prp & prt-.
+_ta*med_124_rel := ta_v & 1np & 2np & arg3- & 4np & med_prp & prt-.
+_ta*mot_14_rel := ta_v & 1np & arg2- & arg3- & 4np & mot_prp & prt-.
+_ta*om_14_rel := ta_v & 1np & arg2- & arg3- & 4np & om_prp & prt-.
+_ta*over_14_rel := ta_v & 1np & arg2- & arg3- & 4np & over_prp & prt-.
+_ta*på-refl_12_rel := ta_v & 1np & 2np & arg3- & arg4+ & refl & på_prp & prt-.
+_ta*på-refl_1_rel := ta_v & 1np & arg2- & arg3- & arg4+ & refl & på_prp & prt-.
+_ta*på_124_rel := ta_v & 1np & 2np & arg3- & 4np & på_prp & prt-.
+_ta*på_14_rel := ta_v & 1np & arg2- & arg3- & 4np & på_prp & prt-.
+_ta*rundt_14_rel := ta_v & 1np & arg2- & arg3- & 4np & rundt_prp & prt-.
+_ta*sjanse*på-ip1_14_rel := ta_v & 1np & sjanse_n & 2defsg & arg3- & 4ip1 & på_prp & prt-.
+_ta*slutt_1_rel := ta_v & 1np & slutt_n & 2indsg & arg3- & arg4- & prt-.
+_ta*stilling*til_14_rel := ta_v & 1np & stilling_n & 2indsg & arg3- & 4np & til_prp & prt-.
+_ta*tak*i_14_rel := ta_v & 1np & tak_n & 2indsg & arg3- & 4np & i_prp & prt-.
+_ta*til-refl_12_rel := ta_v & 1np & 2np & arg3- & arg4+ & refl & til_prp & prt-.
+_ta*til_14_rel := ta_v & 1np & arg2- & arg3- & 4np & til_prp & prt-.
+_ta*vare*på_14_rel := ta_v & 1np & vare_n & 2indsg & arg3- & 4np & på_prp & prt-.
+_ta*øye*fra_14_rel := ta_v & 1np & øye_n & 2defpl & arg3- & 4np & fra_prp & prt-.
+_ta-av_12_rel := ta_v & 1np & 2np & arg3- & arg4- & av_prt.
+_ta-av_1_rel := ta_v & 1np & arg2- & arg3- & arg4- & av_prt.
+_ta-bort_12_rel := ta_v & 1np & 2np & arg3- & arg4- & bort_prt.
+_ta-fatt*på_14_rel := ta_v & 1np & arg2- & arg3- & 4np & på_prp & fatt_prt.
+_ta-fatt_12_rel := ta_v & 1np & 2np & arg3- & arg4- & fatt_prt.
+_ta-fatt_1_rel := ta_v & 1np & arg2- & arg3- & arg4- & fatt_prt.
+_ta-for-cp_12_rel := ta_v & 1np & 2cp & arg3- & arg4- & for_prt.
+_ta-for_12_rel := ta_v & 1np & 2np & arg3- & arg4- & for_prt.
+_ta-frem_12_rel := ta_v & 1np & 2np & arg3- & arg4- & frem_prt.
+_ta-i_1_rel := ta_v & 1np & arg2- & arg3- & arg4- & i_prt.
+_ta-igjen_12_rel := ta_v & 1np & 2np & arg3- & arg4- & igjen_prt.
+_ta-igjen_1_rel := ta_v & 1np & arg2- & arg3- & arg4- & igjen_prt.
+_ta-imot_12_rel := ta_v & 1np & 2np & arg3- & arg4- & imot_prt.
+_ta-imot_1_rel := ta_v & 1np & arg2- & arg3- & arg4- & imot_prt.
+_ta-inn*på_14_rel := ta_v & 1np & arg2- & arg3- & 4np & på_prp & inn_prt.
+_ta-inn_12_rel := ta_v & 1np & 2np & arg3- & arg4- & inn_prt.
+_ta-ip3_23_rel := ta_v & arg1- & 2ip3 & 3np & arg4- & prt-.
+_ta-ip_23_rel := ta_v & arg1- & 2ip & 3np & arg4- & prt-.
+_ta-med_12_rel := ta_v & 1np & 2np & arg3- & arg4- & med_prt.
+_ta-ned_12_rel := ta_v & 1np & 2np & arg3- & arg4- & ned_prt.
+_ta-opp_12_rel := ta_v & 1np & 2np & arg3- & arg4- & opp_prt & nevne_61197.
+_ta-over_1_rel := ta_v & 1np & arg2- & arg3- & arg4- & over_prt.
+_ta-på_12_rel := ta_v & 1np & 2np & arg3- & arg4- & på_prt.
+_ta-på_1_rel := ta_v & 1np & arg2- & arg3- & arg4- & på_prt.
+_ta-refl*av_14_rel := ta_v & 1np & refl & arg2+ & arg3- & 4np & av_prp & prt-.
+_ta-refl*i_14_rel := ta_v & 1np & refl & arg2+ & arg3- & 4np & i_prp & prt-.
+_ta-refl*med_14_rel := ta_v & 1np & refl & arg2+ & arg3- & 4np & med_prp & prt-.
+_ta-refl-til*med_14_rel := ta_v & 1np & refl & arg2+ & arg3- & 4np & med_prp & til_prt.
+_ta-refl_12_rel := ta_v & 1np & 2np & arg3+ & refl & arg4- & prt-.
+_ta-refl_1_rel := ta_v & 1np & refl & arg2+ & arg3- & arg4- & prt-.
+_ta-til*på_14_rel := ta_v & 1np & arg2- & arg3- & 4np & på_prp & til_prt.
+_ta-til-ip1_12_rel := ta_v & 1np & 2ip1 & arg3- & arg4- & til_prt.
+_ta-tilbake_12_rel := ta_v & 1np & 2np & arg3- & arg4- & tilbake_prt.
+_ta-ut-refl-ip1_12_rel := ta_v & 1np & 2ip1 & arg3+ & refl & arg4- & ut_prt.
+_ta-ut_12_rel := ta_v & 1np & 2np & arg3- & arg4- & ut_prt.
+_ta-vare*på_14_rel := ta_v & 1np & arg2- & arg3- & 4np & på_prp & vare_prt.
+_ta-vekk_12_rel := ta_v & 1np & 2np & arg3- & arg4- & vekk_prt.
+_ta_12_rel := ta_v & 1np & 2np & arg3- & arg4- & prt-.
+_ta_1_rel := ta_v & 1np & arg2- & arg3- & arg4- & prt-.
+_ta_2_rel := ta_v & arg1- & 2np & arg3- & arg4- & prt-.
 
 kalle_v := vrb+.
 _kalle_124_rel := kalle_v & 1np & 2np & arg3- & 4np & prp- & prt-.
@@ -752,6 +880,7 @@ det-cat := category.
 non-head := head-min.
 start := head.
 adj-adv-compl-nominal-verb := head.
+adj-adv-infcompl-prep-sadv := head.
 adj-compl-nominal-verb := adj-adv-compl-nominal-verb.
 adj-noun-prep-verb := adj-adv-compl-noun-prep-verb.
 adj-noun-prep := adj-noun-prep-verb.
@@ -885,7 +1014,8 @@ adj-adv := adj-adv-prep & adj-adv-nominal & adj-adv-verb.
 adj-prep-verb := adj-noun-prep-verb & adj-compl-prep-verb.
 adj-prep := adj-adv-prep & adj-prep-verb.
 adv-prep-verb := adv-compl-prep-verb.
-adj-adv-prep-sadv := adj-adv-card-cond-compl-noun-prep.
+adj-adv-prep-sadv := adj-adv-card-cond-compl-noun-prep &
+		     adj-adv-infcompl-prep-sadv.
 adv-prep-sadv := adj-adv-prep-sadv & adv-cadv-prep-sadv.
 adv-prep := adv-prep-verb & adj-adv-prep & adv-compl-prep & 
 	    adv-noun-prep & adv-prep-sadv.
@@ -925,21 +1055,24 @@ prep := prep-min.
 som := prep-min & compl-som-verb.
 complementizer := compl-prep & aux-compl.
 subcompl-infcompl := complementizer.
+fincompl := subcompl-infcompl.
+constcompl := fincompl.
 infcompl := infcompl-noun & subcompl-infcompl & infcompl-verb &
+	    adj-adv-infcompl-prep-sadv &
   [ MOD <>,
     MESS prop_m_rel,
     CATEGORY inf-cat ].
 subcompl := subcompl-noun & subcompl-omcompl & subcompl-verb & 
-	   subcompl-infcompl & aux-subcompl &
+	   aux-subcompl & constcompl &
   [ MESS prop_m_rel ].
 atfull := subcompl & atfull-infcompl-noun.
-whcompl := complementizer.
+whcompl := fincompl.
 atnull := subcompl.
-cadv := subcompl-cadv-infcompl-noun & complementizer & adj-adv-cadv-prep & adv-cadv-prep-sadv.
-cond := adj-adv-card-cond-compl-det-poss-prep & adj-adv-card-cond-compl-noun-prep &
+cadv := subcompl-cadv-infcompl-noun & adj-adv-cadv-prep & adv-cadv-prep-sadv & constcompl.
+cond := adj-adv-card-cond-compl-noun-prep & fincompl &
   [ MESS prop-yn_m_rel ].
 omcompl := subcompl-omcompl & cadv.
-relcompl := complementizer & relcompl-verb & relcompl-noun &
+relcompl := relcompl-verb & relcompl-noun & fincompl &
   [ CATEGORY subord-cat ].
 expl-pron := noun &
   [ MESS prop_m_rel ].
@@ -1337,15 +1470,14 @@ basic-non-modal-aux-lxm := aux-lxm &
 		     CONT [ HOOK.LTOP #ltop,
 			    HCONS <!!> ] ] ] ].
 
-non-modal-aux-lxm := basic-non-modal-aux-lxm & non-pass-aux-lxm &
+non-modal-aux-lxm := basic-non-modal-aux-lxm & non-pass-aux-lxm & norm-lex-item &
   [ SYNSEM [ LOCAL [ CAT [ HEAD.PERFPART -,
 			   VBL [ LOCAL.CONT.HOOK.INDEX event & [ PERF + ],
-				 LKEYS.KEYREL [ LBL #ltop,
-						ARG0 #index ] ] ],
+				 LKEYS.KEYREL [ LBL #ltop ] ] ],
 		     CONT [ HOOK.INDEX event & [ E.TENSE #tense ],
 			    RELS  <! #relation !> ] ],
 	     LKEYS.KEYREL #relation & [ LBL #ltop,
-					ARG0 #index & [ E.TENSE #tense ] ] ] ].
+					ARG0 [ E.TENSE #tense ] ] ] ].
 
 ;;;;;
 ;;;;;   NOMINAL WORD-OR-LEXEME TYPES
@@ -1709,11 +1841,14 @@ def-mod-word := word &
 			 VAL.SISTER [ LOCAL.CAT.HEAD.AGREE.DEFINITENESS #definiteness,
 				      LKEYS.KEYREL.ARG0.COGN-ST uniq-or-more ] ] ] ] ].
 
+; PH 2026-03-29: Fix KEYREL.PRED value. Clashes with PRED value of
+; following noun. Underspecified in
+; Jeg beundrer tredje
 def-card-word := card-word & def-mod-word &
   [ SYNSEM [ LOCAL [ CAT [ HEAD carddef & [ MOD < [ LOCAL.CAT.HEAD verb ] > ],
 			   VAL.SISTER.LOCAL.CAT.HEAD adj-andre-card-noun ],
 		     CONT.RELS <! #rel !> ],
-	     LKEYS [ KEYREL #rel,
+	     LKEYS [ KEYREL.PRED sort,
 		     ALTKEYREL.PRED def_digit ] ],
     LEXREL <!#rel!> ].
 
@@ -2039,6 +2174,39 @@ prep-word := func-word-super &
 	     LKEYS.KEYREL.PRED prp+ ] ].
 
 func-word := func-word-super.
+
+opp-word := func-word-super &
+  [ SYNSEM.LKEYS.KEYREL.PRED opp_prd ].
+ut-word := func-word-super &
+  [ SYNSEM.LKEYS.KEYREL.PRED ut_prd ].
+inn-word := func-word-super &
+  [ SYNSEM.LKEYS.KEYREL.PRED inn_prd ].
+frem-word := func-word-super &
+  [ SYNSEM.LKEYS.KEYREL.PRED frem_prd ].
+av-word := func-word-super &
+  [ SYNSEM.LKEYS.KEYREL.PRED av_prd ].
+med-word := func-word-super &
+  [ SYNSEM.LKEYS.KEYREL.PRED med_prd ].
+til-word := func-word-super &
+  [ SYNSEM.LKEYS.KEYREL.PRED til_prd ].
+over-word := func-word-super &
+  [ SYNSEM.LKEYS.KEYREL.PRED over_prd ].
+i-word := func-word-super &
+  [ SYNSEM.LKEYS.KEYREL.PRED i_prd ].
+bort-word := func-word-super &
+  [ SYNSEM.LKEYS.KEYREL.PRED bort_prd ].
+på-word := func-word-super &
+  [ SYNSEM.LKEYS.KEYREL.PRED på_prd ].
+fra-word := func-word-super &
+  [ SYNSEM.LKEYS.KEYREL.PRED fra_prd ].
+unna-word := func-word-super &
+  [ SYNSEM.LKEYS.KEYREL.PRED unna_prd ].
+om-word := func-word-super &
+  [ SYNSEM.LKEYS.KEYREL.PRED om_prd ].
+etter-word := func-word-super &
+  [ SYNSEM.LKEYS.KEYREL.PRED etter_prd ].
+gjennom-word := func-word-super &
+  [ SYNSEM.LKEYS.KEYREL.PRED gjennom_prd ].
 
 down-func-word := downward-entailing & func-word-prd.
 
@@ -2658,7 +2826,8 @@ continuative-phrase := head-initial & start-item &
 	   [ SYNSEM.LOCAL [ CAT.HEAD continuative,
 			    CONT.HOOK.LTOP #handle ] ] >,
     C-CONT [ RELS <!!>,
-	     HCONS <!!> ] ].
+	     HCONS <!!> ],
+    LINK-INPUT - ].
 
 ;;;;;
 ;;;;;   BASIC PHRASES
@@ -2806,8 +2975,9 @@ subconstruction := sign &
   [ OUT cat &
         [ VAL.ARGFRAME #v ],
     IN cat &
-        [ VAL.ARGFRAME #v ],
-    MEANING relation ].
+        [ VAL.ARGFRAME #v,
+	  ARGUMENT.LINK #v ],
+    MEANING relation & [ PRED #v ] ].
 
 subconstruction-1-3 := subconstruction &
   [ IN cat &
@@ -2886,6 +3056,7 @@ arg3-sign := subconstruction-1-3 &
 
 ; PH 2017-08-25: Removed PN link between CMP1 and second daughter.
 ; Did not account for "Jeg gikk konkurs"
+; PH 2026-03-10: Removed the ARGUMENT ARGS.FIRSTARGUMENT link
 idiom-struc := binary-phrase &
   [ START -,
     LINK-INPUT -,
@@ -2893,18 +3064,18 @@ idiom-struc := binary-phrase &
 			   VAL [ CMP1 #cmp1 & [ LINK arg1- ],
 				 PART #part,
 				 ARGFRAME #argframe ],
-			   ARGUMENT #arg,
+			   ARGUMENT synsem-mini,
 			   STACK #stack,
 			   VBL #vbl ],
 		     CONT #cont,
 		     TOPIC #topic ],
 	     NON-LOCAL #nl,
-	     LKEYS #lkeys ],
+	     LKEYS #lkeys & [ KEYREL.PRED #argframe ] ],
     ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD #head,
 				    VAL [ CMP1 #cmp1,
 					  PART #part,
 					  ARGFRAME #argframe ],
-				    ARGUMENT #arg,
+				    ARGUMENT synsem-mini,
 				    STACK #stack,
 				    VBL #vbl ],
 			      CONT #cont,
@@ -2912,40 +3083,74 @@ idiom-struc := binary-phrase &
 		      NON-LOCAL #nl,
 		      LKEYS #lkeys ],
 	     BOUNDARY - ], 
-           [ SYNSEM [ LOCAL [ CAT.HEAD.AGREE.DEFINITENESS indef ],
-		      LKEYS [ KEYREL.PRED #argframe,
-			      Q.QREL.PRED anti-quant_m_rel ] ] ] >,
+           [ SYNSEM [ LKEYS [ KEYREL.PRED #argframe ] ] ] >,
     BOUNDARY - ].
 
-arg2-idiom-struc := idiom-struc &
-  [ SYNSEM [ LOCAL [ CAT [ VAL [ CMP2 [ LINK arg2-,
-					LOCAL #local ],
-				 CMP3 #cmp3,
-				 CMP4 #arg4 & [ MARKED - ] ] ] ] ],
-    ARGS < [ SYNSEM.LOCAL.CAT.VAL [ CMP2 [ LINK #idiomform & arg2+ & idiomform,
+arg2-idiom-min := idiom-struc &
+  [ SYNSEM [ LOCAL.CAT.VAL [ CMP2 [ LINK arg2-,
+				    LOCAL #local ],
+			     CMP3 #cmp3,
+			     CMP4 #arg4 & [ MARKED - ] ] ],
+    ARGS < [ SYNSEM.LOCAL.CAT.VAL [ CMP2 [ LINK #idiomform,
 					   LOCAL #local ],
 				    CMP3 #cmp3,
 				    CMP4 #arg4 ] ], 
-	   [ SYNSEM [ LOCAL.CAT.HEAD noun-refl,
-	              LKEYS.KEYREL.PRED #idiomform ] ] > ].
+	   [ SYNSEM [ LOCAL.CAT.HEAD noun-refl ,
+		      LKEYS.KEYREL.PRED #idiomform ] ] > ].
 
-arg3-idiom-struc := idiom-struc &
+arg2-refl-struc := arg2-idiom-min &
+  [ SYNSEM.LKEYS.KEYREL [ ARG1.PNG.PN #pn,
+			  PRED arg2+ & idiomform ],
+    ARGS < [], [ SYNSEM.LOCAL [ CAT.HEAD refl-pron-light,
+				CONT.HOOK.INDEX.PNG.PN #pn ] ] > ].
+  
+arg2-idiom-struc := arg2-idiom-min &
+  [ ARGS < [], [ SYNSEM.LOCAL.CAT.HEAD noun ] > ].
+
+arg2-indsg-struc := arg2-idiom-struc &
+  [ ARGS < [], [ SYNSEM [ LOCAL [ CAT.HEAD.AGREE.DEFINITENESS indef,
+				  CONT.HOOK.INDEX.PNG.PN sg ],
+			  LKEYS.KEYREL.PRED 2indsg ] ] > ].
+
+arg2-indpl-struc := arg2-idiom-struc &
+  [ ARGS < [], [ SYNSEM [ LOCAL [ CAT.HEAD.AGREE.DEFINITENESS indef,
+				  CONT.HOOK.INDEX.PNG.PN pl ],
+			  LKEYS.KEYREL.PRED 2indpl ] ] > ].
+
+arg2-defsg-struc := arg2-idiom-struc &
+  [ ARGS < [], [ SYNSEM [ LOCAL [ CAT.HEAD.AGREE.DEFINITENESS def,
+				  CONT.HOOK.INDEX.PNG.PN sg ],
+			  LKEYS.KEYREL.PRED 2defsg ] ] > ].
+			  
+arg2-defpl-struc := arg2-idiom-struc &
+  [ ARGS < [], [ SYNSEM [ LOCAL [ CAT.HEAD.AGREE.DEFINITENESS def,
+				  CONT.HOOK.INDEX.PNG.PN pl ],
+			  LKEYS.KEYREL.PRED 2defpl ] ] > ].
+  
+
+arg3-idiom-min := idiom-struc &
   [ SYNSEM [ LOCAL [ CAT [ VAL [ CMP2 #arg2 & [ LINK arg2+ ],
 				 CMP3 [ LINK arg3-,
 					LOCAL #local ],
-				 CMP4 #arg4 ] ] ],
-	     LKEYS.KEYREL.ARG1.PNG.PN #pn ],
+				 CMP4 #arg4 ] ] ] ],
     ARGS < [ SYNSEM.LOCAL.CAT.VAL [ CMP2 #arg2,
 				    CMP3 [ LINK #idiomform & arg3+ & idiomform,
 					   LOCAL #local ],
 				    CMP4 #arg4 ] ], 
-	   [ SYNSEM [ LOCAL [ CAT.HEAD noun-refl,
-			      CONT.HOOK.INDEX.PNG.PN #pn ],
+	   [ SYNSEM [ LOCAL [ CAT.HEAD noun-refl ],
 		      LKEYS.KEYREL.PRED #idiomform ] ] > ].
+
+arg3-refl-struc := arg3-idiom-min &
+  [ SYNSEM.LKEYS.KEYREL.ARG1.PNG.PN #pn,
+    ARGS < [], [ SYNSEM.LOCAL [ CAT.HEAD refl-pron-light,
+				CONT.HOOK.INDEX.PNG.PN #pn ] ] > ].
+  
+arg3-idiom-struc := arg3-idiom-min &
+  [ ARGS < [], [ SYNSEM.LOCAL.CAT.HEAD noun ] > ].
 
 ; PH 2020-06-23: Removed the CMP2.LINK arg2- constraint in order to allow for
 ; Hun får med seg isen
-arg4-idiom-struc := idiom-struc &
+arg4-idiom-min := idiom-struc &
   [ SYNSEM [ LOCAL [ CAT [ VAL [ CMP2 #cmp2,
 				 CMP3 #cmp3,
 				 CMP4 [ LINK arg4-,
@@ -2956,9 +3161,36 @@ arg4-idiom-struc := idiom-struc &
 				      CMP4 [ LINK #idiomform & arg4+ & idiomform,
 					     MARKED +,
 					     LOCAL #local ] ] ], 
-           [ SYNSEM [ LOCAL.CAT.HEAD noun-refl,
+           [ SYNSEM [ LOCAL [ CAT.HEAD noun-refl ],
 		      LINK #idiomform ] ] > ].
 
+arg4-refl-struc := arg4-idiom-min &
+  [ SYNSEM.LKEYS.KEYREL.ARG1.PNG.PN #pn,
+    ARGS < [], [ SYNSEM.LOCAL [ CAT.HEAD refl-pron-light,
+				CONT.HOOK.INDEX.PNG.PN #pn ] ] > ].
+  
+arg4-idiom-struc := arg4-idiom-min &
+  [ ARGS < [], [ SYNSEM.LOCAL.CAT.HEAD noun ] > ].
+
+arg4-indsg-struc := arg4-idiom-struc &
+  [ ARGS < [], [ SYNSEM [ LOCAL [ CAT.HEAD.AGREE.DEFINITENESS indef,
+				  CONT.HOOK.INDEX.PNG.PN sg ],
+			  LKEYS.KEYREL.PRED 4indsg ] ] > ].
+
+arg4-indpl-struc := arg4-idiom-struc &
+  [ ARGS < [], [ SYNSEM [ LOCAL [ CAT.HEAD.AGREE.DEFINITENESS indef,
+				  CONT.HOOK.INDEX.PNG.PN pl ],
+			  LKEYS.KEYREL.PRED 4indpl ] ] > ].
+
+arg4-defsg-struc := arg4-idiom-struc &
+  [ ARGS < [], [ SYNSEM [ LOCAL [ CAT.HEAD.AGREE.DEFINITENESS def,
+				  CONT.HOOK.INDEX.PNG.PN sg ],
+			  LKEYS.KEYREL.PRED 4defsg ] ] > ].
+			  
+arg4-defpl-struc := arg4-idiom-struc &
+  [ ARGS < [], [ SYNSEM [ LOCAL [ CAT.HEAD.AGREE.DEFINITENESS def,
+				  CONT.HOOK.INDEX.PNG.PN pl ],
+			  LKEYS.KEYREL.PRED 4defpl ] ] > ].
 
 arg4-sign := subconstruction &
   [ SYNSEM.--PHR-KEY arg4-relation,
@@ -3147,7 +3379,7 @@ binary-valence-phrase-min := binary-nexus-phrase & head-initial &
 
 binary-valence-phrase := binary-valence-phrase-min.
 
-extr-phrase := head-compositional & val-or-mod-sign &
+extr-phrase := head-compositional &
   [ CONJ no-conj,
     SYNSEM phr-synsem &
 	   [ FIRST-WORD #fw,
@@ -3160,11 +3392,13 @@ extr-phrase := head-compositional & val-or-mod-sign &
 		    EXTR +,
 		    NON-LOCAL.SLASH <[]>,
 		    LOCAL.NEG-OUT #neg,
-		    MODIFIED notmod,
+		    MODIFIED xmod,
 		    LKEYS #lkeys ],
     LINK-INPUT - ].
 
-unary-extr-phrase := extr-phrase & head-only & unary-phrase.
+unary-extr-phrase := extr-phrase & head-only & unary-phrase &
+  [ ARGS < [ SYNSEM.MODIFIED notmod ] > ].
+binary-extr-phrase := extr-phrase & head-initial.
 
 ; PH 2017-03-31: Removed HD-DTR ARGUMENT non-canonical constraint.
 ; PH 2016-02-04: Changed CASE link path from CASE to CASE.SU in order
@@ -3184,7 +3418,7 @@ valence-extr-phrase-min := extr-phrase &
 					AGR #agr,
 					CONT #cont ] > ] ] ].
 
-valence-extr-phrase := valence-extr-phrase-min & unary-extr-phrase &
+valence-extr-phrase := valence-extr-phrase-min & unary-extr-phrase & val-or-mod-sign &
   [ HD-DTR #first & [ SYNSEM [ LOCAL.CAT.C -,
 		    NON-LOCAL.SLASH < [ CONT.HOOK.INDEX event-or-ref-index,
 					CAT.CASE case,
@@ -3389,7 +3623,7 @@ adj-embedded-val := nom-embedded-val-min &
 		     CONT.HOOK [ LTOP #lbl,
 				 INDEX #ind ] ],
 	     LKEYS [ KEYREL #keyrel & [ LBL #lbl,
-					ARG0 #ind ],
+					ARG0 #ind & [ PNG.PN 3p ] ],
 		     ALTKEYREL [ LBL #lbl,
 				 PRED generic_entity_rel,
 				 ARG0 #ind ],
@@ -3397,10 +3631,11 @@ adj-embedded-val := nom-embedded-val-min &
 			      ARG0 #ind,
 			      RSTR #harg ] ] ],
     ARGS <[ SYNSEM [ LOCAL.CAT.HEAD adj-compl-prep-verb ] ],
-	  [ SYNSEM.LKEYS [ KEYREL #adjrel & [ LBL #lbl,
+	  [ SYNSEM [ LOCAL.CONT.HOOK.INDEX #ind,
+		     LKEYS [ KEYREL #adjrel & [ LBL #lbl,
 					    ARG0 event,
 					    ARG1 #ind ],
-			   Q.QREL.PRED quant_m_rel ] ] >,
+			     Q.QREL.PRED quant_m_rel ] ] ] >,
     C-CONT [ RELS <! #keyrel, #adjrel !>,
 	     HCONS <! [ HARG #harg,
 			LARG #lbl ] !> ] ].
@@ -3548,7 +3783,8 @@ arg2-wh-min := wh-min & arg2-sign &
 		      LKEYS.KEYREL.ARG2 #arg2 ] ],
 	   [ SYNSEM.LKEYS.KEYREL.ARG0 #arg2 ] > ].
 
-arg2-wh-phrase := arg2-wh-min & nom-embedded.
+arg2-wh-phrase := arg2-wh-min & nom-embedded &
+  [ ARGS < [], wh-word > ].
 
 arg2-wh-mod-struc := wh-mod-struc & arg2-wh-min.
 
@@ -3865,6 +4101,7 @@ prepsel-struc := prepsel-struc-min &
 prepsel-binary := prepsel-struc & part-prep-binary & 
   [ ARGS < [], prep-word & [ SYNSEM.LOCAL.CAT.HEAD prep ] > ].
 
+
 prepsel-ellipsis-phrase := prepsel-struc & part-prep-ellipsis.
 
 ; PH 2022-03-09: Rule for ground objects:
@@ -3963,7 +4200,7 @@ expl-obj-struc := binary-expl-phrase &
     C-CONT [ RELS <!!>,
 	     HCONS <!!> ] ].
 
-extr-pres-min := valence-extr-phrase-min & unary-extr-phrase &
+extr-pres-min := valence-extr-phrase-min & unary-extr-phrase & val-or-mod-sign &
   [ CONJ no-conj,
     SYNSEM [ FIRST-WORD +,
 	     LOCAL [ CAT.HEAD aux-verb,
@@ -4382,13 +4619,14 @@ mod-compl-phrase := compl-phrase & head-final & stack-cmp1-link & embedded-phras
 	     HCONS <! !> ] ].
 
 binary-compl2-min := binary-compl-phrase & arg2-sign & head-final & compl-phrase & embedded-phrase &
-  [ SYNSEM [ LOCAL [ CAT.VBL.LOCAL.CONT.HOOK.INDEX #index ],
-             --PHR-KEY arg2-rel-min ],
+  [ SYNSEM [ LOCAL [ CAT.VBL.LKEYS.KEYREL.ARG0 #index ],
+	     --PHR-KEY arg2-rel-min ],
     ARGS < [ SYNSEM [ LOCAL.CAT [ VAL [ ARGFRAME #pred,
 					CMP2 [ LINK #pred,
 					       LOCAL.CAT.HEAD subcompl ] ] ],
-                      LKEYS.KEYREL.ARG2 #index ] ],
-           [ SYNSEM.LINK #pred ] > ].
+                      LKEYS.KEYREL.ARG2 #index & [ E.TENSE #tense ] ] ],
+           [ SYNSEM [ LOCAL.CONT.HOOK.INDEX.E.TENSE #tense,
+		      LINK #pred ] ] > ].
 
 binary-compl2-phrase := binary-compl2-min &
   [ ARGS.FIRST.SYNSEM.LOCAL.CAT.HEAD adj-adv-compl-prep-verb ].
@@ -4491,6 +4729,9 @@ pop-phrase := pop-phrase-min-min &
 ; PH 2021-11-12: added CASE constraint in order to avoid spurious
 ; ambiguity with extr-sadv-rule, which may otherwise apply both before
 ; and after non-subjects.
+; PH 2026-03-28: The Case constraint is also useful in order to constrain
+; the extr-vp rule so that it does not generate
+; * spise gjør jeg et eple
 pop-nominal-phrase := pop-phrase & unary-phrase & pop-phrase-min &
   [ SYNSEM [ LOCAL.CAT [ HEAD.DEGREL #degadv,
 			 CASE #case ],
@@ -4498,6 +4739,7 @@ pop-nominal-phrase := pop-phrase & unary-phrase & pop-phrase-min &
     ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD adj-nominal &
 					 [ NOM +,
 					   DEGREL #degadv ],
+				    VAL.CMP2.LINK arg2-,
 				    CASE #case,
 				    STACK < [ NON-LOCAL #nl ], ... >] ],
 		      NON-LOCAL.SLASH <>,
@@ -4526,10 +4768,79 @@ pop-no-nominal-min := pop-phrase & pop-phrase-min &
 	     HCONS <!!> ] ].
 
 pop-no-nominal-phrase := pop-no-nominal-min & unary-phrase &
-  [ ARGS < [ ] > ].
+  [ ARGS < [ SYNSEM.LOCAL.CAT.VAL.CMP2.LINK arg2- ] > ].
 
 pop-no-nominal-comma-phrase := pop-no-nominal-min & binary-phrase &
-  [ ARGS < [ SYNSEM.LOCAL.CAT.HEAD complementizer ], comma-word > ].
+  [ SYNSEM.LOCAL.CAT.VBL synsem,
+    ARGS < [ SYNSEM.LOCAL.CAT.HEAD constcompl ], comma-word > ].
+; Mannen som smiler, smiler
+pop-no-nominal-rel-phrase := pop-no-nominal-min & binary-phrase &
+  [ SYNSEM.LOCAL.CAT.STACK.FIRST.LOCAL.CAT.VBL synsem,
+    ARGS < [ SYNSEM.LOCAL.CAT.HEAD relcompl ], comma-word > ].
+; No comma after relative clause:
+; Jeg beundrer mannen som smiler.
+pop-no-nominal-rel2-phrase := pop-no-nominal-phrase &
+  [ SYNSEM.LOCAL.CAT.STACK.FIRST.LOCAL.CAT.VBL anti-synsem,
+    ARGS < [ SYNSEM.LOCAL.CAT.HEAD relcompl ] > ].
+
+pop-no-nominal-nocomp-phrase := pop-no-nominal-phrase &
+  [ ARGS < [ SYNSEM.LOCAL.CAT.HEAD adj-adv-infcompl-prep-sadv ] > ].
+; Robust unary popping rule (no comma):
+; At mannen smiler hevder Jon.
+pop-no-nominal-robust-phrase := pop-no-nominal-phrase &
+  [ SYNSEM.LOCAL.CAT.VBL synsem,
+    ARGS < [ SYNSEM.LOCAL.CAT.HEAD fincompl ] > ].
+; No comma after subordinate clause at the end of the sentence:
+; Jon beundrer at mannen smiler.
+pop-no-nominal-comp-phrase := pop-no-nominal-phrase &
+  [ SYNSEM.LOCAL.CAT.VBL anti-synsem,
+    ARGS < [ SYNSEM.LOCAL.CAT.HEAD constcompl,
+	     FINAL bool ] > ].
+; PH 2026-03-31: Fix a comma rule for sentences like
+; Beundre at jeg sover, gjør jeg.
+; avoiding double commas:
+; *Beundre at jeg hevder jeg sover, , gjør jeg
+; PH 2026-04-07: Fixed it by requiring one element on STACK.
+pop-no-nominal-vp-phrase := pop-no-nominal-min & binary-phrase &
+  [ SYNSEM.LOCAL.CAT [ STACK < [ NON-LOCAL.SLASH < [ CAT.HEAD mainverb ] > ] >,
+		       VBL anti-synsem ],
+    ARGS < [ SYNSEM.LOCAL.CAT.HEAD constcompl ],
+	   comma-word & [ FINAL - ] > ].
+
+pop-vp-phrase := pop-no-nominal-min &
+  [ SYNSEM [ LOCAL.CAT [ HEAD aux-verb & [ MESS prop_m_rel ],
+			 ARGUMENT.LOCAL.CAT.CASE subj-case,
+			 VBL synsem-min & [ LOCAL.CONT.HOOK.INDEX.SF prop_m_rel ] ],
+	     LKEYS.KEYREL.PRED arg1+ ],
+    ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD verb,
+				    VAL [ CMP1.LINK arg1-,
+					  CMP2.LINK arg2-,
+					  CMP3.LINK arg3-,
+					  CMP4.LINK arg4- ] ] ],
+		      LKEYS.KEYREL.PRED arg1+,
+		      FIRST-WORD + ] ], ... > ].
+
+pop-vp-unary-phrase := pop-vp-phrase & unary-phrase &
+  [ SYNSEM.LOCAL.CAT [ C +,
+		       VBL synsem ] ].
+
+pop-vp-c-phrase := pop-vp-phrase & binary-phrase &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD verb,
+			   VBL anti-synsem,
+			   STACK <> ],
+		     CONT.HOOK #hook ],
+	     NON-LOCAL.SLASH < [ CAT.VBL.LOCAL [ CAT.HEAD #head ],
+				 CONT.HOOK [ LTOP #lbl,
+					     INDEX #index ] ] >,
+	     LKEYS.KEYREL [ LBL #lbl,
+			    ARG0 #index & [ E.TENSE #finite,
+					    PERF - ] ] ],
+    ARGS < [ SYNSEM.LOCAL [ CAT.HEAD verb,
+			    CONT.HOOK #hook ] ],
+	   finite-verb-word  &
+	   [ SYNSEM [ LOCAL.CAT.HEAD #head,
+		      LKEYS.KEYREL [ PRED gjøre_v,
+				     ARG0.E.TENSE #finite ] ] ] > ].
 
 ;; Phrase for ending parentheticals
 pop-par-phrase := pop-phrase & gap-binary &
@@ -4740,7 +5051,7 @@ ellipsis-phrase := in-const-struct & unary-phrase &
 			   VAL #val & [ ARGFRAME #ellpred ],
 			   ARGUMENT #arg & [ LOCAL.CAT.CASE subj-case ] ],
 		     TOPIC #topic,
-		     CONT [ HOOK #hook,
+		     CONT [ HOOK #hook & [ INDEX.E #e ],
 			    MSG #msg ],
 		     AGR #agr ],
 	     NON-LOCAL #nl & [ SLASH < [] > ],
@@ -4757,8 +5068,8 @@ ellipsis-phrase := in-const-struct & unary-phrase &
 			      AGR #agr ],
 		      NON-LOCAL #nl,
 		      LKEYS #lkeys & [ KEYREL #keyrel,
-				       CNSTR #keyrel,
 				       ELLREL #keyrel & [ LBL #ltop,
+							  ARG0.E #e,
 							  PRED #ellpred & arg1+ & arg2+ ] ] ] ] >,
     C-CONT [ RELS <! #keyrel !>,
 	     HCONS <!!> ],
@@ -4910,7 +5221,9 @@ verbal-c-min := verbal-phrase-min2 &
     ARGS < [ SYNSEM.LOCAL.CAT.C + ],
 	   [ SYNSEM.LOCAL [ CAT.HEAD.PERFPART -,
 			    CONT.HOOK #hook & [ INDEX.E.TENSE finite ] ] ] > ].
-
+; PH 2026-04-14: The unification of the second daughters PERFPART and PERF
+; values makes periphrastic passive not work:
+; Det ble gitt Jon en is.
 verbal-v-min := verbal-phrase-min &
   [ SYNSEM.LOCAL [ CAT [ C -,
 			 AAIF - ],
@@ -4918,13 +5231,16 @@ verbal-v-min := verbal-phrase-min &
 				       INDEX.E #e ] ],
     ARGS < [ SYNSEM.LOCAL [ CAT.C -,
 			    CONT.HOOK #hook & [ LTOP #ltop,
-					INDEX.E #e ] ] ],
-	   [ ] > ].
+					INDEX [ E #e,
+						PERF sort ] ] ] ],
+	   [ SYNSEM.LOCAL [ CAT.HEAD.PERFPART sort,
+			    CONT.HOOK.INDEX.PERF sort ] ] > ].
 
 
 verbal-c-phrase := verbal-c-min & verbal-phrase-main & verbal-phrase-nonpass & verbal-phrase-min3 &
   [ SYNSEM [ LOCAL.CONT.HOOK.LTOP #ltop,
-	     LKEYS.KEYREL.LBL #ltop ] ].
+	     LKEYS.KEYREL [ LBL #ltop,
+			    ARG0.PERF - ] ] ].
 
 aux-c-phrase := verbal-c-min & verbal-phrase-aux & verbal-phrase-nonpass &
   [ SYNSEM.LOCAL.CAT.VBL.LOCAL [ CAT.HEAD.PERFPART #bool,
@@ -5053,7 +5369,8 @@ binary-inf-phrase-min := inf-phrase & binary-phrase &
 				[ LOCAL #loc & [ CAT.HEAD.PERFPART -,
 						 CONT.HOOK.INDEX #index  &
 								   [ PERF - ] ],
-				  LKEYS.CNSTR #rel2 ] ],
+				  LKEYS [ CNSTR #rel2,
+					  KEYREL.ARG0 #index ] ] ],
 		     CONT.HOOK [ LTOP #lbl2,
                                  INDEX event ] ],
              NON-LOCAL #sl,
@@ -5239,7 +5556,7 @@ unary-inf-phrase := basic-unary-phrase & arg2-sign & inf-phrase &
 					  CMP3 [ LINK arg3-,
                                                  LOCAL.CONT.HOOK.INDEX #xarg ],
 					  CMP2 [ SAT -,
-						 LINK 2vp,
+						 LINK #link & 2vp,
 						 LOCAL [ CAT [ HEAD infcompl,
 							       VBL.LOCAL.CONT.HOOK.INDEX.E.TENSE infin ],
 						    CONT.HOOK [ INDEX #arg2,
@@ -5250,7 +5567,8 @@ unary-inf-phrase := basic-unary-phrase & arg2-sign & inf-phrase &
 				     MSG #msg ],
 			      TOPIC #topic ],
 		      NON-LOCAL #sl,
-		      LKEYS.CNSTR #rel & [ LBL #lbl2,
+		      LKEYS.KEYREL #rel & [ LBL #lbl2,
+					   PRED #link,
 					   ARG2 #arg2 ] ] ] >,
     C-CONT [ RELS <! !>,
 	     HCONS <!!> ],
@@ -5382,7 +5700,7 @@ emb-filler-phrase := nextword-phrase &
 			   C #c,
 			   STACK < [ LOCAL [ CAT [ HEAD aux-verb &
 							[ ELLIPSIS #ell,
-							  MESS prop-wh_m_rel ],
+							  MESS prop_m_rel ],
 						   VAL #val2,
 						   ARGUMENT.LOCAL.CAT.CASE case,
 						   VBL #vbl2 & 
@@ -5392,7 +5710,7 @@ emb-filler-phrase := nextword-phrase &
 						   INTRANS #intrans ],
 					     TOPIC #local,
 					     CONT [ HOOK.INDEX [ SF #mess & 
-								    prop-wh_m_rel,
+								    prop_m_rel,
 								 E.TENSE finite ] ],
 					     NEG-OUT #negout ],
 				     NON-LOCAL [ SLASH < [ CAT [ HEAD #head,
@@ -5510,7 +5828,8 @@ neg-link := phrase &
 				      CMP3.LINK arg3-,
 				      CMP4.LINK arg4-,
 				      PART prt- ] ].
-
+; PH 2026-04-14: Fix the FINAL constraint so that it doesn't block
+; Jeg spiser isen og du sjokoladen.
 force-phrase-min := clause & basic-unary-phrase & neg-link &
   [ SYNSEM [ LOCAL [ CAT [ HEAD #1 & aux-verb & [ MOD <>,
                                              CATEGORY verb-cat,
@@ -5547,7 +5866,8 @@ force-phrase-min := clause & basic-unary-phrase & neg-link &
 		      LKEYS.KEYREL #keyrel ],
 	     BOUNDARY -,
 	     CONJ no-conj ] >,
-    BOUNDARY + ].
+    BOUNDARY +,
+    FINAL bool ].
 
 force-phrase := force-phrase-min &
   [ ARGS < [ SYNSEM.LOCAL.CAT [ VBL anti-synsem,
@@ -5638,8 +5958,110 @@ sem-filler-phrase := filler-phrase &
     ARGS < [], [ SYNSEM [ LOCAL [ CAT.VAL #valence ],
 			  LKEYS.KEYREL #rel ] ] > ].
 
+; PH 2026-04-09: The second daughter is constrained to verb-word in
+; order to prevent passive verbs as input. If passive verbs are to be
+; accepted the constraint should be relaxed to verb-word-min, to that
+; this sentence can be parsed:
+; Noteres skal det at han er snill.
+; Currently the rule would overgenerate so that we get
+; *Smiles gjør jeg.
+vp-filler-phrase-min := nextword-phrase &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD verb & [ COMPL-PASS #cp,
+					 DEGREL #degrel,
+					 CATEGORY #c,
+					 ELLIPSIS - ],
+			   VAL #val &
+				[ CMP4.MARKED - ],
+			   VBL anti-synsem,
+			   INTRANS #intrans,
+			   ARGUMENT.LOCAL.CAT.CASE non-subj-case,
+			   STACK < [ LOCAL [ CAT [ HEAD aux-verb &
+							[ ELLIPSIS #ell ],
+						   VAL #val2,
+						   VBL synsem-min &
+							[ LOCAL.CAT.ARGUMENT.LOCAL.CAT.CASE case ],
+						   C bool ],
+					     TOPIC #topic,
+					     CONT [ HOOK.INDEX [ E.TENSE finite ] ],
+					     NEG-OUT #negout ],
+				     NON-LOCAL.SLASH <
+				       [ CAT [ HEAD verb & 
+						    [ AGREE #agree,
+						      PERFPART #bool ],
+					       ARGUMENT [ LOCAL.CAT.CASE case ],
+					       VAL #val,
+					       VBL synsem-min,
+					       CONJ-CAT #c,
+					       INTRANS #intrans ],
+					 TOPIC #topic,
+					 CONT [ HOOK [ XARG #xarg,
+						       PARG individual ] ],
+					 EXTR-REL #relation,
+					 AGR #agr,
+					 NEG-OUT #negout ] >,
+				     LKEYS.KEYREL relation ] > ],
+		     TOPIC #topic,
+		     AGR #agr,
+		     NEG-OUT #negout ],
+	     NON-LOCAL.SLASH <>,
+	     LKEYS.KEYREL #relation & [ PRED #pred ] ],
+    ARGS < start-word &
+	   [ START +,
+	     SYNSEM [ LOCAL.CAT [ HEAD [ ELLIPSIS #ell,
+					 DEGREL #degrel ],
+				  VAL #val2,
+				  INTRANS #intrans ] ] ],
+	   verb-word &
+	   [ BOUNDARY -,
+	     SYNSEM synsem-min &
+		      [ LOCAL [ CAT [ HEAD aux-verb &
+					   [ AGREE #agree,
+					     COMPL-PASS #cp,
+					     PERFPART bool ],
+				      VAL #val,
+				      ARGUMENT synsem-min ],
+				CONT [ HOOK [ XARG #xarg,
+					      PARG individual ] ],
+				AGR #agr ],
+			NON-LOCAL.SLASH <>,
+			LKEYS.KEYREL [ ARG0.PERF bool,
+				       PRED #pred ] ] ] >,
+    C-CONT [ RELS <! #relation & [ ARG0.PERF #bool ] !>,
+	     HCONS <!!> ],
+    LINK-INPUT - ].
+
+vp-filler-phrase := vp-filler-phrase-min &
+  [ SYNSEM [ LOCAL.CAT.STACK < [ LOCAL.CAT.VBL synsem-min,
+				 NON-LOCAL.SLASH
+                      < [ CAT [ HEAD.PERFPART #bool,
+				VBL synsem & [ LOCAL.CONT.HOOK.INDEX.E.TENSE #tense ] ] ] > ] >,
+	     LKEYS.KEYREL #relation & [ PRED arg1+,
+					ARG0 [ E.TENSE #tense & pres-pret-perf,
+					       PERF #bool ] ] ],
+    ARGS < [ ], [ SYNSEM [ LOCAL.CAT.HEAD.PERFPART #bool,
+			   LKEYS.KEYREL #relation ] ] > ].
+
+vp-filler-inf-phrase := vp-filler-phrase-min &
+  [ SYNSEM [ LOCAL.CAT.STACK < [ NON-LOCAL.SLASH <
+                    [ CAT [ HEAD.PERFPART bool,
+			    VBL.LKEYS.KEYREL.ARG0 #arg0 ] ] > ] >,
+	     LKEYS.KEYREL [ LBL #lbl,
+			    PRED #pred,
+			    ARG0 [ INSTLOC #instloc,
+				   PERF bool ],
+			    ARG1 #arg1 ] ],
+    ARGS < [ ], [ SYNSEM [ LOCAL.CAT.HEAD.PERFPART -,
+			   LKEYS.KEYREL [ LBL #lbl,
+					PRED #pred,
+					ARG0 #arg0 & [ E.TENSE infin,
+						       INSTLOC #instloc,
+						       PERF bool ],
+					ARG1 #arg1 ] ] ] > ].
+
 cadv-filler-phrase := filler-phrase & uni-link &
   [ SYNSEM [ LOCAL.CAT [ HEAD cadv,
+			 C -,
+			 ARGUMENT.LOCAL.CAT.CASE subj-case,
 			 VBL synsem ], ;
 	     LKEYS.KEYREL.ARG0 #arg2 ],
     ARGS < [], [ SYNSEM [ LOCAL.EXTR-REL #rel & [ ARG2 #arg2 ],
@@ -5989,6 +6411,8 @@ neut-pron := 3sg-pron & neut-item & pers-pron.
 1pl-pron := pers-pron & 1pl-item.
 2sg-pron := pers-pron & 2sg-item.
 2pl-pron := pers-pron & 2pl-item.
+reciproc-pron := pron-word &
+  [ SYNSEM.LKEYS.KEYREL.PRED reciproc-pron_rel ].
 
 noe-pron := nominal-item & phrase &
   [ SYNSEM [ FIRST-WORD -,
@@ -6923,7 +7347,7 @@ sadv-phrase-min := phrasal & val-or-mod-sign & head-compositional &
 	     HCONS <!!> ] ].
 
 head-sadv-phrase-min := sadv-phrase-min & head-initial & binary-nexus-phrase &
-			non-extr-phrase & binary-headed-gap-phrase &
+		        binary-headed-gap-phrase &
   [ SYNSEM.LOCAL.NEG-OUT #neg-out,
     ARGS < [ SYNSEM #mod & [ FIRST-WORD +,
 			     LOCAL [ NEG-OUT #neg-in,
@@ -6983,7 +7407,7 @@ post-poss-phrase := phrasal & val-or-mod-sign & head-compositional & head-initia
 ; restrict the possible modifiers
 ; took out the HD-DTR.SYNSEM.NON-LOCAL.SLASH.FIRST.CAT.CASE non-case constraint 
 ;                                                                    (2015-02-23; ph)
-extr-mod-phrase := unary-extr-phrase &
+extr-mod-phrase := unary-extr-phrase & val-or-mod-sign &
   [ BOUNDARY -,
     SYNSEM [ LOCAL [ CAT [ HEAD compl-verb,
 			   VAL #val2 ],
@@ -7021,6 +7445,87 @@ extr-mod-phrase := unary-extr-phrase &
 	     HCONS <!!> ] ].
 
 
+extr-vp-phrase := phrase &
+  [ BOUNDARY -,
+    SYNSEM [ LOCAL [ CAT [ HEAD subcompl-infcompl-verb & [ MESS prop_m_rel ],
+			   VAL [ CMP2.LINK arg2-,
+				 CMP3.LINK arg3-,
+				 CMP4.LINK arg4- ],
+			   VBL anti-synsem,
+			   STACK #stack ],
+		     CONT [ HOOK #hook2 & [ LTOP #sort,
+					    INDEX.INSTLOC #string,
+					    XARG #xarg ],
+			    MSG #msg ],
+		     TOPIC #topic ] ],
+    ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD subcompl-infcompl-verb,
+				    VAL #val,
+				    VBL synsem-min &
+					 [ LOCAL #local &
+					   [ CONT.HOOK #hook
+					   & [ LTOP #sort,
+					       INDEX.INSTLOC #string,
+					       XARG #xarg ] ] ],
+				    CASE subj-case,
+				    STACK #stack ],
+			      CONT.HOOK #hook2,
+			      TOPIC #topic ],
+		      NON-LOCAL.SLASH < [ CAT [ HEAD verb,
+						VAL #val,
+						VBL synsem-min &
+						     [ LOCAL #local ] ],
+					  CONT [ HOOK #hook,
+						 MSG #msg ],
+					  EXTR-REL #relation ] >,
+		      LKEYS.KEYREL #relation ] ], ... >,
+    C-CONT [ RELS <! !>,
+	     HCONS <!!> ] ].
+
+; PH 2026-04-07: Set AAIF to bool in order to allow the sadv rule to work
+; after the VP extraction rule:
+; Smile gjør jeg ikke.
+extr-vp-v-phrase := extr-vp-phrase &
+  [ SYNSEM.LOCAL.CAT [ ARGUMENT.LOCAL.CAT.CASE non-subj-case,
+		       C -,
+		       VAL.CMP1.LINK arg1-,
+		       AAIF - ],
+    ARGS < [ SYNSEM [ LOCAL.CAT [ ARGUMENT.LOCAL.CAT.CASE non-subj-case,
+				  C -,
+				  VBL [ LOCAL.CAT.HEAD.PERFPART #bool,
+					LKEYS.KEYREL #relation ] ],
+		      NON-LOCAL.SLASH < [ CAT.HEAD.PERFPART #bool,
+					  EXTR-REL #relation ] > ] ], ... > ].
+
+extr-vp-c-phrase := extr-vp-phrase &
+  [ SYNSEM.LOCAL.CAT [ ARGUMENT.LOCAL.CAT.CASE subj-case,
+		       C -,
+		       VAL.CMP1.LINK arg1+ ],
+    ARGS < [ SYNSEM.LOCAL [ CAT [ ARGUMENT.LOCAL.CAT.CASE subj-case,
+				  C + ] ] ], ... > ].
+
+; PH 2026-04-07: set the HEAD value to aux-verb in avoid
+; * Smiler beundrer jeg at du
+; FIX: But it now fails to parse this sentence:
+; Smile beundrer jeg at du vil
+; Smile prøver jeg å ville
+extr-vp-unary-phrase := extr-phrase & head-only & unary-phrase &
+			extr-vp-v-phrase &
+  [ ARGS < [ SYNSEM.LOCAL.CAT [ HEAD subcompl-verb ] ] > ].
+
+extr-vp-binary-phrase := binary-extr-phrase & extr-vp-phrase &
+  [ ARGS < [ SYNSEM [ LOCAL.CAT.VBL synsem &
+				    [ LOCAL [ CAT.HEAD #head,
+					      CONT.HOOK.INDEX [ INSTLOC #string,
+								E #e ] ] ],
+		      NON-LOCAL.SLASH < [ CAT.HEAD.PERFPART #bool,
+					  CONT.HOOK.INDEX.INSTLOC #string ] > ] ],
+	   verb-word &
+	   [ SYNSEM [ LOCAL.CAT.HEAD #head & [ PERFPART #bool ],
+		      LKEYS.KEYREL [ PRED gjøre_v,
+				     ARG0.E #e ] ] ] > ].
+
+extr-vp-binary-v-phrase := extr-vp-binary-phrase & extr-vp-v-phrase.
+extr-vp-binary-c-phrase := extr-vp-binary-phrase & extr-vp-c-phrase.
 
 cadv-word := func-word &
   [ SYNSEM [ LOCAL.CAT.HEAD complementizer,
@@ -7151,13 +7656,14 @@ conj-phrase := basic-binary-phrase &
 			   VAL #val,
 			   STACK #stack,
                            VBL #m,
-			   ARGUMENT #arg,
+			   ARGUMENT synsem,
                            CONJ-CAT #cat,
 			   CASE #case,
 			   QUANT #q,
 			   C #c ],
                      CONT [ HOOK #hook,
-                            MSG #msg ] ],
+                            MSG #msg ],
+		     TOPIC #topic ],
              LKEYS #lkeys,
              NON-LOCAL #nl,
              PHR bool,
@@ -7168,11 +7674,12 @@ conj-phrase := basic-binary-phrase &
 					   MOD list ],
 				    STACK < [ LOCAL [ CAT [ HEAD #head,
 							    VAL #val,
-							    ARGUMENT #arg,
+							    ARGUMENT synsem,
 							    VBL #m,
 							    C #c ],
 						      CONT [ HOOK #hook,
-							     MSG #msg ] ],
+							     MSG #msg ],
+						      TOPIC #topic ],
 					      NON-LOCAL #nl,
 					      LKEYS #lkeys ] . #stack >,
 				    CASE #case,
@@ -7183,25 +7690,27 @@ conj-phrase := basic-binary-phrase &
 
 conj-sat-phrase := conj-phrase &
   [ SYNSEM [ LOCAL.CAT.ARGUMENT [ LOCAL.CONT.HOOK.INDEX #rind,
-				  LKEYS [ KEYREL #keyrel,
-					  Q.QREL [ ARG0 #rind ] ] ],
-	     LKEYS.ALTKEYREL.PRED #conjpred ],
+				  LKEYS [ KEYREL #keyrel & [ LBL #larg ],
+					  Q.QREL [ RSTR #harg,
+						   ARG0 individual ] ] ],
+	     LKEYS [ ALTKEYREL.PRED #conj & super_conj ] ],
     ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD nominal,
 				    VAL.SISTER anti-synsem,
 				    QUANT + ],
 			      CONT [ HOOK [ LTOP handle,
 					    INDEX #index ] ] ],
-		      LKEYS [ KEYREL [ LBL #larg,
+		      LKEYS [ KEYREL [ LBL handle,
 				       ARG0 #lind ],
 			      Q.QREL #qrel &
 				     [ PRED quant_m_rel,
 				       ARG0 #lind,
-				       RSTR #harg ] ] ] ],
-	   [ SYNSEM.LKEYS.KEYREL [ PRED #conjpred,
+				       RSTR handle ] ] ] ],
+	   [ SYNSEM.LKEYS.KEYREL [ PRED super_conj,
 				   C-ARG #index & ref-ind & [ PNG.PN pl ], 
 				   L-INDEX #lind,
 				   R-INDEX #rind ] ] >,
-    C-CONT [ RELS <! [ LBL #larg2,
+    C-CONT [ RELS <! [ PRED #conj,
+		       LBL #larg2,
 		       C-ARG #arg0 ], #keyrel, #qrel,
 		   indef-relation &
 		   [ PRED udef_q_rel,
@@ -7272,12 +7781,14 @@ coord-s-min := basic-binary-phrase & start-item & uni-link-min &
 		     CONT.HOOK.INDEX #rind & [ SF #mess ] ],
 	     NON-LOCAL.SLASH <>,
 	     LKEYS [ KEYREL.ARG0 #rind,
-		     ELLREL.PRED #argframe ] ],
+		     ELLREL [ PRED #argframe,
+			      ARG0.E #e ] ] ],
     ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD head,
 				    INTRANS #bool ],
 			      CONT.HOOK.INDEX #lind & [ SF #mess ] ],
 		      NON-LOCAL.SLASH <>,
-		      LKEYS.KEYREL.PRED #argframe ] ],
+		      LKEYS.KEYREL [ PRED #argframe,
+				     ARG0.E #e ] ] ],
 	  conj-word-min &
 	   [ SYNSEM.LKEYS.KEYREL [ L-INDEX #lind,
 				   R-INDEX #rind ] ] >,
@@ -7310,12 +7821,13 @@ conj-or-app-embedded-phrase := embedded-phrase-min & basic-binary-phrase & c-con
 			   QUANT #q,
 			   CASE #case,
 			   VAL.SISTER #sis,
-			   STACK < [ LOCAL.CAT [ VAL #val,
-						 VBL #m,
-						 C #c ],
+			   STACK < [ LOCAL [ CAT [ VAL #val,
+						   VBL #m,
+						   C #c ],
+					     TOPIC #topic ],
 				     NON-LOCAL #nl ], ... > ],
 		     CONT.HOOK #hook ],
-	     LKEYS #lkeys ],
+	     LKEYS #lkeys & [ Q.QREL #qrel ] ],
     ARGS < [ CONJ #conj,
 	     BOUNDARY -,
 	     SYNSEM [ LOCAL [ CAT [ VAL #val,
@@ -7324,7 +7836,8 @@ conj-or-app-embedded-phrase := embedded-phrase-min & basic-binary-phrase & c-con
 				    VBL #m,
 				    CONJ-CAT #cc,
 				    CASE #case,
-				    C #c ] ],
+				    C #c ],
+			      TOPIC #topic ],
 		      NON-LOCAL #nl ] ], 
 	   word &
 	   [ CONJ no-conj,
@@ -7334,7 +7847,8 @@ conj-or-app-embedded-phrase := embedded-phrase-min & basic-binary-phrase & c-con
 					 CASE #case,
 					 VAL.SISTER #sis ],
 				   CONT.HOOK [ INDEX event-or-ref-index ] ],
-			   LKEYS #lkeys ] ] > ].
+			   LKEYS #lkeys & [ Q.QREL #qrel & [ ARG0 #arg0 ],
+					    KEYREL.ARG0 #arg0 ] ] ] > ].
 
 conj-embedded-phrase := conj-or-app-embedded-phrase &
   [ ARGS < conj-phrase, [] > ].
@@ -7352,9 +7866,10 @@ conj-comma-sat-phrase := conj-sat-phrase &
     ARGS < [ ], comma-word > ].
 
 conj-end-sat-phrase := conj-sat-phrase & 
-  [ CONJ end-conj,
+  [ SYNSEM.LKEYS.ALTKEYREL.PRED #pred,
+    CONJ end-conj,
     ARGS < [ ],
-	   conj-word  > ].
+	   conj-word & [ SYNSEM.LKEYS.KEYREL.PRED #pred ]  > ].
 
 conj-comma-unsat-phrase := conj-unsat-phrase & 
   [ CONJ pre-conj,
@@ -7529,7 +8044,7 @@ period-word := inflecting-lex-rule & post-punct-word &
 punct-word := word-or-lexrule &
   [ SYNSEM [ FIRST-WORD -,
 	     LOCAL [ CAT.HEAD non-head,
-		     CONT [ RELS <! [] !> ] ] ] ].
+		     CONT [ RELS <! !> ] ] ] ].
 
 pre-punct-word := punct-word &
   [ SYNSEM.LOCAL.CAT.STACK <> ].
@@ -7903,7 +8418,7 @@ _gå*på_14_rel := gå_v & 1np & arg2- & arg3- & 4np & på_prp & prt-.
 _gå*for_14_rel := gå_v & 1np & arg2- & arg3- & 4np & for_prp & prt-.
 _gå-refl_12_rel := gå_v & 1np & 2np & arg3+ & refl & arg4- & prt-.
 gå-refl-bort_1_rel := gå_v & 1np & refl & arg2+ & arg3- & arg4- & bort_prt.
-_gå*konkurs_1_rel := gå_v & 1np & konkurs_n & arg2+ & arg3- & arg4- & prt-.
+_gå*konkurs_1_rel := gå_v & 1np & konkurs_n & 2indsg & arg3- & arg4- & prt-.
 _gå-ip_2_rel := gå_v & arg1- & 2ip & arg3- & arg4- & prt-.
 _gå-an-ip_2_rel := gå_v & arg1- & 2ip & arg3- & arg4- & an_prt.
 _gå-an-cp_2_rel := gå_v & arg1- & 2cp & arg3- & arg4- & an_prt.
@@ -7923,7 +8438,7 @@ _gå*for-refl_1_rel := gå_v & 1np & arg2- & arg3- & arg4+ & refl & for_prp & pr
 _gå-i*med_14_rel := gå_v & 1np & arg2- & arg3- & 4np & med_prp & i_prt.
 _gå-i_1_rel := gå_v & 1np & arg2- & arg3- & arg4- & i_prt.
 _gå-igjen_1_rel := gå_v & 1np & arg2- & arg3- & arg4- & igjen_prt.
-_gå*i*oppløsning_1_rel := gå_v & 1np & arg2- & arg3- & i_prd & prp+ & 4idiom & oppløsning_n & prt-.
+_gå*i*oppløsning_1_rel := gå_v & 1np & arg2- & arg3- & i_prp & 4indsg & oppløsning_n & prt-.
 _gå-under_1_rel := gå_v & 1np & arg2- & arg3- & arg4- & under_prt.
 _gå-av_1_rel := gå_v & 1np & arg2- & arg3- & arg4- & av_prt.
 _gå-med_1_rel := gå_v & 1np & arg2- & arg3- & arg4- & med_prt.
@@ -8188,5 +8703,33 @@ _gi*til_124_rel := gi_v & 1np & 2np & arg3- & 4np & til_prp & prt- & transfer_re
 _hente*fra_124_rel := hente_v & 1np & 2np & arg3- & 4np & fra_prp & prt- & transfer_rel.
 _kalle-inn*til_124_rel := kalle_v & 1np & 2np & arg3- & 4np & til_prp & inn_prt & transfer_rel.
 
-;transfer_rel := _gi*til_124_rel & _hente*fra_124_rel.
+;transfer_rel := _gi*til_124_rel & _hete*fra_124_rel.
+
+kraft_prd := predsort.
+kraft_n := kraft_prd & idiomform.
+_kraft_n_rel := kraft_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom.
+_ta*på*kreftene_1_rel := ta_v & 1np & arg2- & arg3- & på_prp & 4defpl & kraft_n & prt-.
+;_ta*livet*av_14_rel := ta_v & 1np & liv_n & 2defsg & arg3- & 4np & av_prp & prt-.
+;_ta*sjansen*på-ip1_14_rel := ta_v & 1np & sjanse_n & 2defsg & arg3- & 4ip1 & på_prp & prt-.
+;_ta*øynene*fra_14_rel := ta_v & 1np & øye_n & 2defpl & arg3- & 4np & fra_prp & prt-.
+
+falle_v := vrb+.
+kne_prd := predsort.
+kne_n := kne_prd & idiomform.
+_falle*på*knærne_1_rel := falle_v & 1np & arg2- & arg3- & på_prp & 4defpl & kne_n & prt-.
+
+hive_v := vrb+.
+pust_prd := predsort.
+pust_n := pust_prd & idiomform.
+_pust_n_rel := pust_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom.
+_hive*etter*pusten_1_rel := hive_v & 1np & arg2- & arg3- & etter_prp & 4defsg & pust_n & prt-.
+dag_prd := predsort.
+dag_n := dag_prd.
+_dag_meas_rel := dag_prd & arg1- & arg2- & arg3- & arg4- & prt- & meas+.
+_dag_n_rel := dag_prd & arg1- & arg2- & arg3- & arg4- & prt- & atom & time-loc_prd.
+
+_komme*for*dagen_1_rel := komme_v & 1np & arg2- & arg3- & for_prp & 4defsg & dag_n & prt-.
+_legge*på*svøm_1_rel := legge_v & 1np & arg2- & arg3- & på_prp & 4indsg & svøm_n & prt-.
+løfte_v := vrb+.
+_løfte*i*flokk_1_rel := løfte_v & 1np & arg2- & arg3- & i_prp & 4indsg & flokk_n & prt-.
 
