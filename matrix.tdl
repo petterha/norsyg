@@ -316,7 +316,8 @@ intersective-mod := local.
 non-local-min := avm.
 
 non-local := non-local-min &
-  [ SLASH list ].
+  [ SLASH list,
+    BACKSLASH list ].
 
 ;non-local-none := non-local &
 ;  [ SLASH < >,
@@ -1056,10 +1057,11 @@ head-nexus-phrase := head-nexus-rel-phrase & head-nexus-que-phrase.
 ; token-identical to that of the head daughter, which has already amalgamated
 ; the SLASH values of its arguments.  See discussion of head-nexus-phrase for
 ; treatment of REL and QUE.
-
+; PH 2026-06-12: Changed path from NON-LOCAL.SLASH to NON-LOCAL in order
+; to include BACKSLASH
 head-valence-phrase := head-nexus-phrase &
-  [ SYNSEM.NON-LOCAL.SLASH #slash,
-    HD-DTR.SYNSEM.NON-LOCAL.SLASH #slash ].
+  [ SYNSEM.NON-LOCAL #slash,
+    HD-DTR.SYNSEM.NON-LOCAL #slash ].
 
 ; All phrases are either unary or binary.
 
@@ -1218,13 +1220,18 @@ imperative-clause := clause &
 ;;;
 ;;; Basic phrase types
 ;;;
-gap-unary := sign &
-  [ SYNSEM.NON-LOCAL.SLASH #1,
-    ARGS < [ SYNSEM.NON-LOCAL.SLASH #1 ] > ].
 
+; PH 2026-06-12: Changed path from NON-LOCAL.SLASH to NON-LOCAL in order
+; to include BACKSLASH
+gap-unary := sign &
+  [ SYNSEM.NON-LOCAL #1,
+    ARGS < [ SYNSEM.NON-LOCAL #1 ] > ].
+
+; PH 2026-06-12: Changed path from NON-LOCAL.SLASH to NON-LOCAL in order
+; to include BACKSLASH
 gap-binary := basic-binary-phrase &
-  [ SYNSEM.NON-LOCAL.SLASH #slash,
-    ARGS < [ SYNSEM.NON-LOCAL.SLASH #slash ],
+  [ SYNSEM.NON-LOCAL #slash,
+    ARGS < [ SYNSEM.NON-LOCAL #slash ],
            [ SYNSEM.NON-LOCAL.SLASH <> ] > ].
 
 no-slash := sign &

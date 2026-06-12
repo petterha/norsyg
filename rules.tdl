@@ -159,9 +159,12 @@ conj-s := conj-s-phrase.
 coord-vp := coord-vp-phrase.
 coord-filler := coord-filler-phrase.
 ;conj-mod := conj-mod-phrase.
-bicl-subcoord := bicl-subcoord-phrase.
-monocl-subcoord := monocl-subcoord.
-eoc-coord := eoc-coord.
+
+; PH 2026-06-11: Commented out the following three rules in order to
+; see the rules in the lkb window
+; bicl-subcoord := bicl-subcoord-phrase.
+; monocl-subcoord := monocl-subcoord.
+; eoc-coord := eoc-coord.
 
 ; This rule is not semantically wellformed: 
 ; "Jeg brauter med Jon på at jeg brauter"
@@ -203,6 +206,10 @@ continuative := continuative-phrase.
 prepsel := prepsel-binary.
 ;prepsel-ellipsis := prepsel-ellipsis-phrase.
 ;arg2-idiom := arg2-idiom-struc.
+
+
+; PH 2026-06-11: Commented out the following three rules in order to
+; see the rules in the lkb window
 arg2-idiom := arg2-indsg-struc.
 arg2-indpl := arg2-indpl-struc.
 arg2-defsg := arg2-defsg-struc.

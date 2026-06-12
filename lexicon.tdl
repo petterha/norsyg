@@ -8,8 +8,6 @@
 ; 	   < [+POS.+TAGS < "verb_pret" > ] > ].
 
 
-
-
 0-card := pl-card-word &
   [ STEM < "0" >,
     LEXREL.LIST.FIRST.CARG "0" ].

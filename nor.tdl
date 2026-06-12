@@ -3155,7 +3155,8 @@ arg4-idiom-min := idiom-struc &
 				 CMP3 #cmp3,
 				 CMP4 [ LINK arg4-,
 					MARKED -,
-					LOCAL #local ] ] ] ] ],
+					LOCAL #local ] ],
+			   CASE non-subj-case ] ] ],
     ARGS < [ SYNSEM.LOCAL.CAT.VAL [ CMP2 #cmp2,
 				    CMP3 #cmp3,
 				      CMP4 [ LINK #idiomform & arg4+ & idiomform,
@@ -3693,7 +3694,12 @@ non-subj-val := phrase &
   [ ARGS.FIRST.SYNSEM.LOCAL.CAT [ ARGUMENT.LOCAL.CAT.CASE non-subj-case,
 				  VBL anti-synsem ] ].
 
-non-subj-extr := non-subj-val & valence-extr-phrase.
+; PH 2026-06-03: Added ARGS ... PART constraint in order to avoid
+; spurious ambiguity in case of particles being realized before and
+; after the extraction:
+; Temaet tar jeg opp.
+non-subj-extr := non-subj-val & valence-extr-phrase &
+  [ ARGS < [ SYNSEM.LOCAL.CAT.VAL.PART prt- ] > ].
 
 arg1-phrase := arg1-val & binary-valence-phrase & c-cont-rel-0.
 arg1-extr-phrase := arg1-val & subj-extr &
@@ -4020,7 +4026,8 @@ non-emb-subconstr := binary-nexus-phrase & head-initial &
   [ SYNSEM.LKEYS.KEYREL.PRED #pred,
     ARGS < [ SYNSEM.LKEYS.KEYREL.PRED #pred ], 
 	   [ SYNSEM.LKEYS.KEYREL.PRED #pred ] > ].
-
+; PH 2026-06-03: Removed the CASE non-subj-case constraint in order to
+; allow for particles to occur after the object is extracted
 part-prep-phrase := val-min &
   [ SYNSEM phr-synsem &
 	   [ LOCAL [ CAT [ C -,
@@ -4031,7 +4038,8 @@ part-prep-phrase := val-min &
 				 CMP3 #3,
 				 SISTER #sister ],
 			   VBL #vbl & anti-synsem,
-			   QUANT #quant ],
+			   QUANT #quant,
+			   CASE case ],
 		     CONT [ HOOK #hook,
 			    MSG #msg ] ],
 	     --PHR-KEY no-msg,
@@ -4527,7 +4535,8 @@ compl-phrase-min := complementizer-sign & compl-first-arg-vbl &
 			      AGR #agr,
 			      TOPIC #topic,
 			      NEG-OUT #negout ],
-		      LKEYS.CNSTR #rel & [ LBL #lbl ] ] ], ... >,
+		      LKEYS.CNSTR #rel & [ LBL #lbl ],
+		      NON-LOCAL.BACKSLASH list ] ], ... >,
     MEANING #rel,
     IN #in,
     OUT #out ].
@@ -4537,6 +4546,9 @@ compl-phrase := compl-phrase-min.
 ; PH 2013-01-31: replaced the ARGS.FIRST.HEAD compl-som-verb
 ; constraint with compl-verb in order to prevent too many parses with
 ; som
+; PH 2026-06-12: Added ARGS..BACKSLASH <> constraint in order to
+; avoid partial VP fronting from CP complements:
+; * Beundre har jeg ikke sagt (at) jeg vil henne
 unary-compl-phrase := compl-phrase & unary-phrase & gap-unary & arg2-sign & embedded-phrase &
   [ SYNSEM [ LOCAL [ CAT [ HEAD subcompl-omcompl,
 		   STACK < [ LOCAL [ CAT [ HEAD.DEGREL #degrel,
@@ -4556,7 +4568,8 @@ unary-compl-phrase := compl-phrase & unary-phrase & gap-unary & arg2-sign & embe
 				    C - ],
 			      CONT.HOOK.LTOP #lbl ],
 		      LKEYS.KEYREL [ LBL #lbl,
-				     ARG2 #index ]] ] >,
+				     ARG2 #index ],
+		      NON-LOCAL.BACKSLASH <> ] ] >,
     C-CONT [ RELS <! [ PRED subord_rel,
 		       LBL #ltop,
 		       ARG0 #index ] !>,
@@ -4677,6 +4690,9 @@ wh2-struc := embedded-phrase & arg2-val-min & binary-phrase &
 
 zero-cop-input := sign.
 
+; PH 2026-06-11: Removed the ARGS..CMP2/3 arg2/3- constraint in order to
+; parse partial VP fronting:
+; Beundrer gjør jeg henne
 pop-phrase-min-min := phrase & zero-cop-input &
   [ START -,
     SYNSEM phr-synsem &
@@ -4688,8 +4704,8 @@ pop-phrase-min-min := phrase & zero-cop-input &
     ARGS < [ SYNSEM [ FIRST-WORD #fw,
 		      LOCAL [ CAT [ HEAD head,
 				    VAL [ CMP1.LINK arg1-,
-					  CMP2.LINK arg2-,
-					  CMP3.LINK arg3-,
+					  CMP2.LINK link,
+					  CMP3.LINK link,
 					  CMP4.LINK arg4-,
 					  PART prt- ],
 				    STACK < [], ... >,
@@ -4698,6 +4714,10 @@ pop-phrase-min-min := phrase & zero-cop-input &
 		      MODIFIED notmod-or-rmod ] ], ... >,
     BOUNDARY -,
     LINK-INPUT - ].
+
+pop-full-phrase := pop-phrase-min-min &
+  [ ARGS < [ SYNSEM.LOCAL.CAT.VAL [ CMP2.LINK arg2-,
+				    CMP3.LINK arg3- ] ], ... > ].
 
 pop-phrase-min := pop-phrase-min-min &
   [ SYNSEM [ LOCAL [ CAT #cat & [ STACK #2 ],
@@ -4732,15 +4752,18 @@ pop-phrase := pop-phrase-min-min &
 ; PH 2026-03-28: The Case constraint is also useful in order to constrain
 ; the extr-vp rule so that it does not generate
 ; * spise gjør jeg et eple
+; PH 2026-06-11: Removed the Case constraint and the ARGS..CMP2 arg2-
+; constraint in order to parse the above sentence
 pop-nominal-phrase := pop-phrase & unary-phrase & pop-phrase-min &
+		      pop-full-phrase &
   [ SYNSEM [ LOCAL.CAT [ HEAD.DEGREL #degadv,
-			 CASE #case ],
+			 CASE case ],
 	     NON-LOCAL #nl ],
     ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD adj-nominal &
 					 [ NOM +,
 					   DEGREL #degadv ],
-				    VAL.CMP2.LINK arg2-,
-				    CASE #case,
+				    VAL.CMP2.LINK link,
+				    CASE case,
 				    STACK < [ NON-LOCAL #nl ], ... >] ],
 		      NON-LOCAL.SLASH <>,
 		      LKEYS [ KEYREL #rel,
@@ -4768,13 +4791,16 @@ pop-no-nominal-min := pop-phrase & pop-phrase-min &
 	     HCONS <!!> ] ].
 
 pop-no-nominal-phrase := pop-no-nominal-min & unary-phrase &
+			 pop-full-phrase &
   [ ARGS < [ SYNSEM.LOCAL.CAT.VAL.CMP2.LINK arg2- ] > ].
 
 pop-no-nominal-comma-phrase := pop-no-nominal-min & binary-phrase &
+			       pop-full-phrase &
   [ SYNSEM.LOCAL.CAT.VBL synsem,
     ARGS < [ SYNSEM.LOCAL.CAT.HEAD constcompl ], comma-word > ].
 ; Mannen som smiler, smiler
 pop-no-nominal-rel-phrase := pop-no-nominal-min & binary-phrase &
+			     pop-full-phrase &
   [ SYNSEM.LOCAL.CAT.STACK.FIRST.LOCAL.CAT.VBL synsem,
     ARGS < [ SYNSEM.LOCAL.CAT.HEAD relcompl ], comma-word > ].
 ; No comma after relative clause:
@@ -4811,12 +4837,16 @@ pop-vp-phrase := pop-no-nominal-min &
   [ SYNSEM [ LOCAL.CAT [ HEAD aux-verb & [ MESS prop_m_rel ],
 			 ARGUMENT.LOCAL.CAT.CASE subj-case,
 			 VBL synsem-min & [ LOCAL.CONT.HOOK.INDEX.SF prop_m_rel ] ],
-	     LKEYS.KEYREL.PRED arg1+ ],
+	     LKEYS.KEYREL.PRED arg1+,
+	     NON-LOCAL.BACKSLASH < [ CAT.VAL #val ] > ],
     ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD verb,
-				    VAL [ CMP1.LINK arg1-,
-					  CMP2.LINK arg2-,
-					  CMP3.LINK arg3-,
-					  CMP4.LINK arg4- ] ] ],
+				    VAL #val &
+					 [ CMP1.LINK arg1-,
+					   CMP2.LINK link,
+					   CMP3.LINK link,
+					   CMP4 [ LINK arg4-,
+						  MARKED - ],
+					   PART prt- ] ] ],
 		      LKEYS.KEYREL.PRED arg1+,
 		      FIRST-WORD + ] ], ... > ].
 
@@ -4824,9 +4854,12 @@ pop-vp-unary-phrase := pop-vp-phrase & unary-phrase &
   [ SYNSEM.LOCAL.CAT [ C +,
 		       VBL synsem ] ].
 
+; PH 2026-06-03: Changed VBL anti-synsem to expressed-non-canonical
+; in order to avoid particles to appear after gjøre:
+; * Ta temaet gjør jeg opp.
 pop-vp-c-phrase := pop-vp-phrase & binary-phrase &
   [ SYNSEM [ LOCAL [ CAT [ HEAD verb,
-			   VBL anti-synsem,
+			   VBL expressed-non-canonical,
 			   STACK <> ],
 		     CONT.HOOK #hook ],
 	     NON-LOCAL.SLASH < [ CAT.VBL.LOCAL [ CAT.HEAD #head ],
@@ -5033,8 +5066,8 @@ basic-predicate-phrase := binary-phrase &
   [ SYNSEM.LOCAL.AGR #agr,
     ARGS < [ SYNSEM.LOCAL.AGR #agr ], [ SYNSEM.LOCAL.AGR #agr ] > ].
 
-; PH 2014-01-28: New type for words that has the same c-structure mother as
-; the previous word, hence no stacking or embedding.
+; PH 2014-01-28: New type for words that has the same c-structure
+; mother as the previous word, hence no stacking or embedding.
 in-const-struct := phrase &
   [ SYNSEM phr-synsem &
     	   [ LOCAL [ CAT [ HEAD #head,
@@ -5086,8 +5119,7 @@ ellipsis-s-phrase := ellipsis-phrase &
 
 ; DEBUG 2013-11-22: Removed the LKEYS - ARGS.REST.FIRST.LKEYS link
 ; PH 2017-07-03: Removed MESS and MSG links in the mother (they used to be linked to the second daughter)
-verbal-phrase-min :=  basic-predicate-phrase & in-const-struct &
-		      comp-copy-phrase &
+verbal-phrase-min :=  basic-predicate-phrase & comp-copy-phrase &
   [ START -,
     SYNSEM [ LOCAL [ CAT [ HEAD [ COMPL-PASS #cp,
 				  CATEGORY #c,
@@ -5142,12 +5174,15 @@ verbal-phrase-min :=  basic-predicate-phrase & in-const-struct &
     BOUNDARY -,
     LINK-INPUT - ]. 
 
-verbal-phrase-nonpass := verbal-phrase-min &
+verbal-in-const-min :=  verbal-phrase-min & in-const-struct. 
+verbal-embedded-min := verbal-phrase-min & embedded-phrase.
+
+verbal-phrase-nonpass := verbal-in-const-min &
   [ SYNSEM.LOCAL.CAT.VAL #val,
     ARGS < [ SYNSEM.LOCAL.CAT.VAL #val ], [ ALTS.PASSIVE -,
 					    SYNSEM.LOCAL.CAT.VAL #val ] > ].
 
-verbal-phrase-main := verbal-phrase-min &
+verbal-phrase-main := verbal-in-const-min &
   [ ARGS < [ SYNSEM.LKEYS [ KEYREL #rel & [ LBL #lbl,
 					    PRED #pred & vrb+ ],
 			    CNSTR #rel ] ], 
@@ -5158,7 +5193,7 @@ verbal-phrase-main := verbal-phrase-min &
     C-CONT [ RELS <! #rel & [ ARG0 #ind & event & [ E.TENSE fin-infin ] ] !>,
 	     HCONS <!!> ] ].
 
-verbal-phrase-aux := verbal-phrase-min &
+verbal-phrase-aux := verbal-in-const-min &
   [ SYNSEM [ LOCAL [ CAT.VBL.LOCAL.MODAL #modal1,
 		     CONT.HOOK.LTOP handle ],
 	     LKEYS.KEYREL [ LBL handle ] ],
@@ -5170,7 +5205,7 @@ verbal-phrase-aux := verbal-phrase-min &
     C-CONT [ RELS <! !>,
 	     HCONS <! !>] ].
 
-verbal-phrase-min2 := verbal-phrase-min &
+verbal-phrase-min2 := verbal-in-const-min &
   [ ARGS < [ SYNSEM.LOCAL [ CAT.HEAD aux-compl ] ], 
 	   word-or-lexrule &
  	   [] > ].
@@ -5224,7 +5259,7 @@ verbal-c-min := verbal-phrase-min2 &
 ; PH 2026-04-14: The unification of the second daughters PERFPART and PERF
 ; values makes periphrastic passive not work:
 ; Det ble gitt Jon en is.
-verbal-v-min := verbal-phrase-min &
+verbal-v-min := verbal-in-const-min &
   [ SYNSEM.LOCAL [ CAT [ C -,
 			 AAIF - ],
 		   CONT.HOOK #hook & [ LTOP #ltop,
@@ -5246,7 +5281,7 @@ aux-c-phrase := verbal-c-min & verbal-phrase-aux & verbal-phrase-nonpass &
   [ SYNSEM.LOCAL.CAT.VBL.LOCAL [ CAT.HEAD.PERFPART #bool,
 				 CONT.HOOK.INDEX.PERF #bool ] ].
 
-verbal-min := verbal-phrase-min &
+verbal-min := verbal-in-const-min &
   [ SYNSEM.LOCAL.CAT [ ARGUMENT.LOCAL.CAT.CASE non-subj-case,
 		       AAIF - ],
     ARGS < [ SYNSEM.LOCAL.CAT [ ARGUMENT.LOCAL.CAT.CASE non-subj-case,
@@ -5255,7 +5290,7 @@ verbal-min := verbal-phrase-min &
 verbal-phrase := verbal-phrase-min3 & verbal-phrase-main & verbal-phrase-nonpass & verbal-min & verbal-v-min &
   [ C-CONT.HCONS <!!> ].
 
-verbal-pass-min := verbal-phrase-min & passive-phrase-min.
+verbal-pass-min := verbal-in-const-min & passive-phrase-min.
 
 verbal-pass-phrase := verbal-pass-min & verbal-min & verbal-v-min & passive-phrase-main &
   [ C-CONT.HCONS <!!> ].
@@ -5700,7 +5735,7 @@ emb-filler-phrase := nextword-phrase &
 			   C #c,
 			   STACK < [ LOCAL [ CAT [ HEAD aux-verb &
 							[ ELLIPSIS #ell,
-							  MESS prop_m_rel ],
+							  MESS prop-wh_m_rel ],
 						   VAL #val2,
 						   ARGUMENT.LOCAL.CAT.CASE case,
 						   VBL #vbl2 & 
@@ -5710,7 +5745,7 @@ emb-filler-phrase := nextword-phrase &
 						   INTRANS #intrans ],
 					     TOPIC #local,
 					     CONT [ HOOK.INDEX [ SF #mess & 
-								    prop_m_rel,
+								    prop-wh_m_rel,
 								 E.TENSE finite ] ],
 					     NEG-OUT #negout ],
 				     NON-LOCAL [ SLASH < [ CAT [ HEAD #head,
@@ -7448,16 +7483,20 @@ extr-mod-phrase := unary-extr-phrase & val-or-mod-sign &
 extr-vp-phrase := phrase &
   [ BOUNDARY -,
     SYNSEM [ LOCAL [ CAT [ HEAD subcompl-infcompl-verb & [ MESS prop_m_rel ],
-			   VAL [ CMP2.LINK arg2-,
-				 CMP3.LINK arg3-,
-				 CMP4.LINK arg4- ],
+			   VAL #val2 &
+				[ CMP2.LINK link,
+				  CMP3.LINK link,
+				  CMP4 [ LINK arg4-,
+					 MARKED - ],
+				  PART prt-],
 			   VBL anti-synsem,
 			   STACK #stack ],
 		     CONT [ HOOK #hook2 & [ LTOP #sort,
 					    INDEX.INSTLOC #string,
 					    XARG #xarg ],
 			    MSG #msg ],
-		     TOPIC #topic ] ],
+		     TOPIC #topic ],
+	     NON-LOCAL.SLASH <> ],
     ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD subcompl-infcompl-verb,
 				    VAL #val,
 				    VBL synsem-min &
@@ -7470,27 +7509,30 @@ extr-vp-phrase := phrase &
 				    STACK #stack ],
 			      CONT.HOOK #hook2,
 			      TOPIC #topic ],
-		      NON-LOCAL.SLASH < [ CAT [ HEAD verb,
-						VAL #val,
-						VBL synsem-min &
-						     [ LOCAL #local ] ],
-					  CONT [ HOOK #hook,
-						 MSG #msg ],
-					  EXTR-REL #relation ] >,
+		      NON-LOCAL [ SLASH < [ CAT [ HEAD verb,
+						  VAL #val,
+						  VBL synsem-min &
+						       [ LOCAL #local ] ],
+					    CONT [ HOOK #hook,
+						   MSG #msg ],
+					    EXTR-REL #relation ] >,
+				  BACKSLASH < [ CAT.VAL #val2 ] > ],
 		      LKEYS.KEYREL #relation ] ], ... >,
     C-CONT [ RELS <! !>,
 	     HCONS <!!> ] ].
 
-; PH 2026-04-07: Set AAIF to bool in order to allow the sadv rule to work
-; after the VP extraction rule:
+; PH 2026-06-12: Set ARGS ... pop-phrase-min-min in order to let sadv
+; work after the VP extraction rule:
 ; Smile gjør jeg ikke.
 extr-vp-v-phrase := extr-vp-phrase &
   [ SYNSEM.LOCAL.CAT [ ARGUMENT.LOCAL.CAT.CASE non-subj-case,
 		       C -,
 		       VAL.CMP1.LINK arg1-,
-		       AAIF - ],
-    ARGS < [ SYNSEM [ LOCAL.CAT [ ARGUMENT.LOCAL.CAT.CASE non-subj-case,
+		       AAIF #aaif ],
+    ARGS < pop-phrase-min-min &
+	   [ SYNSEM [ LOCAL.CAT [ ARGUMENT.LOCAL.CAT.CASE non-subj-case,
 				  C -,
+				  AAIF #aaif,
 				  VBL [ LOCAL.CAT.HEAD.PERFPART #bool,
 					LKEYS.KEYREL #relation ] ],
 		      NON-LOCAL.SLASH < [ CAT.HEAD.PERFPART #bool,
@@ -7513,7 +7555,7 @@ extr-vp-unary-phrase := extr-phrase & head-only & unary-phrase &
   [ ARGS < [ SYNSEM.LOCAL.CAT [ HEAD subcompl-verb ] ] > ].
 
 extr-vp-binary-phrase := binary-extr-phrase & extr-vp-phrase &
-  [ ARGS < [ SYNSEM [ LOCAL.CAT.VBL synsem &
+  [ ARGS < [ SYNSEM [ LOCAL.CAT.VBL canonical-synsem &
 				    [ LOCAL [ CAT.HEAD #head,
 					      CONT.HOOK.INDEX [ INSTLOC #string,
 								E #e ] ] ],
