@@ -4693,7 +4693,7 @@ zero-cop-input := sign.
 ; PH 2026-06-11: Removed the ARGS..CMP2/3 arg2/3- constraint in order to
 ; parse partial VP fronting:
 ; Beundrer gjør jeg henne
-pop-phrase-min-min := phrase & zero-cop-input &
+pop-phrase-min-min := non-sadv & zero-cop-input &
   [ START -,
     SYNSEM phr-synsem &
 	   [ FIRST-WORD #fw,
@@ -5062,7 +5062,7 @@ rel-compl-word := nom-rel-compl-word &
 nonrestr-rel-compl-word := nom-rel-compl-word &
   [ SYNSEM.LKEYS.KEYREL.ARG0.RESTR - ].
 
-basic-predicate-phrase := binary-phrase &
+basic-predicate-phrase := binary-phrase & non-sadv &
   [ SYNSEM.LOCAL.AGR #agr,
     ARGS < [ SYNSEM.LOCAL.AGR #agr ], [ SYNSEM.LOCAL.AGR #agr ] > ].
 
@@ -7360,6 +7360,7 @@ cadv-embedded-phrase := reg-binary-emb-phrase & complementizer-sign & mod-embedd
 		       ARG2 #ind ] !>,
 	     HCONS <!!> ] ].
 
+non-sadv := phrase.
 sadv-phrase-min := phrasal & val-or-mod-sign & head-compositional &
 		   comp-copy-phrase &
   [ START -,
@@ -7528,11 +7529,10 @@ extr-vp-v-phrase := extr-vp-phrase &
   [ SYNSEM.LOCAL.CAT [ ARGUMENT.LOCAL.CAT.CASE non-subj-case,
 		       C -,
 		       VAL.CMP1.LINK arg1-,
-		       AAIF #aaif ],
-    ARGS < pop-phrase-min-min &
-	   [ SYNSEM [ LOCAL.CAT [ ARGUMENT.LOCAL.CAT.CASE non-subj-case,
+		       AAIF bool ],
+    ARGS < [ SYNSEM [ LOCAL.CAT [ ARGUMENT.LOCAL.CAT.CASE non-subj-case,
 				  C -,
-				  AAIF #aaif,
+				  AAIF bool,
 				  VBL [ LOCAL.CAT.HEAD.PERFPART #bool,
 					LKEYS.KEYREL #relation ] ],
 		      NON-LOCAL.SLASH < [ CAT.HEAD.PERFPART #bool,
@@ -7552,10 +7552,12 @@ extr-vp-c-phrase := extr-vp-phrase &
 ; Smile prøver jeg å ville
 extr-vp-unary-phrase := extr-phrase & head-only & unary-phrase &
 			extr-vp-v-phrase &
-  [ ARGS < [ SYNSEM.LOCAL.CAT [ HEAD subcompl-verb ] ] > ].
+  [ ARGS < non-sadv &
+	   [ SYNSEM.LOCAL.CAT [ HEAD subcompl-verb ] ] > ].
 
 extr-vp-binary-phrase := binary-extr-phrase & extr-vp-phrase &
-  [ ARGS < [ SYNSEM [ LOCAL.CAT.VBL canonical-synsem &
+  [ SYNSEM.LOCAL.CAT.AAIF -,
+    ARGS < [ SYNSEM [ LOCAL.CAT.VBL canonical-synsem &
 				    [ LOCAL [ CAT.HEAD #head,
 					      CONT.HOOK.INDEX [ INSTLOC #string,
 								E #e ] ] ],
