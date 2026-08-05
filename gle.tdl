@@ -38,7 +38,7 @@ unknown_test := norm-lex-item & phrase-or-lexrule & non-gen-word & generic-lex-i
                            QUANT - ],
                      CONT [ HOOK [ INDEX #index ],
 			    RELS <! [ PRED #form,
-				      ARG0 #index ] ! >,
+				      ARG0 #index ] !>,
 			    HCONS <!!> ] ],
 	     NON-LOCAL.SLASH <>,
 	     LKEYS [ KEYREL  [ PRED sort ],
