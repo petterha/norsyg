@@ -4481,11 +4481,9 @@ complementizer-sign := subord-rel-compl-sign &
 
 complementizer-word := complementizer-sign & norm-lex-item & keyrel-lex-item &
   [ SYNSEM [ FIRST-WORD -,
-	     LOCAL [ CONT [ RELS <! #relation &
-				       [ ARG0 event ] !>,
+	     LOCAL [ CONT [ RELS <! !>,
 			    HCONS <! !> ] ],
-	     LKEYS.KEYREL #relation,
-             NON-LOCAL.SLASH <> ] ].
+	     NON-LOCAL.SLASH <> ] ].
 
 ; complementizer-word := complementizer-sign & norm-lex-item &
 ;   [ SYNSEM [ LOCAL [ CAT [ VBL.LOCAL.CONT.HOOK [ LTOP #lbl,
@@ -4556,9 +4554,9 @@ unary-compl-phrase := compl-phrase & unary-phrase & gap-unary & arg2-sign & embe
 						 CMP2.LOCAL.CAT.HEAD subcompl ],
 					   ARGUMENT.LOCAL.CAT.CASE #case,
 					   C-COGN-ST activ-or-less ] ] ], ... > ],
-		     CONT.HOOK [ LTOP #ltop,
+		     CONT.HOOK [ LTOP #lbl,
 				 INDEX #index & event ] ],
-	     LKEYS.KEYREL.LBL #ltop,
+	     LKEYS.KEYREL.LBL #lbl,
 	     --PHR-KEY arg2-relation ], ;
     ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD compl-verb & [ DEGREL #degrel ],
 				    VAL.CMP2 [ LINK 2cp,
@@ -4570,9 +4568,7 @@ unary-compl-phrase := compl-phrase & unary-phrase & gap-unary & arg2-sign & embe
 		      LKEYS.KEYREL [ LBL #lbl,
 				     ARG2 #index ],
 		      NON-LOCAL.BACKSLASH <> ] ] >,
-    C-CONT [ RELS <! [ PRED subord_rel,
-		       LBL #ltop,
-		       ARG0 #index ] !>,
+    C-CONT [ RELS <!!>,
 	     HCONS <!!> ] ].
 
 ; Extracting out the arg1 link feature
@@ -4589,7 +4585,8 @@ binary-compl-phrase := compl-phrase-min & stack-cmp1-link & binary-phrase &
 			    ARG0 #event ] ],
     ARGS < [ SYNSEM [ LOCAL.CAT [ HEAD  adj-adv-compl-noun-prep-verb,
 				  ARGUMENT.LOCAL.CAT.CASE non-subj-case ],
-                      NON-LOCAL #sl ] ],
+                      NON-LOCAL #sl,
+		      LKEYS.KEYREL.LBL #ltop ] ],
            complementizer-word &
 	   [ SYNSEM.LKEYS.KEYREL [ LBL #ltop,
 				   ARG0 #event ] ] >,
