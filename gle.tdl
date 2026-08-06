@@ -36,13 +36,13 @@ unknown_test := norm-lex-item & phrase-or-lexrule & non-gen-word & generic-lex-i
     SYNSEM [ LOCAL [ CAT [ HEAD noun & [ NOM + ],
                            VAL.SISTER synsem-min,
                            QUANT - ],
-                     CONT [ HOOK [ INDEX #index ],
-			    RELS <! [ PRED #form,
-				      ARG0 #index ] !>,
+                     CONT [ RELS <! !>,
 			    HCONS <!!> ] ],
 	     NON-LOCAL.SLASH <>,
-	     LKEYS [ KEYREL  [ PRED sort ],
+	     LKEYS [ KEYREL  #relation & [ PRED "unknown_rel",
+					   CARG #form ],
 		     Q.QREL.PRED unknown_q_rel ] ],
+    LEXREL <! #relation !>,
     LINK-INPUT - ].
 
 

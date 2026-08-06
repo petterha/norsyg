@@ -15,6 +15,8 @@
 
 ;; PH 2019-02-26: Removed KEYREL.CFROM #from and KEYREL.CT #to links
 ;; in order to parse "den mannen smiler" with ACE.
+;; PH 2026-08-06: Now the links works with "Den mannen smiler", but not
+;; with "Jeg spiser isen, og du sjokoladen". 
 word-or-lexrule :+  
 [ TRAITS list & #traits,
   STEM [ CLASS #class, FROM #from, TO #to, FORM #form ],

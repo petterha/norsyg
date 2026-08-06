@@ -8,6 +8,10 @@ inf-comp_rule := arg0e_gtr &
  [ CONTEXT.RELS <! [ PRED inf+ ] !>,
    FLAGS.TRIGGER "inf-comp" ].
 
+unknown_rule := arg0e_gtr &
+ [ CONTEXT.RELS <! [ PRED "unknown_rel" ] !>,
+   FLAGS.TRIGGER "unknown_test" ].
+
 det-expl_rule := arg0e_gtr &
  [ CONTEXT [ RELS <! [ ] !> ],
    FLAGS.TRIGGER "det-expl" ].

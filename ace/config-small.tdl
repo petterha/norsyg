@@ -29,7 +29,7 @@ preprocessor-modules      := ../rpp/lkb.rpp.
 
 ;;;|| maxent-model || path to a .mem file for ranking ||
 
-;maxent-model              := "../tc.mem".
+maxent-model              := "../eple/public_html/norgram1000.mem".
 
 ;;;|| variable-property-mapping || path to the VPM definition ||
 

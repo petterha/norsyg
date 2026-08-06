@@ -22,7 +22,7 @@ unknown_basic := norm-lex-item & phrase-or-lexrule & non-gen-word & generic-lex-
 
 
 unknown-word := unknown_basic &
-  [ SYNSEM.LOCAL.CONT.RELS <! arg0-relation !> ].
+  [ SYNSEM.LOCAL.CONT.RELS <! !> ].
 
 det_pl_indef_tag := pl-indef-art-det-word.
 det_pl_def_tag := pl-def-art-det-word.
