@@ -17,7 +17,10 @@ det-expl_rule := arg0e_gtr &
    FLAGS.TRIGGER "det-expl" ].
 
 som_restr_relpron_rule := arg0e_gtr &
- [ CONTEXT [ RELS <! [ PRED "rel-clause_rel" ] !> ],
+ [ CONTEXT [ RELS <! [ PRED vrb+,
+		       LBL #hand ],
+		     [ LBL #hand,
+		       ARG0 ref-ind ] !> ],
    FLAGS.TRIGGER "som_restr_relpron" ].
 
 hvilket_relpron_rule := arg0e_gtr &
@@ -8675,6 +8678,13 @@ omtrent_degadv_rule := generator_rule &
 
 comma_rule := generator_rule &
   [ CONTEXT.RELS <! [ PRED norm_rel ] !>,
+    FLAGS.TRIGGER "comma" ].
+
+comma-subord_rule := generator_rule &
+  [ CONTEXT.RELS <! [ PRED vrb+,
+		       LBL #hand ],
+		     [ LBL #hand,
+		       ARG0 ref-ind ] !>,
     FLAGS.TRIGGER "comma" ].
 
 hit-n-masc_rule := generator_rule &

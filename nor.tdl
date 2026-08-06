@@ -4924,7 +4924,7 @@ rel-phrase := embedded-phrase & subord-rel-compl-sign &
 				     MODIFIED rmod,
 				     FIRST-WORD #fw & + ], ... >,
 			   C - ],
-		     CONT.HOOK.INDEX #0 ],
+		     CONT.HOOK.INDEX individual ],
 	     NON-LOCAL.SLASH < [ CAT.HEAD [ MOD #mod ],
 				 CONT.HOOK.INDEX #index ] >,
 	     LKEYS.KEYREL.LBL #lbl ],
@@ -4936,7 +4936,7 @@ rel-phrase := embedded-phrase & subord-rel-compl-sign &
                       NON-LOCAL.SLASH <>,
 		      LKEYS.KEYREL.LBL #lbl,
 		      FIRST-WORD #fw ] ], ... >,
-    C-CONT [ RELS <!  [ ARG0 #0 ] !>,
+    C-CONT [ RELS <! !>,
 	     HCONS <!!> ] ].
 
 ; PH 2006-12-02: Constrained the daughter to have SISTER value anti-synsem 
@@ -4951,7 +4951,7 @@ unary-rel-min := rel-phrase & unary-phrase &
 			   VBL synsem ],
 		     CONT.HOOK [ INDEX event ] ],
 	     EXTR - ],
-    C-CONT.RELS <! [ PRED "rel-clause_rel" ] !>,
+    C-CONT.RELS <! !>,
     ARGS < [ SYNSEM [ LOCAL.CAT [ HEAD adj-adv-nominal,
 				  STACK.FIRST.LOCAL.CAT.HEAD compl-verb ],
 		      FIRST-WORD +,
@@ -4990,7 +4990,7 @@ binary-rel-phrase := rel-phrase & binary-phrase &
 		     CONT.HOOK [ LTOP #lbl2,
                                  INDEX event & [ RESTR #restr ] ] ],
 	     NON-LOCAL.SLASH < [ CAT.HEAD #head ] > ],
-    C-CONT.RELS <! #keyrel !>,
+    C-CONT.RELS <! !>,
     ARGS < [ CONJ no-pre-conj,
 	     SYNSEM [ SAT #sat,
 		      LOCAL [ CAT [ HEAD #mod,
@@ -5000,7 +5000,7 @@ binary-rel-phrase := rel-phrase & binary-phrase &
            [ SYNSEM [ LOCAL.CAT [ HEAD.MOD < [ LOCAL.CAT.HEAD #mod ] >,
 				  VBL.LOCAL.CONT.HOOK [ LTOP #lbl2,
 						      INDEX [ E.TENSE finite ] ] ],
-		      LKEYS.KEYREL #keyrel & [ ARG0.RESTR #restr ],
+		      LKEYS.KEYREL [ ARG0.RESTR #restr ],
 		      NON-LOCAL.SLASH < [ CAT.HEAD #head ] > ] ] >].
 
 ; binary-rel-phrase := binary-rel-min &

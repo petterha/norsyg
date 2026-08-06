@@ -97,5 +97,4 @@ ISO_CODE="nob"
 ## Paths relative to top of grammar directory
 
 LKB_SCRIPT_FILE="lkb/script"
-#CHEAP_GRM_FILE_NAME="japanese.grm"
 ACE_CONFIG_FILE="ace/config.tdl"
