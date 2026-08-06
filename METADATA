@@ -98,3 +98,4 @@ ISO_CODE="nob"
 
 LKB_SCRIPT_FILE="lkb/script"
 #CHEAP_GRM_FILE_NAME="japanese.grm"
+ACE_CONFIG_FILE="ace/config.tdl"
