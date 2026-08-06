@@ -5372,13 +5372,15 @@ inf-phrase := embedded-phrase & subconstruction &
 					       ARGUMENT.LOCAL.CAT.CASE non-subj-case ],
 				   NON-LOCAL.SLASH <> ], ... >,
 			 VBL.LOCAL.CONT.HOOK.INDEX.E.TENSE infin,
-			 ARGUMENT.LOCAL.CAT.CASE non-subj-case ] ],
+			 ARGUMENT.LOCAL.CAT.CASE non-subj-case ],
+	     LKEYS.KEYREL.LBL #lbl ],
     MEANING #rel,
     IN #in,
     OUT #out,
     ARGS < [ SYNSEM [ FIRST-WORD #fw,
 		      LOCAL.CAT #in & [ VBL anti-synsem ],
-		      LKEYS.CNSTR #rel ] ], ... > ].
+		      LKEYS [ KEYREL.LBL #lbl,
+			      CNSTR #rel ] ] ], ... > ].
 
 ; ERROR: the link between LKEYS.CNSTR and ARGS.REST.FIRST.LKEYS.CNSTR
 ; results in an error in ACE, bur not LFG, when I parse
@@ -7705,7 +7707,7 @@ conj-phrase := basic-binary-phrase &
                      CONT [ HOOK #hook,
                             MSG #msg ],
 		     TOPIC #topic ],
-             LKEYS #lkeys,
+             LKEYS #lkeys & [ KEYREL.LBL #ltop ],
              NON-LOCAL #nl,
              PHR bool,
              SAT #sat ],
@@ -7726,7 +7728,7 @@ conj-phrase := basic-binary-phrase &
 				    CASE #case,
 				    QUANT #q ] ],
 		      PHR bool,
-		      SAT #sat ] ], [ SYNSEM.LKEYS.KEYREL #keyrel ] >,
+		      SAT #sat ] ], [ SYNSEM.LKEYS.KEYREL #keyrel & [ LBL #ltop ] ] >,
     C-CONT [ RELS.LIST.FIRST #keyrel ] ].
 
 conj-sat-phrase := conj-phrase &
@@ -7821,17 +7823,20 @@ coord-s-min := basic-binary-phrase & start-item & uni-link-min &
 			   ARGUMENT.LOCAL.CAT.CASE subj-case ],
 		     CONT.HOOK.INDEX #rind & [ SF #mess ] ],
 	     NON-LOCAL.SLASH <>,
-	     LKEYS [ KEYREL.ARG0 #rind,
+	     LKEYS [ KEYREL [ LBL #lbl,
+			      ARG0 #rind ],
 		     ELLREL [ PRED #argframe,
 			      ARG0.E #e ] ] ],
     ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD head,
 				    INTRANS #bool ],
 			      CONT.HOOK.INDEX #lind & [ SF #mess ] ],
 		      NON-LOCAL.SLASH <>,
-		      LKEYS.KEYREL [ PRED #argframe,
+		      LKEYS.KEYREL [ LBL #lbl,
+				     PRED #argframe,
 				     ARG0.E #e ] ] ],
 	  conj-word-min &
-	   [ SYNSEM.LKEYS.KEYREL [ L-INDEX #lind,
+	   [ SYNSEM.LKEYS.KEYREL [ LBL #lbl,
+				   L-INDEX #lind,
 				   R-INDEX #rind ] ] >,
     C-CONT [ HCONS <!!> ] ].
 
