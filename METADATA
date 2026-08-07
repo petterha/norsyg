@@ -99,6 +99,6 @@ ISO_CODE="nob"
 LKB_SCRIPT_FILE="lkb/script"
 ACE_CONFIG_FILE="ace/config.tdl"
 
-EXAMPLES=["Mannen smiler."]
+EXAMPLES=["Bilen ble vrengt over midtrabatten utenfor Karlstad.","– Lis og jeg fikk en slegge i huet.","Jeg må leve livet.","Mange familier trenger hjelp til å få den i gang.","Redd for å komme på sykehus.","Når hun ikke hviler, beveger hun seg langsomt rundt i sitt eget hjem.","Midt på natten om nødvendig.","Jeg vil aldri be om aktiv dødshjelp.","Vi må slite med døden, som en del av livet.","Mennene er ikke venner.","I restene av revolusjonen skal de bygge et nytt land."]
 
-PROFILES=["norgrambank1000-gold"]
+PROFILES=["norgrambank1000-gold","mrs-gold"]
