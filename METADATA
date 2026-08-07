@@ -98,3 +98,7 @@ ISO_CODE="nob"
 
 LKB_SCRIPT_FILE="lkb/script"
 ACE_CONFIG_FILE="ace/config.tdl"
+
+EXAMPLES=["Mannen smiler."]
+
+PROFILES=["norgrambank1000-gold"]

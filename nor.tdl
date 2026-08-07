@@ -3706,10 +3706,18 @@ arg1-extr-phrase := arg1-val & subj-extr &
   [ ARGS < [ SYNSEM [ NON-LOCAL.SLASH < [ EXTR-LINK #link ] >,
 		      LOCAL.CAT.ARGUMENT.LINK #link ] ] > ].
 1np-extr-phrase := arg1-extr-phrase &
+"""
+Extraction of arg1 subject.
+<ex>Jeg jobber.
+"""
   [ ARGS < [ SYNSEM [ LOCAL.CAT.ARGUMENT.LINK 1np,
 		      NON-LOCAL.SLASH < [ CAT.HEAD adj-nominal &
 						   [ NOM + ] ] > ] ] > ].
 1cp-extr-phrase := arg1-extr-phrase &
+"""
+Extraction of CP subject
+<ex>At han smiler, viser at han er glad.
+"""
   [ ARGS < [ SYNSEM [ LOCAL.CAT.ARGUMENT.LINK 1cp,
 		      NON-LOCAL.SLASH < [ CAT.HEAD atfull ] > ] ] > ].
 arg1-quant-extr-phrase := arg1-val & bin-val-extr-phrase & c-cont-rel-0.
@@ -3722,8 +3730,17 @@ arg1-emb-phrase := arg1-sign & non-pred-val-emb & subj-val & nom-embedded-val-mi
 				INTRANS #intrans ] ],
 	   [ SYNSEM.LOCAL.CAT.CASE subj-case ] >].
 
-arg1-emb-nom-phrase := arg1-emb-phrase & nom-embedded-val.
+arg1-emb-nom-phrase := arg1-emb-phrase & nom-embedded-val
+"""
+Arg 1 NP in canonical position:
+<ex>Ler du?
+"""
+.
 arg1-emb-adj-phrase := arg1-emb-phrase & adj-embedded-val &
+"""
+Arg1 AP in canonical position:
+<ex>Ler andre?
+"""
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX #ind,
     ARGS < [ SYNSEM.LKEYS.KEYREL.ARG1 #ind ], [] > ].
 
@@ -3809,13 +3826,21 @@ arg2-nom-phrase := arg2-val-min & nom-embedded-val-min &
   [ ARGS.FIRST.SYNSEM.LOCAL.CAT.ARGUMENT.LINK 2np ].
 
 arg2-emb-su-phrase := subj-val & arg2-emb-phrase.
-arg2-emb-nom-su-phrase := arg2-emb-su-phrase & arg2-nom-phrase & nom-embedded-val.
+arg2-emb-nom-su-phrase := arg2-emb-su-phrase & arg2-nom-phrase & nom-embedded-val
+"""
+Arg2 NP subject in canonical position
+<ex>Lykkes jeg?
+""".
 
 arg2-emb-adj-phrase := adj-embedded-val &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX #ind,
     ARGS < [ SYNSEM.LKEYS.KEYREL.ARG2 #ind ], [] > ].
 
-arg2-emb-adj-su-phrase := arg2-emb-su-phrase & arg2-nom-phrase & arg2-emb-adj-phrase.
+arg2-emb-adj-su-phrase := arg2-emb-su-phrase & arg2-nom-phrase & arg2-emb-adj-phrase
+"""
+Arg2 subject in canonical position
+<ex>Beundres gul?
+""".
 
 arg2-emb-no-nom-su-phrase := no-nom-embedded-val & arg2-emb-su-phrase.
 arg2-emb-non-su-phrase := arg2-non-su-val & arg2-emb-phrase &
@@ -3840,6 +3865,10 @@ arg2-extr-phrase := basic-val & arg2-val & valence-extr-phrase &
   [ HD-DTR.SYNSEM.LOCAL.CAT.VAL.CMP4.SAT bool ].
 
 arg2-extr-su-phrase := subj-extr & arg2-extr-phrase &
+"""
+Extraction of arg2 subject
+<ex>Jeg lykkes.
+"""
   [ ARGS.FIRST.SYNSEM.LOCAL.CAT.ARGUMENT [ LINK 2np,
 					   LOCAL.CAT.HEAD adj-nominal &
 						[ NOM + ] ] ].
@@ -3848,6 +3877,10 @@ arg2-extr-non-su-phrase := arg2-non-su-val & arg2-extr-phrase & non-subj-extr &
 		      LKEYS.KEYREL.PRED #link,
 		      NON-LOCAL.SLASH < [ EXTR-LINK #link ] > ] ] > ].
 arg2-extr-nom-non-su-phrase := arg2-extr-non-su-phrase &
+"""
+Extraction of arg2 non-subject
+<ex>Bilen beundrer jeg.
+"""
   [ ARGS < [ SYNSEM.LOCAL.CAT.ARGUMENT [ LINK 2np,
 					 LOCAL.CAT.HEAD adj-nominal &
 					      [ NOM + ] ] ] > ].
@@ -3859,7 +3892,11 @@ arg2-extr-compl-phrase := arg2-extr-phrase &
 		      LKEYS.KEYREL [ PRED comp+,
 				     ARG2 #ind ] ] ] > ].
 
-arg2-extr-compl-su-phrase := arg2-extr-compl-phrase & subj-extr.
+arg2-extr-compl-su-phrase := arg2-extr-compl-phrase & subj-extr
+"""
+Extraction of CP arg2 subject
+<ex>At han smiler, beundres.
+""".
 arg2-extr-compl-non-su-phrase := arg2-extr-compl-phrase & arg2-non-su-val.
 
 arg2-extr-inq-non-su-phrase := arg2-extr-non-su-phrase &
@@ -5666,9 +5703,24 @@ pres-unexpr-phrase := unexpr-subj &
 
 unexpr-ind-subj := unexpr-subj &
   [ ARGS < [ SYNSEM.LOCAL.CAT.ARGUMENT.LOCAL.CONT.HOOK.INDEX individual ] > ].
-arg1-unexpr := unexpr-ind-subj & arg1-sign.
-arg2-unexpr := unexpr-ind-subj & arg2-sign.
-arg3-unexpr := unexpr-ind-subj & arg3-sign.
+arg1-unexpr := unexpr-ind-subj & arg1-sign
+"""
+Unexpressed arg1:
+<ex>Jeg prøver å smile.
+"""
+.
+arg2-unexpr := unexpr-ind-subj & arg2-sign
+"""
+Unexpressed arg2:
+<ex>Han synes å ankomme.
+"""
+.
+arg3-unexpr := unexpr-ind-subj & arg3-sign
+"""
+Unexpressed arg3:
+<ex>Han prøver å bli gitt isen.
+"""
+.
 
 inf-min := non-gen-word & non-pass-verbal-item & basic-complementizer-sign & keyrel-lex-item &
   [ SYNSEM [ LOCAL [ CAT [ HEAD infcompl,
