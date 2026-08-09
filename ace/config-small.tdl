@@ -143,8 +143,8 @@ token-form-path     := +FORM.       ; [required] string for lexical lookup
 token-id-path       := +ID.         ; [optional] list of external ids
 token-from-path     := +FROM.       ; [optional] surface start position
 token-to-path       := +TO.         ; [optional] surface end position
-token-postags-path  := +POS +TAGS.  ; [optional] list of POS tags
-token-posprobs-path := +POS +PRBS.  ; [optional] list of POS probabilities
+token-postags-path  := +TNT +TAGS.  ; [optional] list of POS tags
+token-posprobs-path := +TNT +PRBS.  ; [optional] list of POS probabilities
 
 
 ;;;|| lattice-mapping-input-path || path within a lattice mapping rule to the input list ||

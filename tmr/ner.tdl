@@ -1,0 +1,89 @@
+;;; -*- Mode: tdl; Coding: utf-8; -*-
+
+;;;
+;;; Copyright (c) 2012 -- 2018 Stephan Oepen (oe@ifi.uio.no); 
+;;; see `LICENSE' for conditions.
+;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;; an experiment: template-based named entity detection, where we conjecture
+;;; there is no ambiguity about the correct analysis of a sequence of tokens.
+;;; presumably, we will be conservative about putting entries on this list, to
+;;; stay clear of problems like: [when i met] |Dan| |Flickinger| [called.]
+;;;
+;;; the NER rules use the bracketing machinery to fully determine the internal
+;;; structure of the phrase; furthermore, they require that all components be
+;;; analyzed in terms of generic lexical entries, i.e. fully vanilla proper
+;;; nouns.
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+dow_jones_industrial_average_tmr := four_four_ner_tmt &
+[ +INPUT < [ +FORM ^[Dd]ow$ ], [ +FORM ^[Jj]ones$ ], 
+           [ +FORM ^[Ii]ndustrial$ ], [ +FORM ^[Aa]verage$ ] >,
+  +OUTPUT < [ +TRAIT [ +LD bracket_nonnull & <! npnm, npnm, npnm !> ] ],
+            [ +TRAIT [ +LD bracket_null & <! !>, 
+		       +RD bracket_nonnull & <! npnm !> ] ],
+            [ +TRAIT [ +LD bracket_null & <! !>, 
+		       +RD bracket_nonnull & <! npnm !> ] ],
+            [ +TRAIT [ +RD bracket_nonnull & <! npnm !> ] ] > ].
+
+dow_jones_tmr := two_two_ner_tmt &
+[ +INPUT < [ +FORM ^[Dd]ow$ ], [ +FORM ^[Jj]ones-?$ ] >,
+  +OUTPUT < [ +TRAIT [ +LD bracket_nonnull & <! npnm !> ] ],
+            [ +TRAIT [ +RD bracket_nonnull & <! npnm !> ] ] > ].
+
+wall_street_tmr := two_two_ner_tmt &
+[ +INPUT < [ +FORM ^[Ww]all$ ], [ +FORM ^[Ss]treet-?$ ] >,
+  +OUTPUT < [ +TRAIT [ +LD bracket_nonnull & <! npnm !> ] ],
+            [ +TRAIT [ +RD bracket_nonnull & <! npnm !> ] ] > ].
+
+wall_street_journal_tmr := three_three_ner_tmt &
+[ +INPUT < [ +FORM ^[Ww]all$ ], [ +FORM ^[Ss]treet$ ], [ +FORM ^[Jj]ournal$ ] >,
+  +OUTPUT < [ +TRAIT [ +LD bracket_nonnull & <! npnm, npnm !>,
+		       +RD bracket_list ] ],
+            [ +TRAIT [ +LD bracket_null & <! !>, 
+		       +RD bracket_nonnull & <! npnm !> ] ],
+            [ +TRAIT [ +RD bracket_nonnull & <! npnm !> ] ] > ].
+
+securities_and_exchange_commission_tmr := four_four_ner_tmt &
+[ +INPUT < [ +FORM ^[Ss]ecurities$ ], [ +FORM ^[aa]nd$ ], 
+           [ +FORM ^[Ee]xchange$ ], [ +FORM ^[Cc]ommission$ ] >,
+  +OUTPUT < [ +TRAIT [ +LD bracket_nonnull & <! ctnp, npnm !> ] ],
+            [ +TRAIT [ +LD bracket_nonnull & <! hmkn !>, 
+		       +RD bracket_null & <! !> ] ],
+            [ +TRAIT [ +LD bracket_null & <! !>, 
+		       +RD bracket_nonnull & <! hmkn, ctnp !> ] ],
+            [ +TRAIT [ +RD bracket_nonnull & <! npnm !> ] ] > ].
+
+stock_exchange_tmr := two_two_ner_tmt &
+[ +INPUT < [ +FORM ^[Ss]tock$ ], [ +FORM ^[Ee]xchange-?$ ] >,
+  +OUTPUT < [ +TRAIT [ +LD bracket_nonnull & <! npnm !> ] ],
+            [ +TRAIT [ +RD bracket_nonnull & <! npnm !> ] ] > ].
+
+new_york_tmr := two_two_ner_tmt &
+[ +INPUT < [ +FORM ^[Nn]ew$ ], [ +FORM ^[Yy]ork-?$ ] >,
+  +OUTPUT < [ +TRAIT [ +LD bracket_nonnull & <! npnm !> ] ],
+            [ +TRAIT [ +RD bracket_nonnull & <! npnm !> ] ] > ].
+
+new_mexico_tmr := two_two_ner_tmt &
+[ +INPUT < [ +FORM ^[Nn]ew$ ], [ +FORM ^[Mm]exico-?$ ] >,
+  +OUTPUT < [ +TRAIT [ +LD bracket_nonnull & <! npnm !> ] ],
+            [ +TRAIT [ +RD bracket_nonnull & <! npnm !> ] ] > ].
+
+new_jersey_tmr := two_two_ner_tmt &
+[ +INPUT < [ +FORM ^[Nn]ew$ ], [ +FORM ^[Jj]ersey-?$ ] >,
+  +OUTPUT < [ +TRAIT [ +LD bracket_nonnull & <! npnm !> ] ],
+            [ +TRAIT [ +RD bracket_nonnull & <! npnm !> ] ] > ].
+
+new_hampshire_tmr := two_two_ner_tmt &
+[ +INPUT < [ +FORM ^[Nn]ew$ ], [ +FORM ^[Hh]ampshire-?$ ] >,
+  +OUTPUT < [ +TRAIT [ +LD bracket_nonnull & <! npnm !> ] ],
+            [ +TRAIT [ +RD bracket_nonnull & <! npnm !> ] ] > ].
+
+hong_kong_tmr := two_two_ner_tmt &
+ [ +INPUT < [ +FORM ^[Hh]ong$ ], [ +FORM ^[Kk]ong-?$ ] >,
+  +OUTPUT < [ +TRAIT [ +LD bracket_nonnull & <! npnm !> ] ],
+            [ +TRAIT [ +RD bracket_nonnull & <! npnm !> ] ] > ].

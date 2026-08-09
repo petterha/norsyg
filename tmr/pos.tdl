@@ -1,7 +1,7 @@
 ;;; -*- Mode: tdl; Coding: utf-8; -*-
 
 ;;;
-;;; Copyright (c) 2009 -- 2010 Stephan Oepen (oe@ifi.uio.no); 
+;;; Copyright (c) 2009 -- 2018 Stephan Oepen (oe@ifi.uio.no); 
 ;;; see `LICENSE' for conditions.
 ;;;
 
@@ -24,47 +24,237 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;
-;; even though we originally made sure all tokens had a fully specified +POS
+;; even though we originally made sure all tokens had a fully specified +TNT
 ;; value, intervening rules could have `leaked' PoS information.  if so, once
-;; again, fully annul the +POS value.
+;; again, fully annul the +TNT value.
 ;;
-pos_default_tmr := one_one_tmt &
+tnt_default_tmr := one_one_tmt &
 [ +INPUT < [ +FORM #form, +TRAIT #trait, +CLASS #class,
              +PRED #pred, +CARG #carg, 
-             +POS [ +TAGS < anti_string, ... > ] ] >,
+             +TNT [ +MAIN #main, +TAGS < anti_string, ... > ] ] >,
   +OUTPUT < [ +FORM #form, +TRAIT #trait, +CLASS #class,
-              +PRED #pred, +CARG #carg, +POS null_pos ] > ].
+              +PRED #pred, +CARG #carg, +TNT null_tnt & [ +MAIN #main ] ] >,
+  +CONTEXT < > ].
 
-pos_recurse_tmr := token_mapping_rule &
-[ +INPUT < [ +FORM #form, +TRAIT anti_trait,
-             +CLASS #class, +PRED #pred, +CARG #carg,
+tnt_recurse_tmr := token_mapping_rule &
+[ +INPUT < [ +FORM #form, +CLASS #class, 
+             +TRAIT anti_trait & [ +LB #lb, +RB #rb, +LD #ld, +RD #rd ],
+             +PRED #pred, +CARG #carg,
              +ID #id, +FROM #from, +TO #to,
-             +POS [ +TAGS < #tag . #tags & cons >,
+             +TNT [ +MAIN #main, 
+                    +TAGS < #tag . #tags & cons >,
                     +PRBS < #prb . #prbs & cons > ] ] > ,
-  +OUTPUT < [ +FORM #form, +TRAIT generic_trait,
+  +OUTPUT < [ +FORM #form, +TRAIT [ +UW +, +LB #lb, +RB #rb, +LD #ld, +RD #rd ],
               +CLASS #class, +PRED #pred, +CARG #carg,
               +ID #id, +FROM #from, +TO #to,
-              +POS [ +TAGS < #tag >, +PRBS < #prb > ] ],
-            [ +FORM #form,
-              +CLASS #class, +PRED #pred, +CARG #carg,
+              +TNT [ +MAIN #main, +TAGS < #tag >, +PRBS < #prb > ] ],
+            [ +FORM #form, +CLASS #class, 
+              +TRAIT [ +LB #lb, +RB #rb, +LD #ld, +RD #rd ],
+              +PRED #pred, +CARG #carg,
               +ID #id, +FROM #from, +TO #to,
-              +POS [ +TAGS #tags, +PRBS #prbs ] ] > ,
-  +POSITION "O1@I1, O2@I1",
-  +CONTEXT <> ].
+              +TNT [ +MAIN #main, +TAGS #tags, +PRBS #prbs ] ] >,
+  +CONTEXT < >,
+  +POSITION "O1@I1, O2@I1" ].
 
-pos_terminate_tmr := token_mapping_rule &
-[ +INPUT < [ +FORM #form, +TRAIT anti_trait,
+tnt_terminate_tmr := token_mapping_rule &
+[ +INPUT < [ +FORM #form, +TRAIT anti_trait & [ +LB #lb, +RB #rb, 
+						+LD #ld, +RD #rd ],
              +CLASS #class, +PRED #pred, +CARG #carg,
              +ID #id, +FROM #from, +TO #to,
-             +POS [  +TAGS < #tag >, +PRBS < #prb > ] ] > ,
-  +OUTPUT < [ +FORM #form, +TRAIT generic_trait,
-              +CLASS #class, +PRED anti_string, +CARG #carg,
-              +ID #id, +FROM #from, +TO #to,
-              +POS [+TAGS < #tag >, +PRBS < #prb > ] ],
-            [ +FORM #form, +TRAIT native_trait,
+             +TNT [ +MAIN #main, +TAGS < #tag >, +PRBS < #prb > ] ] > ,
+  +OUTPUT < [ +FORM #form, +TRAIT [ +UW +, +LB #lb, +RB #rb, +LD #ld, +RD #rd ],
               +CLASS #class, +PRED #pred, +CARG #carg,
               +ID #id, +FROM #from, +TO #to,
-              +POS null_pos ] >,
-  +POSITION "O1@I1, O2@I1",
-  +CONTEXT <> ].
+              +TNT [ +MAIN #main, +TAGS < #tag >, +PRBS < #prb > ] ],
+            [ +FORM #form, +TRAIT [ +UW -, +LB #lb, +RB #rb, +LD #ld, +RD #rd ],
+              +CLASS #class, +PRED #pred, +CARG #carg,
+              +ID #id, +FROM #from, +TO #to,
+              +TNT null_tnt & [ +MAIN #main ] ] >,
+  +CONTEXT < >,
+  +POSITION "O1@I1, O2@I1" ].
+
+;;;
+;;; with singleton PoS readings multiplied out in each chart cell, we can prune
+;;; undesirable alternatives, e.g. a foreign word reading when there also is a
+;;; common noun.  also, ditch PoS readings with very low probability, and ones
+;;; for which no PoS-activated generic entries exist anyway (function words).
+;;; this final step eases debugging, reducing the size of the token chart.
+;;;
+
+tnt_ditch_unlikely_tmr := token_mapping_rule &
+[ +INPUT < [ +TNT.+PRBS < ^0?\.0.*$ > ] >,
+  +OUTPUT < >,
+  +CONTEXT < > ].
+
+;;; DPF 2014-04-23 - TnT appears to want to assign the POS tag "CC" to unknown
+;;; words ending with a period in mid-sentence, as with |fundraiser.| in
+;;; |... Duck Race fundraiser. 3 p.m. at ...|
+;;; So let's try treating such unknown words as nouns, for better robustness.
+;;;
+tnt_ditch_function_1_tmr := token_mapping_rule &
+[ +INPUT < [ +TNT.+TAGS < ^DT|EX|IN|MD|PDT|POS|PRP\$?|RB[RS]$ > ] >,
+  +OUTPUT < >,
+  +CONTEXT < > ].
+
+tnt_ditch_function_2_tmr := token_mapping_rule &
+[ +INPUT < [ +TNT.+TAGS < ^RP|TO|WDT|WP|WRB$ > ] >,
+  +OUTPUT < >,
+  +CONTEXT < > ].
+
+;; DPF 2016-11-23 - See comment below for tnt_ditch_punctuation_tmr.
+;;
+;tnt_ditch_function_3_tmr := token_mapping_rule &
+;[ +INPUT < [ +TNT.+TAGS < ^\$|#|``|''|\(|\)|,|\.|:$ > ] >,
+;  +OUTPUT < >,
+;  +CONTEXT < > ].
+
+;;
+;; _fix_me_
+;; experimentally, also ditch PoS information on punctuation-only tokens.  we
+;; appear to get noun and adjective readings for n- and m-dashes, which hardly
+;; can do us any good.                                         (24-sep-08; oe)
+;; DPF 2016-11-23 - At Woodley's urging, commenting out this rule, in favor of
+;; robustness, where we add a generic lexical entry for punctuation characters
+;; tagged with POS ".", and call on the existing rule for attaching separate
+;; punctuation tokens to the preceding or following token.  Intended to fix a
+;; number of instances where we were ending up with an incoherent lattice in
+;; chart-mapping.  Also commented out tnt_ditch_function_3_tmr above, but not
+;; ditch_punctuation.tmr in punctuation.tdl,
+;;
+;tnt_ditch_punctuation_tmr := token_mapping_rule &
+;[ +INPUT < [ +FORM ^[[:punct:]]+$, +TNT.+TAGS cons ] >,
+;  +OUTPUT < >,
+;  +CONTEXT < > ].
+
+;;;
+;;; _fix_me_
+;;; should we eventually want to include the PoS probabilities as a feature in
+;;; parse selection, this kind of pruning should disappear: a high-probability
+;;; FW, say, should not be ellbowed out by an unlikely NN.     (31-aug-08; oe)
+;;;
+tnt_filter_dup_fw_tmr := token_mapping_rule &
+[ +CONTEXT  < [ +TNT.+TAGS < "NN" > ] >,
+  +INPUT    < [ +TNT.+TAGS < "FW" > ] >,
+  +OUTPUT   < >,
+  +POSITION "I1@C1" ].
+
+;; 
+;; [DPF 23-apr-09] words ending in "-ing" can get tagged both as noun and as
+;; verb, but since the grammar has gerund rules, drop the noun and keep the 
+;; verb.
+;; _fix_me_
+;; is there a reason to prefer the gerund over the vanilla noun?  it means a
+;; little extra ambiguity when followed by a PP[of], which the generic gerund
+;; optionally picks up as a complement.                         (24-may-09; oe)
+;;
+tnt_filter_dup_vbg_tmr := token_mapping_rule &
+[ +CONTEXT  < [ +TNT.+TAGS < "VBG" > ] >,
+  +INPUT    < [ +TNT.+TAGS < "NN" > ] >,
+  +OUTPUT   < >,
+  +POSITION "I1@C1" ].
+
+;; DPF 2014-06-12 - Constrain INPUT to be non-initial, since we need to keep
+;; the NNP if it is the first word of the input, so that it can trigger the
+;; special case rule initial_capitalized_name_nnp_tmr.
+;;
+tnt_filter_dup_nnp_tmr := token_mapping_rule &
+[ +CONTEXT  < [ +TNT.+TAGS < ^FW|NN$ > ] >,
+  +INPUT    < [ +TNT.+TAGS < "NNP" >,
+		+CLASS.+INITIAL - ] >,
+  +OUTPUT   < >,
+  +POSITION "I1@C1" ].
+
+;;
+;; _fix_me_
+;; the old `posmapping' setting in PET contained the following comment by dan
+;; (from sep-07):
+;; 
+;;   Tried doing without the adjective, since TNT appears to mostly guess both
+;;   an adjective and a noun, and our generic mass-count noun can almost always
+;;   do the work of the adjective.  This would avoid large amounts of spurious
+;;   ambiguity for most occurrences of these pairs.  But unfortunately TNT 
+;;   doesn't always guess both, so we need JJ when it's the only guess.  Maybe
+;;   we can effect this with the new token-mapping machinery ...
+;;
+;; the following rule should have that effect.                 (21-jan-09; oe)
+;;
+;; [DPF 24-mar-09]  Unfortunately, this simple rule goes wrong sometimes.  For 
+;; "the tallest and most unk-word cat" the |unk-word| has to be an adjective,
+;; so we can't just throw it away.  We'll try using the probabilities from the
+;; tagger for a more sensitive rule.
+;;
+tnt_filter_dup_jj_tmr := token_mapping_rule &
+[ +CONTEXT  < [ +TNT [ +TAGS < "NN" >, +PRBS < ^0?\.[3-9].*$ > ] ] >,
+  +INPUT    < [ +TNT.+TAGS < "JJ" > ] >,
+  +OUTPUT   < >,
+  +POSITION "I1@C1" ].
+
+;;
+;; there is one case that cuts across the sub-division of generic entries into
+;; (a) so-called named entities (triggered from string-level properties) and
+;; (b) non-NE generics, triggered on the basis of PoS tags.  the NE rules for
+;; names (triggered by capital letters) do not stipulate a named entity in
+;; sentence-initial position.  on the other hand, lexical filtering will drop
+;; non-NE generics whenever there is a competing native entry.  so, to allow
+;; generic names in initial position to survive the filtering, look at the
+;; combined string-level and PoS evidence and create an actual NE.  this rule
+;; needs to be late in the process, so that we have PoS tags multiplied out.
+;; DPF 2020-05-06 - Generalized +INPUT..+CASE from capitalized+lower to just
+;; captitalized, because we want to include capitalized+mixed as in |Mao_Zedong|
+;; and maybe we don't care about failing to exclude all-caps here.
+;; DPF 2020-05-16 - The commented out def preserves the entry for |Liu_Wen|
+;; which is dropped by `uniq' token-dropping rule unless +MAIN value is changed
+;; as shown.  But we want `uniq' to discard redundant entries for e.g. |W.R.|,
+;; so FIX before using makeover for educ.
+;;
+initial_capitalized_name_tmr := token_mapping_rule &
+[ +INPUT < [ +FORM #form, 
+             +CLASS alphanumeric & [ +INITIAL +, +CASE capitalized ],
+             +TRAIT #trait & [ +UW + ], +PRED #pred, +CARG #carg,
+             +ID #id, +FROM #from, +TO #to, 
+             +TNT [ +MAIN #main, +TAGS < ^NNP|NN|VBZ|VBG$ > ] ] >,
+  +OUTPUT < [ +FORM #form, +CLASS proper_ne,
+              +TRAIT #trait, +PRED #pred, +CARG #carg,
+              +ID #id, +FROM #from, +TO #to, 
+             +TNT null_tnt & [ +MAIN #main ] ] >,
+  +CONTEXT < >,
+  +POSITION "I1@O1" ].   
+
+;; DPF 2017-07-09 - The ACE tagger seems to often land on JJ as a default for
+;; an unknown S-initial word, as in |Equitable of New York survives|.  So add
+;; a variant of the rule above just for JJ, adding a new token.
+;;
+initial_capitalized_name_jj_tmr := token_mapping_rule &
+[ +INPUT < >,
+  +CONTEXT < [ +FORM #form, 
+             +CLASS alphanumeric & [ +INITIAL +, +CASE capitalized+lower ],
+             +TRAIT #trait & [ +UW + ], +PRED #pred, +CARG #carg,
+             +ID #id, +FROM #from, +TO #to, 
+             +TNT [ +MAIN #main, +TAGS < ^JJ$ > ] ] >,
+  +OUTPUT < [ +FORM #form, +CLASS proper_ne,
+              +TRAIT #trait, +PRED #pred, +CARG #carg,
+              +ID #id, +FROM #from, +TO #to, 
+              +TNT null_tnt & [ +MAIN #main ] ] >,
+  +POSITION "C1@O1" ].   
+
+;;
+;; on all tokens that we expect to activate generic entries, make the +PRED
+;; value reflect the orthography and PoS tag.
+;;
+generic_pred_tmr := token_mapping_rule &  
+[ +INPUT < [ +FORM #form,
+             +TRAIT #trait & [ +UW + ], +CLASS #class & non_ne, 
+             +PRED anti_string, +CARG #carg & ^(.+)$,
+             +ID #id, +FROM #from, +TO #to,
+             +TNT #tnt & [ +TAGS < ^(.*)$ > ] ] >,
+  +OUTPUT < [ +FORM #form,
+              +TRAIT #trait, +CLASS #class,
+              +PRED 
+              "_${lc(I1:+CARG:1)}/${I1:+TNT.+TAGS.FIRST:1}_u_unknown_rel",
+              +CARG #carg,
+              +ID #id, +FROM #from, +TO #to,
+              +TNT #tnt ] >,
+  +CONTEXT < >,
+  +POSITION "O1@I1" ].
+
 

@@ -99,7 +99,46 @@
 
 ;;; preprocessor
 ;(read-preprocessor (lkb-pathname (parent-directory) "preprocessor.fsr"))
+;;;
+;;; Load the chart-mapping rules
+;;;
+#+:chart-mapping
+(progn
+;; (read-token-mapping-file-aux 
+;;  (lkb-pathname (parent-directory) "tmr/gml.tdl"))
+;; (read-token-mapping-file-aux 
+;;  (lkb-pathname (parent-directory) "tmr/ptb.tdl"))
+;; (read-token-mapping-file-aux 
+;;  (lkb-pathname (parent-directory) "tmr/spelling.tdl"))
+(read-token-mapping-file-aux 
+ (lkb-pathname (parent-directory) "tmr/ne1.tdl"))
+;; (read-token-mapping-file-aux 
+;;  (lkb-pathname (parent-directory) "tmr/split.tdl"))
+;; (read-token-mapping-file-aux 
+;;  (lkb-pathname (parent-directory) "tmr/ne2.tdl"))
+;; (read-token-mapping-file-aux 
+;;  (lkb-pathname (parent-directory) "tmr/class.tdl"))
+;; (read-token-mapping-file-aux 
+;;  (lkb-pathname (parent-directory) "tmr/ne3.tdl"))
+;; (read-token-mapping-file-aux 
+;;  (lkb-pathname (parent-directory) "tmr/punctuation.tdl"))
+(read-token-mapping-file-aux 
+ (lkb-pathname (parent-directory) "tmr/pos.tdl"))
+(read-token-mapping-file-aux 
+ (lkb-pathname (parent-directory) "tmr/finis.tdl"))
 
+(read-lexical-filtering-file-aux 
+ (lkb-pathname (parent-directory) "lfr.tdl"))
+)
+
+;;;
+;;; when loaded into an environment including [incr tsdb()], also load a 
+;;; Maximum Entropy realization ranking model and activate selective unpacking.
+;;;
+#+:tsdb
+(tsdb::read-model (lkb-pathname (parent-directory) "eple/public_html/norgram1000.mem"))
+#+:tsdb
+(setf *unpacking-scoring-hook* #'tsdb::mem-score-configuration)
 
 ;;;
 ;;; For the MMT system.  Uncomment semi.vpm line when adding such

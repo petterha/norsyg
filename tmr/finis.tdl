@@ -1,51 +1,9 @@
 ;;; -*- Mode: tdl; Coding: utf-8; -*-
 
 ;;;
-;;; Copyright (c) 2009 -- 2012 Stephan Oepen (oe@ifi.uio.no); 
-;;; Copyright (c) 2012 Francis Bond (bond@ieee.org); 
+;;; Copyright (c) 2009 -- 2018 Stephan Oepen (oe@ifi.uio.no); 
 ;;; see `LICENSE' for conditions.
 ;;;
-
-
-;;
-;; on all tokens that we expect to activate named entries, make the +CARG
-;; value reflect the orthography.
-;;
-;; generic_name_tmr := token_mapping_rule &  
-;; [ +INPUT < [ +FORM #form,
-;;              +TRAIT #trait & generic_trait, +CLASS #class & proper_ne, 
-;;              +PRED #pred & "named_rel", 
-;;               +CARG #carg,
-;;              +ID #id, +FROM #from, +TO #to,
-;;              +POS #pos ] >,
-;;   +OUTPUT < [ +FORM #form,
-;;               +TRAIT #trait, +CLASS #class,
-;;               +PRED #pred,
-;;               +CARG #carg,
-;;               +ID #id, +FROM #from, +TO #to,
-;;               +POS #pos ] >,
-;;   +POSITION "O1@I1",
-;;   +CONTEXT <> ].
-
-;;
-;; on all tokens that we expect to activate generic entries, make the +PRED
-;; value reflect the orthography and PoS tag.
-;;
-generic_pred_tmr := token_mapping_rule &  
-[ +INPUT < [ +FORM #form,
-             +TRAIT #trait & generic_trait, +CLASS #class & non_ne, 
-             +PRED anti_string, +CARG #carg & ^(.+)$,
-             +ID #id, +FROM #from, +TO #to,
-             +POS #pos & [ +TAGS < ^(.*)$ > ] ] >,
-  +OUTPUT < [ +FORM #form,
-              +TRAIT #trait, +CLASS #class,
-              +PRED 
-              "_${lc(I1:+CARG:1)}/${I1:+POS.+TAGS.FIRST:1}_u_unknown_rel",
-              +CARG #carg,
-              +ID #id, +FROM #from, +TO #to,
-              +POS #pos ] >,
-  +POSITION "O1@I1",
-  +CONTEXT <> ].
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -53,34 +11,71 @@ generic_pred_tmr := token_mapping_rule &
 ;;; finally, make all non-generic tokens lower case (for lexical look-up).  as
 ;;; a side effect, the rule may also end up `grounding' very underspecified
 ;;; tokens (which should not exist, at this point, in principle): if +TRAIT,
-;;; +CLASS, and +POS were all unspecific, we end up defaulting their values to
+;;; +CLASS, and +TNT were all unspecific, we end up defaulting their values to
 ;;; a token that can only activate native lexical entries.
 ;;;
 ;;; also, apply sensible defaults for +TRAIT and +CLASS individually, and make
 ;;; sure there are no genuine duplicates among tokens in the same cell.
 ;;;
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; downcase_tmr := one_one_form_tmt &
-; [ +INPUT < [ +FORM ^(.*[[:upper:]].*)$, 
-;              +TRAIT native_trait, +CLASS non_ne, +POS null_pos ] > ,
-;   +OUTPUT < [ +FORM "${lc(I1:+FORM:1)}" ] > ].
+downcase_tmr := one_one_form_tmt &
+[ +INPUT < [ +FORM ^(.*[[:upper:]].*)$, 
+             +TRAIT.+UW -, +CLASS non_ne, +TNT null_tnt ] > ,
+  +OUTPUT < [ +FORM "${lc(I1:+FORM:1)}" ] > ].
 
-#|
-default_trait_tmr := one_one_tmt &
-[ +INPUT < [ +FORM #form, +TRAIT anti_trait,
-             +CLASS #class, +PRED #pred, +CARG #carg, +POS #tnt  ] >,
-  +OUTPUT < [ +FORM #form, +TRAIT generic_trait, 
-              +CLASS #class, +PRED #pred, +CARG #carg, +POS #tnt ] > ].
-|#
+;;
+;; _fix_me_
+;; to prevent spurious defaulting (replacing bracket_null with bracket_null) it would be
+;; nicer to devise a notion of anti_bracket_list, but that's not quite so obvious in the
+;; diff-list space as it was with regular lists.
+;;
+default_lb_native_tmr := one_one_tmt &
+[ +INPUT < [ +FORM #form, +CLASS #class,
+             +TRAIT [ +UW -, +LB bracket_null, +RB #rb,
+		      +LD #ld, +RD #rd ],
+             +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +OUTPUT < [ +FORM #form, +CLASS #class,
+              +TRAIT [ +UW -, +LB bracket_null, +RB #rb, +LD #ld, +RD #rd ],
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT < > ].
+
+default_rb_native_tmr := one_one_tmt &
+[ +INPUT < [ +FORM #form, +CLASS #class,
+             +TRAIT [ +UW -, +LB #lb, +RB bracket_null, +LD #ld, +RD #rd ],
+             +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +OUTPUT < [ +FORM #form, +CLASS #class,
+              +TRAIT [ +UW -, +LB #lb, +RB bracket_null, +LD #ld, +RD #rd ],
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT < > ].
+
+default_lb_generic_tmr := one_one_tmt &
+[ +INPUT < [ +FORM #form, +CLASS #class,
+             +TRAIT [ +UW +, +LB bracket_null, +RB #rb, +LD #ld, +RD #rd ],
+             +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +OUTPUT < [ +FORM #form, +CLASS #class,
+              +TRAIT [ +UW +, +LB bracket_null, +RB #rb, +LD #ld, +RD #rd ],
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT < > ].
+
+default_rb_generic_tmr := one_one_tmt &
+[ +INPUT < [ +FORM #form, +CLASS #class,
+             +TRAIT [ +UW +, +LB #lb, +RB bracket_null, +LD #ld, +RD #rd ],
+             +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +OUTPUT < [ +FORM #form, +CLASS #class,
+              +TRAIT [ +UW +, +LB #lb, +RB bracket_null, +LD #ld, +RD #rd ],
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT < > ].
 
 default_class_tmr := one_one_tmt &
 [ +INPUT < [ +FORM #form, +TRAIT #trait, +CLASS no_class,
-             +PRED #pred, +CARG #carg, +POS #tnt ] >,
+             +PRED #pred, +CARG #carg, +TNT #tnt ] >,
   +OUTPUT < [ +FORM #form, +TRAIT #trait, +CLASS non_ne,
-              +PRED #pred, +CARG #carg, +POS #tnt ] > ].
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT < > ].
 
+;; DPF 2015-04-01 - Moved bridge_tmr to separate file so we can avoid loading
+;; it when not using bridges, so we don't produce extra tokens in the chart.
 
 ;;
 ;; _fix_me_
@@ -99,6 +94,55 @@ uniq_tmr := token_mapping_rule &
 [ +CONTEXT < #token >,
   +INPUT < #token >,
   +OUTPUT < >,
-  +POSITION "I1@C1",
-  +CONTEXT <> ].
+  +POSITION "I1@C1" ].
 
+;;
+;; at the end of the day, each token needs to be decorated with a ‘token identity’ (+TI), a
+;; string that will (ideally uniquely) identify the token in DT bi-directional dependencies,
+;; i.e. the value that arguments can ‘target’ in their +TG property.
+;;
+token_identity_tmr := one_one_identity_tmt &
+[ +INPUT < [ +FROM ^(.+)$, +TO ^(.*)$, +TRAIT #trait, +TICK - ] >,
+  +OUTPUT < [ +TRAIT #trait & [ +HD.+TI "<${I1:+FROM:1}:${I1:+TO:1}>" ], +TICK + ] >,
+  +CONTEXT < > ].
+
+reset_tick_tmr := one_one_identity_tmt &
+[ +INPUT < [ +TICK + ] >,
+  +OUTPUT < [ +TICK - ] >,
+  +CONTEXT < > ].
+
+;; DPF 2017-11-02 - Add one non-native token in each cell, tagged as "GQ"
+;; (for "generic quoted") to be used in quoted-word sequences such as in 
+;; |they adopted a "he is always right" policy|
+;; where we don't want native lexical entries to get used, due to lexical
+;; ambiguity of entries with the same orthography.
+;; DPF 2019-11-24 - But exclude punctuation mark tokens
+;;
+set_punct_tick_tmr := one_one_identity_tmt &
+[ +INPUT < [ +FORM ^[[:punct:]]+$ ] >,
+  +OUTPUT < [ +TICK + ] >,
+  +CONTEXT < > ].
+
+;; DPF 2020-02-22 - But include colon, which is not quite punctuation
+reset_colon_tick_tmr := one_one_identity_tmt &
+[ +INPUT < [ +FORM ^[\:]$ ] >,
+  +OUTPUT < [ +TICK - ] >,
+  +CONTEXT < > ].
+
+foreign_token_tmr := token_mapping_rule &
+[ +INPUT < [ +TICK -,
+	     +TRAIT #trait & 
+	       [ +UW -, +LB #lb, +RB #rb, +LD #ld, +RD #rd, +IT #it, +HD #hd ],
+	     +ID #id, +FROM #from, +TO #to, +FORM #form, +CLASS #class, 
+	     +PRED #pred, +CARG #carg, +TNT #tnt, +ONSET #onset ] >,
+  +OUTPUT < [ +TICK +,
+	      +TRAIT #trait, +ID #id, +FROM #from, +TO #to, +FORM #form, 
+	      +CLASS #class, +PRED #pred, +CARG #carg, +TNT #tnt, 
+	      +ONSET #onset ],
+	    [ +TRAIT [ +UW +, 
+		       +LB #lb, +RB #rb, +LD #ld, +RD #rd, +IT #it, +HD #hd ],
+	      +ID #id, +FROM #from, +TO #to, +FORM #form,
+	      +CLASS ital_ne, +PRED #pred, +CARG #carg, +ONSET #onset,
+	      +TNT [ +TAGS < "GQ" >, +PRBS < "1.0" > ] ] >,
+  +CONTEXT < >,
+  +POSITION "O1@I1, O2@I1" ].

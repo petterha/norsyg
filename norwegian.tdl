@@ -13,6 +13,26 @@
 ;;
 
 :include "matrix".
+
+;;
+;; token mapping: manipulate the token lattice prior to lexical look-up
+;;
+:include "tmt".
+:begin :instance :status token-mapping-rule.
+; :include "tmr/gml".
+; :include "tmr/ptb".
+; :include "tmr/spelling".
+:include "tmr/ne1".
+; :include "tmr/split".
+; :include "tmr/ne2".
+; :include "tmr/class".
+; :include "tmr/ne3".
+; :include "tmr/punctuation".
+; :include "tmr/pos".
+; :include "tmr/finis".
+:end :instance.
+
+
 :include "nor".
 :include "preds-small".
 :include "preds".
@@ -20,7 +40,7 @@
 :include "wn".
 :include "ground".
 :include "infl-codes".
-:include "tmt.tdl".
+;:include "tmt.tdl".
 :include "unknown".
 
 :end :type.
@@ -36,9 +56,9 @@
 :end :instance.
 
 :begin :instance :status token-mapping-rule.
-   :include "tmr/prelude".
+;   :include "tmr/prelude".
    :include "tmr/pos".
-   :include "tmr/pos-ipa".
+;   :include "tmr/pos-ipa".
    :include "tmr/finis".
 :end :instance.
 

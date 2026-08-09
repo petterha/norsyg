@@ -1,7 +1,7 @@
 ;;; -*- Mode: tdl; Coding: utf-8; -*-
 
 ;;;
-;;; Copyright (c) 2009 -- 2010 Stephan Oepen (oe@ifi.uio.no); 
+;;; Copyright (c) 2009 -- 2018 Stephan Oepen (oe@ifi.uio.no); 
 ;;; see `LICENSE' for conditions.
 ;;;
 
@@ -10,29 +10,31 @@
 ;; creation of token AVMs from our input (in one form or another), make sure to
 ;; fully annul part-of-speech information.
 ;;
-null_pos_tmr := one_one_tmt &
+null_tnt_tmr := one_one_tmt &
 [ +INPUT < [ +FORM #form, +TRAIT #trait, +CLASS #class,
-             +PRED #pred, +CARG #carg, +POS [ +TAGS < anti_string, ... > ] ] >,
+             +PRED #pred, +CARG #carg, +TNT [ +TAGS < anti_string, ... > ] ] >,
   +OUTPUT < [ +FORM #form, +TRAIT #trait, +CLASS #class,
-              +PRED #pred, +CARG #carg, +POS null_pos ] > ].
+              +PRED #pred, +CARG #carg, +TNT null_tnt ] >,
+  +CONTEXT < > ].
 
 ;;
-;; if available, preserve the top-ranked PoS hypotheses in +POS.+MAIN.  we need
+;; if available, preserve the top-ranked PoS hypotheses in +TNT.+MAIN.  we need
 ;; to do this early, as token mapping rules (NE patterns, for example) may drop
-;; the +POS list before we get to the PoS phase.
+;; the +TNT list before we get to the PoS phase.
 ;;
-pos_initialize_tmr := token_mapping_rule &
+tnt_initialize_tmr := token_mapping_rule &
 [ +INPUT < [ +FORM #form, +TRAIT #trait,
              +CLASS #class, +PRED #pred, +CARG #carg,
-             +ID #id, +FROM #from, +TO #to,
-             +POS [ +MAIN.+TAG anti_string, 
+             +ID #id, +FROM #from, +TO #to, +ONSET #onset,
+             +TNT [ +MAIN.+TAG anti_string, 
                     +TAGS #tags & [ FIRST #tag ], 
                     +PRBS #prbs & [ FIRST #prb ] ] ] >,
   +OUTPUT < [ +FORM #form, +TRAIT #trait,
               +CLASS #class, +PRED #pred, +CARG #carg,
-              +ID #id, +FROM #from, +TO #to,
-              +POS [ +MAIN [ +TAG #tag, +PRB #prb ],
+              +ID #id, +FROM #from, +TO #to, +ONSET #onset,
+              +TNT [ +MAIN [ +TAG #tag, +PRB #prb ],
                      +TAGS #tags, +PRBS #prbs ] ] >,
+  +CONTEXT < >,
   +POSITION "O1@I1" ].
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -43,14 +45,6 @@ pos_initialize_tmr := token_mapping_rule &
 ;;; scheme into our type hierarchy, on the other hand.
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-left_bracket_class_tmr := token_class_null_pos_tmt &
-[ +INPUT < [ +FORM ^¦\[([[:digit:]]+)$ ] >,
-  +OUTPUT < [ +CLASS left_bracket & [ +COUNT "${I1:+FORM:1}" ] ] > ].
-
-right_bracket_class_tmr := token_class_null_pos_tmt &
-[ +INPUT < [ +FORM ^([[:digit:]]+)]¦$ ] >,
-  +OUTPUT < [ +CLASS right_bracket & [ +COUNT "${I1:+FORM:1}" ] ] > ].
 
 numeric_class_tmr := token_class_tmt &
 [ +INPUT < [ +FORM ^[[:digit:]]+$ ] >,

@@ -1,0 +1,110 @@
+;;; -*- Mode: tdl; Coding: utf-8; -*-
+
+;;;
+;;; Copyright (c) 2012 -- 2018 Stephan Oepen (oe@ifi.uio.no); 
+;;; see `LICENSE' for conditions.
+;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;; processing the (emerging) Grammar Markup Language (GML)
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;
+;; _fix_me_
+;; to get started on bracketed inputs, we assume there are no token ambiguities
+;; at this stage (which will be true when working off REPP results, but is not
+;; guaranteed to be true in general, i.e. for other sources of parser input).
+;;                                                              (31-oct-12; oe)
+
+default_ld_tmr := one_one_tmt &
+[ +INPUT < [ +FORM #form, +CLASS #class,
+             +TRAIT [ +UW #uw, +LB #lb, +RB #rb,
+		      +LD bracket_null, +RD #rd, +HD #hd ],
+             +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +OUTPUT < [ +FORM #form, +CLASS #class,
+              +TRAIT [ +UW #uw, +LB #lb, +RB #rb,
+		       +LD bracket_null, +RD #rd, +HD #hd ],
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT < > ].
+
+default_lb_tmr := one_one_tmt &
+[ +INPUT < [ +FORM #form, +CLASS #class,
+             +TRAIT [ +UW #uw, +LB bracket_null, +RB #rb,
+		      +LD #lb, +RD #rd, +HD #hd ],
+             +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +OUTPUT < [ +FORM #form, +CLASS #class,
+              +TRAIT [ +UW #uw, +LB bracket_null, +RB #rb,
+		       +LD #lb, +RD #rd, +HD #hd ],
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT < > ].
+
+default_rd_tmr := one_one_tmt &
+[ +INPUT < [ +FORM #form, +CLASS #class,
+             +TRAIT [ +UW #uw, +LB #lb, +RB #rb, 
+		      +LD #ld, +RD bracket_null, +HD #hd ],
+             +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +OUTPUT < [ +FORM #form, +CLASS #class,
+              +TRAIT [ +UW #uw, +LB #lb, +RB #rb, 
+		       +LD #ld, +RD bracket_null, +HD #hd ],
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT < > ].
+
+default_rb_tmr := one_one_tmt &
+[ +INPUT < [ +FORM #form, +CLASS #class,
+             +TRAIT [ +UW #uw, +LD #ld, +RD #rd, 
+		      +LB #lb, +RB bracket_null, +HD #hd ],
+             +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +OUTPUT < [ +FORM #form, +CLASS #class,
+              +TRAIT [ +UW #uw, +LD #ld, +RD #rd, 
+		       +LB #lb, +RB bracket_null, +HD #hd ],
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT < > ].
+
+;; DPF 2016-03-03 - To get the CFROM/CTO right (coming only from the non-bracket
+;; token), we can't use the standard two_one_tmt supertype, so just using 
+;; token_mapping_rule as parent.
+;; DPF 2016-03-03 - The +FORM value for the input tries to say "don't be a
+;; GML left bracket" but it actually also excludes any form with a left paren
+;; (and similarly for the right bracket).  So instead we just exclude any
+;; GML marker in the +FORM, so we can parse e.g. | we arrive ⌊(⌋ (today). ⌊)⌋ |
+;;
+suffix_gml_bracket_tmr := token_mapping_rule &
+[ +INPUT < [ +FORM #form & ^[^⌊]+$, +CLASS #class, 
+	     +ID [ LIST #front, LAST #middle ], +FROM #from, +TO #to,
+             +TRAIT [ +UW #uw, +IT #it, +LD #ld, +RD #rd, +LB #lb, 
+		      +RB [ LIST #rblist, LAST #rblast ], 
+		      +HD #hd ] ,
+             +PRED #pred, +CARG #carg, +TNT #tnt ],
+           [ +FORM ^⌊\)⌋$,
+	     +ID [ LIST #middle, LAST #back ] ] >,
+  +OUTPUT < [ +FORM #form, +CLASS #class, 
+	      +ID [ LIST #front, LAST #back ], +FROM #from, +TO #to,
+              +TRAIT [ +UW #uw, +IT #it, +LD #ld, +RD #rd, +LB #lb, 
+		       +RB bracket_nonnull &
+			   [ LIST < n . #rblist >, LAST #rblast ],
+		       +HD #hd ], 
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT <>,
+  +POSITION "I1<I2, O1@I1, O1@I2" ].
+
+prefix_gml_bracket_tmr := token_mapping_rule &
+[ +INPUT < [ +FORM ^⌊\(⌋$,
+	     +ID [ LIST #front, LAST #middle ] ], 
+           [ +FORM #form & ^[^⌊]+$, +CLASS #class, 
+	     +ID [ LIST #middle, LAST #back ], +FROM #from, +TO #to,
+             +TRAIT [ +UW #uw, +LD #ld, +RD #rd,
+		      +LB [ LIST #lblist, LAST #lblast ], 
+		      +RB #rb, +HD #hd ],
+             +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +OUTPUT < [ +FORM #form, +CLASS #class, 
+	      +ID [ LIST #front, LAST #back ], +FROM #from, +TO #to,
+              +TRAIT [ +UW #uw, +LD #ld, +RD #rd,
+                       +LB bracket_nonnull &
+			   [ LIST < n . #lblist >, LAST #lblast ],
+		       +RB #rb, +HD #hd ], 
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT <>,
+  +POSITION "I1<I2, O1@I1, O1@I2" ].

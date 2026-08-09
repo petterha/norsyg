@@ -1,0 +1,64 @@
+;;; -*- Mode: tdl; Coding: utf-8; -*-
+
+;;;
+;;; Copyright (c) 2009 -- 2018 Stephan Oepen (oe@ifi.uio.no); 
+;;; see `LICENSE' for conditions.
+;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;; spell correction: a few high-frequency typos, not introducing ambiguity.
+;;; in principle, we should maybe also have confusion pairs (|their|, |there|),
+;;; as ambiguity-introducing rules.  but then we would need a way of turning
+;;; on this latter class selectively, i.e. when parsing carefully edited text,
+;;; these rules would (at best) introduce spurious ambiguity.
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;
+;; _fix_me_
+;; i wonder whether we should stamp something like [ +CLASS.+ROBUST + ] onto
+;; these tokens.  but then we would also need to make sure, at some point, to
+;; default everyone else to a non-robust value.                 (24-sep-08; oe)
+;;
+sc_didnt_tmr := one_one_form_tmt &
+[ +INPUT < [ +FORM ^([dD])idn;?t$] >,
+  +OUTPUT < [ +FORM "${I1:+FORM:1}idn't" ] > ].
+
+sc_dont_tmr := one_one_form_tmt &
+[ +INPUT < [ +FORM ^([dD])ont$] >,
+  +OUTPUT < [ +FORM "${I1:+FORM:1}on't" ] > ].
+
+sc_everytime_tmr := one_two_all_form_tmt &
+[ +INPUT < [ +FORM ^([eE])verytime$] >,
+  +OUTPUT < [ +FORM "${I1:+FORM:1}very" ], [ +FORM "time" ] > ].
+
+sc_alot_tmr := one_two_all_form_tmt &
+[ +INPUT < [ +FORM ^([aA])lot$] >,
+  +OUTPUT < [ +FORM "${I1:+FORM:1}" ], [ +FORM "lot" ] > ].
+
+;;
+;; _fix_me_
+;; this one, in principle, conflicts with `many-syllabled' and `syllabling'.
+;; maybe these would be better addressed as alternate, robust lexical entries?
+;;                                                              (23-sep-08; oe)
+sc_lable_tmr := one_one_form_tmt &
+[ +INPUT < [ +FORM ^([lL])abl(ed|ing)?$] >,
+  +OUTPUT < [ +FORM "${I1:+FORM:1}abel${I1:+FORM:2}" ] > ].
+
+sc_recieve_tmr := one_one_form_tmt &
+[ +INPUT < [ +FORM ^([rR])eciev(e|ed|es|ing)$] >,
+  +OUTPUT < [ +FORM "${I1:+FORM:1}eceiv${I1:+FORM:2}" ] > ].
+
+sc_wont_tmr := one_one_form_tmt &
+[ +INPUT < [ +FORM ^([wW])ont$] >,
+  +OUTPUT < [ +FORM "${I1:+FORM:1}on't" ] > ].
+
+sc_youll_tmr := one_one_form_tmt &
+[ +INPUT < [ +FORM ^([yY])oull$] >,
+  +OUTPUT < [ +FORM "${I1:+FORM:1}ou'll" ] > ].
+
+sc_neighbors_tmr := one_one_form_tmt &
+[ +INPUT < [ +FORM ^neighbors'$] >,
+  +OUTPUT < [ +FORM "neighbors’" ] > ].

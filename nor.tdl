@@ -5048,7 +5048,7 @@ binary-rel-phrase := rel-phrase & binary-phrase &
 
 arg0 := arg1- & arg2- & arg3- & arg4- & prt-.
 
-rel-compl-sign := subord-rel-compl-sign & norm-lex-item & mod-word & keyrel-lex-item &
+rel-compl-sign := subord-rel-compl-sign & norm-lex-item & mod-word &
   [ SYNSEM [ LOCAL [ CAT [ HEAD relcompl & 
                               [ MOD < [ LOCAL [ CONT.HOOK [ INDEX #1 ] ],
                                         LEX + ] > ],
@@ -6626,19 +6626,19 @@ heavy-refl-phrase := refl-phrase &
 ;;;;;
 
 ; PH 17-jul-2006: #case accounts for *hunden sin smiler.
-mod-word := non-gen-word & native-lex-item &
+mod-word := non-gen-word & keyrel-lex-item &
   [ SYNSEM [ FIRST-WORD -,
 	     LOCAL.CAT [ HEAD.MOD < [ LOCAL.CAT.CASE #case ] >,
 			 CASE #case ] ] ].
 
-mod-np-word := mod-word & 1rel-lex-item & keyrel-lex-item &
+mod-np-word := mod-word & 1rel-lex-item &
   [ SYNSEM [ SAT +,
              LOCAL [ CAT.HEAD adj &
                             [ MOD < [ LOCAL [ CAT.HEAD nominal,
                                               CONT.HOOK.INDEX #1 ] ] > ],
                      CONT.HOOK.INDEX #1 ] ] ].
 
-super-mod-word-min := mod-word & bottom-gap-item & keyrel-lex-item &
+super-mod-word-min := mod-word & bottom-gap-item &
 [ SYNSEM [ LOCAL [ CAT [ HEAD adv-prep & 
                    [ MOD < [ LOCAL [ CAT [ HEAD head ] ] ] >,
 		      MESS #mess ],
@@ -6847,7 +6847,7 @@ basic-adv-word := non-gen-word & keyrel-lex-item &
 ; adv-word := basic-adv-word & non-gen-word &
 ; [ SYNSEM.LOCAL.CAT.HEAD adv & 
 ; 		       [ MOD < [ LOCAL.CAT.HEAD adj-compl-nominal-verb ] > ] ].
-adv-word2 := mod-word & keyrel-lex-item &
+adv-word2 := mod-word &
   [ SYNSEM [ LOCAL [ CAT [ HEAD adv & 
 		  [ MOD < [ LOCAL[ CONT.HOOK.INDEX #ind & individual ] ] > ] ],
                    CONT.HOOK [ XARG #ind ] ],

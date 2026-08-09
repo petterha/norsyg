@@ -1,0 +1,125 @@
+;;; -*- Mode: tdl; Coding: utf-8; -*-
+
+;;;
+;;; Copyright (c) 2009 -- 2018 Stephan Oepen (oe@ifi.uio.no); 
+;;; see `LICENSE' for conditions.
+;;;
+
+
+;;;
+;;; token mapping is the process of inspecting and re-arranging input tokens,
+;;; i.e. a lattice of structured objects (feature structures), to best match
+;;; the expectations of the grammar proper.  the general mechnism is described
+;;; by Adolphs, et al. (2008); see:
+;;;
+;;;   http://www.lrec-conf.org/proceedings/lrec2008/summaries/349.html
+;;;
+;;; as of August 2008, we are assuming an initial tokenization that is (mostly)
+;;; compatible to Penn Treebank (PTB) conventions; this may or may not turn out
+;;; to be a good idea, but if nothing else it makes the core parser compatible
+;;; with a wide variety of existing tools and pre-processing approaches.  for a
+;;; critical (and subjective) discussion of PTB tokenization issues, see:
+;;;
+;;;  http://lingpipe-blog.com/2008/06/26/the-curse-of-intelligent-tokenization/
+;;;
+;;; in the process of token mapping, we move from a PTB-compatible tokenization
+;;; to an ERG-compatible one: specifically, many punctuation marks are attached
+;;; as prefixes or suffixes on other tokens.  the process is broken down into a
+;;; number of (more or less) distinct phases, viz.
+;;;
+;;; - normalization: anything the (ideal) tokenizer _should_ have done.
+;;; - NE recognition: surface-based identification of URLs, numbers, et al.
+;;; - tokenization adjustments: hyphens, slashes, sandwiched punctuation.
+;;; - decoration: filling in missing or underspecified token properties.
+;;; - token combination: re-attach punctuation marks and contracted forms.
+;;; - PoS explosion: multiply out alternate PoS readings as separate tokens.
+;;; - PoS reduction: prune low-probability, unwanted, and overlapping tags.
+;;;
+;;; we hope we have (now) arrived at a relatively stable inventory of token
+;;; properties, of which some typically are only introduced in token mapping:
+;;; these are +TRAIT, +PRED, +CARG.  however, in principle a tokenizer may pass
+;;; in any of these properties, or they could be introduced very early in the
+;;; rewrite process.  hence, all rules must make sure to always preserve all
+;;; token information.
+;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;; correct tokenization `damage', inherited from the PTB conventions.
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;
+;; convert (PTB-style) ASCII directional quotes to UniCode characters.  when
+;; running from an actual PTB file, these are what we would see as input.
+;;
+;; _fix_me_
+;; given refined assumptions about quote marks (and various configurations for
+;; different text types and quote mark conventions), i worry these rules may no
+;; longer be generally valid.  once we allow |A''| and |B'''|, as found in bio-
+;; medical abstracts, surely we will need to make these PTB-specific rules an
+;; optional step in token mapping.                             (20-mar-10; oe)
+;;
+ptb_opening_single_quote_tmr := one_one_form_tmt &
+[ +INPUT < [ +FORM "`" ] >,
+  +OUTPUT < [ +FORM "‘" ] > ].
+           
+ptb_opening_double_quote_tmr := one_one_form_tmt &
+[ +INPUT < [ +FORM "``" ] >,
+  +OUTPUT < [ +FORM "“" ] > ].
+           
+ptb_closing_double_quote_tmr := one_one_form_tmt &
+[ +INPUT < [ +FORM "''" ] >,
+  +OUTPUT < [ +FORM "”" ] > ].
+
+ptb_opening_bracket_tmr := one_one_form_tmt &
+[ +INPUT < [ +FORM ^-[lL][sS][bB]-$ ] >,
+  +OUTPUT < [ +FORM "[" ] > ].
+           
+ptb_closing_bracket_tmr := one_one_form_tmt &
+[ +INPUT < [ +FORM ^-[rR][sS][bB]-$ ] >,
+  +OUTPUT < [ +FORM "]" ] > ].
+
+;;
+;; _fix_me_
+;; it seems several occurences (though not all) of regular parentheses in the
+;; PTB files show up as -LCB- and -RCB- (curly braces); according to the PoS
+;; tags (and the context), there is no doubt these are just plain parentheses.
+;;                                                             (28-sep-08; oe)
+;; i noticed that the original `README.raw' from the PTB claims that the curly
+;; braces actually should have been (square) brackets.  which may suggest that
+;; they indicate material that was inserted at some point, e.g. correcting an
+;; earlier error in the acquisition of the original texts?     (22-feb-09; oe)
+;;
+ptb_opening_parenthesis_tmr := one_one_form_tmt &
+[ +INPUT < [ +FORM ^-[lL][cCrR][bB]-$ ] >,
+  +OUTPUT < [ +FORM "(" ] > ].
+           
+ptb_closing_parenthesis_tmr := one_one_form_tmt &
+[ +INPUT < [ +FORM ^-[rR][cCrR][bB]-$ ] >,
+  +OUTPUT < [ +FORM ")" ] > ].
+
+ptb_ellipsis_tmr := one_one_form_tmt &
+[ +INPUT < [ +FORM ^\.\.\.+$ ] >,
+  +OUTPUT < [ +FORM "…" ] > ].
+           
+ptb_ndash_tmr := one_one_form_tmt &
+[ +INPUT < [ +FORM "--" ] >,
+  +OUTPUT < [ +FORM "–" ] > ].
+
+;;
+;; for whatever reason, my `.mrg' files systematically have slashes `escaped'
+;; or something, e.g. |1\/10th|.
+;;
+ptb_slash_tmr := one_one_form_tmt &
+[ +INPUT < [ +FORM ^(.*)\\/(.*)$ ] >,
+  +OUTPUT < [ +FORM "${I1:+FORM:1}/${I1:+FORM:2}" ] > ].
+
+;;
+;; {|do| |has| |wo| ...} |n't| --> {|don't| |hasn't| |won't| ...}
+;;
+ptb_contracted_negation_tmr := two_one_initial_form_tmt &
+[ +INPUT < [ +FORM ^([[:alpha:]]+)$ ],
+           [ +FORM ^(n[’']t|N[’']T)$ ] >,
+  +OUTPUT < [ +FORM "${I1:+FORM:1}${I2:+FORM:1}" ] > ].

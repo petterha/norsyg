@@ -1,0 +1,27 @@
+;;; -*- Mode: tdl; Coding: utf-8; -*-
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;; _fix_me_
+;;; in SciBorg text, it appears, superscripts appear as regular text, and what
+;;; presumably once was a minus sign (#x2212) now is an n-dash (#x2013).  if
+;;; possible, these should be corrected in the actual text extraction (from
+;;; PDF, SGML, or XML, i presume).  but then we would also have to define more
+;;; GML syntax to represent superscripts in the parser input.    (3-un-09; oe)
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+chemistry_measure_ne_1_tmr := two_one_tmt &
+[ +INPUT < [ +FORM ^(mA|mol|C|µg)$, +CLASS non_ne ], 
+	   [ +FORM ^((?:cm|nm|s|L|mL)–[12])$, 
+             +CLASS non_ne, +PRED #pred, +CARG #carg ] >,
+  +OUTPUT < [ +FORM "${I1:+FORM:1} ${I2:+FORM:1}",
+	      +CLASS meas_noun_ne, +TRAIT generic_trait,
+              +PRED #pred, +CARG #carg, +TNT null_tnt ] > ].
+
+chemistry_measure_ne_2_tmr := one_one_tmt &
+[ +INPUT < [ +FORM #form & ^(?:cm|nm|d|s|g|M|L|mol|min|kcal mol)–[12]$, 
+             +CLASS non_ne, +PRED #pred, +CARG #carg ] >,
+  +OUTPUT < [ +FORM #form, +CLASS meas_noun_ne, +TRAIT generic_trait,
+              +PRED #pred, +CARG #carg, +TNT null_tnt ] > ].

@@ -1,12 +1,10 @@
 ;;; -*- Mode: tdl; Coding: utf-8; -*-
 
 ;;;
-;;; Copyright (c) 2009 -- 2012 Stephan Oepen (oe@ifi.uio.no); 
-;;; Copyright (c) 2009 -- 2011 Dan Flickinger (danf@stanford.edu);
-;;; Copyright (c) 2012 Francis Bond (bond@ieee.org);
-;;; see `LICENSE' for conditions.
+;;; Copyright (c) 2009 -- 2018 Stephan Oepen (oe@ifi.uio.no); 
+;;; Copyright (c) 2009 -- 2018 Dan Flickinger (danf@stanford.edu);
+;;; see ‘LICENSE’ for conditions.
 ;;;
-
 ;;
 ;; redefine `stem-or-lex-sign' (from `synsem-types.tdl') to add informattion
 ;; about token feature structures.  these are unified into a designated path
@@ -46,80 +44,172 @@ basic-binary-phrase :+
    ARGS.REST.FIRST.STEM.TO #to ].
 
 tokens := *top* &
-[ +LIST list,
+[ +LIST list, 
   +LAST token ].
 
 token_min := avm.
 
+;; DPF 2018-03-28 - Added +ONSET
+
 token := token_min &
-[ +FORM  string,
+[ +FORM string,
   +CLASS token_class,
   +TRAIT token_trait,
-  +PRED  predsort,
-  +CARG  string,
-  +ID    diff-list,
-  +FROM  string,
-  +TO    string,
-  +POS   pos ].
+  +PRED predsort,
+  +CARG string,
+  +ID diff-list,
+  +FROM string,
+  +TO string,
+  +TNT tnt,
+  +TICK bool,
+  +ONSET c-or-v-onset ].
 
-token_trait := sort.
+token_trait := *top* &
+[ +UW bool, +IT italics, 
+  +LB bracket_list, +RB bracket_list,
+  +LD bracket_list, +RD bracket_list,
+  +HD token_head ].
 anti_trait := token_trait.
-native_trait := token_trait.
-generic_trait := token_trait.
 
 native_token_list := list.
 native_token_cons := native_token_list & cons &
-[ FIRST.+TRAIT native_trait, REST native_token_list ].
+[ FIRST.+TRAIT.+UW -, REST native_token_list ].
 native_token_null := native_token_list & null.
 
 generic_token_list := list.
 generic_token_cons := generic_token_list & cons &
-[ FIRST.+TRAIT generic_trait, REST generic_token_list ].
+[ FIRST.+TRAIT.+UW +, REST generic_token_list ].
 generic_token_null := generic_token_list & null.
 
+italics := sort.
+left_italics := italics.
+right_italics := italics.
+both_italics := italics.
 
-pos := *top* &
-[ +TAGS list,
-  +PRBS list  ].
+;; FIX - oe (see also loading of tmr/ner and tmr/gml
+;;
+#|
+weak_bracket_list := list.
+weak_bracket_cons := weak_bracket_list & cons &
+[ FIRST n, REST weak_bracket_list ].
+weak_bracket_null := weak_bracket_list & null.
+anti_bracket_list := weak_bracket_list.
+|#
 
-null_pos := pos &
-[ +TAGS < >,
-  +PRBS < > ].
+bracket_list := diff-list.
+bracket_null := bracket_list & [ LIST #list, LAST #list ].
+bracket_nonnull := bracket_list & [ LIST cons ].
 
 ;;
-;; in token mapping, it is useful to have available distinct `anti'-strings.
+;; the type of entries in delimiter lists (aka weak brackets), a short name to
+;; keep token feature structures tiny.
+;;
+n := *top*.
+
+;;
+;; to integrate predictions from a data-driven dependency parser, say: tokens
+;; can be annotated with (a) an identifier (or maybe index), e.g. the starting
+;; character position; (b) a dependency label (from the CTYPE hierarchy); and
+;; (c) the target identifier (drawing on the same name space as +TI).  here,
+;; the selection is from the dependent to its head, to take advantage of the
+;; common assumption that no token can depend on multiple heads.  later on, in
+;; the syntax, each construction must designate one daughter as its ‘dependency
+;; head’ (in a mostly syntactic perspective), identify its own CTYPE with +LL
+;; on all non-head daugthers, and identify the identifier (+TI) from the head
+;; with +TG on all non-head daughters.
+;;
+token_head := sort &
+[ +TI string, +LL ctype , +TG string ].
+
+;;
+;; _fix_me_
+;; in token mapping, the original +TNT list (of tags and probabilities) can be
+;; rewritten; native tokens, for example, will end up with an empty list, and
+;; generic tokens ‘multiply out’ all elements from the input list.  to preserve
+;; information about the top-ranked PoS hypotheses in (all) token FSs that end
+;; up as part of a derivation (recorded in [incr tsdb()], say), the rules make
+;; sure to set (and then leave intact) the value of +TNT.+MAIN.  i am wondering
+;; whether it would be possible to reverse the logic of what we do, i.e. leave
+;; the original list intact and selectively move active values to another part
+;; of the token FS, where lexical entries could look for it.  not quite sure,
+;; however, how that would work for the rules that ‘multiply out’ PoS tags and
+;; create as many generic tokens as there were elements in the original list.
+;;                                                              (18-nov-10; oe)
+tnt_main := *top* &
+[ +TAG string, +PRB string ].
+
+tnt := *top* &
+[ +MAIN tnt_main,
+  +TAGS list,
+  +PRBS list ].
+
+null_tnt := tnt &
+[ +TAGS <>,
+  +PRBS <> ].
+
+;;
+;; in token mapping, it is useful to have available distinct ‘anti’-strings.
 ;;
 anti_string := string.
 non_string := string.
+
+;; Used as value of +ONSET on tokens, without the (recursive) --TL attribute,
+;; to distinguish vowel-initial numerals: |*a 8 meter tree|
+;; 
+c-or-v-onset := sort.
+c-onset := c-or-v-onset.
+v-onset := c-or-v-onset.
 
 ;;;
 ;;; orthographic classes, used in token mapping and lexical filtering
 ;;;
 token_class := sort.
 no_class := token_class.
-named_entity := token_class.
-proper_ne := named_entity.
+bridge_class := token_class.
+regular_class := token_class &
+  [ +INITIAL luk ].
+named_entity := regular_class.
+card_or_time_or_proper_ne := named_entity.
+;; For decimal numbers between -1.0 and 1.0, which can show either singular
+;; or plural agreement on their measure nouns.
+card_or_proper_ne := card_or_time_or_proper_ne.
+;; We need to allow |2c| to be either a measure noun or an ordinary proper noun, since
+;; it could be the amount of two cups or an identifier that typically follows |2b|.
+meas_or_proper_ne := named_entity.
+proper_ne := card_or_proper_ne & meas_or_proper_ne.
+;; For proper names that require a specifier, such as |[the] Nile]
+proper_spr_ne := card_or_proper_ne & meas_or_proper_ne.
 file_ne := proper_ne.
 url_ne := proper_ne.
 email_ne := proper_ne.
 phone_ne := proper_ne.
-card_or_year_ne := named_entity.
-card_or_dom_ne := named_entity.
-card_or_time_ne := named_entity.
+card_or_dom_or_year_or_time_ne := named_entity.
+card_or_year_or_time_ne := card_or_dom_or_year_or_time_ne.
+card_or_year_ne := card_or_year_or_time_ne.
+card_or_dom_ne := card_or_dom_or_year_or_time_ne.
+card_or_time_ne := card_or_time_or_proper_ne & card_or_year_or_time_ne.
 card_or_meas_ne := named_entity.
-card_ne := card_or_year_ne & card_or_dom_ne & card_or_time_ne & card_or_meas_ne.
+card_or_decimal_ne := named_entity.
+basic_card_ne := card_or_year_ne & card_or_dom_ne & card_or_time_ne 
+           & card_or_meas_ne & card_or_proper_ne & card_or_decimal_ne.
+card_ne := basic_card_ne.
 year_ne := card_or_year_ne.
 ord_or_dom_ne := named_entity.
 ord_ne  := ord_or_dom_ne.
-frct_ne := named_entity.
+date_or_fract_ne := named_entity.
+frct_ne := date_or_fract_ne.
+decimal_ne := card_or_decimal_ne.
 plur_ne := named_entity.
+plur_apos_ne := named_entity.
 dom_card_ne := card_or_dom_ne.
 dom_ord_ne := ord_or_dom_ne.
-date_ne := named_entity.
+date_ne := date_or_fract_ne.
 meas_or_time_ne := named_entity.
-time_ne := card_or_dom_ne & card_or_time_ne & meas_or_time_ne.
-meas_ne := meas_or_time_ne & card_or_meas_ne.
+;time_ne := card_or_dom_ne & card_or_time_ne & meas_or_time_ne.
+time_ne := card_or_time_ne & meas_or_time_ne.
+meas_ne := meas_or_time_ne & card_or_meas_ne & meas_or_proper_ne.
 meas_noun_ne := named_entity.
+ital_ne := named_entity.
 
 ;;
 ;; the following are modeled after POSIX character classes; most have obvious 
@@ -128,8 +218,7 @@ meas_noun_ne := named_entity.
 ;; of characters used, (b) whether or not the first character is capitalized,
 ;; and (c) whether or not a token appears utterance-initial.
 ;;
-non_ne := token_class &
-[ +INITIAL luk ].
+non_ne := regular_class.
 non_alphanumeric := non_ne.
 apostrophe := non_alphanumeric.
 anti_apostrophe := non_alphanumeric.
@@ -139,21 +228,11 @@ alphabetic := alphanumeric.
 numeric := alphanumeric.
 
 ;;
-;; in parsing partially bracketed inputs, we introduce special-purpose bracket
-;; tokens, e.g. |the ¦[0 parking lot 0]¦ attendant arrived.|  these are parsed
-;; in token mapping, using a custom +CLASS value.
-;;
-bracket := non_ne &
-[ +COUNT string ].
-left_bracket := bracket.
-right_bracket := bracket.
-
-;;
-;; at least the fourth time that i revise this hierarchy.  `capitalized' or not
-;; is a property of the first character (|1A| is not capitalized).  `mixed', on
+;; at least the fourth time that i revise this hierarchy.  ‘capitalized’ or not
+;; is a property of the first character (|1A| is not capitalized).  ‘mixed’, on
 ;; the other hand, is only applicable to tokens with at least two characters.
-;; both |aB| and |AbC| are mixed, but |A| or |a| are not.  finally, `lower' and
-;; `upper' reflect the full token string, i.e. |Dan| is neither, |1a| is lower,
+;; both |aB| and |AbC| are mixed, but |A| or |a| are not.  finally, ‘lower’ and
+;; ‘upper’ reflect the full token string, i.e. |Dan| is neither, |1a| is lower,
 ;; and |A| is upper.
 ;;
 token_case := sort.
@@ -168,17 +247,18 @@ capitalized+upper := capitalized+non_mixed.
 non_capitalized+mixed := non_capitalized & mixed.
 ;;
 ;; we are making a simplifying assumption here, not distinguishing one-token
-;; non-capitalized (which could be called 'non_capitalized+non_mixed') from
-;; 'non_capitalized+lower'.  so far, we just never care about the distinction.
+;; non-capitalized (which could be called ‘non_capitalized+non_mixed’) from
+;; ‘non_capitalized+lower’.  so far, we just never care about the distinction.
 ;;
 non_capitalized+lower := non_capitalized & non_mixed.
 
 
 chart_mapping_rule := *top* &
 [ +CONTEXT list,
-  +INPUT   list,
-  +OUTPUT  list,
-  +POSITION string ].
+  +INPUT list,
+  +OUTPUT list,
+  +POSITION string,
+  +JUMP string ].
 
 ;;;
 ;;; constructing a sensible hierarchy of token mapping rules is not trivial.
@@ -191,132 +271,449 @@ chart_mapping_rule := *top* &
 ;;;
 token_mapping_rule := chart_mapping_rule.
 
-one_one_tmt := token_mapping_rule &
-[ +INPUT < [ +ID #id, +FROM #from, +TO #to ] >,
-  +OUTPUT < [ +ID #id, +FROM #from, +TO #to ] >,
-  +POSITION "O1@I1",
-  +CONTEXT <> ].
+basic_one_one_tmt := token_mapping_rule &
+[ +INPUT.FIRST [ +ID #id, +FROM #from, +TO #to, +ONSET #onset ],
+  +OUTPUT.FIRST [ +ID #id, +FROM #from, +TO #to, +ONSET #onset ] ].
 
+basic_two_two_tmt := basic_one_one_tmt &
+[ +INPUT.REST.FIRST [ +ID #id, +FROM #from, +TO #to ],
+  +OUTPUT.REST.FIRST [ +ID #id, +FROM #from, +TO #to ] ].
+
+basic_three_three_tmt := basic_two_two_tmt &
+[ +INPUT.REST.REST.FIRST [ +ID #id, +FROM #from, +TO #to ],
+  +OUTPUT.REST.REST.FIRST [ +ID #id, +FROM #from, +TO #to ] ].
+
+basic_four_four_tmt := basic_three_three_tmt &
+[ +INPUT.REST.REST.REST.FIRST [ +ID #id, +FROM #from, +TO #to ],
+  +OUTPUT.REST.REST.REST.FIRST [ +ID #id, +FROM #from, +TO #to ] ].
+
+one_one_tmt := basic_one_one_tmt &
+[ +INPUT < [] >,
+  +OUTPUT < [] >,
+  +POSITION "O1@I1" ].
+
+two_two_tmt := basic_two_two_tmt &
+[ +INPUT < [], [] >,
+  +OUTPUT < [], [] >,
+  +POSITION "I1<I2, O1@I1, O2@I2" ].
+
+#|
+basic_one_one_ner_tmt := basic_one_one_tmt &
+[ +INPUT < [ +FORM #form, +CLASS #class,
+             +PRED #pred, +CARG #carg, +TNT #tnt ] . list >,
+  +OUTPUT < [ +FORM #form, +CLASS #class, +TRAIT.+UW +,
+              +PRED #pred, +CARG #carg, +TNT #tnt ] . list >,
+  +CONTEXT < > ].
+
+basic_two_two_ner_tmt := basic_one_one_ner_tmt & basic_two_two_tmt &
+[ +INPUT < [],
+           [ +FORM #form, +CLASS #class,
+             +PRED #pred, +CARG #carg, +TNT #tnt ] . list >,
+  +OUTPUT < [],
+            [ +FORM #form, +CLASS #class, +TRAIT.+UW +,
+              +PRED #pred, +CARG #carg, +TNT #tnt ] . list > ].
+
+basic_three_three_ner_tmt := basic_two_two_ner_tmt & basic_three_three_tmt &
+[ +INPUT < [], [],
+           [ +FORM #form, +CLASS #class,
+             +PRED #pred, +CARG #carg, +TNT #tnt ] . list >,
+  +OUTPUT < [], [],
+            [ +FORM #form, +CLASS #class, +TRAIT.+UW +,
+              +PRED #pred, +CARG #carg, +TNT #tnt ] . list > ].
+
+basic_four_four_ner_tmt := basic_three_three_ner_tmt & basic_four_four_tmt &
+[ +INPUT < [], [], [],
+           [ +FORM #form, +CLASS #class,
+             +PRED #pred, +CARG #carg, +TNT #tnt ] . list >,
+  +OUTPUT < [], [], [],
+             [ +FORM #form, +CLASS #class, +TRAIT.+UW +,
+               +PRED #pred, +CARG #carg, +TNT #tnt ] . list > ].
+|#
+basic_one_one_ner_tmt := basic_one_one_tmt &
+[ +INPUT < [ +FORM #form, +CLASS #class, +PRED #pred, +CARG #carg, +TNT #tnt,
+	     +TRAIT [ +UW #uw, +IT #it, +LB #lb, +RB #rb, 
+		      +LD #ld, +RD #rd, +HD #hd ]] . list >,
+  +OUTPUT < [ +FORM #form, +CLASS #class, +PRED #pred, +CARG #carg, +TNT #tnt,
+	      +TRAIT [ +UW #uw, +IT #it, +LB #lb, +RB #rb, 
+		       +LD #ld, +RD #rd, +HD #hd ] ] . list>,
+  +CONTEXT < > ].
+
+basic_two_two_ner_tmt := basic_one_one_ner_tmt & basic_two_two_tmt &
+[ +INPUT < [],
+           [ +FORM #form, +CLASS #class,+PRED #pred, +CARG #carg, +TNT #tnt,
+	     +TRAIT [ +UW #uw, +IT #it, +LB #lb, +RB #rb, 
+		      +LD #ld, +RD #rd, +HD #hd ] ] . list >,
+  +OUTPUT < [],
+            [ +FORM #form, +CLASS #class, +PRED #pred, +CARG #carg, +TNT #tnt,
+	     +TRAIT [ +UW #uw, +IT #it, +LB #lb, +RB #rb, 
+		      +LD #ld, +RD #rd, +HD #hd ] ] . list>].
+
+basic_three_three_ner_tmt := basic_two_two_ner_tmt & basic_three_three_tmt &
+[ +INPUT < [], [],
+           [ +FORM #form, +CLASS #class, +PRED #pred, +CARG #carg, +TNT #tnt,
+	     +TRAIT [ +UW #uw, +IT #it, +LB #lb, +RB #rb, 
+		      +LD #ld, +RD #rd, +HD #hd ] ] . list >,
+  +OUTPUT < [], [],
+            [ +FORM #form, +CLASS #class, +PRED #pred, +CARG #carg, +TNT #tnt,
+	     +TRAIT [ +UW #uw, +IT #it, +LB #lb, +RB #rb, 
+		      +LD #ld, +RD #rd, +HD #hd ] ] . list>].
+
+basic_four_four_ner_tmt := basic_three_three_ner_tmt & basic_four_four_tmt &
+[ +INPUT < [], [], [],
+           [ +FORM #form, +CLASS #class, +PRED #pred, +CARG #carg, +TNT #tnt,
+	     +TRAIT [ +UW #uw, +IT #it, +LB #lb, +RB #rb, 
+		      +LD #ld, +RD #rd, +HD #hd ] ] . list >,
+  +OUTPUT < [], [], [],
+             [ +FORM #form, +CLASS #class, +PRED #pred, +CARG #carg, +TNT #tnt,
+	     +TRAIT [ +UW #uw, +IT #it, +LB #lb, +RB #rb, 
+		      +LD #ld, +RD #rd, +HD #hd ] ] . list>].
+
+;;;
+;;; _fix_me_
+;;; need to revisit these, once i decide on which order brackets go onto the
+;;; +LB and +RB lists.  in principle, an NE pattern may be surrounded by GML
+;;; brackets, which either way we must not lose.                (2-nov-12; oe)
+;;;
+two_two_ner_tmt := basic_two_two_ner_tmt &
+ [ +POSITION "I1<I2, O1@I1, O2@I2" ].
+
+three_three_ner_tmt := basic_three_three_ner_tmt &
+[ +POSITION "I1<I2<I3, O1@I1, O2@I2, O3@I3" ].
+
+four_four_ner_tmt := basic_four_four_ner_tmt &
+[ +POSITION "I1<I2<I3<I4, O1@I1, O2@I2, O3@I3, O4@I4" ].
+
+;;;
+;;; _fix_me_
+;;; arguably, no +CONTEXT constraint and [ +CONTEXT <> ] should amount to the
+;;; same thing, viz. no relevant reference to context tokens.  ACE developers
+;;; asked the ERG developers to always spell out the empty list, but i would
+;;; prefer not to build that expectation into the machinery.  while a fully
+;;; underspecified list could be construed to allow matching arbitrary tokens
+;;; as ‘context’, but since such matches could never be referenced in +OUTPUT
+;;; they could not possibly have any effect on the result of rule application.
+;;; hence, an engine would be justified in deciding to not even attempt any
+;;; matching against an underspecified +CONTEXT (or +INPUT, for that matter),
+;;; which is the strategy adopted in PET.  approach ACE developers about this,
+;;; one day.                                                   (31-oct-12; oe)
+;;;
 two_one_tmt := token_mapping_rule &
-[ +INPUT < [ +ID [ LIST #front, LAST #middle ], +FROM #from ],
+[ +INPUT < [ +ID [ LIST #front, LAST #middle ], +FROM #from, +ONSET #onset ],
            [ +ID [ LIST #middle, LAST #back ], +TO #to ] >,
-  +OUTPUT < [ +ID [ LIST #front, LAST #back ], +FROM #from, +TO #to ] >,
+  +OUTPUT < [ +ID [ LIST #front, LAST #back ], +FROM #from, +TO #to, +ONSET #onset ] >,
+  +CONTEXT <>,
   +POSITION "I1<I2, O1@I1, O1@I2" ].
 
 three_one_tmt := token_mapping_rule &
-[ +INPUT < [ +ID [ LIST #front, LAST #fmiddle ], +FROM #from ],
+[ +INPUT < [ +ID [ LIST #front, LAST #fmiddle ], +FROM #from, +ONSET #onset ],
            [ +ID [ LIST #fmiddle, LAST #bmiddle ] ],
            [ +ID [ LIST #bmiddle, LAST #back ], +TO #to ] >,
-  +OUTPUT < [ +ID [ LIST #front, LAST #back ], +FROM #from, +TO #to ] >,
+  +OUTPUT < [ +ID [ LIST #front, LAST #back ], +FROM #from, +TO #to,
+	      +ONSET #onset] >,
   +POSITION "I1<I2<I3, O1@I1, O1@I2, O1@I3" ].
 
+four_one_tmt := token_mapping_rule &
+[ +INPUT < [ +ID [ LIST #front, LAST #fmiddle ], +FROM #from, +ONSET #onset ],
+           [ +ID [ LIST #fmiddle, LAST #mmiddle ] ],
+           [ +ID [ LIST #mmiddle, LAST #bmiddle ] ],
+           [ +ID [ LIST #bmiddle, LAST #back ], +TO #to ] >,
+  +OUTPUT < [ +ID [ LIST #front, LAST #back ], +FROM #from, +TO #to, 
+	      +ONSET #onset ] >,
+  +POSITION "I1<I2<I3<I4, O1@I1, O1@I2, O1@I3, O1@I4" ].
+
+five_one_tmt := token_mapping_rule &
+[ +INPUT < [ +ID [ LIST #front, LAST #fmiddle ], +FROM #from, +ONSET #onset ],
+           [ +ID [ LIST #fmiddle, LAST #mmiddle ] ],
+           [ +ID [ LIST #mmiddle, LAST #bmiddle ] ],
+           [ +ID [ LIST #bmiddle, LAST #cmiddle ] ],
+           [ +ID [ LIST #cmiddle, LAST #back ], +TO #to ] >,
+  +OUTPUT < [ +ID [ LIST #front, LAST #back ], +FROM #from, +TO #to, 
+	      +ONSET #onset ] >,
+  +POSITION "I1<I2<I3<I4<I5, O1@I1, O1@I2, O1@I3, O1@I4, O1@I5" ].
+
 one_two_tmt := token_mapping_rule &
-[ +INPUT < [ +ID #id, +FROM #from, +TO #to ] >,
-  +OUTPUT < [ +ID #id, +FROM #from, +TO #to ],
+[ +INPUT < [ +ID #id, +FROM #from, +TO #to, +ONSET #onset ] >,
+  +OUTPUT < [ +ID #id, +FROM #from, +TO #to, +ONSET #onset ],
             [ +ID #id, +FROM #from, +TO #to ] >,
+  +CONTEXT <>,
   +POSITION "O1<O2, I1@O1, I1@O2" ].
 
 one_three_tmt := token_mapping_rule &
-[ +INPUT < [ +ID #id, +FROM #from, +TO #to ] >,
-  +OUTPUT < [ +ID #id, +FROM #from, +TO #to ],
+[ +INPUT < [ +ID #id, +FROM #from, +TO #to, +ONSET #onset ] >,
+  +OUTPUT < [ +ID #id, +FROM #from, +TO #to, +ONSET #onset ],
             [ +ID #id, +FROM #from, +TO #to ],
             [ +ID #id, +FROM #from, +TO #to ] >,
+  +CONTEXT <>,
   +POSITION "O1<O2<O3, I1@O1, I1@O2, I1@O3" ].
 
-one_one_form_tmt := one_one_tmt &
-[ +INPUT < [ +TRAIT #trait, +CLASS #class,
-             +PRED #pred, +CARG #carg, +POS #pos ] >,
-  +OUTPUT < [ +TRAIT #trait, +CLASS #class,
-              +PRED #pred, +CARG #carg, +POS #pos ] > ].
+one_one_identity_tmt := one_one_tmt &
+[ +INPUT < [ +FORM #form, +CLASS #class, +TRAIT #trait,
+             +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +OUTPUT < [ +FORM #form, +CLASS #class, +TRAIT #trait,
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT <> ].
 
-one_one_pos_tmt := one_one_tmt &
-[ +INPUT < [ +TRAIT #trait, +CLASS #class,
-             +PRED #pred, +CARG #carg, +FORM #form ] >,
-  +OUTPUT < [ +TRAIT #trait, +CLASS #class,
-              +PRED #pred, +CARG #carg, +FORM #form ] > ].
+one_one_form_tmt := one_one_tmt &
+[ +INPUT < [ +CLASS #class, +TRAIT #trait,
+             +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +OUTPUT < [ +CLASS #class, +TRAIT #trait,
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT <> ].
+
+one_one_trait_tmt := one_one_tmt &
+[ +INPUT < [ +FORM #form, +CLASS #class,
+             +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +OUTPUT < [ +FORM #form, +CLASS #class,
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT <> ].
+
+two_two_trait_tmt := two_two_tmt &
+[ +INPUT < [ +FORM #form1, +CLASS #class1,
+             +PRED #pred1, +CARG #carg1, +TNT #tnt1 ],
+           [ +FORM #form2, +CLASS #class2,
+             +PRED #pred2, +CARG #carg2, +TNT #tnt2 ] >,
+  +OUTPUT < [ +FORM #form1, +CLASS #class1,
+              +PRED #pred1, +CARG #carg1, +TNT #tnt1 ],
+            [ +FORM #form2, +CLASS #class2,
+              +PRED #pred2, +CARG #carg2, +TNT #tnt2 ] >,
+  +CONTEXT <> ].
 
 two_one_initial_form_tmt := two_one_tmt &
-[ +INPUT < [ +TRAIT #trait, +CLASS #class,
-             +PRED #pred, +CARG #carg, +POS #pos ],
-           [ ] >,
-  +OUTPUT < [ +TRAIT #trait, +CLASS #class,
-              +PRED #pred, +CARG #carg, +POS #pos ] > ].
+[ +INPUT < [ +CLASS #class, +TRAIT #trait,
+             +PRED #pred, +CARG #carg, +TNT #tnt ],
+           [] >,
+  +OUTPUT < [ +CLASS #class, +TRAIT #trait,
+              +PRED #pred, +CARG #carg, +TNT #tnt ] > ].
 
-two_one_final_form_tmt := two_one_tmt &
-[ +INPUT < [ ],
-           [ +TRAIT #trait, +CLASS #class,
-             +PRED #pred, +CARG #carg, +POS #pos ] >,
-  +OUTPUT < [ +TRAIT #trait, +CLASS #class,
-              +PRED #pred, +CARG #carg, +POS #pos ] > ].
+two_one_final_form_trait_tmt := two_one_tmt &
+[ +INPUT < [],
+           [ +CLASS #class, +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +OUTPUT < [ +CLASS #class, +PRED #pred, +CARG #carg, +TNT #tnt ] > ].
+
+three_one_initial_form_tmt := three_one_tmt &
+[ +INPUT < [ +CLASS #class, +TRAIT #trait,
+             +PRED #pred, +CARG #carg, +TNT #tnt ],
+	   [],
+           [] >,
+  +OUTPUT < [ +CLASS #class, +TRAIT #trait,
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT <> ].
 
 three_one_center_form_tmt := three_one_tmt &
-[ +INPUT < [ ],
-           [ +TRAIT #trait, +CLASS #class,
-             +PRED #pred, +CARG #carg, +POS #pos ],
-           [ ] >,
-  +OUTPUT < [ +TRAIT #trait, +CLASS #class,
-              +PRED #pred, +CARG #carg, +POS #pos ] > ].
+[ +INPUT < [],
+           [ +CLASS #class, +TRAIT #trait,
+             +PRED #pred, +CARG #carg, +TNT #tnt ],
+           [] >,
+  +OUTPUT < [ +CLASS #class, +TRAIT #trait,
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT <> ].
 
 three_one_final_form_tmt := three_one_tmt &
-[ +INPUT < [ ],
-           [ ],
-	   [ +TRAIT #trait, +CLASS #class,
-             +PRED #pred, +CARG #carg, +POS #pos ] >,
-  +OUTPUT < [ +TRAIT #trait, +CLASS #class,
-              +PRED #pred, +CARG #carg, +POS #pos ] > ].
+[ +INPUT < [],
+           [],
+	   [ +CLASS #class, +TRAIT #trait,
+             +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +OUTPUT < [ +CLASS #class, +TRAIT #trait,
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT <> ].
+
+three_one_final_form_trait_tmt := three_one_tmt &
+[ +INPUT < [],
+           [],
+	   [ +CLASS #class,
+             +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +OUTPUT < [ +CLASS #class,
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT <> ].
 
 one_two_all_form_tmt := one_two_tmt &
-[ +INPUT < [ +TRAIT #trait, +CLASS #class,
-             +PRED #pred, +CARG #carg, +POS #pos ] >,
-  +OUTPUT < [ +TRAIT #trait, +CLASS #class,
-              +PRED #pred, +CARG #carg, +POS #pos ],
-            [ +TRAIT #trait, +CLASS #class,
-              +PRED #pred, +CARG #carg, +POS #pos ] > ].
+[ +INPUT < [ +CLASS #class, +TRAIT #trait,
+             +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +OUTPUT < [ +CLASS #class, +TRAIT #trait,
+              +PRED #pred, +CARG #carg, +TNT #tnt ],
+            [ +CLASS #class, +TRAIT #trait,
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT <> ].
 
+two_one_keep_brackets_tmt := two_one_tmt &
+[ +INPUT < [ +TRAIT [ +UW #uw, +IT #it, +HD #hd,
+                      +LB #lb, +LD #ld ] ],
+           [ +TRAIT [ +RB #rb, +RD #rd ] ] >,
+  +OUTPUT < [ +TRAIT [ +UW #uw & +, +IT #it, +HD #hd,
+                       +LB #lb, +LD #ld, +RB #rb, +RD #rd ] ] > ].
+
+four_one_keep_brackets_tmt := four_one_tmt &
+[ +INPUT < [ +TRAIT [ +UW #uw, +IT #it, +HD #hd,
+                      +LB #lb, +LD #ld ] ],
+           [], [],
+           [ +TRAIT [ +RB #rb, +RD #rd ] ] >,
+  +OUTPUT < [ +TRAIT [ +UW #uw & +, +IT #it, +HD #hd,
+                       +LB #lb, +LD #ld, +RB #rb, +RD #rd ] ] > ].
 
 ;;;
 ;;; a few relatively specialized token mapping rule types, for configurations
 ;;; that are instantiated with non-trivial frequency.
 ;;;
 
+token_class_null_tnt_tmt := one_one_tmt &
+[ +INPUT < [ +FORM #form, +CLASS no_class, +TRAIT #trait,
+             +PRED #pred, +CARG #carg, +TNT.+MAIN #main ] >,
+  +OUTPUT < [ +FORM #form, +CLASS non_ne, +TRAIT #trait,
+              +PRED #pred, +CARG #carg, +TNT null_tnt & [ +MAIN #main ] ] >,
+  +CONTEXT <> ].
+
 token_class_tmt := one_one_tmt &
-[ +INPUT < [ +FORM #form, +TRAIT #trait, +CLASS no_class,
-             +PRED #pred, +CARG #carg, +POS #pos ] >,
-  +OUTPUT < [ +FORM #form, +TRAIT #trait, +CLASS non_ne,
-              +PRED #pred, +CARG #carg, +POS #pos ] > ].
+[ +INPUT < [ +FORM #form, +CLASS no_class, +TRAIT #trait,
+             +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +OUTPUT < [ +FORM #form, +CLASS non_ne, +TRAIT #trait,
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT <> ].
 
 token_case_tmt := token_mapping_rule &
-[ +INPUT < [ +FORM #form, +TRAIT #trait, +CLASS #class,
-             +PRED #pred, +POS #pos ] >,
-  +OUTPUT < [ +FORM #form, +TRAIT #trait, +CLASS #class,
-              +PRED #pred, +POS #pos ] > ].
+[ +INPUT < [ +FORM #form, +CLASS #class, +TRAIT #trait,
+             +PRED #pred, +TNT #tnt, +ONSET #onset ] >,
+  +OUTPUT < [ +FORM #form, +CLASS #class, +TRAIT #trait,
+              +PRED #pred, +TNT #tnt, +ONSET #onset ] > ].
 
-one_one_token_case_tmt := one_one_tmt & token_case_tmt.
+one_one_token_case_tmt := one_one_tmt & token_case_tmt &
+[ +CONTEXT <> ].
+
+tick_reset_tmt := one_one_tmt &
+[ +INPUT < [ +FORM #form, +CLASS #class, +TRAIT #trait,
+             +PRED #pred, +CARG #carg, +TNT #tnt, +TICK + ] >,
+  +OUTPUT < [ +FORM #form, +CLASS #class, +TRAIT #trait,
+              +PRED #pred, +CARG #carg, +TNT #tnt, +TICK bool ] >,
+  +CONTEXT <> ].
+
+;;
+;; the following rules are unusual, as they combine +IDs from both the context
+;; and input elements; the contexts (punctuation marks) need to remain in the
+;; chart until (re-)attached to all adjacent tokens, but eventually they will
+;; be purged from the chart.
+;; DPF 2016-03-03 - Propagate strong bracket constraints from the punctuation
+;; mark to the output.
+;;
+basic_prefix_punctuation_tmt := token_mapping_rule &
+[ +CONTEXT < [ +TRAIT [ +HD #ctxthd, +LB #ctxtlb ],
+               +ID [ LIST #front, LAST #middle ], +FROM #from ] >,
+  +INPUT < [ +TRAIT [ +UW #uw, +IT #it, +RB #rb, +LD #ld, +RD #rd ],
+	     +PRED #pred, +CARG #carg, +ONSET #onset,
+             +ID [ LIST #middle, LAST #back ], +TO #to ] >,
+  +OUTPUT < [ +TRAIT [ +HD #ctxthd, +UW #uw, +IT #it, +LB #ctxtlb,
+		       +RB #rb, +LD #ld, +RD #rd ],
+	      +PRED #pred, +CARG #carg, +ONSET #onset,
+              +ID [ LIST #front, LAST #back ], +FROM #from, +TO #to ] >,
+  +POSITION "C1<I1, O1@C1, O1@I1" ].
+
+prefix_punctuation_tmt := basic_prefix_punctuation_tmt &
+[ +INPUT.FIRST [ +CLASS #class, +TNT #tnt ],
+  +OUTPUT.FIRST [ +CLASS #class, +TNT #tnt ] ].
+
+basic_suffix_punctuation_tmt := token_mapping_rule &
+[ +INPUT < [ +TRAIT [ +UW #uw, +IT #it, +LB #lb, +LD #ld, +RD #rd ],
+	     +PRED #pred, +CARG #carg, +ONSET #onset,
+             +ID [ LIST #front, LAST #middle ], +FROM #from ] >,
+  +CONTEXT < [ +ID [ LIST #middle, LAST #back ], +TO #to,
+	       +TRAIT.+RB #ctxtrb ] >,
+  +OUTPUT < [ +TRAIT [ +UW #uw, +IT #it, +LB #lb, +RB #ctxtrb,
+		       +LD #ld, +RD #rd ],
+	      +PRED #pred, +CARG #carg, +ONSET #onset,
+              +ID [ LIST #front, LAST #back ], +FROM #from, +TO #to ] >,
+  +POSITION "I1<C1, O1@I1, O1@C1" ].
+
+suffix_punctuation_tmt := basic_suffix_punctuation_tmt &
+[ +INPUT.FIRST [ +CLASS #class, +TNT #tnt ],
+  +OUTPUT.FIRST [ +CLASS #class, +TNT #tnt ] ].
 
 ;;
 ;; _fix_me_
-;; the NE rules force [ +TRAIT generic_trait ], to prevent NE tokens activating a
-;; native entry.  there are some digits in the lexicon, hence `4 chairs' could
-;; in principle get two analyses.  but i see no reason why we should want that?
+;; NE rules force [ +TRAIT.+UW + ], to prevent NE tokens activating a native
+;; entry.  there are some digits in the lexicon, hence ‘4 chairs’ could in
+;; principle get two analyses.  but i see no reason why we should want that?
 ;;                                                              (26-sep-08; oe)
-ne_tmt := one_one_tmt &
-[ +INPUT < [ +FORM #form, +CLASS non_ne,
-             +PRED #pred, +CARG #carg ] >,
-  +OUTPUT < [ +FORM #form, +TRAIT generic_trait, +CLASS named_entity,
-              +PRED #pred, +CARG #carg, +POS null_pos ] > ].
+basic_ne_tmt := one_one_tmt &
+[ +INPUT < [ +FORM #form, +CLASS non_ne, 
+	     +TRAIT [ +LB #lb, +RB #rb, +LD #ld, +RD #rd ],
+             +PRED #pred, +CARG #carg, +TNT.+MAIN #main ] >,
+  +OUTPUT < [ +FORM #form, +CLASS named_entity,
+              +TRAIT [ +LB #lb, +RB #rb, +LD #ld, +RD #rd ],
+              +PRED #pred, +CARG #carg, +TNT null_tnt & [ +MAIN #main ] ] >,
+  +CONTEXT <> ].
 
-add_ne_tmt := token_mapping_rule &
-[ +CONTEXT < [ +FORM #form, +CLASS non_ne,
-               +PRED #pred, +CARG #carg,
-               +ID #id, +FROM #from, +TO #to ] >,
-  +OUTPUT < [ +FORM #form, +TRAIT generic_trait, +CLASS named_entity,
-              +PRED #pred, +CARG #carg,
-              +ID #id, +FROM #from, +TO #to, +POS null_pos  ] >,
+ne_tmt := basic_ne_tmt &
+[ +OUTPUT < [ +TRAIT.+UW + ] > ].
+
+;; DPF 2020-06-01 - Moved the identity of +INITIAL down to subtype, so we
+;; can have generic proper name rules not preserve this property, relevant
+;; perhaps only in the educ version of the grammar where initial capitals are
+;; attended to.
+#|
+basic_add_ne_tmt := token_mapping_rule &
+[ +CONTEXT < [ +FORM #form, +CLASS non_ne & [ +INITIAL #initial ], 
+	       +TRAIT [ +LB #lb, +RB #rb, +LD #ld, +RD #rd ],
+               +PRED #pred, +CARG #carg, +ONSET #onset,
+               +ID #id, +FROM #from, +TO #to, 
+               +TNT.+MAIN #main ] >,
+  +INPUT <>,
+  +OUTPUT < [ +FORM #form, +CLASS named_entity & [ +INITIAL #initial ],
+              +TRAIT [ +LB #lb, +RB #rb, +LD #ld, +RD #rd ],
+              +PRED #pred, +CARG #carg, +ONSET #onset,
+              +ID #id, +FROM #from, +TO #to,
+              +TNT null_tnt & [ +MAIN #main ] ] >,
   +POSITION "O1@C1" ].
+
+add_ne_tmt := basic_add_ne_tmt &
+[ +OUTPUT < [ +TRAIT.+UW + ] > ].
+|#
+basic_add_ne_tmt := token_mapping_rule &
+[ +CONTEXT < [ +FORM #form,
+	       +TRAIT [ +LB #lb, +RB #rb, +LD #ld, +RD #rd ],
+               +PRED #pred, +CARG #carg, +ONSET #onset,
+               +ID #id, +FROM #from, +TO #to, 
+               +TNT.+MAIN #main ] >,
+  +INPUT <>,
+  +OUTPUT < [ +FORM #form, +CLASS named_entity,
+              +TRAIT [ +LB #lb, +RB #rb, +LD #ld, +RD #rd ],
+              +PRED #pred, +CARG #carg, +ONSET #onset,
+              +ID #id, +FROM #from, +TO #to,
+              +TNT null_tnt & [ +MAIN #main ] ] >,
+  +POSITION "O1@C1" ].
+
+add_ne_tmt := basic_add_ne_tmt &
+[ +CONTEXT < [ +CLASS non_ne & [ +INITIAL #initial ] ] >,
+  +OUTPUT < [ +TRAIT.+UW +, +CLASS.+INITIAL #initial ] > ].
+
+;;; Type used initially for moving bracket leftward, but maybe more uses
+;;; will be found.  The rule adds a near-copy for each of the first two
+;;; context tokens, and two copies of the third context token, which follows
+;;; the first two.  The two and two are needed for the left-bracket rule 
+;;; because we propose both a generic and a native token for capitalized words
+;;;
+three_four_tmt := token_mapping_rule &
+[ +CONTEXT < [ +FORM #form1, +CLASS #class1a,
+	       +ID #id, +FROM #from, +TO #to, 
+	       +PRED #pred1, +CARG #carg1, +TNT #tnt1a, +ONSET #onset ],
+	     [ +FORM #form1, +CLASS #class1b,
+	       +ID #id, +FROM #from, +TO #to, 
+	       +PRED #pred1, +CARG #carg1, +TNT #tnt1b ],
+	     [ +FORM #form2,
+	       +ID #id2, +FROM #from2, +TO #to2,
+	       +PRED #pred2, +CARG #carg2, +TNT #tnt2 ] >,
+  +OUTPUT < [ +FORM #form1, +CLASS #class1a,
+	      +ID #id, +FROM #from, +TO #to, 
+	      +PRED #pred1, +CARG #carg1, +TNT #tnt1a, +ONSET #onset ],
+	    [ +FORM #form1, +CLASS #class1b,
+	      +ID #id, +FROM #from, +TO #to, 
+	      +PRED #pred1, +CARG #carg1, +TNT #tnt1b ],
+            [ +FORM #form2, +CLASS #class1a,
+	      +ID #id2, +FROM #from2, +TO #to2,
+              +PRED #pred2, +CARG #carg2, +TNT #tnt2 ],
+	    [ +FORM #form2, +CLASS #class1b,
+	      +ID #id2, +FROM #from2, +TO #to2,
+              +PRED #pred2, +CARG #carg2, +TNT #tnt2 ] >,
+  +POSITION "C1<C3, C1@C2, O1@C1, O2@C1, O3@C3, O4@C3" ].
 
 ;;;
 ;;; lexical filtering rules; not much use of the type hierarchy yet
 ;;;
 lexical_filtering_rule := chart_mapping_rule.
-
-

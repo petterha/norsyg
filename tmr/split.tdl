@@ -1,0 +1,208 @@
+;;; -*- Mode: tdl; Coding: utf-8; -*-
+
+;;;
+;;; Copyright (c) 2009 -- 2018 Stephan Oepen (oe@ifi.uio.no); 
+;;; see `LICENSE' for conditions.
+;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;; now with NEs out of our way, this would be a good time for adjustments to
+;;; tokenization: introduce additional token boundaries (e.g. for hyphens and 
+;;; slashes) and maybe some robustness rules for `sandwiched' punctuation.
+;;;
+;;; note that, as of 17-jun-09, we treat hyphens and n-dashes alike, i.e. on
+;;; the input side either one will lead to re-tokenization, while we output a
+;;; normalized form: n-dashes between numbers (three output tokens), hyphens
+;;; in all other cases (two tokens, with the hyphen prepended to the first of
+;;; them.
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;
+;; when we split into multiple tokens, it may be desirable to force the
+;; resulting token sequence to form a phrase, eventually, i.e. provide the
+;; parser with bracketing constraints, say the sequence |⌊(| |1| |-| |3| |)⌋|.
+;; to enforce this in the syntax, there could be two features LEFT and RIGHT,
+;; to pass up the bracketing property on the left and right periphery of all
+;; phrases.  the bracketing (GML) tokens would mark lexical items as [LEFT +]
+;; or [RIGHT +]; all non-unary rules would disallow their first daughter to be
+;; [RIGHT +], and last daughter to not be [LEFT +].  to match bracketings and
+;; discard the RIGHT and LEFT marks, a unary rule goes from [LEFT +, RIGHT +]
+;; to [LEFT -, RIGHT -].  come to think of it, for full generality, we should
+;; support multiple, nested bracketings.  hence, LEFT and RIGHT actually need
+;; to be list-valued: the bracket prefix and suffix rules push onto the right
+;; list, while the new unary `matching' rule pops both lists.
+;;                                                           (4-may; dan & oe)
+;; _fix_me_
+;; note that this implies moving to GML 2.0, now using two reserved characters
+;; (|⌊| and |⌋|, UniCode U+230a and U+230b) instead of just the former broken
+;; vertical bar (|¦|).
+;;
+
+;; with the new addition of derivational lexical rules, immediately re-attach
+;; certain (verbal) prefixes (e.g. |mis-| and |re-|).  it is a bit unfortunate
+;; that we end up duplicating information from the orthographemic annotation
+;; on those rules in token mapping, but i imagine the linguistic arguments for
+;; this particular treatment are overwhelming.
+;;
+;; DPF 2016-02-06 - The main motive for treating these elements as (attached)
+;; prefixes is that most if not all of them can also appear without the hyphen
+;; (|counterattack| alongside |counter-attack|), and hence since we have to
+;; have derivational rules for the non-hyphen versions, we choose to use those
+;; rules for the hyphen versions as well.
+;;
+;; _fix_me_
+;; some prefixes are missing in this rule, notably |co-|; see the comments in
+;; `lexrinst.tdl', towards the end of the file.                 (17-jun-09; oe)
+;; DPF 2015-09-02 - Added |co-| awhile ago, and now also prefix rules for nouns
+;; and adjectives
+;;
+;; _fix_me_
+;; but what about capitalized or all upper-case variants?        (4-may-12; oe)
+;; DPF 2015-09-02 - Yes, added capitalized variants, but not upper case.
+;;
+;; Prefixes currently included:
+;; co- counter- cross- mis- out- over- pre- re- self- un-
+;;
+;; DPF 2020-03-25 - Exclude conjunctions, so we can parse 
+;; |They thinned out - and disappeared|
+;; DPF 2020-03-31 - Also allow all-caps, as in |CROSS-BRED|
+;; DPF 2023-02-08 - Added optional italics markup before and after: ⌊/pre-xx/⌋
+;; since tokenization does not split these marks off like it does double quotes.
+;; (This probably could be done more elegantly.)
+;;
+derivational_prefix_tmr := three_one_final_form_trait_tmt &
+[ +INPUT < [ +FORM ^((⌊/)?(?:[Cc][Oo](?:(unter|UNTER))?|(⌊/)?[Cc](ross|ROSS)|(⌊/)?[Mm](is|IS)|(⌊/)?[Oo](ut|UT)|(⌊/)?[Oo](ver|VER)|(⌊/)?[Pp]?[Rr][Ee]|(⌊/)?[Ss](elf|ELF)|(⌊/)?[Uu][Un](?:(der|DER))?))$, 
+	     +TRAIT [ +LD #ld, +LB #lb ] ],
+           [ +FORM ^([-])$ ],
+           [ +FORM ^((?!and\z|or\z|but\z)[[:alnum:]]+(/⌋)?)$,
+             +TRAIT [ +UW #uw, +RD #rd, +HD #hd, +RB #rb ] ] >,
+  +OUTPUT < [ +FORM "${I1:+FORM:1}${I2:+FORM:1}${I3:+FORM:1}",
+              +TRAIT [ +UW #uw, +LD #ld, +RD #rd, +HD #hd, 
+		       +LB #lb, +RB #rb ] ] > ].
+
+
+;; Add brackets to ensure immediate attachment of right punctuation mark,
+;; Exclude colon, which also has non-punct lexical entry
+;; DPF 2021-03-24 - Separated this rule into two, forcing alphanumerics to
+;; combine with following punct before combining punct-punct, as in (X86),
+;; where we need X86 and ) to undergo the rule before ) and , since if ),
+;; happens first, it blocks application to X86)
+;; It happened to work in the desired order for (cats), but not for (X86),
+;; where alphanumeric_identifier_ne_1_tmr previously fired.
+;; The two rules are the same except for the +INPUT..+FORM value.
+;;
+punct_suffix_clitic_tmr := two_two_tmt &
+[ +INPUT < [ +FORM ^([[:alnum:],\.⌊/⌋]+)$, +CLASS #class,
+             +TRAIT [ +UW #uw, +LB #lb1, +RB #rb1,
+		      +LD #ld, +RD [ LIST #rdlist, LAST #rdlast ] ],
+             +PRED #pred, +CARG #carg, +TNT #tnt ],
+	   [ +FORM ^([,⸴\.~\?!;”\)\]]+)$, +CLASS #classp,
+             +TRAIT [ +UW #uwp, +LB #lb2, +RB #rb2, +RD bracket_null ],
+             +PRED #predp, +CARG #cargp, +TNT #tntp ]>,
+  +OUTPUT < [ +FORM "${I1:+FORM:1}", +CLASS #class,
+              +TRAIT [ +UW #uw, +LB #lb1, +RB #rb1,
+		       +LD #ld,
+		       +RD bracket_nonnull & 
+			   [ LIST < n . #rdlist >, LAST #rdlast ] ],
+              +PRED #pred, +CARG #carg, +TNT #tnt ],
+            [ +FORM "${I2:+FORM:1}", +CLASS #classp,
+              +TRAIT [ +UW #uwp, +LB #lb2, +RB #rb2,
+		       +LD bracket_null, +RD bracket_nonnull & <! n !> ],
+              +PRED #predp, +CARG #cargp, +TNT #tntp ] >,
+  +CONTEXT < > ].
+
+#|
+punct_punct_suffix_clitic_tmr := two_two_tmt &
+[ +INPUT < [ +FORM ^([\?!;”\)\]]+)$, +CLASS #class,
+             +TRAIT [ +UW #uw, +LB #lb1, +RB #rb1,
+		      +LD #ld, +RD [ LIST #rdlist, LAST #rdlast ] ],
+             +PRED #pred, +CARG #carg, +TNT #tnt ],
+	   [ +FORM ^([,⸴\.~\?!;”\)\]]+)$, +CLASS #classp,
+             +TRAIT [ +UW #uwp, +LB #lb2, +RB #rb2, +RD bracket_null ],
+             +PRED #predp, +CARG #cargp, +TNT #tntp ]>,
+  +OUTPUT < [ +FORM "${I1:+FORM:1}", +CLASS #class,
+              +TRAIT [ +UW #uw, +LB #lb1, +RB #rb1,
+		       +LD #ld,
+		       +RD bracket_nonnull & 
+			   [ LIST < n . #rdlist >, LAST #rdlast ] ],
+              +PRED #pred, +CARG #carg, +TNT #tnt ],
+            [ +FORM "${I2:+FORM:1}", +CLASS #classp,
+              +TRAIT [ +UW #uwp, +LB #lb2, +RB #rb2,
+		       +LD bracket_null, +RD bracket_nonnull & <! n !> ],
+              +PRED #predp, +CARG #cargp, +TNT #tntp ] >,
+  +CONTEXT < > ].
+|#
+punct_punct_suffix_clitic_tmr := two_two_tmt &
+[ +INPUT < [ +FORM ^([\?!;”\)\]]+)$, +CLASS #class,
+             +TRAIT [ +UW #uw, +LB #lb1, +RB #rb1,
+		      +LD #ld, +RD [ LIST #rdlist, LAST #rdlast ] ],
+             +PRED #pred, +CARG #carg, +TNT.+MAIN #main1 ],
+	   [ +FORM ^([,⸴\.~\?!;”\)\]]+)$, +CLASS #classp,
+             +TRAIT [ +UW #uwp, +LB #lb2, +RB #rb2, +RD bracket_null ],
+             +PRED #predp, +CARG #cargp, +TNT.+MAIN #main2 ] >,
+  +OUTPUT < [ +FORM "${I1:+FORM:1}", +CLASS #class,
+              +TRAIT [ +UW #uw, +LB #lb1, +RB #rb1,
+		       +LD #ld,
+		       +RD bracket_nonnull & 
+			   [ LIST < n . #rdlist >, LAST #rdlast ] ],
+              +PRED #pred, +CARG #carg, +TNT null_tnt & [ +MAIN #main1 ] ],
+            [ +FORM "${I2:+FORM:1}", +CLASS #classp,
+              +TRAIT [ +UW #uwp, +LB #lb2, +RB #rb2,
+		       +LD bracket_null, +RD bracket_nonnull & <! n !> ],
+              +PRED #predp, +CARG #cargp, +TNT null_tnt & [ +MAIN #main2 ] ] >,
+  +CONTEXT < > ].
+
+punct_prefix_clitic_tmr := two_two_tmt &
+[ +INPUT < [ +FORM ^([“\(\[])$, +CLASS #classp,
+             +TRAIT [ +UW #uwp, +LB #lb1, +RB #rb1,
+		      +LD bracket_null, +RD bracket_null ],
+             +PRED #predp, +CARG #cargp, +TNT #tntp ],
+	   [ +FORM ^([[:alnum:]“\(\[]+)$, +CLASS #class,
+             +TRAIT [ +UW #uw, +LB #lb2, +RB #rb2,
+		      +LD [ LIST #ldlist,
+			    LAST #ldlast ], 
+		      +RD #rd ],
+             +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +OUTPUT < [ +FORM "${I1:+FORM:1}", +CLASS #classp,
+              +TRAIT [ +UW #uwp, +LB #lb1, +RB #rb1,
+		       +LD bracket_nonnull & <! n !>, +RD bracket_null ],
+              +PRED #predp, +CARG #cargp, +TNT #tntp ],
+	    [ +FORM "${I2:+FORM:1}", +CLASS #class,
+              +TRAIT [ +UW #uw, +LB #lb2, +RB #rb2,
+		       +LD bracket_nonnull & 
+		                    [ LIST < n . #ldlist >,
+				      LAST #ldlast ], 
+		       +RD #rd ],
+              +PRED #pred, +CARG #carg, +TNT #tnt ] >,
+  +CONTEXT < > ].
+
+;; DPF 2020-05-02 - Add weak-bracket addition rule that blocks phrase boundary
+;; inside of multiwords containing suffix characters that the tokenizer treats
+;; as separate, e.g. the |$| in |HK$|.
+;; Note that in the limit this is too strict without some notion of a 
+;; non-breaking space, since we could get input such as ditransitive
+;; |They sent the US $1000|.  
+;; So for now don't include for example |US$|.
+;;
+character_suffix_clitic_tmr := two_two_tmt &
+[ +INPUT < [ +FORM ^(AU|C|HK|NZ)$, +CLASS #class,
+             +TRAIT [ +UW #uw, +LB #lb1, +RB #rb1,
+		      +LD #ld, +RD [ LIST #rdlist, LAST #rdlast ] ],
+             +PRED #pred, +CARG #carg, +TNT #tnt ],
+	   [ +FORM ^([\$])$, +CLASS #classp,
+             +TRAIT [ +UW #uwp, +LB #lb2, +RB #rb2, +RD bracket_null ],
+             +PRED #predp, +CARG #cargp, +TNT #tntp ]>,
+  +OUTPUT < [ +FORM "${I1:+FORM:1}", +CLASS #class,
+              +TRAIT [ +UW #uw, +LB #lb1, +RB #rb1, 
+		       +LD #ld,
+		       +RD bracket_nonnull & 
+			   [ LIST < n . #rdlist >, LAST #rdlast ] ],
+              +PRED #pred, +CARG #carg, +TNT #tnt ],
+            [ +FORM "${I2:+FORM:1}", +CLASS #classp,
+              +TRAIT [ +UW #uwp, +LB #lb2, +RB #rb2,
+		       +LD bracket_null, +RD bracket_nonnull & <! n !> ],
+              +PRED #predp, +CARG #cargp, +TNT #tntp ] >,
+  +CONTEXT < > ].

@@ -1,7 +1,7 @@
 ;;; -*- Mode: tdl; Coding: utf-8; -*-
 
 ;;;
-;;; Copyright (c) 2009 -- 2010 Stephan Oepen (oe@ifi.uio.no); 
+;;; Copyright (c) 2009 -- 2018 Stephan Oepen (oe@ifi.uio.no); 
 ;;; see `LICENSE' for conditions.
 ;;;
 
@@ -25,8 +25,10 @@ default_carg_tmr := one_one_tmt &
 [ +INPUT < [ +FORM #form, +TRAIT #trait, +CLASS #class,
              +PRED #pred, +CARG anti_string, +TNT #tnt ] >,
   +OUTPUT < [ +FORM #form, +TRAIT #trait, +CLASS #class,
-              +PRED #pred, +CARG #form, +TNT #tnt ] > ].
+              +PRED #pred, +CARG #form, +TNT #tnt ] >,
+  +CONTEXT < > ].
 
+#|
 ;;
 ;; _fix_me_
 ;; when re-attaching pre- or suffix punctuation to NEs, we should find a way of
@@ -54,18 +56,42 @@ default_carg_tmr := one_one_tmt &
 ;; safe-guarding against this in the +INPUT seems a little baroque, but i fail
 ;; to come up with an easier solution.
 ;;
-;; straight quote are treated separately because they can attach both to the
+;; straight quotes are treated separately because they can attach both to the
 ;; left and to the right; to prevent fragmented token lattices, this means we
 ;; also need to preserve the original token to which a straight quote attaches
-;; in the chart.
+;; in the chart.  initial straight quotes, however, need extra care, to avoid
+;; creating ambiguous start or end nodes in the lattice; essentially, they are
+;; left to a specialized version of the general prefix punctuation rule.
 ;;
-prefix_straight_quote_tmr := prefix_straight_quote_tmt &
-[ +CONTEXT < [ +FORM ^(["'])$ ],
-             [ +FORM ^(.*[^[({“"‘'].*)$ ] >,
-  +OUTPUT < [ +FORM "${C1:+FORM:1}${C2:+FORM:1}" ] > ].
+;; _fix_me_
+;; there is a remaining issue in the treatment of straight quotes, related to
+;; other prefix or suffix punctuation to the left or right of a straight quote:
+;; if we are to avoid punctuation clusters, we need to enable attachment of
+;; straight quotes both before /and/ after regular `affix' punctuation, say in
+;; a case like [( "] |Kim , " )|.                               (14-feb-12; oe)
+;;
+
+prefix_straight_quote_non_initial_tmr := token_mapping_rule &
+[ +CONTEXT < [ +FORM ^(["'])$, +CLASS.+INITIAL -,
+               +ID [ LIST #front, LAST #middle ], +FROM #from ],
+             [ +FORM ^(.*[^[({“"‘'].*)$,
+               +CLASS #class, +TRAIT #trait, +PRED #pred, +CARG #carg,
+               +ID [ LIST #middle, LAST #back ], +TO #to,
+               +TNT #tnt ] >,
+  +INPUT < >,
+  +OUTPUT < [ +FORM "${C1:+FORM:1}${C2:+FORM:1}",
+              +CLASS #class, +TRAIT #trait, +PRED #pred, +CARG #carg,
+              +ID [ LIST #front, LAST #back ], +FROM #from, +TO #to,
+              +TNT #tnt  ] >,
+  +POSITION "C1<C2, O1@C1, O1@C2" ].
+
+prefix_straight_quote_initial_tmr := prefix_punctuation_tmt &
+[ +CONTEXT < [ +FORM ^(["'])$, +CLASS.+INITIAL + ] >,
+  +INPUT < [ +FORM ^(.*[^[({“"‘'].*)$ ] >,
+  +OUTPUT < [ +FORM "${C1:+FORM:1}${I1:+FORM:1}" ] > ].
 
 prefix_punctuation_tmr := prefix_punctuation_tmt &
-[ +CONTEXT < [ +FORM ^([[({“‘])$ ] >,
+[ +CONTEXT < [ +FORM ^([[({\*“‘])$ ] >,
   +INPUT < [ +FORM ^(.*[^[({“"‘'].*)$ ] >,
   +OUTPUT < [ +FORM "${C1:+FORM:1}${I1:+FORM:1}" ] > ].
 
@@ -88,6 +114,7 @@ ambiguous_apostrophe_tmr := token_mapping_rule &
                +ID [ LIST #front, LAST #middle ], +FROM #from1,
                +TNT #tnt1 ] >,
   +INPUT < [ +FORM #form2 & ^([’'])$,
+	     +CLASS anti_apostrophe, 
              +TRAIT #trait2, +PRED #pred2, +CARG #carg2,
              +ID #id2 & [ LIST #middle, LAST #back ],
              +FROM #from2, +TO #to2 ] >,
@@ -101,11 +128,6 @@ ambiguous_apostrophe_tmr := token_mapping_rule &
               +FROM #from2, +TO #to2 ] >,
   +POSITION "C1<I1, O1@C1, O1@I1, O2@I1" ].
 
-suffix_straight_quote_tmr := suffix_straight_quote_tmt &
-[ +CONTEXT < [ +FORM ^(.*[^sS])$ ],
-             [ +FORM ^(["'])$ ] >,
-  +OUTPUT < [ +FORM "${C1:+FORM:1}${C2:+FORM:1}" ] > ].
-
 suffix_apostrophe_tmr := suffix_punctuation_tmt &
 [ +INPUT < [ +FORM ^(.*[^sS])$ ] >,
   +CONTEXT < [ +FORM "’" ] >,
@@ -114,33 +136,94 @@ suffix_apostrophe_tmr := suffix_punctuation_tmt &
 ;;
 ;; at this point, an apostrophe may have attached to a suffix punctuation mark
 ;; (e.g. from |‘Abrams,’|), hence optionally allow it in the +CONTEXT coda.
+;; _fix_me_
+;; but of course single quotes can occur anywhere in suffix clusters, as for
+;; example in [“those] |‘chairs,’”| [she said.].               (19-feb-13; oe)
+;; DPF 2017-09-06 - Added "raised" comma character |⸴| used to signal a 
+;; sandwiched comma, so we can choose to report its use for error correction.
 ;;
 suffix_punctuation_tmr := suffix_punctuation_tmt &
 [ +INPUT < [ +FORM ^(.*[^])}”",;.!?].*)$ ] >,
-  +CONTEXT < [ +FORM ^([])}”,;.!?]’?)$ ] >,
+  +CONTEXT < [ +FORM ^([])}”,⸴，;.!?]’?)$ ] >,
   +OUTPUT < [ +FORM "${I1:+FORM:1}${C1:+FORM:1}" ] > ].
+
+suffix_straight_quote_tmr := token_mapping_rule &
+[ +CONTEXT < [ +FORM ^(.*[^sS])$,
+               +CLASS #class, +TRAIT #trait, +PRED #pred, +CARG #carg,
+               +ID [ LIST #front, LAST #middle ], +FROM #from,
+               +TNT #tnt ],
+             [ +FORM ^(["'])$,
+               +ID [ LIST #middle, LAST #back ], +TO #to ],
+             [ ] >,
+  +INPUT < >,
+  +OUTPUT < [ +FORM "${C1:+FORM:1}${C2:+FORM:1}",
+              +CLASS #class, +TRAIT #trait, +PRED #pred, +CARG #carg,
+              +ID [ LIST #front, LAST #back ], +FROM #from, +TO #to,
+              +TNT #tnt ] >,
+  +POSITION "C1<C2, C2<C3, O1@C1, O1@C2" ].
 
 ditch_apostrophe_tmr := token_mapping_rule &
 [ +INPUT < [ +FORM ^[[({“"‘']*[’'][])}”",;.!?]*$, +CLASS anti_apostrophe ] >,
-  +OUTPUT < > ].
+  +OUTPUT < >,
+  +CONTEXT < > ].
 
+
+;; DPF 2016-11-23 - See comment in pos.tdl for tnt_ditch_punctuation_tmr.
+;; But apparently can't just drop this rule, since it then leaves all
+;; sentence-final periods as separate tokens, and confuses the parse chart.
+;; DPF 2017-09-16 - For punctuation that can't get attached to a neighboring
+;; token, as with sentence-final opening double quotes ini |like “|, ACE
+;; reasonably enough complains about a "post reduction gap" since we leave an
+;; empty cell with nothing spanning it.  So let's try replacing such a stranded
+;; token with a token giving rise to a generic lexical entry for punctuation,
+;; where we check for stranded ones by seeing for the prefix puncts whether
+;; any other token has the same start position +FROM (indicating that there 
+;; was a successful application of the prefix-punct rule), and similarly with 
+;; the end position +TO for suffix puncts.
+;; Unfortunately, this does not quite work yet, since the ACE treebanker 
+;; somehow still treats the opening double quote as distinct in e.g. 
+;; wsj03c:20351065 |"We were oversold| even though interactively all seems well.
+;; So leave as before for now, and live with `post reduction gap' error
+;; for e.g. wlb03:121002340050 |questions like “| where the opening
+;; double quote is sentence-final (presumably from wrong sentence-splitting)
+;; and thus stranded.
+;;
 ditch_punctuation_tmr := token_mapping_rule &
-[ +INPUT < [ +FORM ^[[({“‘"]|[])}”",;.!?]+’?$ ] >,
-  +OUTPUT < > ].
+[ +INPUT < [ +FORM ^([[({“‘"]|[])}”",⸴，、;~.!?]+’?)$ ] >,
+  +OUTPUT < >,
+  +CONTEXT < > ].
+|#
 
 ;;
 ;; two similar rules, converting (some) directional GML tokens into affixes
 ;;
-prefix_markup_tmr := prefix_punctuation_tmt &
-[ +CONTEXT < [ +FORM ^([[({“‘"']*¦i)$ ] >,
-  +INPUT < [ +FORM ^(.+)$ ] >,
-  +OUTPUT < [ +FORM "${C1:+FORM:1}${I1:+FORM:1}" ] > ].
+#|
+prefix_markup_tmr := basic_prefix_punctuation_tmt &
+[ +CONTEXT < [ +FORM ^([[({“‘"']*⌊/)$ ] >,
+  +INPUT < [ +FORM ^(.+)$, +CLASS #class & non_ne, +TNT #tnt ] >,
+  +OUTPUT < [ +FORM "${C1:+FORM:1}${I1:+FORM:1}",
+              +CLASS #class, +TNT #tnt ] > ].
 
-suffix_markup_tmr := suffix_punctuation_tmt &
-[ +INPUT < [ +FORM ^(.+)$ ] >,
-  +CONTEXT < [ +FORM ^(i¦[])}”"’',;.!?]*)$ ] >,
-  +OUTPUT < [ +FORM "${I1:+FORM:1}${C1:+FORM:1}" ] > ].
+prefix_markup_ne_tmr := basic_prefix_punctuation_tmt &
+[ +CONTEXT < [ +FORM ^([[({“‘"']*⌊/)$ ] >,
+  +INPUT < [ +FORM ^(.+)$, +CLASS named_entity & #class ] >,
+  +OUTPUT < [ +FORM "${C1:+FORM:1}${I1:+FORM:1}",
+              +CLASS #class ] > ].
+
+suffix_markup_tmr := basic_suffix_punctuation_tmt &
+[ +INPUT < [ +FORM ^(.+)$, +CLASS #class & non_ne, +TNT #tnt ] >,
+  +CONTEXT < [ +FORM ^(/⌋[])}”"’',⸴;.!?]*)$ ] >,
+  +OUTPUT < [ +FORM "${I1:+FORM:1}${C1:+FORM:1}",
+              +CLASS #class, +TNT #tnt ] > ].
+
+suffix_markup_ne_tmr := basic_suffix_punctuation_tmt &
+[ +INPUT < [ +FORM ^(.+)$, +CLASS named_entity & #class, +TNT #tnt ] >,
+  +CONTEXT < [ +FORM ^(/⌋[])}”"’',⸴;.!?]*)$ ] >,
+  +OUTPUT < [ +FORM "${I1:+FORM:1}${C1:+FORM:1}",
+              +CLASS #class, +TNT #tnt ] > ].
 
 ditch_markup_tmr := token_mapping_rule &
-[ +INPUT < [ +FORM ^[[({“‘"']*(¦i|i¦)[])}”"’',;.!?]*$ ] >,
-  +OUTPUT < > ].
+[ +INPUT < [ +FORM ^[[({“‘"']*(⌊/|/⌋)[])}”"’',⸴;.!?]*$ ] >,
+  +OUTPUT < >,
+  +CONTEXT < > ].
+|#
