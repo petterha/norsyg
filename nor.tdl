@@ -642,7 +642,7 @@ _ha-refl-frabedt-cp_12_rel := ha_v & 1np & 2cp & arg3+ & refl & arg4- & frabedt_
 
 rydde_v := vrb+.
 _rydde*av_14_rel := rydde_v & 1np & arg2- & arg3- & 4np & av_prp & prt-.
-_rydde-av*av_14_rel := rydde_v & 1np & arg2- & arg3- & 4np & av_prp & av_prt.
+_rydde-av*av_14_rel := rydde_v & 1np & arg2- & arg3- & 4np & av_prp & av_prt & ground+.
 _rydde*etter-refl_1_rel := rydde_v & 1np & arg2- & arg3- & arg4+ & refl & etter_prp & prt-.
 _rydde*opp_14_rel := rydde_v & 1np & arg2- & arg3- & 4np & opp_prp & prt-.
 _rydde-bort_12_rel := rydde_v & 1np & 2np & arg3- & arg4- & bort_prt.
@@ -3807,6 +3807,10 @@ arg2-wh-min := wh-min & arg2-sign &
 	   [ SYNSEM.LKEYS.KEYREL.ARG0 #arg2 ] > ].
 
 arg2-wh-phrase := arg2-wh-min & nom-embedded &
+"""
+Arg2 Wh object
+<ex>Jeg ser hvem?
+"""
   [ ARGS < [], wh-word > ].
 
 arg2-wh-mod-struc := wh-mod-struc & arg2-wh-min.
@@ -3847,6 +3851,10 @@ arg2-emb-non-su-phrase := arg2-non-su-val & arg2-emb-phrase &
   [ ARGS.REST.FIRST.SYNSEM.LOCAL.CAT.CASE non-subj-case ].
 ; PH 2022-10-28: Removed AAIF - constraint in order to parse "Jon beundrer henne ikke"
 arg2-emb-nom-non-su-phrase := arg2-emb-non-su-phrase & arg2-nom-phrase & nom-embedded-val &
+"""
+Arg2 object NP
+<ex>Jeg ser skogen.
+"""
   [ SYNSEM.LOCAL.CAT [ STACK < [ LOCAL.CAT.AAIF bool ], ... > ] ].
 arg2-emb-adj-non-su-phrase := arg2-emb-non-su-phrase & arg2-nom-phrase & arg2-emb-adj-phrase &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX #ind, ;
@@ -3897,7 +3905,11 @@ arg2-extr-compl-su-phrase := arg2-extr-compl-phrase & subj-extr
 Extraction of CP arg2 subject
 <ex>At han smiler, beundres.
 """.
-arg2-extr-compl-non-su-phrase := arg2-extr-compl-phrase & arg2-non-su-val.
+arg2-extr-compl-non-su-phrase := arg2-extr-compl-phrase & arg2-non-su-val
+"""
+Extraction of CP arg2 object
+<ex>At han smiler, beundrer jeg.
+""".
 
 arg2-extr-inq-non-su-phrase := arg2-extr-non-su-phrase &
   [ ARGS < [ SYNSEM [ NON-LOCAL.SLASH < [ CONT.HOOK.INDEX #ind ] >,
@@ -3941,8 +3953,16 @@ arg3-extr-phrase := basic-val & arg3-val & valence-extr-phrase &
     ARGS < [ SYNSEM.LOCAL.CAT.VAL.CMP3.LOCAL.CONT.HOOK.INDEX #ind ] > ].
 
 arg3-emb-su-phrase := subj-val & arg3-emb-phrase & nom-embedded-val &
-  [ ARGS < [ ALTS.PASSIVE + ], ... > ].
-arg3-emb-non-su-phrase := non-subj-val & arg3-emb-phrase & nom-embedded-val.
+  [ ARGS < [ ALTS.PASSIVE + ], ... > ]
+"""
+Arg3 subject
+<ex>Gaven gis jeg.
+""".
+arg3-emb-non-su-phrase := non-subj-val & arg3-emb-phrase & nom-embedded-val
+"""
+Arg3 indirect object
+<ex>Jeg gir henne gaven.
+""".
 
 arg3-emb-adj-phrase := adj-embedded-val &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX #ind,
@@ -3951,8 +3971,16 @@ arg3-emb-adj-phrase := adj-embedded-val &
 arg3-emb-adj-su-phrase := subj-val & arg3-emb-phrase & arg3-emb-adj-phrase.
 arg3-emb-adj-non-su-phrase := non-subj-val & arg3-emb-phrase & arg3-emb-adj-phrase.
 
-arg3-extr-su-phrase := subj-extr & arg3-extr-phrase.
-arg3-extr-non-su-phrase := arg3-extr-phrase & non-subj-extr.
+arg3-extr-su-phrase := subj-extr & arg3-extr-phrase
+"""
+Extraction of arg3 subject
+<ex>Jeg gis en gave.
+""".
+arg3-extr-non-su-phrase := arg3-extr-phrase & non-subj-extr
+"""
+Extraction of arg3 subject
+<ex>Henne gir jeg gaven.
+""".
 
 arg3-ellipsis-phrase := arg3-sign & head-only & basic-val &
   [ SYNSEM [ LOCAL.CAT.HEAD.ELLIPSIS +,
@@ -4116,6 +4144,10 @@ part-struc-min := part-prep-phrase &
 		      LKEYS.KEYREL.PRED #part ] ], ... > ].
 
 part-struc := part-struc-min & 
+"""
+Particle.
+<ex>Jeg bakker ut.
+"""
   [ SYNSEM.LOCAL.CAT.VAL.CMP4 #4,
     ARGS < [ SYNSEM.LOCAL.CAT.VAL.CMP4 #4 ], ... > ].
 
@@ -4150,8 +4182,11 @@ prepsel-binary := prepsel-struc & part-prep-binary &
 prepsel-ellipsis-phrase := prepsel-struc & part-prep-ellipsis.
 
 ; PH 2022-03-09: Rule for ground objects:
-; Han dekket på bordet
 ground-obj-struc := prepsel-struc-min & part-struc-min & part-prep-binary &
+"""
+Ground object.
+<ex>Jeg rydder av bordet.
+"""
   [ SYNSEM.LKEYS.KEYREL.PRED ground+,
     ARGS < [ ], part-word > ].
 
@@ -4163,13 +4198,25 @@ arg4-extr-pobj-struc := arg4-extr-phrase &
   [ ARGS < [ SYNSEM.LOCAL.CAT.VAL.CMP4.MARKED + ] > ].
 
 arg4-extr-cp-struc := arg4-extr-pobj-struc &
+"""
+Etracted arg4 CP
+<ex>At du smiler, stoler jeg på.
+"""
   [ ARGS.FIRST.SYNSEM.LOCAL.CAT.VAL.CMP4 [ LINK 4cp,
 					   LOCAL.CAT.HEAD subcompl ] ].
 arg4-extr-np-struc := arg4-extr-pobj-struc &
+"""
+Extracted arg4 NP
+<ex>Mannen stoler jeg på.
+"""
   [ ARGS.FIRST.SYNSEM.LOCAL.CAT.VAL.CMP4 [ LINK 4np,
 					   LOCAL.CAT.HEAD nominal ] ].
 
 arg4-extr-ap-struc := arg4-extr-phrase &
+"""
+Extracted arg4 AP
+<ex>Gul stoler jeg på.
+"""
   [ ARGS < [ SYNSEM [ LOCAL.CAT.VAL.CMP4.MARKED -,
 		      NON-LOCAL.SLASH < [ CAT [ HEAD adj & [ NOM -,
 							     AGREE.GENDER #gen ],
@@ -4220,7 +4267,11 @@ binary-expl-phrase := val-min & head-initial & phrasal & binary-headed-gap-phras
 expl-subj-min := basic-pres &
   [ SYNSEM.LOCAL [ CAT.ARGUMENT.LOCAL.CONT.HOOK.INDEX #parg,
 		   CONT.HOOK.PARG #parg ] ].
-expl-subj-struc := expl-subj-min & binary-expl-phrase.
+expl-subj-struc := expl-subj-min & binary-expl-phrase
+"""
+Expletive subject.
+<ex>Regner det?
+""".
 cleft-subj-struc := basic-cleft & binary-expl-phrase.
 
 expl-obj-struc := binary-expl-phrase &
@@ -8831,3 +8882,15 @@ _legge*på*svøm_1_rel := legge_v & 1np & arg2- & arg3- & på_prp & 4indsg & sv�
 løfte_v := vrb+.
 _løfte*i*flokk_1_rel := løfte_v & 1np & arg2- & arg3- & i_prp & 4indsg & flokk_n & prt-.
 
+;;; Unknown words
+
+unknown-min := norm-lex-item & phrase-or-lexrule & non-gen-word & generic-lex-item &
+  [ STEM.FORM #form,
+    SYNSEM [ LOCAL [ CAT [ VAL.SISTER synsem-min,
+                           QUANT - ],
+                     CONT [ RELS <! !>,
+			    HCONS <!!> ] ],
+	     NON-LOCAL.SLASH <>,
+	     LKEYS [ KEYREL  #relation & [ CARG #form ] ] ],
+    LEXREL <! #relation !>,
+    LINK-INPUT - ].

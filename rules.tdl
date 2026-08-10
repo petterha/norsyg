@@ -18,8 +18,8 @@ arg2-emb-nom-non-su := arg2-emb-nom-non-su-phrase.
 arg2-wh := arg2-wh-phrase.
 ; PH 2016-09-21: Denne regelen lekker litt
 ;arg2-wh-mod := arg2-wh-mod-struc.
-arg4-wh := arg4-wh-phrase.
-arg4-wh-mod := arg4-wh-mod-struc.
+;arg4-wh := arg4-wh-phrase.
+;arg4-wh-mod := arg4-wh-mod-struc.
 arg3-unexpr := arg3-unexpr.
 arg3-extr-su := arg3-extr-su-phrase.
 arg3-emb-su := arg3-emb-su-phrase.

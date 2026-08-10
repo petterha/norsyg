@@ -30,20 +30,20 @@
 
 ; PH 20-06-23: removed the SISTER anti-synsem constraint in order to allow for
 ; Støres program
-unknown_test := norm-lex-item & phrase-or-lexrule & non-gen-word & generic-lex-item &
-  [ STEM [ FIRST "unknown",
-	   FORM #form ],
+
+unknown-word := unknown-min &
+  [ STEM [ FIRST "unknown" ],
     SYNSEM [ LOCAL [ CAT [ HEAD noun & [ NOM + ],
-                           VAL.SISTER synsem-min,
-                           QUANT - ],
-                     CONT [ RELS <! !>,
-			    HCONS <!!> ] ],
-	     NON-LOCAL.SLASH <>,
-	     LKEYS [ KEYREL  #relation & [ PRED "unknown_rel",
-					   CARG #form ],
-		     Q.QREL.PRED unknown_q_rel ] ],
-    LEXREL <! #relation !>,
-    LINK-INPUT - ].
+                           QUANT - ]],
+	     LKEYS [ KEYREL.PRED "unknown_rel",
+		     Q.QREL.PRED unknown_q_rel ] ] ].
+
+; unknown-email := unknown-min &
+;   [ ORTH < "_generic_proper_ne_" >,
+;     SYNSEM [ LOCAL [ CAT [ HEAD noun & [ NOM + ],
+;                            QUANT - ]],
+; 	     LKEYS [ KEYREL.PRED "unknown_rel",
+; 		     Q.QREL.PRED unknown_q_rel ] ] ].
 
 
 ; generic_verb_pret := verb_pret_tag &
