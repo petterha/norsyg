@@ -4272,9 +4272,17 @@ expl-subj-struc := expl-subj-min & binary-expl-phrase
 Expletive subject.
 <ex>Regner det?
 """.
-cleft-subj-struc := basic-cleft & binary-expl-phrase.
+cleft-subj-struc := basic-cleft & binary-expl-phrase
+"""
+Expletive subject.
+<ex>Er det du som sover?
+""".
 
 expl-obj-struc := binary-expl-phrase &
+"""
+Expletive object.
+<ex>Jeg har det bra.
+"""
   [ SYNSEM [ PHR +,
 	     LOCAL [ CAT [ HEAD compl-verb,
 			   VAL [ CMP1 #cmp1,
@@ -4307,8 +4315,16 @@ extr-pres-min := valence-extr-phrase-min & unary-extr-phrase & val-or-mod-sign &
     C-CONT [ RELS <!!>,
 	     HCONS <!!> ] ].
 
-extr-pres-phrase := extr-pres-min & expl-subj-min.
-extr-cleft-phrase := extr-pres-min & basic-cleft.
+extr-pres-phrase := extr-pres-min & expl-subj-min
+"""
+Extracted expletive in presentational construction.
+<ex>Det kommer noen.
+""".
+extr-cleft-phrase := extr-pres-min & basic-cleft
+"""
+Extracted expletive in cleft construction.
+<ex>Det er du som sover.
+""".
 
 ;;;;;
 ;;;;;   PASSIVE
