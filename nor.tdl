@@ -4215,7 +4215,7 @@ Extracted arg4 NP
 arg4-extr-ap-struc := arg4-extr-phrase &
 """
 Extracted arg4 AP
-<ex>Gul stoler jeg på.
+<ex>Gul er bilen.
 """
   [ ARGS < [ SYNSEM [ LOCAL.CAT.VAL.CMP4.MARKED -,
 		      NON-LOCAL.SLASH < [ CAT [ HEAD adj & [ NOM -,
@@ -4223,7 +4223,7 @@ Extracted arg4 AP
 						VAL.SISTER synsem ],
 					  CONT.HOOK.INDEX #arg4,
 					  EXTR-REL.ARG1 #arg1 ] >,
-		      LKEYS.KEYREL [ PRED 4ap & 1np,
+		      LKEYS.KEYREL [ PRED 4ap & arg2- & 1np,
 				     ARG1 #arg1 & [ PNG.GEN #gen ],
 				     ARG4 #arg4 ] ] ] > ].
 
@@ -4857,6 +4857,10 @@ pop-phrase := pop-phrase-min-min &
 ; constraint in order to parse the above sentence
 pop-nominal-phrase := pop-phrase & unary-phrase & pop-phrase-min &
 		      pop-full-phrase &
+"""
+Popping out of NP.
+<ex>Mannen smiler.
+"""
   [ SYNSEM [ LOCAL.CAT [ HEAD.DEGREL #degadv,
 			 CASE case ],
 	     NON-LOCAL #nl ],
@@ -4893,20 +4897,35 @@ pop-no-nominal-min := pop-phrase & pop-phrase-min &
 
 pop-no-nominal-phrase := pop-no-nominal-min & unary-phrase &
 			 pop-full-phrase &
+"""
+popping out of non-nominal phrase (e.g. IP, PP).
+<ex>I skogen regner det.
+"""
   [ ARGS < [ SYNSEM.LOCAL.CAT.VAL.CMP2.LINK arg2- ] > ].
 
 pop-no-nominal-comma-phrase := pop-no-nominal-min & binary-phrase &
 			       pop-full-phrase &
+"""
+Popping out of a non-nominal constituent that ends with a comma.
+<ex>At han smiler, hevder jeg.
+"""
   [ SYNSEM.LOCAL.CAT.VBL synsem,
     ARGS < [ SYNSEM.LOCAL.CAT.HEAD constcompl ], comma-word > ].
-; Mannen som smiler, smiler
+
 pop-no-nominal-rel-phrase := pop-no-nominal-min & binary-phrase &
 			     pop-full-phrase &
+"""
+Popping out of a relative clause that ends with a comma.
+<ex>Mannen som smiler, smiler.
+"""
   [ SYNSEM.LOCAL.CAT.STACK.FIRST.LOCAL.CAT.VBL synsem,
     ARGS < [ SYNSEM.LOCAL.CAT.HEAD relcompl ], comma-word > ].
-; No comma after relative clause:
-; Jeg beundrer mannen som smiler.
+
 pop-no-nominal-rel2-phrase := pop-no-nominal-phrase &
+"""
+Popping out of relative clause that does not end with a comma.
+<ex>Smiler mannen som smiler?
+"""
   [ SYNSEM.LOCAL.CAT.STACK.FIRST.LOCAL.CAT.VBL anti-synsem,
     ARGS < [ SYNSEM.LOCAL.CAT.HEAD relcompl ] > ].
 
@@ -4915,11 +4934,25 @@ pop-no-nominal-nocomp-phrase := pop-no-nominal-phrase &
 ; Robust unary popping rule (no comma):
 ; At mannen smiler hevder Jon.
 pop-no-nominal-robust-phrase := pop-no-nominal-phrase &
+"""
+No comma after subordinate clause
+<ex>At mannen smiler hevder Jon.
+"""
   [ SYNSEM.LOCAL.CAT.VBL synsem,
-    ARGS < [ SYNSEM.LOCAL.CAT.HEAD fincompl ] > ].
-; No comma after subordinate clause at the end of the sentence:
-; Jon beundrer at mannen smiler.
+    ARGS < [ SYNSEM.LOCAL.CAT.HEAD constcompl ] > ].
+pop-rel-robust-phrase := pop-no-nominal-phrase &
+"""
+No comma after relative clause
+<ex>Mannen som smiler smiler.
+"""
+  [ SYNSEM.LOCAL.CAT.STACK.FIRST.LOCAL.CAT.VBL synsem,
+    ARGS < [ SYNSEM.LOCAL.CAT.HEAD relcompl ] > ].
+
 pop-no-nominal-comp-phrase := pop-no-nominal-phrase &
+"""
+No comma after subordinate clause at the end of the sentence
+<ex>Jon hevder at mannen smiler.
+"""
   [ SYNSEM.LOCAL.CAT.VBL anti-synsem,
     ARGS < [ SYNSEM.LOCAL.CAT.HEAD constcompl,
 	     FINAL bool ] > ].
@@ -4929,6 +4962,10 @@ pop-no-nominal-comp-phrase := pop-no-nominal-phrase &
 ; *Beundre at jeg hevder jeg sover, , gjør jeg
 ; PH 2026-04-07: Fixed it by requiring one element on STACK.
 pop-no-nominal-vp-phrase := pop-no-nominal-min & binary-phrase &
+"""
+Popping out of fronted VP with comma
+<ex>Beundre at jeg sover, gjør jeg.
+"""
   [ SYNSEM.LOCAL.CAT [ STACK < [ NON-LOCAL.SLASH < [ CAT.HEAD mainverb ] > ] >,
 		       VBL anti-synsem ],
     ARGS < [ SYNSEM.LOCAL.CAT.HEAD constcompl ],
@@ -4952,6 +4989,10 @@ pop-vp-phrase := pop-no-nominal-min &
 		      FIRST-WORD + ] ], ... > ].
 
 pop-vp-unary-phrase := pop-vp-phrase & unary-phrase &
+"""
+Popping out of fronted VP
+<ex>Smile vil jeg.
+"""
   [ SYNSEM.LOCAL.CAT [ C +,
 		       VBL synsem ] ].
 
@@ -4959,6 +5000,10 @@ pop-vp-unary-phrase := pop-vp-phrase & unary-phrase &
 ; in order to avoid particles to appear after gjøre:
 ; * Ta temaet gjør jeg opp.
 pop-vp-c-phrase := pop-vp-phrase & binary-phrase &
+"""
+Popping out of fronted VP with 'gjøre'
+<ex>Sove gjør jeg.
+"""
   [ SYNSEM [ LOCAL [ CAT [ HEAD verb,
 			   VBL expressed-non-canonical,
 			   STACK <> ],
@@ -7670,10 +7715,18 @@ extr-vp-c-phrase := extr-vp-phrase &
 ; Smile prøver jeg å ville
 extr-vp-unary-phrase := extr-phrase & head-only & unary-phrase &
 			extr-vp-v-phrase &
+"""
+Extraction of fronted VP
+<ex>Sove vil jeg.
+"""
   [ ARGS < non-sadv &
 	   [ SYNSEM.LOCAL.CAT [ HEAD subcompl-verb ] ] > ].
 
 extr-vp-binary-phrase := binary-extr-phrase & extr-vp-phrase &
+"""
+Extraction of fronted VP with 'gjøre'
+<ex>Sove vil jeg gjøre.
+"""
   [ SYNSEM.LOCAL.CAT.AAIF -,
     ARGS < [ SYNSEM [ LOCAL.CAT.VBL canonical-synsem &
 				    [ LOCAL [ CAT.HEAD #head,
