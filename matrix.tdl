@@ -785,10 +785,11 @@ subord-relation := subord-or-conj-relation.
 ; noun noun compounds
 
 ; PH 04-feb-2003: Commented out the unspec-compound-relation
-;unspec-compound-relation := arg12-relation &
-;  [ ARG0 event,
-;    ARG1 ref-ind,
-;    ARG2 ref-ind ].
+unspec-compound-relation := arg12-relation &
+ [ PRED "compound_rel",
+   ARG0 event,
+   ARG1 ref-ind,
+   ARG2 ref-ind ].
 
 ; quantifier relation
 

@@ -1918,6 +1918,10 @@ garpe-word := norm-lex-item & phrase & keyrel-lex-item &
 			  HCONS <!!>] ] ].
 
 garpe-phrase := binary-phrase &
+"""
+Attaching a garpe possessive.
+<ex>Per sin hund smiler.
+"""
   [ START -,
     SYNSEM [ LOCAL [ CAT [ HEAD #head,
 			   VAL [ CMP4 anti-synsem,
@@ -1930,8 +1934,7 @@ garpe-phrase := binary-phrase &
 			   STACK #stack ],
 		     CONT.HOOK [ LTOP handle,
 				 INDEX #1 & ref-ind ] ],
-	     LKEYS [ KEYREL [ PRED generic_entity_rel,
-			      ARG0 #1 ],
+	     LKEYS [ KEYREL [ ARG0 #1 ],
 		     Q.QREL def-relation & [ ARG0 #1 ] ] ],
     ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD #head & det-noun,
 				    STACK #stack ],
@@ -2920,10 +2923,18 @@ nominal-det-phrase := nominal-phrase-min &
 					Q.QEQ.LARG #lbl ] ] ] > ].
 
 nominal-phrase := nominal-det-phrase & c-cont-rel-0 &
+"""
+Attaching a noun in a noun phrase.
+<ex>En mann sover.
+"""
   [ SYNSEM.LOCAL.CAT.HEAD poss-card-noun ].
 
 
 det-phrase := nominal-det-phrase &
+"""
+Attaching a determiner in a nominal phrase.
+<ex>Alle de smiler.
+"""
   [ SYNSEM.LOCAL.CAT.HEAD det,
     ARGS < [ ], [ SYNSEM.LKEYS.Q.QREL #relation ] >,
     C-CONT.RELS <! #relation !> ].
@@ -2946,6 +2957,10 @@ measure-phrase := nominal-phrase-min-min &
 ; PH 2018-05-08: Removed KEYREL.PRED generic_entity_rel constraint in
 ; order to allow for noun relations to go down in "den gode mannen smiler"
 nominal-adj-phrase := nominal-phrase-min & 
+"""
+Attaching adjective in nominal phrase.
+<ex>Den gode smiler.
+"""
   [ SYNSEM [ LOCAL [ CAT [ HEAD adj-andre-carddef & [ AGREE.DEFINITENESS #def,
 						      CARD-OUT #card-out ],
 			   VAL [ SISTER.LOCAL.CONT.HOOK.INDEX #ind ] ],
@@ -3912,6 +3927,9 @@ Extraction of CP arg2 object
 """.
 
 arg2-extr-inq-non-su-phrase := arg2-extr-non-su-phrase &
+"""
+Extraction of inquit argument
+<ex>Sover Jon, spør Kari."""
   [ ARGS < [ SYNSEM [ NON-LOCAL.SLASH < [ CONT.HOOK.INDEX #ind ] >,
 		      LKEYS.KEYREL [ PRED 2inq,
 				     ARG2 #ind ] ] ] > ].
@@ -4156,6 +4174,10 @@ part-binary := part-struc & part-prep-binary &
     ARGS < [], part-word & [ SYNSEM.LOCAL.CAT.HEAD part ] > ].
 
 part-ellipsis-phrase := part-struc & part-prep-ellipsis &
+"""
+Gapping with particle verb.
+<ex>Jeg gjorde ferdig isen og du sjokoladen.
+"""
   [ SYNSEM.LOCAL.CAT.VAL.CMP4.MARKED -,
     SYNSEM.LOCAL.CAT [ HEAD aux-verb,
 		       VAL.CMP2.LINK arg2- ] ].
@@ -4912,7 +4934,7 @@ Popping out of a non-nominal constituent that ends with a comma.
   [ SYNSEM.LOCAL.CAT.VBL synsem,
     ARGS < [ SYNSEM.LOCAL.CAT.HEAD constcompl ], comma-word > ].
 
-pop-no-nominal-rel-phrase := pop-no-nominal-min & binary-phrase &
+pop-rel-comma-phrase := pop-no-nominal-min & binary-phrase &
 			     pop-full-phrase &
 """
 Popping out of a relative clause that ends with a comma.
@@ -4921,7 +4943,7 @@ Popping out of a relative clause that ends with a comma.
   [ SYNSEM.LOCAL.CAT.STACK.FIRST.LOCAL.CAT.VBL synsem,
     ARGS < [ SYNSEM.LOCAL.CAT.HEAD relcompl ], comma-word > ].
 
-pop-no-nominal-rel2-phrase := pop-no-nominal-phrase &
+pop-rel-phrase := pop-no-nominal-phrase &
 """
 Popping out of relative clause that does not end with a comma.
 <ex>Smiler mannen som smiler?
@@ -5046,10 +5068,18 @@ pop-par-phrase := pop-phrase & gap-binary &
 
 ;; Jon, jeg hentet ham, sover.
 pop-s-par-phrase := pop-par-phrase & pop-phrase-min &
+"""
+Sentence parenthetical.
+<ex>Jon, jeg beundrer ham, sover.
+"""
   [ ARGS < [ SYNSEM.LOCAL.CAT.HEAD verb ], [] > ].
 
 ;; Jon, en mann, sover.
 pop-xp-par-phrase := pop-par-phrase & 
+"""
+Phrase parenthetical.
+<ex>Jon, mannen, sover.
+"""
   [ SYNSEM.LOCAL [ CAT #cat & [ STACK #2,
 				HEAD #head,
 				QUANT #quant & + ],
@@ -5257,10 +5287,18 @@ ellipsis-phrase := in-const-struct & unary-phrase &
 
 
 ellipsis-vp-phrase := ellipsis-phrase &
+"""
+Rule for gapping in VPs
+<ex>Jeg gir deg isen og henne sjokoladen.
+"""
   [ SYNSEM.LKEYS.ELLREL.PRED arg1+ & arg2+ & arg3+,
     ARGS < coord-vp-phrase > ].
 
 ellipsis-s-phrase := ellipsis-phrase &
+"""
+Rule for gapping in sentences
+<ex>Jeg spiser is og du sjokolade.
+"""
   [ ARGS < pop-phrase-min > ].
 
 ; DEBUG 2013-11-22: Removed the LKEYS - ARGS.REST.FIRST.LKEYS link
@@ -5373,6 +5411,10 @@ verbal-imp-phrase := verbal-phrase-min2 & arg1-sign &
     C-CONT.HCONS <!!> ].
 
 verbal-imp-main-phrase := verbal-imp-phrase &
+"""
+Attaching imperative main verb.
+<ex>Smil!
+"""
   [ ARGS < [ SYNSEM.LKEYS [ KEYREL #rel & [ PRED #pred ],
 			    CNSTR #rel ] ], 
 	   [ SYNSEM [ LOCAL.CAT.HEAD mainverb,
@@ -5419,11 +5461,19 @@ verbal-v-min := verbal-in-const-min &
 
 
 verbal-c-phrase := verbal-c-min & verbal-phrase-main & verbal-phrase-nonpass & verbal-phrase-min3 &
+"""
+Attaching main verb in C position
+<ex>Jeg smiler.
+"""
   [ SYNSEM [ LOCAL.CONT.HOOK.LTOP #ltop,
 	     LKEYS.KEYREL [ LBL #ltop,
 			    ARG0.PERF - ] ] ].
 
 aux-c-phrase := verbal-c-min & verbal-phrase-aux & verbal-phrase-nonpass &
+"""
+Attaching auxiliaries in C position
+<ex>Jeg har smilt.
+"""
   [ SYNSEM.LOCAL.CAT.VBL.LOCAL [ CAT.HEAD.PERFPART #bool,
 				 CONT.HOOK.INDEX.PERF #bool ] ].
 
@@ -5434,27 +5484,51 @@ verbal-min := verbal-in-const-min &
 				C - ] ],[]> ].
 
 verbal-phrase := verbal-phrase-min3 & verbal-phrase-main & verbal-phrase-nonpass & verbal-min & verbal-v-min &
+"""
+Attaching verb in V position.
+<ex>Jeg har spist.
+"""
   [ C-CONT.HCONS <!!> ].
 
 verbal-pass-min := verbal-in-const-min & passive-phrase-min.
 
 verbal-pass-phrase := verbal-pass-min & verbal-min & verbal-v-min & passive-phrase-main &
+"""
+Attaching passive main verb in V position.
+<ex>Mannen må kjøres.
+"""
   [ C-CONT.HCONS <!!> ].
 
 verbal-c-pass-phrase := verbal-pass-min & verbal-c-min & passive-phrase-main &
+"""
+Attaching passive main verbs in C postition
+<ex>Mannen beundres.
+"""
   [ SYNSEM [ LOCAL.CONT.HOOK [ LTOP #ltop,
 			       INDEX #index ],
 	     LKEYS.KEYREL [ LBL #ltop,
 			    ARG0 #index ] ] ].
 
 verbal-c-pass-aux-phrase := verbal-pass-min & verbal-c-min & passive-phrase-aux &
+"""
+Attaching passive auxiliaries in C position
+<ex>Mannen blir beundret.
+"""
   [ SYNSEM.LOCAL.CAT.VBL.LOCAL [ CAT.HEAD.PERFPART +,
 				 CONT.HOOK.INDEX.PERF - ] ].
 
-verbal-pass-aux-phrase := verbal-pass-min & verbal-min & passive-phrase-aux & verbal-v-min.
+verbal-pass-aux-phrase := verbal-pass-min & verbal-min & passive-phrase-aux & verbal-v-min
+"""
+Attaching passive auxiliaries in V position
+<ex>Mannen har blitt beundret.
+""".
 
 aux-phrase := verbal-phrase-min3 & verbal-phrase-aux & 
 	      verbal-phrase-nonpass & verbal-v-min &
+"""
+Attaching auxiliary in V position.
+<ex>Jeg skal ha smilt.
+"""
   [ SYNSEM.LOCAL.CAT [ ARGUMENT.LOCAL.CAT.CASE non-subj-case,
 		       AAIF - ],
     ARGS < [ SYNSEM.LOCAL.CAT.C - ],[]> ].
@@ -6072,11 +6146,19 @@ force-phrase := force-phrase-min &
 				STACK <> ] ] > ].
 
 main-phrase := force-phrase &
+"""
+Force rule for main clauses
+<ex>Jeg smiler.
+"""
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.SF prop-wh_m_rel & #mess,
     PUNCT no-punct-or-period,
     ARGS < [ SYNSEM.LOCAL.TOPIC local & [ CAT.HEAD.MESS #mess ] ] >].
 
 yes-no-phrase := interrogative-clause & force-phrase & gap-unary &
+"""
+Force rule for yes-no questions
+<ex>Smiler du?
+"""
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.SF yes-no-ques_m_rel,
     ARGS < [ SYNSEM [ LOCAL [ CAT [ VBL anti-synsem,
 				    HEAD.MESS yes-no-ques_m_rel ],
@@ -6085,6 +6167,10 @@ yes-no-phrase := interrogative-clause & force-phrase & gap-unary &
     PUNCT no-punct-or-quest-mark  ].
 
 imperative-phrase := imperative-clause & force-phrase-min & gap-unary &
+"""
+Force rule for imperatives
+<ex>Smil!
+"""
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.SF command_m_rel,
     C-CONT.RELS <! !>,
     ARGS < [ SYNSEM [ LOCAL.CAT [ VBL anti-synsem,
@@ -6509,23 +6595,34 @@ pl-pn := proper-noun-phrase & pl-item.
 ; PH 05-May-2007: Added this rule to account for "landet Norge", "mannen Per 
 ; Ola"
 category-pn-phrase := binary-phrase & reg-binary-emb-phrase &
+"""
+Proper nouns modified by definite nouns.
+<ex>Landet Norge smiler.
+"""
   [ START -,
     SYNSEM [ SAT +,
-	     LOCAL [ CONT.HOOK [ LTOP #1 ] ] ],
+	     LKEYS [ KEYREL.ARG0 #1,
+		     Q.QREL #qrel ] ],
     ARGS < [ INFLECTED +,
 	     SYNSEM [ SAT +,
 		      LOCAL [ CAT [ HEAD noun & [ AGREE.DEFINITENESS def ],
-				    QUANT - ],
-			      CONT.HOOK.INDEX.PNG.PN sg ] ] ], 
+				    QUANT bool ],
+			      CONT.HOOK.INDEX.PNG.PN sg ],
+		      LKEYS.KEYREL.ARG0 #2 ] ], 
            [ INFLECTED +,
 	     SYNSEM [ SAT +,
 		      LOCAL [ CAT.HEAD proper-noun & 
-				       [ FIRST-PN + ],
-			      CONT.HOOK.LTOP #2 ] ] ] >,
-    C-CONT [ RELS <! multiple-pn-relation & [ LBL handle,
-                                            FIRST-NAME #1,
-                                            LAST-NAME #2 ] !>,
-	     HCONS <!!> ] ].
+				       [ FIRST-PN + ] ],
+		      LKEYS [ KEYREL #keyrel & [ LBL #larg,
+						 ARG0 #ind ],
+			      Q.QREL #qrel & [ ARG0 #ind,
+					       RSTR #harg ] ] ] ] >,
+    C-CONT [ RELS <! unspec-compound-relation & [ LBL #larg,
+					      ARG1 #2,
+					      ARG2 #1 ],
+		   #keyrel !>,
+	     HCONS <! [ HARG #harg,
+			LARG #larg ] !> ] ].
 
 wh-thing-or-pers-word := noun-phrase & wh-word &
   [ SYNSEM.LOCAL [ CAT [ HEAD noun & [ MOD <> ],
@@ -8031,7 +8128,8 @@ conj-s-phrase := coord-s-min &
     C-CONT [ RELS <! #keyrel & [ PRED reg_conj ] !>,
 	     HCONS <!!> ] ].
 
-conj-or-app-embedded-phrase := embedded-phrase-min & basic-binary-phrase & c-cont-rel-0 &
+conj-or-app-embedded-phrase := embedded-phrase-min & basic-binary-phrase &
+			       c-cont-rel-0 &
   [ CONJ #conj,
     LINK-INPUT -,
     SYNSEM [ LOCAL [ CAT [ HEAD #head,
@@ -8072,6 +8170,10 @@ conj-embedded-phrase := conj-or-app-embedded-phrase &
   [ ARGS < conj-phrase, [] > ].
 
 par-embedded-phrase := conj-or-app-embedded-phrase &
+"""
+First element in parenthetical
+<ex>Jon, en mann, sover.
+"""
   [ ARGS < emb-par-phrase, [] > ].
 
 ;conj-emb-unsat-phrase := conj-embedded-phrase &
@@ -8341,8 +8443,11 @@ colon-word := pre-punct-word & embedding-mark &
 ;                      LBL #lbl,
 ;                      ARG0 #1 ] !> ].
 
-;; Phrase for initiating parentheticals
 emb-par-phrase := basic-binary-phrase & start-item & embedded-phrase-min-min & uni-link &
+"""
+Phrase for initiating parentheticals.
+<ex>Jon, mannen, sover.
+"""
   [ INFLECTED +,
     LINK-INPUT -,
     CONJ no-conj,
@@ -8429,6 +8534,10 @@ inquit-input-phrase := binary-phrase & uni-link &
     LINK-INPUT - ].
 
 inquit-s-phrase := inquit-input-phrase &
+"""
+Ending an inquit phrase with a comma
+<ex>Jon sover, sier jeg.
+"""
   [ SYNSEM.NON-LOCAL.SLASH < [ CONT.HOOK.INDEX #index ] >,
     ARGS < phrase &
 	   [ BOUNDARY +,
