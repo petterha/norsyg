@@ -3293,8 +3293,9 @@ arg4-np-phrase := arg4-val-min &
 ;arg4-emb-np-phrase := arg4-emb-pred-phrase & arg4-np-phrase.
 
 arg4-ap-phrase := arg4-val-min &
-  [ SYNSEM.LOCAL.CAT [ HEAD.NOM -,
-		       VAL.SISTER anti-synsem ],
+  [ SYNSEM [ LOCAL.CAT [ HEAD.NOM -,
+			 VAL.SISTER anti-synsem ],
+	     LKEYS.KEYREL #rel ],
     ARGS < [ SYNSEM [ LOCAL.CAT [ HEAD.AGREE.DEFINITENESS def,
 				  VAL.CMP4 [ LOCAL [ CAT.HEAD adj ],
 					     LINK 4ap ] ] ] ],
@@ -4539,6 +4540,10 @@ interj-word := word & keyrel-lex-item &
 	     LKEYS.KEYREL #keyrel & [ ARG0 event ] ] ].
 
 interj-phrase := start-item & binary-phrase & uni-link & start-head & clause &
+"""
+Attaching an interjection.
+<ex>Ja, sa han.
+"""
   [ CONJ no-conj,
     SYNSEM [ FIRST-WORD +,
 	     LOCAL [ CAT [ HEAD.ELLIPSIS -,
@@ -6315,6 +6320,10 @@ vp-filler-phrase-min := nextword-phrase &
     LINK-INPUT - ].
 
 vp-filler-phrase := vp-filler-phrase-min &
+"""
+Filler rule for fronted VPs, with agreement
+<ex>Smiler gjør jeg.
+"""
   [ SYNSEM [ LOCAL.CAT.STACK < [ LOCAL.CAT.VBL synsem-min,
 				 NON-LOCAL.SLASH
                       < [ CAT [ HEAD.PERFPART #bool,
@@ -6326,6 +6335,10 @@ vp-filler-phrase := vp-filler-phrase-min &
 			   LKEYS.KEYREL #relation ] ] > ].
 
 vp-filler-inf-phrase := vp-filler-phrase-min &
+"""
+Filler rule for fronted, infinitival VPs
+<ex>Smile gjør jeg.
+"""
   [ SYNSEM [ LOCAL.CAT.STACK < [ NON-LOCAL.SLASH <
                     [ CAT [ HEAD.PERFPART bool,
 			    VBL.LKEYS.KEYREL.ARG0 #arg0 ] ] > ] >,
@@ -6343,6 +6356,10 @@ vp-filler-inf-phrase := vp-filler-phrase-min &
 					ARG1 #arg1 ] ] ] > ].
 
 cadv-filler-phrase := filler-phrase & uni-link &
+"""
+Filler rule for adverbial clauses
+<ex>Når du smiler, smiler jeg.
+"""
   [ SYNSEM [ LOCAL.CAT [ HEAD cadv,
 			 C -,
 			 ARGUMENT.LOCAL.CAT.CASE subj-case,
@@ -6357,6 +6374,10 @@ cadv-filler-phrase := filler-phrase & uni-link &
 ; constraint in order to make generation work.
 ; ex: Alene smiler mannen.
 adv-filler-phrase := sem-filler-phrase &
+"""
+Filler rule for adverbs.
+<ex>Derfor regner det.
+"""
   [ SYNSEM [ LOCAL.CAT [ HEAD adv-prep-sadv &
 			      [ NOM - ],
 			 VAL [ CMP1.LINK arg1-,
@@ -6381,15 +6402,27 @@ adv-filler-phrase := sem-filler-phrase &
 ; PH 2016-09-05: Took out the ARGS.REST.FIRST.SYNSEM.LINK nom+ constraint
 ; in order to allow for infinitival phrases as fillers.
 nom-filler-phrase := sem-filler-phrase & nom-embedded &
+"""
+Filler rule for nominals.
+<ex>Mannen smiler.
+"""
   [ SYNSEM [ LOCAL.CAT [ HEAD atfull-infcompl-noun,
 			 VAL.SISTER #sis ],
 	     LKEYS.Q.QREL #pred ],
     ARGS < [], [ SYNSEM [ LOCAL.CAT.VAL.SISTER #sis,
 			  LKEYS.Q.QREL #pred ] ] > ].
 
-comp-filler-phrase := filler-phrase & comp-embedded.
+comp-filler-phrase := filler-phrase & comp-embedded
+"""
+Filler rule for complementizer clauses.
+<ex>At mannen smiler, beundrer jeg.
+""".
 
 expl-filler-phrase := nextword-phrase &
+"""
+Filler rule for nominals.
+<ex>Det regner.
+"""
   [ START -,
     LINK-INPUT -,
     SYNSEM [ LOCAL [ CAT #cat & [ HEAD compl-verb ],
@@ -6418,17 +6451,25 @@ expl-filler-phrase := nextword-phrase &
 ; 	     HCONS <!!> ] ].
 
 adj-mod-filler-phrase := filler-phrase &
-  [ SYNSEM [ LOCAL [ CAT [ HEAD adj-andre,
+"""
+Filler rule for adjective modifiers.
+<ex>Gule biler kjører.
+"""
+  [ SYNSEM [ LOCAL [ CAT [ HEAD adj-andre-carddef,
 			   STACK < [ NON-LOCAL.SLASH < [] > ] >,
-			   VAL.SISTER #sister & [ LOCAL.CONT.HOOK [ LTOP #lbl,
-								    INDEX #ind ] ] ],
+			   VAL.SISTER #sister &
+				[ LOCAL.CONT.HOOK [ LTOP #lbl,
+						    INDEX #ind ] ] ],
 		     CONT.HOOK [ LTOP #lbl,
 				 INDEX #ind ] ],
 	     LKEYS [ KEYREL #keyrel & [ LBL #lbl,
 				     ARG0 #ind ],
-		     ALTKEYREL.PRED generic_entity_rel,	     
+		     ALTKEYREL [ LBL #lbl,
+				 PRED generic_entity_rel,
+				 ARG0 #ind ],
 		     Q.QREL indef-relation &
-			    [ ARG0 #ind,
+			    [ PRED udef_q_rel,
+			      ARG0 #ind,
 			      RSTR #harg ] ] ],
     ARGS < [ START + ], [ SYNSEM [ LOCAL.CAT.VAL [ ARGFRAME adj+,
 						   SISTER #sister ],
@@ -6443,6 +6484,8 @@ adj-mod-filler-phrase := filler-phrase &
 	     HCONS <! [ HARG #harg,
 			LARG #lbl ] !> ] ].
 
+; PH 2026-08-24: FIXME This rule does not work as intended. Maybe because
+; there are no extr-arg4-ap1 and extr-arg4-ap2 rules.
 adj-filler-phrase := sem-filler-phrase &
   [ SYNSEM [ LOCAL.CAT [ HEAD adj & [ NOM - ],
 			 STACK < [ NON-LOCAL.SLASH < [ EXTR-REL [ LBL #lbl,
@@ -7532,6 +7575,10 @@ mod-embedded-phrase := mod-embedded-phrase2 & mod-embedded-regular-phrase.
 ; PH 2022-10-17: Removed STACK.AAIF - constraint in order to parse
 ; "Jeg sover der".
 mod-emb-vbl-phrase := mod-embedded-phrase &
+"""
+Verbal modifiers
+<ex>Jeg smiler der.
+"""
   [ SYNSEM [ LOCAL.CAT [ STACK < [ LOCAL.CAT.AAIF bool ], ... >,
 			 VAL.SISTER #sister ],
 	     LKEYS [ KEYREL.ARG0 event,
@@ -7541,6 +7588,10 @@ mod-emb-vbl-phrase := mod-embedded-phrase &
 				VAL.SISTER #sister ] ] > ].
 
 mod-emb-vbl-np-phrase := mod-cond-embedded-phrase-min & uni-link &
+"""
+NPs modifying VPs
+<ex>Jeg kommer den dagen.
+"""
   [ SYNSEM [ LOCAL.CAT.VAL [ ARGFRAME no-link,
 			     SISTER synsem ],
 	     LKEYS #lk & [ KEYREL #rel & [ LBL #larg,
@@ -7566,16 +7617,29 @@ mod-emb-vbl-np-phrase := mod-cond-embedded-phrase-min & uni-link &
 			LARG #larg ]  !> ] ].
 
 mod-emb-nom-phrase := mod-embedded-phrase &
+"""
+Modifiers of NPs
+<ex>En mann i skogen smiler.
+"""
   [ ARGS < [ SYNSEM [ LOCAL.CAT [ QUANT +,
 				  HEAD adv-nominal ] ] ],
 	   [ SYNSEM.LOCAL.CAT.HEAD adv-nominal-prep ] > ].
 
 ; Den er gul nok
 mod-emb-adj-phrase := mod-embedded-phrase &
+"""
+Modifiers of APs
+<ex>Den er gul nok.
+"""
   [ ARGS < [ SYNSEM [ LOCAL.CAT.HEAD adj ] ],
-	   [ SYNSEM.LOCAL.CAT.HEAD adv ] > ].
+	   [ SYNSEM [ LOCAL.CAT.HEAD adv,
+		      LKEYS.KEYREL.ARG0 event ] ] > ].
 
 mod-emb-enn-phrase := mod-embedded-phrase2 &
+"""
+Comparatives
+<ex>Den er gulere enn bilen.
+"""
   [ ARGS < [ SYNSEM.LOCAL.CAT.QUANT - ], [ SYNSEM.LKEYS.KEYREL.PRED enn_prd ] > ].
 
 ; post-prep-phrase := mod-embedded-phrase &
