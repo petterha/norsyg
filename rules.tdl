@@ -139,13 +139,13 @@ deg-qnt := deg-qnt-phrase.
 deg-num := deg-num-phrase.
 deg-verb := deg-verb-phrase.
 deg-imp := deg-imp-phrase.
-init-struc := init-struc-phrase.
+; init-struc := init-struc-phrase.
 init-struc-comma := init-struc-comma-phrase.
 vocative := vocative-phrase.
 
 ;det-mod := det-mod-phrase.
 sadv := sadv-phrase.
-extr-sadv := extr-sadv-phrase.
+;extr-sadv := extr-sadv-phrase.
 post-poss := post-poss-phrase.
 conj-comma-sat := conj-comma-sat-phrase.
 conj-end-sat := conj-end-sat-phrase.

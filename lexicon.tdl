@@ -3411,7 +3411,6 @@ kanskje_degadv := degadv-word &
   [ STEM < "kanskje" >,
     SYNSEM.LKEYS.KEYREL.PRED kanskje_prd ].
 
-
 kassere_v := main-verb-lxm &
   [ INFLECTION v2,
     STEM < "kassere" >,
@@ -4361,10 +4360,6 @@ mm-noun-word := mod-noun-word &
   [ STEM < "mm" >,
     SYNSEM.LKEYS.KEYREL.PRED "_millimeter-abbriv_rel" ].
 
-mod-verb-adv := mod-verb-word &
-  [ STEM < "bare" >,
-    SYNSEM.LKEYS.KEYREL.PRED bare_prd ].
-
 moden_a := adj-lxm &
   [ INFLECTION a5,
     STEM < "moden" >,
@@ -5125,6 +5120,13 @@ overfor_prp := prep-word &
   [ STEM < "overfor" >,
     SYNSEM.LKEYS.KEYREL.PRED overfor_prp ].
 
+overhodet_func := mod-sadv-word &
+  [ STEM <"overhodet">,
+    SYNSEM.LKEYS.KEYREL.PRED overhodet_prd ].
+
+overhodet_adv := adv-word &
+  [ STEM <"overhodet">,
+    SYNSEM.LKEYS.KEYREL.PRED overhodet_prd ].
 
 overlate_v := main-verb-lxm &
   [ INFLECTION v1,

@@ -224979,10 +224979,6 @@ overhode-n-neut := neut-cmp-count-noun-lxm &
     INFLECTION n2,
     SYNSEM.LKEYS.KEYREL.PRED "_overhode_n_rel" ].
 
-overhodet_adv := adv-word &
-  [ STEM <"overhodet">,
-    SYNSEM.LKEYS.KEYREL.PRED _overhodet_adv_rel ].
-
 overholde_v := main-verb-lxm &
   [ STEM <"overholde">,
     INFLECTION v1,

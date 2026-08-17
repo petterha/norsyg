@@ -7269,8 +7269,10 @@ mod-mod-phrase := mod-mod-phrase-min &
     ARGS < [ START #start ], [ SYNSEM.LOCAL.CAT.HEAD mod-mod ] > ].
 
 deg-arg0-phrase := mod-mod-phrase &
-  [ NEXTWORD.LKEYS.KEYREL.ARG0 #index,
-    C-CONT.RELS <! [ ARG1 #index ] !> ].
+  [ NEXTWORD.LKEYS.KEYREL [ LBL #lbl,
+			    ARG0 #index ],
+    C-CONT.RELS <! [ LBL #lbl,
+		     ARG1 #index ] !> ].
 
 deg-adj-phrase := deg-arg0-phrase &
   [ NEXTWORD.LOCAL.CAT.HEAD adj ].
@@ -7281,6 +7283,10 @@ deg-pos-phrase-min := deg-adj-phrase &
 
 ;; En veldig dyr is
 deg-pos-phrase := deg-pos-phrase-min & mod-mod-cat-phrase &
+"""
+Modifier of adjectives in positive degree
+<ex>En svært dyr is smelter
+"""
   [ ARGS < [ SYNSEM.LOCAL.CAT.HEAD.DEGREL #degrel ],
 	   [ SYNSEM [ LOCAL.CAT.HEAD.DEGREL #degrel ] ] > ].
 
@@ -7340,54 +7346,91 @@ saa-deg-pos-phrase := deg-arg0-phrase &
 
 ;; Den langt dyrere isen
 deg-cmp-phrase := deg-adj-phrase & mod-mod-cat-phrase &
+"""
+Modifier of adjectives in comparative
+<ex>Den langt dyrere isen smelter
+"""
   [ ARGS < [], [ SYNSEM.LKEYS.KEYREL [ PRED deg-cmp,
 				       ARG1.GRADE comparative ] ] > ].
 
 ;; Den omtrent dyreste isen
 deg-sup-phrase := deg-adj-phrase & mod-mod-cat-phrase &
+"""
+Modifier of adjectives in superlative degree
+<ex>Den omtrent dyreste isen smelter
+"""
   [ ARGS < [], [ SYNSEM.LKEYS.KEYREL [ PRED deg-sup,
 				       ARG1.GRADE superlative ] ] > ].
 
 ;; Jon sover omtrent ved isen
 deg-adv-phrase := deg-arg0-phrase & mod-mod-cat-phrase &
+"""
+Modifier of adverbials
+<ex>Isen smelter omtrent der
+"""
   [ NEXTWORD.LOCAL.CAT.HEAD adv,
     ARGS < [], [ SYNSEM.LKEYS.KEYREL.PRED deg-adv ] > ].
 
-;; Jon sover omtrent ikke
 deg-sadv-phrase := deg-arg0-phrase & mod-mod-cat-phrase &
+"""
+Modifier of sentence adverbials
+<ex>Isen smelter overhodet ikke
+"""
   [ NEXTWORD.LOCAL.CAT.HEAD sadv,
     ARGS < [], [ SYNSEM.LKEYS.KEYREL.PRED deg-sadv ] > ].
 
 ;; Svært godt likte menn smiler
 deg-degadv-phrase := deg-arg0-phrase & mod-mod-cat-phrase &
+"""
+Modifier of degree modifiers
+<ex>Smiler svært godt likte menn?
+"""
   [ NEXTWORD.LOCAL.CAT.HEAD mod-mod,
     ARGS < [], [ SYNSEM.LKEYS.KEYREL.PRED deg-adv ] > ].
 
-;; Bl.a. mannen smiler
 deg-nom-phrase := deg-arg0-phrase & mod-mod-cat-phrase &
+"""
+Pre-modifier of nouns
+<ex>Bl.a. mannen smiler.
+"""
   [ NEXTWORD.LOCAL.CAT.HEAD nominal,
     ARGS < [], [ SYNSEM.LKEYS.KEYREL.PRED deg-nom ] > ].
 
-;; Omtrent alle smiler
 deg-qnt-phrase := deg-arg0-phrase & mod-mod-cat-phrase &
+"""
+Degree modifier of quantors
+<ex>Omtrent alle smiler.
+"""
   [ NEXTWORD [ LOCAL.CAT.HEAD quant,
 	       LKEYS.Q.QREL.PRED quant_m_rel ],
     ARGS < [], [ SYNSEM.LKEYS.KEYREL.PRED deg-qnt ] > ].
 
 ;; Mannen bare smiler
 deg-verb-phrase := deg-arg0-phrase & mod-mod-cat-phrase &
+"""
+Degree modifier of verbs
+<ex>Jeg bare smiler.
+"""
   [ NEXTWORD.LOCAL [ CAT.HEAD verb,
 		     CONT.HOOK.INDEX.E.TENSE fin-infin ],
     ARGS < [], [ SYNSEM.LKEYS.KEYREL.PRED deg-verb ] > ].
 
 ;; Bare smil!
 deg-imp-phrase := deg-arg0-phrase & mod-mod-cat-phrase &
+"""
+Degree modifier of imperatives
+<ex>Bare smil!
+"""
   [ NEXTWORD.LOCAL [ CAT.HEAD verb,
 		     CONT.HOOK.INDEX.E.TENSE imp ],
     ARGS < [], [ SYNSEM.LKEYS.KEYREL.PRED deg-imp ] > ].
 
 ;; Omtrent tre menn smiler
 deg-num-phrase := mod-mod-phrase & mod-mod-cat-phrase &
+"""
+Degree modifier of numerals
+<ex>Omtrent tre iser smeltet.
+"""
   [ NEXTWORD [ LOCAL [ CAT.HEAD card,
 		       CONT.RELS.LIST.FIRST.ARG0 #index ] ],
     ARGS < [], [ SYNSEM.LKEYS.KEYREL [ PRED deg-num,
@@ -7398,6 +7441,10 @@ deg-num-phrase := mod-mod-phrase & mod-mod-cat-phrase &
 ;     C-CONT [ HCONS <!!> ] ].
 
 init-struc-comma-phrase := start-item & nextword-phrase & uni-link & start-head &
+"""
+Adding comma after vocative
+<ex>Per, du smiler.
+"""
   [ SYNSEM #synsem,
     ARGS < vocative-phrase & [ SYNSEM #synsem ], comma-word > ].
 
@@ -7431,6 +7478,10 @@ init-struc-phrase := start-item & init-struc-min & uni-link & start-head &
 ; generator
 ; PH 2019-03-19: Took out pn-word constraint as second argument
 vocative-phrase := init-struc-min &
+"""
+Vocative
+<ex>Per, du smiler.
+"""
   [ SYNSEM.LKEYS.KEYREL [ LBL #lbl,
 			  ARG0 #arg2 ],
     PUNCT punct,
@@ -7670,6 +7721,10 @@ modnom-embedded-phrase := mod-cond-embedded-phrase & mod-embedded-regular-phrase
 ; ex: Han sov mens han sov.
 ; ex: Mens han sov, sov han.
 cadv-embedded-phrase := reg-binary-emb-phrase & complementizer-sign & mod-embedded-regular-phrase &
+"""
+Initiating adverbial clause
+<ex>Han smilte mens han sov.
+"""
   [ SYNSEM [ LOCAL.CAT [ HEAD cadv,
 			 VBL synsem ],
 	     LKEYS.KEYREL.ARG0 #ind ],
@@ -7719,7 +7774,11 @@ head-sadv-phrase-min := sadv-phrase-min & head-initial & binary-nexus-phrase &
 		      LKEYS.KEYREL #rel ] ] >,
     C-CONT.RELS <! #rel !> ].
 
-sadv-phrase := head-sadv-phrase-min & zero-cop-input.
+sadv-phrase := head-sadv-phrase-min & zero-cop-input
+"""
+Rule for sentence adverbials
+<ex>Isen smelter ikke.
+""".
 
 extr-sadv-phrase := sadv-phrase-min & unary-extr-phrase &
   [ HD-DTR #dtr,
@@ -7768,6 +7827,10 @@ post-poss-phrase := phrasal & val-or-mod-sign & head-compositional & head-initia
 ; took out the HD-DTR.SYNSEM.NON-LOCAL.SLASH.FIRST.CAT.CASE non-case constraint 
 ;                                                                    (2015-02-23; ph)
 extr-mod-phrase := unary-extr-phrase & val-or-mod-sign &
+"""
+Extraction of fronted adverbial
+<ex>Der smiler jeg.
+"""
   [ BOUNDARY -,
     SYNSEM [ LOCAL [ CAT [ HEAD compl-verb,
 			   VAL #val2 ],
@@ -8922,6 +8985,7 @@ omtrent_prd := predsort.
 _omtrent_deg-sup_rel := omtrent_prd & deg-sup.
 _omtrent_deg-pos_rel := omtrent_prd & deg-pos.
 _omtrent_deg-adv_rel := omtrent_prd & deg-adv.
+_omtrent_deg-sadv_rel := omtrent_prd & deg-sadv.
 _omtrent_deg-num_rel := omtrent_prd & deg-num.
 _omtrent_deg-qnt_rel := omtrent_prd & deg-qnt.
 
@@ -8930,6 +8994,7 @@ _nesten_deg-pos_rel := nesten_prd & deg-pos.
 _nesten_deg-cmp_rel := nesten_prd & deg-cmp.
 _nesten_deg-sup_rel := nesten_prd & deg-sup.
 _nesten_deg-adv_rel := nesten_prd & deg-adv.
+_nesten_deg-sadv_rel := nesten_prd & deg-sadv.
 _nesten_deg-num_rel := nesten_prd & deg-num.
 _nesten_deg-qnt_rel := nesten_prd & deg-qnt.
 
@@ -8972,6 +9037,7 @@ _kanskje_deg-adv_rel := kanskje_prd & deg-adv.
 _kanskje_deg-cmp_rel := kanskje_prd & deg-cmp.
 _kanskje_deg-pos_rel := kanskje_prd & deg-pos.
 _kanskje_deg-sup_rel := kanskje_prd & deg-sup.
+_kanskje_deg-sadv_rel := kanskje_prd & deg-sadv.
 
 _mye_deg-adv_rel := mye_prd & deg-adv.
 _mye_deg-cmp_rel := mye_prd & deg-cmp.
