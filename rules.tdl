@@ -149,22 +149,20 @@ sadv := sadv-phrase.
 post-poss := post-poss-phrase.
 conj-comma-sat := conj-comma-sat-phrase.
 conj-end-sat := conj-end-sat-phrase.
-conj-comma-unsat := conj-comma-unsat-phrase.
-conj-end-unsat := conj-end-unsat-phrase.
+;conj-comma-unsat := conj-comma-unsat-phrase.
+;conj-end-unsat := conj-end-unsat-phrase.
 conj-emb := conj-emb-phrase.
 conj-adj-end := conj-adj-end-phrase.
 conj-adj := conj-adj-phrase.
 conj-s := conj-s-phrase.
 
 coord-vp := coord-vp-phrase.
-coord-filler := coord-filler-phrase.
+;coord-filler := coord-filler-phrase.
 ;conj-mod := conj-mod-phrase.
 
-; PH 2026-06-11: Commented out the following three rules in order to
-; see the rules in the lkb window
-; bicl-subcoord := bicl-subcoord-phrase.
-; monocl-subcoord := monocl-subcoord.
-; eoc-coord := eoc-coord.
+bicl-subcoord := bicl-subcoord-phrase.
+monocl-subcoord := monocl-subcoord.
+eoc-coord := eoc-coord.
 
 ; This rule is not semantically wellformed: 
 ; "Jeg brauter med Jon på at jeg brauter"

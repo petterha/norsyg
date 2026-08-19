@@ -4678,7 +4678,12 @@ compl-phrase := compl-phrase-min.
 ; PH 2026-06-12: Added ARGS..BACKSLASH <> constraint in order to
 ; avoid partial VP fronting from CP complements:
 ; * Beundre har jeg ikke sagt (at) jeg vil henne
-unary-compl-phrase := compl-phrase & unary-phrase & gap-unary & arg2-sign & embedded-phrase &
+unary-compl-phrase := compl-phrase & unary-phrase & gap-unary & arg2-sign &
+		      embedded-phrase &
+"""
+Subordinate clause without complementizer as direct object 
+<ex>Han hevder jeg smiler.
+"""
   [ SYNSEM [ LOCAL [ CAT [ HEAD subcompl-omcompl,
 		   STACK < [ LOCAL [ CAT [ HEAD.DEGREL #degrel,
 					   VAL [ CMP1.LINK arg1-,
@@ -4724,8 +4729,11 @@ binary-compl-phrase := compl-phrase-min & stack-cmp1-link & binary-phrase &
     C-CONT [ RELS <! !>,
 	     HCONS <! !> ] ].
 
-; type for "Han er så pen at jeg smiler."
 delayed-compl-phrase := binary-compl-phrase &
+"""
+Delayed complement construction, initiating subordinate clause
+<ex>Den er så pen at jeg smiler.
+"""
   [ START -,
     SYNSEM [ LOCAL.CAT [ HEAD.DEGREL.PRED comp-,
 			 STACK < [ MODIFIED.PERIPH +,
@@ -4770,14 +4778,26 @@ binary-compl2-min := binary-compl-phrase & arg2-sign & head-final & compl-phrase
 		      LINK #pred ] ] > ].
 
 binary-compl2-phrase := binary-compl2-min &
+"""
+Subordinate clause as CMP2
+<ex>Han hevder at jeg smiler.
+"""
   [ ARGS.FIRST.SYNSEM.LOCAL.CAT.HEAD adj-adv-compl-prep-verb ].
 binary-compl2-noun-phrase := binary-compl2-min &
+"""
+Subordinate clause as CMP2 of nominal constituent
+<ex>Jeg fikk ideen at jeg smiler.
+"""
   [ ARGS.FIRST.SYNSEM [ LOCAL.CAT [ HEAD card-det-noun-poss,
 				    VAL.CMP2.LINK #pred & arg3- & arg4- & prt- & atom ],
 			NON-LOCAL.SLASH <>,
 			LKEYS.KEYREL.PRED #pred ] ].
 
 binary-compl4-phrase := binary-compl-phrase & arg4-sign & head-final & compl-phrase & embedded-phrase &
+"""
+Subordinate clause as oblique argument
+<ex>Jeg stoler på at isen smelter.
+"""
   [ SYNSEM [ LOCAL [ CONT.HOOK [ INDEX event & #index ] ] ],
     ARGS < [ SYNSEM [ LOCAL.CAT [ VAL [ ARGFRAME #pred,
 					CMP4 [ LINK #pred,
@@ -5772,7 +5792,11 @@ extr-4ip2-phrase := 4ip2-phrase & non-subj-extr & extr-4inf-phrase.
 
 1ip-phrase := arg1-sign &
   [ ARGS.FIRST.SYNSEM.LKEYS.KEYREL.PRED 1ip ].
-binary-1ip-phrase := 1ip-phrase & binary-1inf-phrase & subj-val.
+binary-1ip-phrase := 1ip-phrase & binary-1inf-phrase & subj-val
+"""
+Infinitival clause as subject
+<ex>Er å smile bra?
+""".
 extr-1ip-phrase := 1ip-phrase & extr-inf-phrase & subj-extr & arg1-val.
 
 
@@ -7293,6 +7317,11 @@ Modifier of adjectives in positive degree
 ;; Delayed complement construction
 ;; Bilen er så fin at jeg smiler
 saa-deg-pos-phrase := deg-arg0-phrase &
+"""
+Delayed complement construction, adding `så'
+<ex>Den er så pen at jeg smiler.
+"""
+
   [ SYNSEM.LOCAL.CAT [ HEAD [ MOD #mod,
 			      KEYS #keys,
 			      MESS #mess,
@@ -7797,6 +7826,10 @@ extr-sadv-phrase := sadv-phrase-min & unary-extr-phrase &
 ; PH 2016-05-25: Possessive modifier rule for post-modifying possessives:
 ; "Hunden min smiler."
 post-poss-phrase := phrasal & val-or-mod-sign & head-compositional & head-initial & binary-nexus-phrase &
+"""
+Possessives appearing after the noun phrase
+<ex>Hunden min bjeffer.
+"""
   [ START -,
     SYNSEM [ LOCAL [ CAT #cat,
 		     CONT.MSG #msg ],
@@ -8173,6 +8206,10 @@ conj-unsat-phrase := conj-phrase &
 	     HCONS <!  !> ] ].
 
 conj-adj-phrase := binary-phrase &
+"""
+Conjunction of adjectives
+<ex>En rød og gul is smelter.
+""" 
   [ SYNSEM #sister & [ LOCAL [ CAT.HEAD #head,
 			       CONT.HOOK.INDEX #1 ] ],
     ARGS < conj-adj-end-phrase &
@@ -8190,6 +8227,10 @@ conj-adj-phrase := binary-phrase &
 
 
 conj-adj-end-phrase := binary-phrase &
+"""
+Conjunction of adjectives with a conjunctor
+<ex>En rød og gul is smelter.
+""" 
   [ SYNSEM [ LOCAL.CAT [ HEAD conj,
 			 STACK <>,
 			 VAL.SISTER synsem &
@@ -8237,6 +8278,10 @@ coord-s-min := basic-binary-phrase & start-item & uni-link-min &
     C-CONT [ HCONS <!!> ] ].
 
 conj-s-phrase := coord-s-min &
+"""
+Conjunction of sentences
+<ex>Isen smelter, og sjokoladen smelter.
+""" 
   [ INFLECTED +,
     LINK-INPUT -,
     CONJ no-conj,
@@ -8306,13 +8351,25 @@ First element in parenthetical
 ;conj-emb-unsat-phrase := conj-embedded-phrase &
 ;  [ ARGS < conj-unsat-phrase , [ SYNSEM.LOCAL.CAT.VAL.SISTER synsem ] > ].
 conj-emb-phrase := conj-embedded-phrase &
+"""
+Initiating parse of non-initial conjunct
+<ex>Per og Marit smiler.
+""" 
   [ ARGS < conj-phrase , [ SYNSEM.LOCAL.CAT.VAL.SISTER synsem-min ] > ].
 
-conj-comma-sat-phrase := conj-sat-phrase & 
+conj-comma-sat-phrase := conj-sat-phrase &
+"""
+Comma in conjunction of NPs
+<ex>Smiler Per, Jon og Marit?
+""" 
   [ CONJ pre-conj,
     ARGS < [ ], comma-word > ].
 
-conj-end-sat-phrase := conj-sat-phrase & 
+conj-end-sat-phrase := conj-sat-phrase &
+"""
+Conjunction of NPs with conjunctor
+<ex>Per og Marit smiler.
+""" 
   [ SYNSEM.LKEYS.ALTKEYREL.PRED #pred,
     CONJ end-conj,
     ARGS < [ ],
@@ -8389,6 +8446,10 @@ coord-vp-min := coord-basic & coord-2frame &
 	     HCONS <!!> ] ].
 
 coord-vp-phrase := coord-vp-min & coord-expr & neg-link &
+"""
+Coordinating VPs.
+<ex>Jeg smiler og ler.
+"""
   [ ARGS < [ CONJ no-pre-conj,
 	     BOUNDARY - ], [ SYNSEM.LKEYS.KEYREL #keyrel ] >,
     C-CONT.RELS <! #keyrel & [ PRED reg_conj ] !> ].
@@ -8400,6 +8461,10 @@ pseudeo-coord :=  coord-basic &
 
 
 bicl-subcoord-phrase := pseudeo-coord & coord-2frame & uni-link &
+"""
+Biclausal subcoordination
+<ex>Jeg sitter og smiler.
+"""
   [ SYNSEM [ LOCAL.CAT [ CASE non-subj-case,
 			 ARGUMENT.LOCAL [ CONT.HOOK.INDEX #xarg,
 					  CAT.CASE non-subj-case ],
@@ -8443,6 +8508,10 @@ subcoord2-phrase := pseudeo-coord &
     LINK-INPUT - ].
 
 monocl-subcoord := subcoord2-phrase &
+"""
+Monoclausal subcoordination.
+<ex>Jeg tar og henter isen.
+"""
   [ ARGS < [ SYNSEM [ LOCAL.CAT.VAL [ ARGFRAME #link,
 				      CMP2.LINK #link ],
 		      LKEYS.KEYREL.PRED monocl_rel ] ], []>,
@@ -8450,6 +8519,10 @@ monocl-subcoord := subcoord2-phrase &
 	     HCONS <!!> ] ].
 
 eoc-coord := subcoord2-phrase &
+"""
+Empty object construction
+<ex>Jeg skrev et brev og sendte til England.
+"""
   [ ARGS < [ SYNSEM [ LOCAL.CAT.VAL [ ARGFRAME arg2+,
 				      CMP2.LINK arg2- ],
 		      LKEYS.KEYREL.PRED eoc_rel ] ], []>,
