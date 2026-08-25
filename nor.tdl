@@ -144,10 +144,15 @@ subord_rel := comp+.
 2inq := arg2+ & inq+.
 2wh := arg2+ & wh+.
 2ip := arg2+ & inf+.
-rais := 2ip.
-2ip1 := 2ip.
-2ip3 := 2ip.
-2ip4 := 2ip.
+
+rais := arg2+ & inf+.
+2ip1 := arg2+ & inf+.
+2ip3 := arg2+ & inf+.
+2ip4 := arg2+ & inf+.
+; rais := 2ip.
+; 2ip1 := 2ip.
+; 2ip3 := 2ip.
+; 2ip4 := 2ip.
 2vp := arg2+ & inf+.
 2np := arg2+ & nom+.
 2idiom := arg2+.
@@ -2545,7 +2550,8 @@ const-participle-adj-word := participle-adj-word & constant-lex-rule.
 infl-participle-adj-word := participle-adj-word & inflecting-lex-rule.
 
 const-sg-adj-word := sg-adj-word & constant-lex-rule & norm-adj-word.
-sg-comm-adj-word := sg-adj-word & comm-item & norm-adj-word & premod-adj-word.
+sg-comm-adj-word := sg-adj-word & comm-item & norm-adj-word & premod-adj-word &
+  [ SYNSEM.LKEYS.KEYREL.ARG1 ref-ind ].
 infl-sg-comm-adj-word := sg-comm-adj-word & inflecting-lex-rule.
 const-sg-comm-adj-word := sg-comm-adj-word & constant-lex-rule.
 sg-neut-adj-word := sg-adj-word & neut-item & norm-adj-word &
@@ -2561,7 +2567,7 @@ part-indef-sg-adj-word := sg-adj-word & const-participle-adj-word &
 
 pl-adj-word := pos-adj-word & premod-adj-word &
   [ SYNSEM [ LOCAL.CAT.VAL.SISTER.LOCAL.CONT.HOOK.INDEX.PNG.PN pl,
-	     LKEYS [ KEYREL.ARG1.PNG.PN pl,
+	     LKEYS [ KEYREL.ARG1 ref-ind & [ PNG.PN pl ],
 		     Q.QREL indef-relation ] ] ].
 
 pl-indef-adj-word := pl-adj-word & indef-adj-word &
@@ -5644,19 +5650,19 @@ binary-inf-phrase-min := inf-phrase & binary-phrase &
 					     CONT [ HOOK #hook,
 						    MSG #msg ],
 					     TOPIC #topic ],
-				     LKEYS.CNSTR #rel ] . #rest >,
+				     LKEYS.KEYREL #rel ] . #rest >,
 			   VAL #val,
                            ARGUMENT.LOCAL.CAT.CASE non-subj-case,
 			   VBL synsem & 
 				[ LOCAL #loc & [ CAT.HEAD.PERFPART -,
 						 CONT.HOOK.INDEX #index  &
 								   [ PERF - ] ],
-				  LKEYS [ CNSTR #rel2,
+				  LKEYS [ KEYREL relation,
 					  KEYREL.ARG0 #index ] ] ],
 		     CONT.HOOK [ LTOP #lbl2,
                                  INDEX event ] ],
              NON-LOCAL #sl,
-	     LKEYS.CNSTR #rel2 ],
+	     LKEYS.KEYREL relation ],
     OUT #out,
     IN #cat,
     ARGS < [ SYNSEM [ FIRST-WORD +,
@@ -5671,7 +5677,7 @@ binary-inf-phrase-min := inf-phrase & binary-phrase &
 				     MSG #msg ],
 			      TOPIC #topic ],
 		      NON-LOCAL #sl,
-		      LKEYS.CNSTR #rel & [ LBL #lbl ] ] ],
+		      LKEYS.KEYREL #rel & [ LBL #lbl ] ] ],
 	   inf-word &
 	   [ SYNSEM [ LOCAL [ CAT [ HEAD infcompl,
 				    VAL #val,
@@ -5680,7 +5686,7 @@ binary-inf-phrase-min := inf-phrase & binary-phrase &
 					  INDEX #index ] ],
 		      LKEYS [ KEYREL [ LBL #lbl2,
 				       ARG0 #index ],
-			      CNSTR relation ] ] ] >,
+			      KEYREL relation ] ] ] >,
     C-CONT [ RELS <! !> ],
     LINK-INPUT + ].
 
@@ -5690,8 +5696,8 @@ binary-inf-phrase := binary-inf-phrase-min &
 binary-1inf-phrase := binary-inf-phrase &
   [ ARGS < [ SYNSEM [ LOCAL.CAT.VAL [ CMP1.LOCAL #cmp,
 				      CMP3.LINK arg3- ],
-		      LKEYS.CNSTR.ARG1 #index ] ],
-	   [ SYNSEM.LOCAL #cmp & [ CONT.HOOK.INDEX #index ] ] > ].
+		      LKEYS.CNSTR.ARG1 #event ] ],
+	   [ SYNSEM.LOCAL #cmp & [ CONT.HOOK.INDEX #event ] ] > ].
 
 binary-2inf-phrase := binary-inf-phrase-min &
   [ ARGS < [ SYNSEM [ LOCAL.CAT.VAL [ CMP2.LOCAL #cmp2,
@@ -5740,7 +5746,7 @@ ip-phrase := arg2-sign &
 2ip-phrase := arg2-sign &
   [ SYNSEM.LOCAL.CAT.ARGUMENT.LOCAL.CONT.HOOK.INDEX #ind,
     ARGS.FIRST.SYNSEM [ LKEYS.KEYREL.PRED 2ip,
-			LOCAL.CAT [ HEAD prep,
+			LOCAL.CAT [ HEAD compl-prep-verb,
 				    VAL.CMP1.LOCAL.CONT.HOOK.INDEX #ind ] ] ].
 
 2ip1-phrase := arg2-sign &
@@ -5776,10 +5782,22 @@ ip-phrase := arg2-sign &
 
 binary-ip-phrase := ip-phrase & binary-inf-phrase.
 binary-2ip-phrase := 2ip-phrase & binary-2inf-phrase &
+"""
+Infinitival arg2 without raising/control
+<ex>Det går å rable.
+"""
   [ SYNSEM.LKEYS.KEYREL.ARG0 #index,
     ARGS < [ SYNSEM.LKEYS.KEYREL.ARG2 #index ], [] > ].
-binary-2ip1-phrase := 2ip1-phrase & binary-2inf-phrase & binary-inf-phrase.
-binary-2ip3-phrase := 2ip3-phrase & binary-2inf-phrase & binary-inf-phrase.
+binary-2ip1-phrase := 2ip1-phrase & binary-2inf-phrase & binary-inf-phrase
+"""
+Subject control
+<ex>Han klarer å smile.
+""".
+binary-2ip3-phrase := 2ip3-phrase & binary-2inf-phrase & binary-inf-phrase
+"""
+Object control
+<ex>Hun nekter ham å rable.
+""".
 binary-2ip4-phrase := 2ip4-phrase & binary-2inf-phrase & binary-inf-phrase.
 extr-2ip1-phrase := 2ip1-phrase & non-subj-extr & extr-2inf-phrase.
 extr-2ip3-phrase := 2ip3-phrase & non-subj-extr & extr-2inf-phrase.
@@ -5797,7 +5815,11 @@ binary-1ip-phrase := 1ip-phrase & binary-1inf-phrase & subj-val
 Infinitival clause as subject
 <ex>Er å smile bra?
 """.
-extr-1ip-phrase := 1ip-phrase & extr-inf-phrase & subj-extr & arg1-val.
+extr-1ip-phrase := 1ip-phrase & extr-inf-phrase & subj-extr & arg1-val
+"""
+Infinitival clause as subject
+<ex>Å smile er bra.
+""".
 
 
 ; PH 2016-05-26: Took out the STACK AAIF link to ARGS.FIRST AAIF in order to
