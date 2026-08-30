@@ -5170,6 +5170,10 @@ unary-rel-min := rel-phrase & unary-phrase &
 ; are extracted as adjuncts. "[alle mine to] hunder bjeffer _"
 ; PH 2016-09-14: Linked SLASH.HEAD with ARGS.FIRST.HEAD.
 unary-rel-phrase := unary-rel-min &
+"""
+Relative clause without relative pronoun
+<ex>Mannen jeg beundrer, smiler.
+"""
   [ SYNSEM [ NON-LOCAL.SLASH < [ CAT.HEAD #head & [ MOD <> ] ] >,
 	     LKEYS.KEYREL.ARG0.RESTR + ],
     ARGS < [ SYNSEM [ LOCAL.CAT [ HEAD #head & card-commnoun-det-quant,
@@ -5188,6 +5192,10 @@ wh-rel-phrase := unary-rel-min &
 			      Q.QREL.PRED anti-quant_m_rel ] ] ]> ].
 
 binary-rel-phrase := rel-phrase & binary-phrase &
+"""
+Rule for relative pronoun
+<ex>Mannen som smiler, rabler.
+"""
   [ SYNSEM phr-synsem &
 	   [ LOCAL [ CAT [ HEAD [ RESTRICTED + ],
 			   STACK < [ SAT #sat,
@@ -5669,7 +5677,7 @@ binary-inf-phrase-min := inf-phrase & binary-phrase &
 		      LOCAL [ CAT #cat & 
                                   [ HEAD #head & adj-adv-compl-noun-prep-verb,
                                     STACK #rest,
-				    VAL [ CMP2.LOCAL [ CAT.HEAD infcompl ],
+				    VAL [ CMP2.LOCAL [ CAT.HEAD head ],
 					  PART prt- ],
 				    VBL #verbal,
 				    CASE case ],
@@ -5730,7 +5738,8 @@ extr-inf-phrase := subconstruction &
     MEANING #rel ].
 
 extr-2inf-phrase := extr-inf-phrase & arg2-val-min &
-  [ ARGS < [ SYNSEM [ LOCAL.CAT.VAL.CMP4.LINK arg4-,
+  [ ARGS < [ SYNSEM [ LOCAL.CAT.VAL.CMP3.LINK arg3-,
+		      LOCAL.CAT.VAL.CMP4.LINK arg4-,
 		      NON-LOCAL.SLASH < [ CONT.HOOK.INDEX #event ] > ,
 		      LKEYS.KEYREL.ARG2 #event ] ] > ].
 
@@ -5796,17 +5805,49 @@ Subject control
 binary-2ip3-phrase := 2ip3-phrase & binary-2inf-phrase & binary-inf-phrase
 """
 Object control
-<ex>Hun nekter ham å rable.
+<ex>Hun nekter henne å rable.
 """.
-binary-2ip4-phrase := 2ip4-phrase & binary-2inf-phrase & binary-inf-phrase.
-extr-2ip1-phrase := 2ip1-phrase & non-subj-extr & extr-2inf-phrase.
-extr-2ip3-phrase := 2ip3-phrase & non-subj-extr & extr-2inf-phrase.
-extr-2ip4-phrase := 2ip4-phrase & non-subj-extr & extr-2inf-phrase.
+binary-2ip4-phrase := 2ip4-phrase & binary-2inf-phrase & binary-inf-phrase
+"""
+Oblique object control
+<ex>Hun overlater til henne å rable.
+""".
+extr-2ip1-phrase := 2ip1-phrase & non-subj-extr & extr-2inf-phrase
+"""
+Subject control - extracted IP
+<ex>Å smile klarer han.
+""".
+extr-2ip3-phrase := 2ip3-phrase & non-subj-extr & extr-2inf-phrase
+"""
+Object control - extracted IP
+<ex>Å rable nekter hun henne.
+""".
+extr-2ip4-phrase := 2ip4-phrase & non-subj-extr & extr-2inf-phrase
+"""
+Oblique object control - extracted IP
+<ex>Å rable overlater hun til henne.
+""".
 
-binary-4ip1-phrase := 4ip1-phrase & binary-4inf-phrase.
-binary-4ip2-phrase := 4ip2-phrase & binary-4inf-phrase.
-extr-4ip1-phrase := 4ip1-phrase & non-subj-extr & extr-4inf-phrase.
-extr-4ip2-phrase := 4ip2-phrase & non-subj-extr & extr-4inf-phrase.
+binary-4ip1-phrase := 4ip1-phrase & binary-4inf-phrase
+"""
+Subject control - oblique IP
+<ex>Han gikk med på å smile.
+""".
+binary-4ip2-phrase := 4ip2-phrase & binary-4inf-phrase
+"""
+Object control - oblique IP
+<ex>Hun hadde henne til å smile.
+""".
+extr-4ip1-phrase := 4ip1-phrase & non-subj-extr & extr-4inf-phrase
+"""
+Subject control - oblique, extracted IP
+<ex>Å smile gikk jeg med på.
+""".
+extr-4ip2-phrase := 4ip2-phrase & non-subj-extr & extr-4inf-phrase
+"""
+Object control - oblique, extracted IP
+<ex>Å smile hadde jeg henne til.
+""".
 
 1ip-phrase := arg1-sign &
   [ ARGS.FIRST.SYNSEM.LKEYS.KEYREL.PRED 1ip ].
@@ -5825,6 +5866,10 @@ Infinitival clause as subject
 ; PH 2016-05-26: Took out the STACK AAIF link to ARGS.FIRST AAIF in order to
 ; account for "Jeg lar deg ikke beundre Kari"
 unary-inf-phrase := basic-unary-phrase & arg2-sign & inf-phrase &
+"""
+Object control - bare IP
+<ex>Jeg lar deg rable.
+"""
   [ SYNSEM [ LOCAL [ CAT [ HEAD infcompl,
                            CASE non-subj-case,
                            STACK < [ LOCAL [ CAT #out & ;
